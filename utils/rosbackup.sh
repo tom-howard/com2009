@@ -10,4 +10,5 @@ cp ~/wsl-ros-log.txt /mnt/u/wsl-ros/wsl-ros-log.txt
 tar --exclude='/home/student/.local' \
     --exclude='/home/student/.cache' \
     --exclude='/home/student/.config'\
+    --exclude='/home/student/.atom'  \
     -cvjf /mnt/u/wsl-ros/ros-backup.tar.gz /home/student
