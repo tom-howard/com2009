@@ -8,4 +8,5 @@ tar --exclude='/home/student/.local' \
     --exclude='/home/student/.cache' \
     --exclude='/home/student/.config'\
     --exclude='/home/student/.atom'  \
+    --exclude='/home/student/.wsl_ros_ver' \
     -cvjf /mnt/u/wsl-ros/ros-backup.tar.gz /home/student
