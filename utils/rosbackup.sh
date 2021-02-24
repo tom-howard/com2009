@@ -9,4 +9,7 @@ tar --exclude='/home/student/.local' \
     --exclude='/home/student/.config'\
     --exclude='/home/student/.atom'  \
     --exclude='/home/student/.wsl_ros_ver' \
+    --exclude='/home/student/.vscode-server' \
+    --exclude='/home/student/mdk-200720' \
+    --exclude='/home/student/mdk' \
     -cvjf /mnt/u/wsl-ros/ros-backup.tar.gz /home/student
