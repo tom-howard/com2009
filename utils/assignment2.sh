@@ -15,3 +15,5 @@ cd ~/catkin_ws/src/com2009_vision/models/
 cp -r ./line_following_track ~/.gazebo/models/
 
 cd ~/catkin_ws/ && catkin_make
+
+mkdir -p /mnt/u/com2009_assignment2/
