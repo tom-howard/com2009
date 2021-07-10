@@ -1,0 +1,17 @@
+# TODO: modify the PS1 prompt
+
+source /opt/ros/noetic/setup.bash
+source ~/catkin_ws/devel/setup.bash
+export TURTLEBOT3_MODEL=waffle
+export ROS_MASTER_URI=http://localhost:11311
+export ROS_HOSTNAME=localhost
+# proper display variable assignment needs implementing
+export DISPLAY=172.16.14.4:0.0
+export LIBGL_ALWAYS_INDIRECT=
+export GAZEBO_IP=127.0.0.1
+export WSL_ROS_VER=$(cat ~/.wsl-ros/wsl_ros_ver)
+
+if [ -f ~/.wsl-ros/first_launch ]; then
+  rm ~/.wsl-ros/first_launch
+  wsl_ros first-launch
+fi
