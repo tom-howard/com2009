@@ -37,9 +37,14 @@ ask() {
     done
 }
 
+if [ -f /mnt/u/wsl-ros/ros-backup.tar.gz ]; then
+  backup_exists=yes
+else
+  backup_exists=no
+fi
 
 if [ $1 == 'backup' ]; then
-  if [ -f /mnt/u/wsl-ros/ros-backup.tar.gz ]; then
+  if [ $backup_exists == 'yes' ]; then
     if ask "Preparing to backup your WSL-ROS environment: This will overwrite your existing WSL-ROS backup. Are you sure you want to continue?"; then
       rosbackup.sh
     else
@@ -49,11 +54,21 @@ if [ $1 == 'backup' ]; then
     rosbackup.sh
   fi
 elif [ $1 == 'restore' ]; then
-  if [ -f /mnt/u/wsl-ros/ros-backup.tar.gz ]; then
+  if [ $backup_exists == 'yes' ]; then
     rosrestore.sh
   else
     echo "Unable to restore: A U:\wsl-ros\ros-backup.tar.gz file does not exit."
   fi
+elif [ $1 == 'first-launch' ]; then
+  if [ $backup_exists == 'yes' ]; then
+    if ask "Welcome to WSL-ROS! It looks like you already have a backup from a previous session, do you want to restore this now?"; then
+      rosrestore.sh
+    else
+      echo "Nothing was restored. Starting from fresh."
+    fi
+  else
+    echo "Welcome to WSL-ROS!"
+  fi
 else
-  echo "$1 is not a valid input, provide either 'backup' or 'restore'"
+  echo "$1 is not a valid input, use either 'backup' or 'restore'"
 fi
