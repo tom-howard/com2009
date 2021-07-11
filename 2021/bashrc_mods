@@ -11,8 +11,7 @@ source ~/catkin_ws/devel/setup.bash
 export TURTLEBOT3_MODEL=waffle
 export ROS_MASTER_URI=http://localhost:11311
 export ROS_HOSTNAME=localhost
-# proper display variable assignment needs implementing
-export DISPLAY=172.16.14.4:0.0
+source ~/.wsl-ros/set_display.sh
 export LIBGL_ALWAYS_INDIRECT=
 export GAZEBO_IP=127.0.0.1
 
