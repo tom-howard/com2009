@@ -15,8 +15,7 @@ source ~/.wsl-ros/set_display.sh
 export LIBGL_ALWAYS_INDIRECT=
 export GAZEBO_IP=127.0.0.1
 
-
-if [ -f ~/.wsl-ros/first_launch ]; then
-  rm ~/.wsl-ros/first_launch
+if [ ! -f ~/.wsl-ros/no_welcome ]; then
+  touch ~/.wsl-ros/no_welcome
   wsl_ros first-launch
 fi
