@@ -5,3 +5,4 @@ dos2unix -q ~/.wsl-ros/tuos_user
 cd ~
 read -r first_line < ~/.wsl-ros/tuos_user
 export TUOS_USER=$first_line
+rm ~/.wsl-ros/tuos_user
