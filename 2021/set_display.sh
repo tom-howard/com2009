@@ -12,3 +12,4 @@ dos2unix -q ~/.wsl-ros/ipv4s.txt
 # read will just parse the first line of this file:
 read -r line < ~/.wsl-ros/ipv4s.txt
 export DISPLAY=$line:0.0
+rm ~/.wsl-ros/ipv4s.txt
