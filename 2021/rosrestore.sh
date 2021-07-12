@@ -1,9 +1,14 @@
 #!/bin/bash
 
-echo "Restoring your home directory from 'U:\wsl-ros\ros-backup.tar.gz', please wait..."
+rbpth=$rbname'.tar.gz'
+rbwpth=$(sed "s/\/mnt\/u/U\:/;s/\//\\\/g" <<< $rbpth)
 
-echo "$(date): Restore to $(hostname) [wsl-ros version: $WSL_ROS_VER]" >> /mnt/u/wsl-ros/wsl-ros-log.txt
+echo "Restoring your home directory from '"$rbwpth"', please wait..."
 
-tar -xjf /mnt/u/wsl-ros/ros-backup.tar.gz -C /
+rblog=$rbname'-log.txt'
+
+echo "$(date): Restore to $(hostname) [wsl-ros version: $WSL_ROS_VER]" >> $rblog
+
+tar -xjf $rbpth -C /
 
 echo "Restore complete."
