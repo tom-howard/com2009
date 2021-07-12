@@ -4,17 +4,9 @@
 ask() {
     local prompt default reply
 
-    if [[ ${2:-} = 'Y' ]]; then
-        prompt='Y/n'
-        default='Y'
-    elif [[ ${2:-} = 'N' ]]; then
-        prompt='y/N'
-        default='N'
-    else
-        prompt='y/n'
-        default=''
-    fi
-
+    prompt='y/n'
+    default=''
+    
     while true; do
 
         # Ask the question (not using "read -p" as it uses stderr not stdout)
@@ -37,7 +29,12 @@ ask() {
     done
 }
 
-if [ -f /mnt/u/wsl-ros/ros-backup.tar.gz ]; then
+export rbname=/mnt/u/wsl-ros/ros-backup-2109
+
+rbpth=$rbname'.tar.gz'
+rbwpth=$(sed "s/\/mnt\/u/U\:/;s/\//\\\/g" <<< "$rbpth")
+
+if [ -f $rbpth ]; then
   backup_exists=yes
 else
   backup_exists=no
@@ -55,19 +52,22 @@ if [ $1 == 'backup' ]; then
   fi
 elif [ $1 == 'restore' ]; then
   if [ $backup_exists == 'yes' ]; then
-    rosrestore.sh
+    if ask "Preparing to restore from a previous WSL-ROS backup: Do you want to continue?"; then
+      rosrestore.sh
+    else
+      echo "Restore cancelled."
+    fi
   else
-    echo "Unable to restore: A U:\wsl-ros\ros-backup.tar.gz file does not exit."
+    echo "Unable to restore: A '"$rbwpth"' file does not exit."
   fi
 elif [ $1 == 'first-launch' ]; then
+  echo "Welcome to WSL-ROS!"
   if [ $backup_exists == 'yes' ]; then
-    if ask "Welcome to WSL-ROS! It looks like you already have a backup from a previous session, do you want to restore this now?"; then
+    if ask "It looks like you already have a backup from a previous session, do you want to restore this now?"; then
       rosrestore.sh
     else
       echo "Nothing was restored. Starting from fresh."
     fi
-  else
-    echo "Welcome to WSL-ROS!"
   fi
 else
   echo "$1 is not a valid input, use either 'backup' or 'restore'"
