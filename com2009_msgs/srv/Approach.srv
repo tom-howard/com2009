@@ -1,0 +1,4 @@
+float32 approach_distance  # Distance to approach an object (m)
+float64 approach_velocity  # Linear speed to approach (m/s)
+---
+string response_message

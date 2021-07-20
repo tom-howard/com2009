@@ -1,0 +1,4 @@
+bool request_signal       # A boolean signal to trigger something
+---
+bool response_signal      # A boolean response to indicate that the action has been performed
+string response_message   # A message to provide further information to the service caller

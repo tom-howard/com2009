@@ -1,0 +1,4 @@
+string movement_request  # the type of movement to perform
+int32 duration           # the time (in seconds) to perform the movement for
+---
+bool success             # a boolean response to indicate that the service has completed
