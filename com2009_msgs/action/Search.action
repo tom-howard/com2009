@@ -1,0 +1,11 @@
+#goal
+float32 fwd_velocity               # The speed at which the robot should move forwards (m/s)
+float32 approach_distance          # LaserScan distance to trigger the robot to stop (meters) 
+---
+#result
+float32 total_distance_travelled   # Total distance travelled during the action (meters)
+float32 closest_object_distance    # LaserScan distance to the closest detected obstacle (meters) 
+float32 closest_object_angle       # The LaserScan angle of the closest detected obstacle (degrees)
+---
+#feedback
+float32 current_distance_travelled # Distance travelled so far during the action (meters)

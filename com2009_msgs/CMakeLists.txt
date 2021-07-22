@@ -4,12 +4,19 @@ project(com2009_msgs)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   std_msgs
+  actionlib
   message_generation
 )
 
 ################################################
 ## Declare ROS messages, services and actions ##
 ################################################
+add_message_files(
+  FILES
+  NumpyInt32Array.msg
+  NumpyFloat32Array.msg
+)
+
 add_service_files(
   FILES
   SetBool.srv
@@ -17,9 +24,15 @@ add_service_files(
   Approach.srv
 )
 
+add_action_files(
+  FILES
+  CameraSweep.action
+  Search.action
+)
+
 generate_messages(
   DEPENDENCIES
-  std_msgs
+  std_msgs actionlib_msgs
 )
 
 ###################################
