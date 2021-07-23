@@ -12,9 +12,8 @@ from cv_bridge import CvBridge
 from com2009_msgs.msg import CameraSweepFeedback, CameraSweepResult, CameraSweepAction
 from sensor_msgs.msg import CompressedImage
 
-# Import some other modules from within this package
-from move_tb3 import MoveTB3
-from tb3_odometry import TB3Odometry
+# Import some helper functions from the tb3.py module within this package
+from tb3 import Tb3Move, Tb3Odometry
 
 # Import some other useful Python Modules
 from math import radians
@@ -34,8 +33,8 @@ class CameraSweepAS(object):
             CompressedImage, self.camera_callback)
         self.cv_image = CvBridge()
 
-        self.robot_controller = MoveTB3()
-        self.robot_odom = TB3Odometry()
+        self.robot_controller = Tb3Move()
+        self.robot_odom = Tb3Odometry()
     
     def camera_callback(self, img):
         image_to_capture = self.cv_image.compressed_imgmsg_to_cv2(img, desired_encoding="passthrough")
@@ -59,17 +58,20 @@ class CameraSweepAS(object):
             self.actionserver.set_aborted()
             return
 
-        print("Request to capture {} images over a {} degree sweep".format(goal.image_count, goal.sweep_angle))
-
         # calculate the angular increments over which to capture images:
         ang_incs = goal.sweep_angle/float(goal.image_count)
-        print("Capture an image every {:.3f} degrees".format(ang_incs))
-
+        # and the time it will take to perform the action:
         turn_vel = 0.2 # rad/s
         full_sweep_time = radians(goal.sweep_angle)/abs(turn_vel)
 
-        print("The full sweep will take {:.5f} seconds".format(full_sweep_time))
-
+        print(f"\n#####\n"
+            f"The 'camera_sweep_action_server' has been called.\n"
+            f"Goal: capture {goal.image_count} images over a {goal.sweep_angle} degree sweep...\n\n"
+            f"An image will therefore be captured every {ang_incs:.3f} degrees,\n"
+            f"and the full sweep will take {full_sweep_time:.5f} seconds.\n\n"
+            f"Commencing the action...\n"
+            f"#####\n")
+        
         # set the robot velocity:
         self.robot_controller.set_move_cmd(0.0, turn_vel)
         
@@ -89,7 +91,7 @@ class CameraSweepAS(object):
             self.robot_controller.publish()
             # check if there has been a request to cancel the action mid-way through:
             if self.actionserver.is_preempt_requested():
-                rospy.loginfo('Cancelling the camera sweep.')
+                rospy.loginfo("Cancelling the camera sweep.")
                 self.actionserver.set_preempted()
                 # stop the robot:
                 self.robot_controller.stop()
@@ -102,7 +104,7 @@ class CameraSweepAS(object):
                 i += 1
                 
                 # populate the feedback message and publish it:
-                rospy.loginfo('Captured image {}'.format(i))
+                rospy.loginfo(f"Captured image {i}")
                 self.feedback.current_image = i
                 self.feedback.current_angle = abs(self.robot_odom.yaw)
                 self.actionserver.publish_feedback(self.feedback)
@@ -111,16 +113,16 @@ class CameraSweepAS(object):
                 ref_yaw = self.robot_odom.yaw
 
                 # save the most recently captured image:
-                cv2.imwrite(os.path.join(self.base_image_path, "img{:03.0f}.jpg".format(i)), 
+                cv2.imwrite(os.path.join(self.base_image_path, f"img{i:03.0f}.jpg"), 
                     self.current_camera_image)
         
         if success:
-            rospy.loginfo('Camera sweep completed sucessfully.')
+            rospy.loginfo("Camera sweep completed sucessfully.")
             self.result.image_path = self.base_image_path
             self.actionserver.set_succeeded(self.result)
             self.robot_controller.stop()
             
 if __name__ == '__main__':
-    rospy.init_node('camera_sweep_action_server')
+    rospy.init_node("camera_sweep_action_server")
     CameraSweepAS()
     rospy.spin()

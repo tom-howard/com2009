@@ -1,10 +1,29 @@
 #!/usr/bin/env python3
+
 import rospy
+from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 from tf.transformations import euler_from_quaternion
 from math import degrees
 
-class TB3Odometry(object):
+class Tb3Move(object):
+    def __init__(self):
+        self.publisher = rospy.Publisher('/cmd_vel', Twist, queue_size=10)
+        self.publisher_rate = rospy.Rate(10) # Hz
+        self.vel_cmd = Twist()
+
+    def set_move_cmd(self, linear = 0.0, angular = 0.0):
+        self.vel_cmd.linear.x = linear
+        self.vel_cmd.angular.z = angular
+    
+    def publish(self):
+        self.publisher.publish(self.vel_cmd)
+    
+    def stop(self):
+        self.set_move_cmd()
+        self.publish()
+
+class Tb3Odometry(object):
     def odom_cb(self, odom_data):
         orientation = odom_data.pose.pose.orientation
         position = odom_data.pose.pose.position
