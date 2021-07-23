@@ -9,6 +9,7 @@ rblog=$rbname'-log.txt'
 
 echo "$(date): Restore to $(hostname) [wsl-ros version: $WSL_ROS_VER]" >> $rblog
 
-tar -xjf $rbpth -C /
+tar --checkpoint=.200 -xjf $rbpth -C /
 
+echo "."
 echo "Restore complete."
