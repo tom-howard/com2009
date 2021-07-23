@@ -20,6 +20,7 @@ tar --exclude='home/student/.local'    \
     --exclude='home/student/.config'   \
     --exclude='home/student/pkgs'      \
     --exclude='home/student/.wsl-ros'  \
-    -cjf $rbpth -C / home/student/
-    
+    --checkpoint=.200 -cjf $rbpth -C / home/student/
+
+echo "."    
 echo "Backup complete."
