@@ -1,0 +1,11 @@
+# Bash profile with ROS settings for the MiRo robot
+
+# ROS settings for MiRo Developer Kit (localhost)
+export MIRO_ROBOT_NAME=miro
+source ~/mdk/setup.bash
+source ~/mdk/catkin_ws/devel/setup.bash
+
+# ## Connection to physical robots will have to be sorted out later
+# export MIRO_LOCAL_IP=dia-laptop1 # Laptop IP address goes here
+# export MIRO_ROBOT_IP=dia-miro1 # MiRo IP address goes here
+# export ROS_IP=192.168.139.1
