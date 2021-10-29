@@ -29,7 +29,7 @@ ask() {
     done
 }
 
-export rbname=/mnt/u/wsl-ros/ros-backup-2109
+export rbname=/mnt/u/wsl-ros/ros-backup-$WSL_ROS_VER
 
 rbpth=$rbname'.tar.gz'
 rbwpth=$(sed "s/\/mnt\/u/U\:/;s/\//\\\/g" <<< "$rbpth")
@@ -72,3 +72,4 @@ elif [ $1 == 'first-launch' ]; then
 else
   echo "$1 is not a valid input, use either 'backup' or 'restore'"
 fi
+
