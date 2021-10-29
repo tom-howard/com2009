@@ -20,7 +20,14 @@ tar --exclude='home/student/.local'    \
     --exclude='home/student/.config'   \
     --exclude='home/student/pkgs'      \
     --exclude='home/student/.wsl-ros'  \
+    --exclude='home/student/.dbus'     \
+    --exclude='home/student/.gazebo'   \
+    --exclude='home/student/.miro2'    \
+    --exclude='home/student/.ros'      \
+    --exclude='home/student/.ignition' \
+    --exclude='home/student/.sdformat' \
+    --exclude='home/student/.vscode-server' \
     --checkpoint=.200 -cjf $rbpth -C / home/student/
 
-echo "."    
+echo "."
 echo "Backup complete."
