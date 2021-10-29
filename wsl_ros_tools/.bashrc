@@ -10,14 +10,14 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+#HISTCONTROL=ignoreboth
 
 # append to the history file, don't overwrite it
-shopt -s histappend
+#shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+#HISTSIZE=1000
+#HISTFILESIZE=2000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -120,6 +120,8 @@ if ! shopt -oq posix; then
   fi
 fi
 
+################### Custom ###################
+
 # WSL-ROS Configs:
 ## GUI:
 source ~/.wsl-ros/set_display.sh
@@ -137,10 +139,40 @@ fi
 # ROS Settings:
 ## General:
 export GAZEBO_IP=127.0.0.1
-source /opt/ros/noetic/setup.bash
-export ROS_MASTER_URI=http://localhost:11311
-export ROS_HOSTNAME=localhost
+export EDITOR='nano -w' # Used in rosed
 
-## TurtleBot3 Waffle:
-source ~/catkin_ws/devel/setup.bash
-export TURTLEBOT3_MODEL=waffle
+## robot_switch routine is used to switch between the two robot profiles, MiRo and Turtlebot3
+# '~/.current_robot' text file is checked for one of the following strings: 'miro', 'turtlebot3'
+# This is saved to the $CURRENT_ROBOT environment variable 
+# If the file is not present or the string is not valid, the file is reset to Turtlebot3
+###############################################################################
+# Check '~/.current_robot' contents for 'MiRo' or 'Turtlebot3':
+touch ~/.current_robot
+if grep -qi "miro" ~/.current_robot; then
+  export CURRENT_ROBOT=miro
+elif grep -qi "turtlebot" ~/.current_robot; then
+  export CURRENT_ROBOT=turtlebot3	
+else
+  # In all other cases set robot mode to 'Turtlebot3':
+  rm -f ~/.current_robot
+  echo "turtlebot" > ~/.current_robot
+  export CURRENT_ROBOT=turtlebot3
+fi
+
+###############################
+if [ "$CURRENT_ROBOT" == "miro" ]; then
+  # Source MiRo robot profile from .bashrc_miro:
+  . ~/.wsl-ros/bashrc_miro
+elif [ "$CURRENT_ROBOT" == "turtlebot3" ]; then
+  # Source Turtlebot3 robot profile from .bashrc_turtlebot3:
+  . ~/.wsl-ros/bashrc_turtlebot3
+fi
+
+# Remove duplicates from the terminal command history
+HISTSIZE=100000
+HISTFILESIZE=200000
+shopt -s histappend
+export HISTCONTROL=ignoreboth:erasedups
+export PROMPT_COMMAND="history -n; history -w; history -c; history -r"
+tac "$HISTFILE" | awk '!x[$0]++' > /tmp/tmpfile  && tac /tmp/tmpfile > "$HISTFILE"
+rm /tmp/tmpfile
