@@ -29,7 +29,7 @@ ask() {
     done
 }
 
-export rbname=/mnt/u/wsl-ros/ros-backup-$WSL_ROS_VER
+export rbname=/mnt/u/wsl-ros/ros-backup-2122
 
 rbpth=$rbname'.tar.gz'
 rbwpth=$(sed "s/\/mnt\/u/U\:/;s/\//\\\/g" <<< "$rbpth")
