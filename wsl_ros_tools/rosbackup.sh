@@ -24,6 +24,7 @@ tar --exclude='home/student/.local'    \
     --exclude='home/student/.gazebo'   \
     --exclude='home/student/.miro2'    \
     --exclude='home/student/.ros'      \
+    --exclude='home/student/.rviz'     \
     --exclude='home/student/.ignition' \
     --exclude='home/student/.sdformat' \
     --exclude='home/student/.vscode-server' \
