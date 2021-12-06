@@ -1,7 +1,7 @@
 # General
 alias wxp="echo 'Opening the current directory in Windows Explorer...' && explorer.exe ."
 alias off="echo 'Shutting down WSL...' && wsl.exe --shutdown"
-alias src="echo Sourcing bashrc..."" && source ~/.bashrc"
+alias src="echo 'Sourcing bashrc...' && source ~/.bashrc"
 
 # TB3
 alias tb3_teleop="roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch"
