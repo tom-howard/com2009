@@ -1,8 +1,0 @@
-# Bash profile with ROS settings for the Turtlebot3 robot
-
-# ROS settings for TurtleBot3 (localhost)
-source /opt/ros/noetic/setup.bash
-source ~/catkin_ws/devel/setup.bash
-export TURTLEBOT3_MODEL=waffle
-export ROS_MASTER_URI=http://localhost:11311
-export ROS_HOSTNAME=localhost
