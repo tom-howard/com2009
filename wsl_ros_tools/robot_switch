@@ -9,5 +9,5 @@ elif [ $1 == 'tb3' ]; then
   echo "turtlebot" > ~/.current_robot
   exec bash
 else
-  printf "Not a valid input, use 'miro' or 'turtlebot3'\n"
+  printf "Not a valid input, use 'miro' or 'tb3'\n"
 fi
