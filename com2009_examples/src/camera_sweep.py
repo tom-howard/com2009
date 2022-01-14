@@ -1,4 +1,4 @@
-#! /usr/bin/python3
+#!/usr/bin/python3
 
 # Import the core Python modules for ROS and to implement ROS Actions:
 import rospy
