@@ -5,7 +5,7 @@ import rospy
 
 # Import some image processing modules:
 import cv2
-from cv_bridge import CvBridge
+from cv_bridge import CvBridge, CvBridgeError
 
 # Import all the necessary ROS message types:
 from sensor_msgs.msg import Image
@@ -16,8 +16,9 @@ from tb3 import Tb3Move
 class colour_search(object):
 
     def __init__(self):
-        rospy.init_node('turn_and_face')
-        self.base_image_path = '/home/student/myrosdata/vision'
+        node_name = "turn_and_face"
+        rospy.init_node(node_name)
+
         self.camera_subscriber = rospy.Subscriber("/camera/rgb/image_raw",
             Image, self.camera_callback)
         self.cvbridge_interface = CvBridge()
@@ -27,7 +28,7 @@ class colour_search(object):
         self.turn_vel_slow = -0.1
         self.robot_controller.set_move_cmd(0.0, self.turn_vel_fast)
 
-        self.move_rate = '' # fast, slow or stop
+        self.move_rate = "" # fast, slow or stop
         self.stop_counter = 0
 
         self.ctrl_c = False
@@ -49,7 +50,7 @@ class colour_search(object):
         except CvBridgeError as e:
             print(e)
         
-        height, width, channels = cv_img.shape
+        height, width, _ = cv_img.shape
         crop_width = width - 800
         crop_height = 400
         crop_x = int((width/2) - (crop_width/2))
@@ -93,21 +94,21 @@ class colour_search(object):
                 print("MOVING FAST: I can't see anything at the moment, scanning the area...")
                 self.robot_controller.set_move_cmd(0.0, self.turn_vel_fast)
             elif self.move_rate == 'slow':
-                print("MOVING SLOW: A blob of colour of size {:.0f} pixels is in view at y-position: {:.0f} pixels.".format(self.m00, self.cy))
+                print(f"MOVING SLOW: A blob of colour of size {self.m00:.0f} pixels is in view at y-position: {self.cy:.0f} pixels.")
                 self.robot_controller.set_move_cmd(0.0, self.turn_vel_slow)
             elif self.move_rate == 'stop' and self.stop_counter > 0:
-                print("STOPPED: The blob of colour is now dead-ahead at y-position {:.0f} pixels... Counting down: {}".format(self.cy, self.stop_counter))
+                print(f"STOPPED: The blob of colour is now dead-ahead at y-position {self.cy:.0f} pixels... Counting down: {self.stop_counter}")
                 self.robot_controller.set_move_cmd(0.0, 0.0)
             else:
-                print("MOVING SLOW: A blob of colour of size {:.0f} pixels is in view at y-position: {:.0f} pixels.".format(self.m00, self.cy))
+                print(f"MOVING SLOW: A blob of colour of size {self.m00:.0f} pixels is in view at y-position: {self.cy:.0f} pixels.")
                 self.robot_controller.set_move_cmd(0.0, self.turn_vel_slow)
             
             self.robot_controller.publish()
             self.rate.sleep()
             
 if __name__ == '__main__':
-    search_ob = colour_search()
+    search_instance = colour_search()
     try:
-        search_ob.main()
+        search_instance.main()
     except rospy.ROSInterruptException:
         pass
