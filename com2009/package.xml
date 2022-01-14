@@ -4,12 +4,7 @@
   <version>0.0.0</version>
   <description>The com2009 meta-package</description>
 
-  <maintainer email="student@todo.todo">student</maintainer>
-
-
-  <!-- One license tag required, multiple allowed, one license per tag -->
-  <!-- Commonly used license strings: -->
-  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <maintainer email="t.howard@sheffield.ac.uk">Tom Howard</maintainer>
   <license>TODO</license>
 
   <buildtool_depend>catkin</buildtool_depend>

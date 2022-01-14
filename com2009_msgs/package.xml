@@ -4,9 +4,9 @@
   <version>0.0.0</version>
   <description>The com2009_msgs package</description>
 
-  <maintainer email="student@todo.todo">student</maintainer>
-
+  <maintainer email="t.howard@sheffield.ac.uk">Tom Howard</maintainer>
   <license>TODO</license>
+  <url type="website">https://github.com/tom-howard/COM2009/tree/main/com2009_msgs</url>
 
   <buildtool_depend>catkin</buildtool_depend>
 
