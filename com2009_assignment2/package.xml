@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>com2009_assignment2</name>
+  <version>0.0.0</version>
+  <description>The com2009_assignment2 package</description>
+
+  <maintainer email="t.howard@sheffield.ac.uk">Tom Howard</maintainer>
+  <license>TODO</license>
+  <url type="website">https://github.com/tom-howard/COM2009/tree/main/com2009_assignment2</url>
+  
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <depend>gazebo_ros</depend>
+  
+  <build_depend>rospy</build_depend>
+
+  <build_export_depend>rospy</build_export_depend>
+  
+  <exec_depend>rospy</exec_depend>
+  <exec_depend>gazebo</exec_depend>
+
+  <export>
+    <gazebo_ros gazebo_media_path="${prefix}"/>
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+  </export>
+</package>
