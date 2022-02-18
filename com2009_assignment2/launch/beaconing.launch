@@ -1,0 +1,28 @@
+<launch>
+  <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
+  <arg name="start_zone" default="a"/>
+  
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find com2009_assignment2)/worlds/beaconing.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>  
+
+  <param name="robot_description" command="$(find xacro)/xacro $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
+
+  <group if="$(eval arg('start_zone') == 'a' )">
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_$(arg model) -x -2.06729 -y -1.97396 -z 0.0 -Y 1.571 -param robot_description" />
+  </group>
+
+  <group if="$(eval arg('start_zone') == 'b' )">
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_$(arg model) -x -1.24044 -y 2.06729 -z 0.0 -Y 3.142 -param robot_description" />
+  </group>
+
+  <group if="$(eval arg('start_zone') == 'c' )">
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_$(arg model) -x 2.06729 -y 1.97396 -z 0.0 -Y -1.571 -param robot_description" />
+  </group>
+
+</launch>
