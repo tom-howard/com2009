@@ -37,16 +37,15 @@
     <include>
       <uri>model://cr3_arena_walls</uri>
     </include>
-    <model name='obstacle'>
-      <pose frame=''>0 0 0.2 0 0 0</pose>
+    <model name='beacons'>
+      <pose frame=''>0 0 0.125 0 0 0</pose>
       <link name='obstacle'>
-        
         <collision name='bcn_turq'>
           <pose>0.9527 0 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -64,8 +63,8 @@
           <pose>0.9527 0 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <material>
@@ -75,13 +74,12 @@
             </script>
           </material>
         </visual>
-
         <collision name='bcn_red'>
           <pose>0.4764 -0.8251 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -99,8 +97,8 @@
           <pose>0.4764 -0.8251 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <material>
@@ -110,13 +108,12 @@
             </script>
           </material>
         </visual>
-
         <collision name='bcn_green'>
           <pose>-0.4764 -0.8251 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -134,8 +131,8 @@
           <pose>-0.4764 -0.8251 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <material>
@@ -150,8 +147,8 @@
           <pose>-0.9527 0 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -169,8 +166,8 @@
           <pose>-0.9527 0 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <material>
@@ -180,13 +177,12 @@
             </script>
           </material>
         </visual>
-
         <collision name='bcn_blue'>
           <pose>-0.4764 0.8251 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -204,8 +200,8 @@
           <pose>-0.4764 0.8251 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <material>
@@ -215,13 +211,12 @@
             </script>
           </material>
         </visual>
-
         <collision name='bcn_purple'>
           <pose>0.4764 0.8251 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -239,8 +234,8 @@
           <pose>0.4764 0.8251 0 0 0 0</pose>
           <geometry>
             <cylinder>
-              <radius>0.15</radius>
-              <length>0.4</length>
+              <radius>0.1</radius>
+              <length>0.25</length>
             </cylinder>
           </geometry>
           <material>
@@ -250,7 +245,6 @@
             </script>
           </material>
         </visual>
-
       </link>
       <static>1</static>
     </model>
