@@ -7,7 +7,7 @@
         <geometry>
           <plane>
             <normal>0 0 1</normal>
-            <size>3.5 3.5</size>
+            <size>5.0 5.0</size>
           </plane>
         </geometry>
         <surface>
@@ -24,7 +24,7 @@
         <geometry>
           <plane>
             <normal>0 0 1</normal>
-            <size>3.5 3.5</size>
+            <size>5.0 5.0</size>
           </plane>
         </geometry>
         <material>
@@ -36,13 +36,13 @@
         </material>
       </visual>
     </link>
-    <link name='BLUE1'>
-      <pose frame=''>0.72334 0 0.125 0 0 0</pose>
+    <link name='YEL'>
+      <pose frame=''>-1.04 0 0.2 0 0 0</pose>
       <collision name='coll'>
         <geometry>
           <cylinder>
-            <radius>0.1</radius>
-            <length>0.25</length>
+            <radius>0.215</radius>
+            <length>0.4</length>
           </cylinder>
         </geometry>
         <max_contacts>10</max_contacts>
@@ -59,25 +59,25 @@
       <visual name='vis'>
         <geometry>
           <cylinder>
-            <radius>0.1</radius>
-            <length>0.25</length>
+            <radius>0.215</radius>
+            <length>0.4</length>
           </cylinder>
         </geometry>
         <material>
           <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Blue</name>
+            <name>Gazebo/Yellow</name>
           </script>
         </material>
       </visual>
     </link>
-    <link name='PURPLE1'>
-      <pose frame=''>0 -0.72334 0.125 0 0 0</pose>
+    <link name='PRP'>
+      <pose frame=''>0 1.08321 0.2 0 0 0</pose>
       <collision name='coll'>
         <geometry>
           <cylinder>
-            <radius>0.1</radius>
-            <length>0.25</length>
+            <radius>0.215</radius>
+            <length>0.4</length>
           </cylinder>
         </geometry>
         <max_contacts>10</max_contacts>
@@ -94,8 +94,8 @@
       <visual name='vis'>
         <geometry>
           <cylinder>
-            <radius>0.1</radius>
-            <length>0.25</length>
+            <radius>0.215</radius>
+            <length>0.4</length>
           </cylinder>
         </geometry>
         <material>
@@ -106,13 +106,13 @@
         </material>
       </visual>
     </link>
-    <link name='GREEN1'>
-      <pose frame=''>-0.72334 0 0.125 0 0 0</pose>
+    <link name='TRQ'>
+      <pose frame=''>0 -1.08320 0.2 0 0 0</pose>
       <collision name='coll'>
         <geometry>
           <cylinder>
-            <radius>0.1</radius>
-            <length>0.25</length>
+            <radius>0.215</radius>
+            <length>0.4</length>
           </cylinder>
         </geometry>
         <max_contacts>10</max_contacts>
@@ -129,43 +129,8 @@
       <visual name='vis'>
         <geometry>
           <cylinder>
-            <radius>0.1</radius>
-            <length>0.25</length>
-          </cylinder>
-        </geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Green</name>
-          </script>
-        </material>
-      </visual>
-    </link>
-    <link name='TURQ1'>
-      <pose frame=''>0 0.72334 0.125 0 0 0</pose>
-      <collision name='coll'>
-        <geometry>
-          <cylinder>
-            <radius>0.1</radius>
-            <length>0.25</length>
-          </cylinder>
-        </geometry>
-        <max_contacts>10</max_contacts>
-        <surface>
-          <bounce/>
-          <friction>
-            <ode/>
-          </friction>
-          <contact>
-            <ode/>
-          </contact>
-        </surface>
-      </collision>
-      <visual name='vis'>
-        <geometry>
-          <cylinder>
-            <radius>0.1</radius>
-            <length>0.25</length>
+            <radius>0.215</radius>
+            <length>0.4</length>
           </cylinder>
         </geometry>
         <material>
@@ -176,43 +141,54 @@
         </material>
       </visual>
     </link>
-    <link name='L_wall_tl'>
-      <pose frame=''>-0.83834 -1.20833 0.09 0 0 0</pose>
-      <collision name='long_coll'>
+    <link name='BLU'>
+      <pose frame=''>1.04 0 0.2 0 0 0</pose>
+      <collision name='coll'>
         <geometry>
-          <box>
-            <size>0.01 0.88 0.18</size>
-          </box>
+          <cylinder>
+            <radius>0.215</radius>
+            <length>0.4</length>
+          </cylinder>
         </geometry>
-        <pose frame=''>0.22 0.005 0 0 0 0</pose>
+        <max_contacts>10</max_contacts>
+        <surface>
+          <bounce/>
+          <friction>
+            <ode/>
+          </friction>
+          <contact>
+            <ode/>
+          </contact>
+        </surface>
       </collision>
-      <visual name='long_vis'>
-        <pose frame=''>0.22 0.005 0 0 0 0</pose>
+      <visual name='vis'>
         <geometry>
-          <box>
-            <size>0.01 0.88 0.18</size>
-          </box>
+          <cylinder>
+            <radius>0.215</radius>
+            <length>0.4</length>
+          </cylinder>
         </geometry>
         <material>
           <script>
             <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Wood</name>
+            <name>Gazebo/Blue</name>
           </script>
         </material>
       </visual>
-      <collision name='short_coll'>
+    </link>
+    <link name='wall_1'>
+      <pose frame=''>-1.04 -1.85208 0.125 0 0 0</pose>
+      <collision name='coll'>
         <geometry>
           <box>
-            <size>0.44 0.01 0.18</size>
+            <size>0.03 1.05 0.25</size>
           </box>
         </geometry>
-        <pose frame=''>-0.005 -0.44 0 0 0 0</pose>
       </collision>
-      <visual name='short_vis'>
-        <pose frame=''>-0.005 -0.44 0 0 0 0</pose>
+      <visual name='vis'>
         <geometry>
           <box>
-            <size>0.44 0.01 0.18</size>
+            <size>0.03 1.05 0.25</size>
           </box>
         </geometry>
         <material>
@@ -223,43 +199,19 @@
         </material>
       </visual>
     </link>
-    <link name='L_wall_tr'>
-      <pose frame=''>-1.20833 0.83834 0.09 0 0 -1.571</pose>
-      <collision name='long_coll'>
+    <link name='wall_2'>
+      <pose frame=''>-1.85208 1.08321 0.125 0 0 0</pose>
+      <collision name='coll'>
         <geometry>
           <box>
-            <size>0.01 0.88 0.18</size>
+            <size>1.05 0.03 0.25</size>
           </box>
         </geometry>
-        <pose frame=''>0.22 0.005 0 0 0 0</pose>
       </collision>
-      <visual name='long_vis'>
-        <pose frame=''>0.22 0.005 0 0 0 0</pose>
+      <visual name='vis'>
         <geometry>
           <box>
-            <size>0.01 0.88 0.18</size>
-          </box>
-        </geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Wood</name>
-          </script>
-        </material>
-      </visual>
-      <collision name='short_coll'>
-        <geometry>
-          <box>
-            <size>0.44 0.01 0.18</size>
-          </box>
-        </geometry>
-        <pose frame=''>-0.005 -0.44 0 0 0 0</pose>
-      </collision>
-      <visual name='short_vis'>
-        <pose frame=''>-0.005 -0.44 0 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.44 0.01 0.18</size>
+            <size>1.05 0.03 0.25</size>
           </box>
         </geometry>
         <material>
@@ -270,43 +222,19 @@
         </material>
       </visual>
     </link>
-    <link name='L_wall_br'>
-      <pose frame=''>0.83834 1.20833 0.09 0 0 -3.142</pose>
-      <collision name='long_coll'>
+    <link name='wall_3'>
+      <pose frame=''>1.04 1.85208 0.125 0 0 0</pose>
+      <collision name='coll'>
         <geometry>
           <box>
-            <size>0.01 0.88 0.18</size>
+            <size>0.03 1.05 0.25</size>
           </box>
         </geometry>
-        <pose frame=''>0.22 0.005 0 0 0 0</pose>
       </collision>
-      <visual name='long_vis'>
-        <pose frame=''>0.22 0.005 0 0 0 0</pose>
+      <visual name='vis'>
         <geometry>
           <box>
-            <size>0.01 0.88 0.18</size>
-          </box>
-        </geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Wood</name>
-          </script>
-        </material>
-      </visual>
-      <collision name='short_coll'>
-        <geometry>
-          <box>
-            <size>0.44 0.01 0.18</size>
-          </box>
-        </geometry>
-        <pose frame=''>-0.005 -0.44 0 0 0 0</pose>
-      </collision>
-      <visual name='short_vis'>
-        <pose frame=''>-0.005 -0.44 0 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.44 0.01 0.18</size>
+            <size>0.03 1.05 0.25</size>
           </box>
         </geometry>
         <material>
@@ -317,43 +245,19 @@
         </material>
       </visual>
     </link>
-    <link name='L_wall_bl'>
-      <pose frame=''>1.20833 -0.83834 0.09 0 0 1.571</pose>
-      <collision name='long_coll'>
+    <link name='wall_4'>
+      <pose frame=''>1.85208 -1.08320 0.125 0 0 0</pose>
+      <collision name='coll'>
         <geometry>
           <box>
-            <size>0.01 0.88 0.18</size>
+            <size>1.05 0.03 0.25</size>
           </box>
         </geometry>
-        <pose frame=''>0.22 0.005 0 0 0 0</pose>
       </collision>
-      <visual name='long_vis'>
-        <pose frame=''>0.22 0.005 0 0 0 0</pose>
+      <visual name='vis'>
         <geometry>
           <box>
-            <size>0.01 0.88 0.18</size>
-          </box>
-        </geometry>
-        <material>
-          <script>
-            <uri>file://media/materials/scripts/gazebo.material</uri>
-            <name>Gazebo/Wood</name>
-          </script>
-        </material>
-      </visual>
-      <collision name='short_coll'>
-        <geometry>
-          <box>
-            <size>0.44 0.01 0.18</size>
-          </box>
-        </geometry>
-        <pose frame=''>-0.005 -0.44 0 0 0 0</pose>
-      </collision>
-      <visual name='short_vis'>
-        <pose frame=''>-0.005 -0.44 0 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.44 0.01 0.18</size>
+            <size>1.05 0.03 0.25</size>
           </box>
         </geometry>
         <material>

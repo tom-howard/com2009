@@ -61,10 +61,10 @@
       </camera>
     </gui>
     <include>
-      <uri>model://obstacle_avoidance</uri>
+      <uri>model://task1</uri>
     </include>
     <include>
-      <uri>model://arena_walls</uri>
+      <uri>model://cr3_arena_walls</uri>
     </include>
   </world>
 </sdf>
