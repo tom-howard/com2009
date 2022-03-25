@@ -192,7 +192,7 @@
       <shadows>true</shadows>
     </scene>
 
-    <gui fullscreen='1'>
+    <gui fullscreen='0'>
       <camera name='user_camera'>
         <pose>4.04 1.37 2.63 0 0.63 -2.75</pose>
         <view_controller>orbit</view_controller>
