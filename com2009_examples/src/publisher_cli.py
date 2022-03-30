@@ -23,10 +23,10 @@ class Publisher():
         
         # Command-Line Interface:
         cli = argparse.ArgumentParser(description=f"Command-line interface for the '{self.node_name}' node.")
-        cli.add_argument("-a_colour", metavar="COL", type=String,
+        cli.add_argument("-colour", metavar="COL", type=String,
             default="Blue", 
-            help="The name of a colour")
-        cli.add_argument("-a_number", metavar="NUM", type=float, 
+            help="The name of a colour (for example)")
+        cli.add_argument("-number", metavar="NUM", type=float, 
             default=0.1, 
             help="A value (what happens if NUM > 1?)")
        
@@ -39,11 +39,11 @@ class Publisher():
         rospy.loginfo(f"The '{self.node_name}' node is active.\n"
                     f"Publishing messages to '/{topic_name}'...")
         
-        if self.args.a_number > 1:
-            print(f"a_number = {self.args.a_number}, which is GREATER THAN 1, so 'verbose mode' is enabled.")
+        if self.args.number > 1:
+            print(f"'-number' = {self.args.number}, which is GREATER THAN 1, so 'verbose mode' is enabled.")
             self.verbose = True
         else:
-            print(f"a_number = {self.args.a_number}, which is LESS THAN 1, so I'll keep quiet.")
+            print(f"'-number' = {self.args.number}, which is LESS THAN 1, so I'll keep quiet.")
             self.verbose = False
 
     def shutdownhook(self):
@@ -52,7 +52,7 @@ class Publisher():
 
     def main_loop(self):
         while not self.ctrl_c:
-            message = f"My favourite colour is '{self.args.a_colour.data}'."
+            message = f"Searching for something '{self.args.colour.data}' in the environment."
             self.pub.publish(message)
             if self.verbose:
                 print(message)
