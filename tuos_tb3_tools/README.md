@@ -1,5 +1,7 @@
-# tuos_tb3_tools
+# The `tuos_tb3_tools` Package
 
-A package of convienece tools for the Univerisyt of Sheffield TurtleBot3 Robots.
+A ROS package containing convenience tools for the University of Sheffield TurtleBot3 Waffles.
 
-(Currently WIP, for 2022/23)
+Tom Howard
+July 2022
+Developed for the 2022/23 Academic Year
