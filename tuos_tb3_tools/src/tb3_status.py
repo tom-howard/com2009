@@ -2,6 +2,7 @@
 
 import rospy
 import rosnode
+import datetime as dt
 
 core_nodes = [
     '/turtlebot3_core', 
@@ -42,10 +43,25 @@ class tb3Status():
         while not self.ctrl_c:
             if (rospy.get_time() - timestamp) > 10:
                 active_nodes = rosnode.get_node_names()
+                ts = dt.datetime.now().strftime("%d/%m/%Y %H:%M:%S")
                 if all([i in active_nodes for i in core_nodes]):
-                    rospy.loginfo(f"TB3 status: OK | Nodes active: {len(active_nodes):2d} | Time active: {rospy.get_time() - self.starttime:.0f}s.")
+                    rts = rospy.get_time() - self.starttime
+                    if rts > 60:
+                        runtimestring = f"{rts / 60:5.1f}"
+                        minsecs="minutes"
+                    else:
+                        runtimestring = f"{rts:5.0f}"
+                        minsecs="seconds"
+                    print(
+                        f"[{ts}] Waffle Status:    OK\n"
+                        f"                       Nodes Active: {len(active_nodes):5d}\n"
+                        f"                  Up Time ({minsecs}): {runtimestring}"
+                        )
                 else:
-                    rospy.loginfo("TB3 status ERROR: core node(s) missing from rosnode list")
+                    print(
+                        f"[{ts}] Waffle Status: ERROR\n"
+                        f"Core node(s) not running!"
+                        )
                 timestamp = rospy.get_time()
             
             self.rate.sleep()
