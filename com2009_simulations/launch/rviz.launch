@@ -6,6 +6,6 @@
   </include>
   
   <node pkg="rviz" type="rviz" name="tb3_rviz" required="true"
-    args="-d $(find tuos_tb3_tools)/rviz/waffle.rviz"/>
+    args="-d $(find turtlebot3_description)/rviz/model.rviz"/>
   
 </launch>
