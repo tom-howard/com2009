@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(com2009_examples)
+project(tuos_ros_examples)
 
 find_package(catkin REQUIRED COMPONENTS
   rospy

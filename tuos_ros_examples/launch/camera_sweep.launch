@@ -1,0 +1,4 @@
+<launch>
+    <node name="camera_sweep_action_server" pkg="tuos_ros_examples" type="camera_sweep.py" output="screen">
+    </node>
+</launch>

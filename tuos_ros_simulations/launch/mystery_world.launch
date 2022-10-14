@@ -8,7 +8,7 @@
   
   <group if="$(arg gui)"> 
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find com2009_simulations)/worlds/coloured_pillars.world"/>
+      <arg name="world_name" value="$(find tuos_ros_simulations)/worlds/coloured_pillars.world"/>
       <arg name="paused" value="false"/>
       <arg name="use_sim_time" value="true"/>
       <arg name="gui" value="true"/>
@@ -19,7 +19,7 @@
 
   <group if="$(eval arg('gui') != true)">
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-      <arg name="world_name" value="$(find com2009_simulations)/worlds/coloured_pillars.world"/>
+      <arg name="world_name" value="$(find tuos_ros_simulations)/worlds/coloured_pillars.world"/>
       <arg name="paused" value="false"/>
       <arg name="use_sim_time" value="true"/>
       <arg name="gui" value="false"/>
@@ -33,7 +33,7 @@
   <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-urdf -model turtlebot3_$(arg model) -x $(arg x_pos) -y $(arg y_pos) -z $(arg z_pos) -param robot_description" />
 
   <group if="$(arg camera_search)">
-    <node name="camera_sweep_action_server" pkg="com2009_examples" type="camera_sweep.py" output="screen" />
+    <node name="camera_sweep_action_server" pkg="tuos_ros_examples" type="camera_sweep.py" output="screen" />
   </group>
 
 </launch>

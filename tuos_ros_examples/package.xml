@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>com2009_examples</name>
+  <name>tuos_ros_examples</name>
   <version>0.0.0</version>
-  <description>The com2009_examples package</description>
+  <description>The tuos_ros_examples package</description>
 
   <maintainer email="t.howard@sheffield.ac.uk">Tom Howard</maintainer>
   <license>TODO</license>
-  <url type="website">https://github.com/tom-howard/COM2009/tree/main/com2009_examples</url>
+  <url type="website">https://github.com/tom-howard/COM2009/tree/main/tuos_ros_examples</url>
 
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>rospy</build_depend>

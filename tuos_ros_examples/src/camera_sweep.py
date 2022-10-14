@@ -9,7 +9,7 @@ import cv2
 from cv_bridge import CvBridge
 
 # Import all the necessary ROS message types:
-from com2009_msgs.msg import CameraSweepFeedback, CameraSweepResult, CameraSweepAction
+from tuos_ros_msgs.msg import CameraSweepFeedback, CameraSweepResult, CameraSweepAction
 from sensor_msgs.msg import CompressedImage
 
 # Import some helper functions from the tb3.py module within this package
