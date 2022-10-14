@@ -3,10 +3,10 @@
   <arg name="x_pos" default="0.0"/>
   <arg name="y_pos" default="0.0"/>
   <arg name="z_pos" default="0.0"/>
-  <arg name="yaw" default="-1.571"/>
+  <arg name="yaw" default="-3.142"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find com2009_assignment2)/worlds/task1.world"/>
+    <arg name="world_name" value="$(find com2009_simulations)/worlds/obstacle_avoidance.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>

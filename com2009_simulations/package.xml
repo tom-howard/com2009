@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>com2009_assignment2</name>
+  <name>com2009_simulations</name>
   <version>0.0.0</version>
-  <description>The com2009_assignment2 package</description>
+  <description>The com2009_simulations package</description>
 
   <maintainer email="t.howard@sheffield.ac.uk">Tom Howard</maintainer>
   <license>TODO</license>
-  <url type="website">https://github.com/tom-howard/COM2009/tree/main/com2009_assignment2</url>
+  <url type="website">https://github.com/tom-howard/COM2009/tree/main/com2009_simulations</url>
   
   <buildtool_depend>catkin</buildtool_depend>
   

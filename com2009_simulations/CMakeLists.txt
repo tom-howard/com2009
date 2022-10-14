@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(com2009_assignment2)
+project(com2009_simulations)
 
 find_package(catkin REQUIRED COMPONENTS
   gazebo_ros

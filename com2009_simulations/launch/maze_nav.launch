@@ -1,12 +1,12 @@
 <launch>
   <arg name="model" default="$(env TURTLEBOT3_MODEL)" doc="model type [burger, waffle, waffle_pi]"/>
-  <arg name="x_pos" default="0.0"/>
-  <arg name="y_pos" default="0.0"/>
+  <arg name="x_pos" default="-2.088"/>
+  <arg name="y_pos" default="-2.027"/>
   <arg name="z_pos" default="0.0"/>
-  <arg name="yaw" default="-3.142"/>
+  <arg name="yaw" default="1.572"/>
 
   <include file="$(find gazebo_ros)/launch/empty_world.launch">
-    <arg name="world_name" value="$(find com2009_assignment2)/worlds/obstacle_avoidance.world"/>
+    <arg name="world_name" value="$(find com2009_simulations)/worlds/maze_nav.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="true"/>
