@@ -9,8 +9,10 @@
 
   <buildtool_depend>catkin</buildtool_depend>
   <exec_depend>com2009_simulations</exec_depend>
-  <exec_depend>com2009_msgs</exec_depend>
-  <exec_depend>com2009_examples</exec_depend>
+  <exec_depend>tuos_ros_examples</exec_depend>
+  <exec_depend>tuos_ros_msgs</exec_depend>
+  <exec_depend>tuos_ros_simulations</exec_depend>
+  <exec_depend>tuos_tb3_tools</exec_depend>
   <export><metapackage/></export>
 
 </package>
