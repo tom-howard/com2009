@@ -5,7 +5,7 @@
   <description>The tuos_ros_simulations package</description>
 
   <maintainer email="t.howard@sheffield.ac.uk">Tom Howard</maintainer>
-  <license>TODO</license>
+  <license>CC BY-NC</license>
   <url type="website">https://github.com/tom-howard/COM2009/tree/main/tuos_ros_simulations</url>
   
   <buildtool_depend>catkin</buildtool_depend>

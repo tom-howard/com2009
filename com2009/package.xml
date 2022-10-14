@@ -5,7 +5,7 @@
   <description>The com2009 meta-package</description>
 
   <maintainer email="t.howard@sheffield.ac.uk">Tom Howard</maintainer>
-  <license>TODO</license>
+  <license>CC BY-NC</license>
 
   <buildtool_depend>catkin</buildtool_depend>
   <exec_depend>com2009_simulations</exec_depend>
