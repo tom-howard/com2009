@@ -7,7 +7,7 @@ from tf.transformations import euler_from_quaternion
 
 pd.set_option("display.float_format", '{:0.3f}'.format)
 
-class getRobotOdometry:
+class getRobotPose:
 
     def callback(self, topic_data):
         orientation_x = topic_data.pose.pose.orientation.x
@@ -71,7 +71,7 @@ class getRobotOdometry:
             self.rate.sleep()
 
 if __name__ == '__main__':
-    main_instance = getRobotOdometry()
+    main_instance = getRobotPose()
     try:
         main_instance.main_loop()
     except rospy.ROSInterruptException:
