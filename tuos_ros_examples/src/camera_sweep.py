@@ -18,9 +18,9 @@ from tb3 import Tb3Move, Tb3Odometry
 # Import some other useful Python Modules
 from math import radians
 import datetime as dt
-import os
+from pathlib import Path
 
-class CameraSweepAS(object):
+class camerasweepActionServer():
     feedback = CameraSweepFeedback() 
     result = CameraSweepResult()
 
@@ -41,11 +41,10 @@ class CameraSweepAS(object):
         self.current_camera_image = image_to_capture
     
     def action_server_launcher(self, goal):
-        r = rospy.Rate(10)
 
         success = True
         if goal.sweep_angle <= 0 or goal.sweep_angle > 180:
-            print("Invalid sweep_angle.  Select a value between 1 and 180 degrees.")
+            print("Invalid sweep_angle! Select a value between 1 and 180 degrees.")
             success = False
         if goal.image_count <=0:
             print("I can't capture a negative number of images!")
@@ -54,8 +53,9 @@ class CameraSweepAS(object):
             print("Woah, too many images! I can do a maximum of 50.")
             success = False
 
+        self.result.image_path = "None [ABORTED]"
         if not success:
-            self.actionserver.set_aborted()
+            self.actionserver.set_aborted(self.result)
             return
 
         # calculate the angular increments over which to capture images:
@@ -77,14 +77,13 @@ class CameraSweepAS(object):
         
         # Get the current robot odometry (yaw only):
         ref_yaw = self.robot_odom.yaw
-        start_yaw = self.robot_odom.yaw
 
         # Get the current date and time and create a timestamp string of it
         # (to use when we construct the image filename):
         start_time = dt.datetime.strftime(dt.datetime.now(),'%Y%m%d_%H%M%S')
-        self.base_image_path = f"/home/student/myrosdata/action_examples/{start_time}"
-        if not os.path.exists(self.base_image_path):
-            os.makedirs(self.base_image_path)
+        self.base_image_path = Path.home().joinpath(f"myrosdata/action_examples/{start_time}/")
+        self.base_image_path.mkdir(parents=True, exist_ok=True)
+        self.result.image_path = str(self.base_image_path).replace(str(Path.home()), "~")
         
         i = 0
         while i < goal.image_count:
@@ -92,7 +91,9 @@ class CameraSweepAS(object):
             # check if there has been a request to cancel the action mid-way through:
             if self.actionserver.is_preempt_requested():
                 rospy.loginfo("Cancelling the camera sweep.")
-                self.actionserver.set_preempted()
+
+                self.result.image_path = f"{self.result.image_path} [PRE-EMPTED]"                
+                self.actionserver.set_preempted(self.result)
                 # stop the robot:
                 self.robot_controller.stop()
                 success = False
@@ -113,16 +114,15 @@ class CameraSweepAS(object):
                 ref_yaw = self.robot_odom.yaw
 
                 # save the most recently captured image:
-                cv2.imwrite(os.path.join(self.base_image_path, f"img{i:03.0f}.jpg"), 
+                cv2.imwrite(str(self.base_image_path.joinpath(f"img{i:03.0f}.jpg")), 
                     self.current_camera_image)
         
         if success:
             rospy.loginfo("Camera sweep completed sucessfully.")
-            self.result.image_path = self.base_image_path
             self.actionserver.set_succeeded(self.result)
             self.robot_controller.stop()
             
 if __name__ == '__main__':
     rospy.init_node("camera_sweep_action_server")
-    CameraSweepAS()
+    camerasweepActionServer()
     rospy.spin()
