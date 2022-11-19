@@ -46,6 +46,7 @@ class camerasweepActionServer():
         if goal.sweep_angle <= 0 or goal.sweep_angle > 180:
             print("Invalid sweep_angle! Select a value between 1 and 180 degrees.")
             success = False
+        
         if goal.image_count <=0:
             print("I can't capture a negative number of images!")
             success = False
@@ -53,8 +54,8 @@ class camerasweepActionServer():
             print("Woah, too many images! I can do a maximum of 50.")
             success = False
 
-        self.result.image_path = "None [ABORTED]"
         if not success:
+            self.result.image_path = "None [ABORTED]"
             self.actionserver.set_aborted(self.result)
             return
 
@@ -118,7 +119,7 @@ class camerasweepActionServer():
                     self.current_camera_image)
         
         if success:
-            rospy.loginfo("Camera sweep completed sucessfully.")
+            rospy.loginfo("Camera sweep completed successfully.")
             self.actionserver.set_succeeded(self.result)
             self.robot_controller.stop()
             
