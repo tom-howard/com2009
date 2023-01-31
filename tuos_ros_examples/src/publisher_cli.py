@@ -8,7 +8,7 @@ https://github.com/tom-howard/COM2009/wiki/Launch-Files
 
 import rospy
 from std_msgs.msg import String
-# Import the "argparse" CLI library:
+# Import the "argparse" library:
 import argparse
 
 class Publisher():
@@ -23,12 +23,19 @@ class Publisher():
         
         # Command-Line Interface:
         cli = argparse.ArgumentParser(description=f"Command-line interface for the '{self.node_name}' node.")
-        cli.add_argument("-colour", metavar="COL", type=String,
+        cli.add_argument(
+            "-colour",
+            metavar="COL",
             default="Blue", 
-            help="The name of a colour (for example)")
-        cli.add_argument("-number", metavar="NUM", type=float, 
+            help="The name of a colour (for example)"
+        )
+        cli.add_argument(
+            "-number",
+            metavar="NUM",
+            type=float, 
             default=0.1, 
-            help="A value (what happens if NUM > 1?)")
+            help="A value (what happens if NUM > 1?)"
+        )
        
         # obtain the arguments passed to this node from the command-line:
         self.args = cli.parse_args(rospy.myargv()[1:])
@@ -52,7 +59,7 @@ class Publisher():
 
     def main_loop(self):
         while not self.ctrl_c:
-            message = f"Searching for something '{self.args.colour.data}' in the environment."
+            message = f"Searching for something '{self.args.colour}' in the environment."
             self.pub.publish(message)
             if self.verbose:
                 print(message)
