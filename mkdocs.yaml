@@ -1,0 +1,109 @@
+site_name: "COM2009 ROS Labs"
+site_url: https://tom-howard.github.io/com2009/
+site_description: ROS Labs for the COM2009 (& COM3009) Robotics Course (and more) at The University of Sheffield. 
+theme:
+  name: material
+  icon:
+    repo: fontawesome/brands/github
+  font: 
+    text: Source Sans Pro
+    code: Source Code Pro
+  palette:
+    # Palette toggle for light mode
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+  logo: assets/tuos.png
+  favicon: assets/tuos_logo.svg
+
+  features:
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.expand
+    - navigation.top
+    - navigation.footer
+    - navigation.indexes
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+    - content.action.edit
+    - content.action.view
+
+copyright: >
+  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2024 (License: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>)<br />
+  <a href="#__consent">Change cookie settings</a>
+repo_url: https://github.com/tom-howard/com2009
+repo_name: tom-howard/com2009
+edit_uri: ./edit/main/docs
+
+plugins:
+  - search
+  - awesome-pages
+  - git-revision-date-localized:
+      enable_creation_date: true
+      type: timeago
+      enabled: !ENV [CI, false]
+  - privacy:
+      enabled: !ENV [CI, false]
+
+markdown_extensions:
+  - admonition                   # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+  - pymdownx.highlight:          # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
+                                 # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#inlinehilite
+      anchor_linenums: true      # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
+  - pymdownx.inlinehilite        # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#inlinehilite
+  - pymdownx.snippets            # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#snippets
+  - pymdownx.details             # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+  - pymdownx.superfences         # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
+                                 # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
+  - pymdownx.emoji:              # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#emoji
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - toc:
+      permalink: true            # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.permalink
+  - attr_list
+  - md_in_html
+  - footnotes
+  - def_list
+  - pymdownx.tasklist:
+      custom_checkbox: true
+      clickable_checkbox: true
+  - pymdownx.keys
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.tilde
+  - pymdownx.caret
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+## TODO
+#extra:
+#  analytics:
+#    provider: google
+#    property: G-1SSCKMNFPR
+#  consent:
+#    title: Cookie consent
+#    description: 
+#      We use cookies to monitor the usage of these resources, and to understand 
+#      how effective they are in supporting your learning. Cookies also help us to 
+#      evaluate how much impact our teaching materials are making in the community.
+#      With your support, you are helping us to make our teaching resources better.

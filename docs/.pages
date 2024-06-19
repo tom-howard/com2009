@@ -1,0 +1,8 @@
+nav:
+  - "About": about
+  - "Installing ROS": ros
+  - "The Labs": labs
+  - "The Waffles": waffles
+  - "ROS Extras": extras
+  - "Other Courses": others
+  - "COM2009 (2024)": com2009
