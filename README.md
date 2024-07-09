@@ -31,3 +31,7 @@ And the [Git Revision Date Localised Plugin](https://github.com/timvink/mkdocs-g
 ```
 pip install mkdocs-git-revision-date-localized-plugin
 ```
+
+### Writing in Markdown
+
+[A Markdown Cheatsheet](https://www.markdownguide.org/cheat-sheet/)
