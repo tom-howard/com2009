@@ -1,6 +1,6 @@
-site_name: "COM2009 ROS Labs"
+site_name: "The ROS2 Lab Course for COM2009"
 site_url: https://tom-howard.github.io/com2009/
-site_description: ROS Labs for the COM2009 (& COM3009) Robotics Course (and more) at The University of Sheffield. 
+site_description: ROS2 Labs for the COM2009 (& COM3009) Robotics Course at The University of Sheffield. 
 theme:
   name: material
   icon:
@@ -95,15 +95,14 @@ extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-## TODO
-#extra:
-#  analytics:
-#    provider: google
-#    property: G-1SSCKMNFPR
-#  consent:
-#    title: Cookie consent
-#    description: 
-#      We use cookies to monitor the usage of these resources, and to understand 
-#      how effective they are in supporting your learning. Cookies also help us to 
-#      evaluate how much impact our teaching materials are making in the community.
-#      With your support, you are helping us to make our teaching resources better.
+extra:
+  analytics:
+    provider: google
+    property: G-F7SQFPV0T8
+  consent:
+    title: Cookie consent
+    description: 
+      We use cookies to monitor the usage of these resources, and to understand 
+      how effective they are in supporting your learning. Cookies also help us to 
+      evaluate how much impact our teaching materials are making in the community.
+      With your support, you are helping us to make our teaching resources better.
