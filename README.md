@@ -14,7 +14,7 @@ First, create a Python virtual environment (ideally 3.9 or higher):
 python -m venv venv
 ```
 
-[Activate the environment](https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment) and install the latest verison of Material for MKDocs:
+**[Activate the environment](https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment)** and install the latest verison of Material for MKDocs:
 
 ```
 pip install mkdocs-material
@@ -32,6 +32,17 @@ And the [Git Revision Date Localised Plugin](https://github.com/timvink/mkdocs-g
 pip install mkdocs-git-revision-date-localized-plugin
 ```
 
-### Writing in Markdown
+### Editing
 
-[A Markdown Cheatsheet](https://www.markdownguide.org/cheat-sheet/)
+Site content is located in the "docs" directory. See here for guidasnce on how to write site content:
+
+* General Guidance on Writing in Markdown: [A Markdown Cheatsheet](https://www.markdownguide.org/cheat-sheet/)
+* Material for MkDocs Documentation: https://squidfunk.github.io/mkdocs-material/reference/
+
+To preview the site as you write use the following command (make sure the Python environemnt is active!):
+
+```
+mkdocs serve
+```
+
+Then go to http://localhost:8000/com2009/ in a browser.
