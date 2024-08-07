@@ -1,4 +1,4 @@
-site_name: "The ROS2 Lab Course for COM2009"
+site_name: "COM2009: ROS2 Labs"
 site_url: https://tom-howard.github.io/com2009/
 site_description: ROS2 Labs for the COM2009 (& COM3009) Robotics Course at The University of Sheffield. 
 theme:
