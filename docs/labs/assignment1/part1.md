@@ -77,7 +77,7 @@ We've put together a few ROS packages specifically for this course. These all li
     ***
     **TERMINAL 1:**
     ```bash
-    cd ~/ros2_ws/ && colcon build
+    cd ~/ros2_ws/ && colcon build --packages-up-to tuos_ros
     ```
     ***
 
