@@ -88,3 +88,119 @@ We've put together a few ROS packages specifically for this course. These all li
     ```
 
     Don't worry too much about what you just did, for now. We'll cover this in more detail throughout the course. That's it for now though, we'll start using some of the packages that we've just installed a bit later on..
+
+
+
+
+
+
+## Creating Your First ROS Applications
+
+Shortly you will create some simple publisher and subscriber nodes in Python and send simple ROS messages between them. As we learnt earlier though, ROS applications must be created within *packages*, and so we need to create a package first in order to start creating our own ROS nodes. 
+
+The `ros2` Command Line Interface (CLI) includes a tool to create a new ROS packages: `ros2 pkg create`.
+
+It's important to work in a specific filesystem location when we create and work on our own ROS packages. These are called *"Workspaces"* and you should already have one ready to go within your local ROS environment[^workspaces]:
+
+``` { .bash .no-copy }
+~/ros2_ws/
+```
+
+!!! note 
+    `~` is an alias for your home directory. So `cd ~/ros2_ws/` is the same as typing `cd /home/{your username}/ros2_ws/`.
+
+[^workspaces]: [You can learn more about ROS2 Workspaces here](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#background). 
+
+#### :material-pen: Exercise XX: Creating your own ROS Package {#exx}
+
+We'll be using Python throughout this course, and [The Official ROS2 Documentation](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html) suggests a particular approach that should be used to create ROS2 packages for Python specifically. We are opting for [a slightly different approach here](https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/) however, that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2).   
+
+1. Navigate into the `ros2_ws` folder by using the Linux `cd` command (**c**hange **d**irectory). In **TERMINAL 1** enter the following:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    cd ~/ros2_ws/
+    ```
+    ***
+
+1. Inside the workspace there is a directory called `src`. All new packages need to be located in the `src` folder, so we **must** be located here when we create a new package. So, use the `cd` command again to navigate into the `src` folder:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    cd src
+    ```
+    ***
+
+1. Now, use the `ros2 pkg create` tool to create a new package called `part1_pubsub`:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    ros2 pkg create part1_pubsub --build-type ament_cmake
+    ```
+    ***
+    
+1. Navigate into this new package directory (using `cd`).
+
+1. `tree` is a **Linux command** which shows us the content of the current directory in a nice tree-like format (you may need to install it first, using `sudo apt install tree`). Use `tree` now to show the current content of the `part1_pubsub` directory, as created by the `ros2 pkg create` tool.
+
+    ``` { .txt .no-copy }
+    ~/ros2_ws/src/part1_pubsub$ tree
+    .
+    ├── CMakeLists.txt
+    ├── include
+    │   └── part1_pubsub
+    ├── package.xml
+    └── src
+
+    3 directories, 2 files
+    ```
+
+    Out of the box, this is formatted as a C++ package, so we'll need to add some more to it now to make it Python-friendly...
+    
+1. We'll now use two more Linux Commands:
+
+    1. `mkdir` to make a new directory 
+    1. `touch`: to make a new (empty) file
+
+    First, make a folder within the `part1_pubsub` that's *also* called `part1_pubsub`!
+
+    ```bash
+    mkdir part1_pubsub
+    ```
+
+    Then, create an empty file in there called `__init__.py`:
+
+    ```bash
+    touch part1_pubsub/__init__.py
+    ```
+
+    Finally, create *another* directory called `scripts`:
+
+    ```bash
+    mkdir scripts
+    ```
+
+1. Let's use `tree` again to have a look at the content of our package now:
+
+    ``` { .txt .no-copy }
+    ~/ros2_ws/src/part1_pubsub$ tree
+    .
+    ├── CMakeLists.txt
+    ├── include
+    │   └── part1_pubsub
+    ├── package.xml
+    ├── part1_pubsub
+    │   └── __init__.py
+    ├── scripts
+    └── src
+
+    5 directories, 3 files
+    ```
+
+... this is only part of the process, and it already seems very long-winded... perhaps the best way is to explain this and then provide a pre-made template that can be downloaded (and modified...)
+
+#### :material-pen: Exercise Y: Creating a publisher node {#exy}
+
