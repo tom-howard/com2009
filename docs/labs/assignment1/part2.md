@@ -130,7 +130,7 @@ In Part 1 you learnt about ROS Topics, and about how the `teleop_keyboard` node 
 
     [Return here if you need a reminder on how to find the answers to these questions (TODO: link to part 1)]().
 
-In Part 1 you also learnt how to find out more about this particular message typo, using the `ros2 interface show` command: 
+In Part 1 you also learnt how to find out more about this particular message type, using the `ros2 interface show` command: 
 
 ``` { .txt .no-copy }
 $ ros2 interface show geometry_msgs/msg/Twist
@@ -202,7 +202,7 @@ ros2 interface show nav_msgs/msg/Odometry
 ```
 ***
 
-The output of this is quite complicated, but - to start with - we can look down the far left hand side to identify the four *base fields* of the message (i.e. the fields that are not indented):
+The output of this is quite complicated, but - to start with - we can look down the far left-hand side to identify the four *base fields* of the message (i.e. the fields that are not indented):
 
 <center>
 
@@ -241,7 +241,7 @@ geometry_msgs/PoseWithCovariance pose
 * Data from both the left and right wheel encoders
 * A *kinematic model* of the robot
 
-All of the above information can then be used to calculate (and keep track of) the distance travelled by the robot from its pre-defined reference point (using a process called dead-reckoning).
+All the above information can then be used to calculate (and keep track of) the distance travelled by the robot from its pre-defined reference point (using a process called dead-reckoning).
 
 *Position* data is important for determining the movement of our robot, and from this we can estimate its location in 3-dimensional space. This is expressed in units of **meters**.
 
@@ -251,7 +251,7 @@ All of the above information can then be used to calculate (and keep track of) t
 
 [^quaternions]: [Quaternions are explained very nicely here](https://automaticaddison.com/how-to-convert-a-quaternion-to-a-rotation-matrix/#What_is_a_Quaternion), if you'd like to learn more.
 
-Quaternions use **four values** to represent the orientation of something in 3 demansional space, as we can observe from the structure of the `nav_msgs/msg/Odometry` ROS message:
+Quaternions use **four values** to represent the orientation of something in 3 dimensional space, as we can observe from the structure of the `nav_msgs/msg/Odometry` ROS message:
 
 ``` { .txt .no-copy }
 Quaternion orientation
@@ -261,7 +261,7 @@ Quaternion orientation
         float64 w
 ```
 
-For us, it's easier to think about the orientation of our robot in a **Euler Angle** represention, which tell us the degree of rotation about the *three principal axes* ([as discussed above](#principal-axes)):
+For us, it's easier to think about the orientation of our robot in a **Euler Angle** representation, which tell us the degree of rotation about the *three principal axes* ([as discussed above](#principal-axes)):
 
 * <code>&theta;<sub>x</sub></code>, aka: **"Roll"**
 * <code>&theta;<sub>y</sub></code>, aka: **"Pitch"**
@@ -426,6 +426,118 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
 
 ## Basic Navigation: Open-loop Velocity Control
 
-#### :material-pen: Exercise 3: Moving a Robot with `rostopic` in the Terminal {#ex3}
+#### :material-pen: Exercise 3: Velocity Control from a Terminal {#ex3}
 
-TODO...
+!!! warning
+    Make sure that you've stopped the `teleop_keyboard` node before starting this exercise!
+
+<a name="rostopic_pub"></a>We can use the `ros2 topic pub` command to *publish* data to a topic from a terminal by using the command in the following way:
+
+``` { .bash .no-copy }
+ros2 topic pub {topic_name} {message_type} {message_data}
+```
+
+[As we discovered earlier](#ros-velocity-commands), the `/cmd_vel` topic is expecting messages containing *linear* and *angular* velocity data, each with an `x`, `y` and `z` component. When publishing topic messages in a terminal the commands can get quite long and complicated, but we can use *autocomplete* functionality to help us format the full command correctly. In **TERMINAL 3** *type* the following, using the ++tab++ key where indicated to invoke autocompletion...
+
+***
+**TERMINAL 3:**
+
+First, press ++tab++ to complete the *topic name* for you:
+
+``` { .txt .no-copy }
+ros2 topic pub /cmd_[TAB]
+```
+
+Then, press ++tab++ to format the *message type* correctly: 
+
+``` { .txt .no-copy }
+ros2 topic pub /cmd_vel g[TAB]
+```
+
+Finally, press ++tab++ again to obtain the format of the *message data*:
+
+``` { .txt .no-copy }
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "l[TAB]
+```
+
+The full command will then be presented:
+
+```txt
+ros2 topic pub /cmd_vel geometry_msgs/msg/Twist "linear:
+  x: 0.0
+  y: 0.0
+  z: 0.0
+angular:
+  x: 0.0
+  y: 0.0
+  z: 0.0"
+```
+***
+
+!!! tip 
+    You can use ++tab++ to autocomplete lots of terminal commands, experiment with it - it'll save you lots of time! 
+
+1. Scroll back through the message using the ++left++ key on your keyboard and then edit the values of the various parameters, as appropriate. First, define some values that would make the robot **rotate on the spot**.  
+    
+1. Enter ++ctrl+c++ in **TERMINAL 3** to stop the message from being published.
+
+    !!! warning
+        What happens to the robot when you stop the `ros2 topic pub` command?
+
+        ... it keeps on moving at the requested velocity!
+
+        In order to make the robot actually stop, we need to publish a *new* message containing alternative velocity commands.
+
+1. In **TERMINAL 3** press the ++up++ key on your keyboard to recall the previous command, but don't press ++enter++ just yet! Now press the ++left++ key to track back through the message and change the velocity values in order to now make the robot **stop**.
+
+1. Once again, enter ++ctrl+c++ in **TERMINAL 3** to stop the publisher from actively publishing new messages, and then follow the same steps as above to compose *another* new message to now make the robot **move in a circle**.
+
+1. Enter ++ctrl+c++ to again stop the message from being published, publish a further new message to stop the robot, and then compose (and publish) a message that would make the robot **drive in a straight line**.
+
+1. Finally, **stop** the robot again!
+
+#### :material-pen: Exercise 4: Creating a Python node to make the robot move in a circle {#ex4}
+
+You will now learn how to control the velocity of the robot through a Python Node. In Pat 1 you built a simple publisher node, and this one will effectively be the same thing, this time however, we need to publish `Twist` type messages to the `/cmd_vel` topic instead... 
+
+In **TERMINAL 2**, ensure that you're located within the `scripts` folder of your `part2_navigation` package (you could use `pwd` to check your current working directory).
+
+If you aren't located here then navigate to this directory using `cd`.
+
+1. Create a new file called `move_circle.py`:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    touch move_circle.py
+    ```
+    ... and make this file executable using the `chmod` command.
+    ***
+
+1. Open up this file in VS Code. 
+
+    Use this code template to get you started:
+
+    ```python title="A template for the move_circle.py node"
+    --8<-- "code_templates/move_circle.py"
+    ```
+    
+    1. This is important, we always need to import the ROS Client Library for Python (`rclpy`), plus a `Node` class (to use as the basis for you own ROS node).
+    2. What other imports might we need here in order to create and publish a message to make the robot move?
+    3. Give your node a descriptive name - this is the name that it will be given when it is registered on the ROS network, and the one that you would see if you used the `ros2 node list` command.
+    4. What do you need to add here in order to set up an appropriate publisher to the `/cmd_vel` topic?
+    5. Define an appropriate rate at which to publish velocity messages, and use this to set up a timer.
+    6. We'll use this to perform some important shutdown operations after a user has requested for the node to stop (using ++ctrl+c++), but before it actually does so. 
+    
+        !!! question
+            What actions would be important to take here to make sure the node shuts down safely and the robot actually stops moving?
+
+        We'll call this method from `main()` before ultimately terminating the node (see later on in the code).
+
+    7. You're going to need to create a message here containing appropriate velocities for the robot to move at. Then you'll need to actually publish that message to `/cmd_vel` (via your `self.publisher`). Running this inside a *timer callback* means that it will execute the rate that we specified in the `__init__`
+    
+    8. What will you need to do here to instantiate your `Circle()` class?
+
+    9. We call `rclpy.spin()` inside a Try - Except block, so that we can catch a `KeyboardInterrupt` (i.e. a ++ctrl+c++ input from the user) during execution of the node. All shutdown procedures are executed from within a `finally` block, which ensures that all of these vital steps take place when an exception is raised (whether that's a `KeyboardInterrupt` or otherwise).
+
+
