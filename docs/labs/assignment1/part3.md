@@ -87,7 +87,7 @@ As you'll know from Part 2, odometry is really important for robot navigation, b
     ***
     **TERMINAL 2:**
     ```bash
-    ros2 launch tuos_simulations rviz.launch
+    ros2 launch tuos_simulations rviz.launch launch
     ```
     ***
     
