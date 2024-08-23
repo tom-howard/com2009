@@ -187,47 +187,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     
     * `package.xml` and `CMakeLists.txt`: are both *files* that define our package, and how it must be built (using `colcon build`). We'll explore these more shortly... 
     
-1. We'll now use two more Linux Commands:
-
-    1. `mkdir` to make a new directory 
-    1. `touch`: to make a new (empty) file
-
-    First, make a folder within the `part1_pubsub` that's *also* called `part1_pubsub`!
-
-    ```bash
-    mkdir part1_pubsub
-    ```
-
-    Then, create an empty file in there called `__init__.py`:
-
-    ```bash
-    touch part1_pubsub/__init__.py
-    ```
-
-    Finally, create *another* directory called `scripts`:
-
-    ```bash
-    mkdir scripts
-    ```
-
-1. Let's use `tree` again to have a look at the content of our package now:
-
-    ``` { .txt .no-copy }
-    ~/ros2_ws/src/part1_pubsub$ tree
-    .
-    ├── CMakeLists.txt
-    ├── include
-    │   └── part1_pubsub
-    ├── package.xml
-    ├── part1_pubsub
-    │   └── __init__.py
-    ├── scripts
-    └── src
-
-    5 directories, 3 files
-    ```
-
-... this is only part of the process, and it already seems very long-winded... perhaps the best way is to explain this and then provide a pre-made template that can be downloaded (and modified...)
+... TODO from here
 
 #### :material-pen: Exercise Y: Creating a publisher node {#exy}
 
