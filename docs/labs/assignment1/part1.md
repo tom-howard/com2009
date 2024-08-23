@@ -98,53 +98,68 @@ We've put together a few ROS packages specifically for this course. These all li
 
 Shortly you will create some simple publisher and subscriber nodes in Python and send simple ROS messages between them. As we learnt earlier though, ROS applications must be created within *packages*, and so we need to create a package first in order to start creating our own ROS nodes. 
 
-The `ros2` Command Line Interface (CLI) includes a tool to create a new ROS packages: `ros2 pkg create`.
-
 It's important to work in a specific filesystem location when we create and work on our own ROS packages. These are called *"Workspaces"* and you should already have one ready to go within your local ROS environment[^workspaces]:
 
 ``` { .bash .no-copy }
-~/ros2_ws/
+~/ros2_ws/src/
 ```
 
 !!! note 
-    `~` is an alias for your home directory. So `cd ~/ros2_ws/` is the same as typing `cd /home/{your username}/ros2_ws/`.
+    `~` is an alias for your home directory. So `cd ~/ros2_ws/src/` is the same as typing `cd /home/{your username}/ros2_ws/src/`.
+
+!!! warning "Important"
+    All new packages **must** be located in the `src` folder of the workspace!!
+
 
 [^workspaces]: [You can learn more about ROS2 Workspaces here](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#background). 
 
 #### :material-pen: Exercise XX: Creating your own ROS Package {#exx}
 
-We'll be using Python throughout this course, and [The Official ROS2 Documentation](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html) suggests a particular approach that should be used to create ROS2 packages for Python specifically. We are opting for [a slightly different approach here](https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/) however, that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2).   
+The `ros2` Command Line Interface (CLI) includes a tool to create a new ROS packages: `ros2 pkg create`. This tool supports two different *"build types,"* and packages are structured slightly differently in each case:
 
-1. Navigate into the `ros2_ws` folder by using the Linux `cd` command (**c**hange **d**irectory). In **TERMINAL 1** enter the following:
+1. **CMake**: for packages containing nodes written in *C++*:
+    
+    `ros2 pkg create --build-type ament_cmake`
+    
+2. **Python**: for packages containing nodes written in well, er, *Python*!
+    
+    `ros2 pkg create --build-type ament_python`
+
+You can learn more about all this from the [Official ROS2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html), if you're interested.
+
+We'll be using Python throughout this course, but we'll actually take a slightly different approach to package creation that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2). We've therefore created a helper script (inside the `tuos_ros` Course Repo) to help you create packages without using *either* of the above two scripts. The approach we'll take is based on [this tutorial from the Robotics Backend](https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/), so feel free to look at this if you'd like to find out more. If not, then simply follow the steps below to create your first ROS package for this course, using the `create_pkg.sh` helper tool!
+
+1. Navigate into the `tuos_ros` Course Repo that you downloaded earlier by using the Linux `cd` command (**c**hange **d**irectory). In **TERMINAL 1** enter the following:
 
     ***
     **TERMINAL 1:**
     ```bash
-    cd ~/ros2_ws/
+    cd ~/ros2_ws/src/tuos_ros/
     ```
     ***
 
-1. Inside the workspace there is a directory called `src`. All new packages need to be located in the `src` folder, so we **must** be located here when we create a new package. So, use the `cd` command again to navigate into the `src` folder:
+1. Here you'll find the `create_pkg.sh` helper script. Run this now using the following command to create a new package called `part1_pubsub`:
 
     ***
     **TERMINAL 1:**
     ```bash
-    cd src
-    ```
-    ***
-
-1. Now, use the `ros2 pkg create` tool to create a new package called `part1_pubsub`:
-
-    ***
-    **TERMINAL 1:**
-    ```bash
-    ros2 pkg create part1_pubsub --build-type ament_cmake
+    ./create_pkg.sh part1_pubsub
     ```
     ***
     
-1. Navigate into this new package directory (using `cd`).
+1. Navigate into this new package directory (using `cd`):
 
-1. `tree` is a **Linux command** which shows us the content of the current directory in a nice tree-like format (you may need to install it first, using `sudo apt install tree`). Use `tree` now to show the current content of the `part1_pubsub` directory, as created by the `ros2 pkg create` tool.
+    ***
+    **TERMINAL 1:**
+    ```bash
+    cd ../part1_pubsub/
+    ```
+    ***
+
+    !!! info
+        `..` means "go back one directory", so that command above is telling `cd` to navigate *out* of the `tuos_ros` directory (and therefore back to `~/ros2_ws/src/`), and then go *into* the `part1_pubsub` directory from there.
+
+1. `tree` is a **Linux command** which shows us the content of the current directory in a nice tree-like format (you may need to install it first, using `sudo apt install tree`). Use `tree` now to show the current content of the `part1_pubsub` directory:
 
     ``` { .txt .no-copy }
     ~/ros2_ws/src/part1_pubsub$ tree
@@ -152,13 +167,25 @@ We'll be using Python throughout this course, and [The Official ROS2 Documentati
     ├── CMakeLists.txt
     ├── include
     │   └── part1_pubsub
+    │       └── minimal_header.hpp
     ├── package.xml
+    ├── part1_pubsub
+    │   ├── __init__.py
+    │   └── minimal_module.py
+    ├── scripts
+    │   └── minimal_node.py
     └── src
+        └── miminal_node.cpp
 
-    3 directories, 2 files
+    5 directories, 7 files
     ```
 
-    Out of the box, this is formatted as a C++ package, so we'll need to add some more to it now to make it Python-friendly...
+    * `scripts`: is a *directory* that will contain all the Python Nodes that we'll create (you'll notice a `minimal_node.py` already exists in there).
+    * `part1_pubsub`: is a *directory* that we can use to store Python *modules*, that we can then import into our main Python nodes
+        
+        (`#!py from part1_pubsub.minimal_module import ...`, for example)
+    
+    * `package.xml` and `CMakeLists.txt`: are both *files* that define our package, and how it must be built (using `colcon build`). We'll explore these more shortly... 
     
 1. We'll now use two more Linux Commands:
 
