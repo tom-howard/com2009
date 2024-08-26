@@ -115,19 +115,21 @@ It's important to work in a specific filesystem location when we create and work
 
 #### :material-pen: Exercise XX: Creating your own ROS Package {#exx}
 
-The `ros2` Command Line Interface (CLI) includes a tool to create a new ROS packages: `ros2 pkg create`. This tool supports two different *"build types,"* and packages are structured slightly differently in each case:
+The `ros2` Command Line Interface (CLI) includes a tool to create a new ROS packages: `ros2 pkg create`. This tool supports two different *"build types:"*
 
-1. **CMake**: for packages containing nodes written in *C++*:
+1. **CMake** (for packages containing nodes written in *C++*):
     
     `ros2 pkg create --build-type ament_cmake`
     
-2. **Python**: for packages containing nodes written in well, er, *Python*!
+2. **Python** (for packages containing nodes written in well, er, *Python*!):
     
     `ros2 pkg create --build-type ament_python`
 
+    Packages are structured slightly differently in each case
+
 You can learn more about all this from the [Official ROS2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html), if you're interested.
 
-We'll be using Python throughout this course, but we'll actually take a slightly different approach to package creation that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2). We've therefore created a helper script (inside the `tuos_ros` Course Repo) to help you create packages without using *either* of the above two scripts. The approach we'll take is based on [this tutorial from the Robotics Backend](https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/), so feel free to look at this if you'd like to find out more. If not, then simply follow the steps below to create your first ROS package for this course, using the `create_pkg.sh` helper tool!
+We'll be using Python throughout this course, but we'll actually take a slightly different approach to package creation that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2). We've therefore created a helper script (inside the `tuos_ros` Course Repo) to help you create packages without using *either* of the above two scripts. The approach we'll take is based on [this tutorial (courtesy of the Robotics Backend)](https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/), so feel free to look at this if you'd like to find out more. Then, simply follow the steps below to create your first ROS package for this course, using the `create_pkg.sh` helper tool!
 
 1. Navigate into the `tuos_ros` Course Repo that you downloaded earlier by using the Linux `cd` command (**c**hange **d**irectory). In **TERMINAL 1** enter the following:
 
@@ -191,3 +193,124 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 
 #### :material-pen: Exercise Y: Creating a publisher node {#exy}
 
+1. From the root of your `part1_pubsub` package, navigate to the `scripts` folder using the `cd` command.
+1. `touch` is a **Linux command** that we can use to create an empty file. Use this to create an empty file called `publisher.py`, which we will add content to shortly:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    touch publisher.py
+    ```
+    ***
+
+1. Use `ls` to verify that the file has been created, but use the `-l` option with this, so that the command provides its output in *"a long listing format"*:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    ls -l
+    ```
+    ***
+
+    This should output something similar to the following:
+
+    ``` { .txt .no-copy }
+    ~/ros2_ws/src/part1_pubsub/scripts$ ls -l
+    total 4
+    -rwxr-xr-x 1 tom tom 339 Aug 26 11:51 minimal_node.py
+    -rw-r--r-- 1 tom tom   0 Aug 26 11:52 publisher.py
+    ```
+
+    This confirms that the file exists, and the `0` in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.
+
+1. We therefore now need to open the file and add content to it. We'd recommend using Visual Studio Code (VS Code) as an IDE for this course, which can be launched with the following command in **TERMINAL 1**:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    code ~
+    ```
+    ***
+
+    [TODO: how does this vary based on the environment?? (Nix/WSL...?)]
+
+1. Using the VS Code File Explorer, navigate to your `part1_pubsub` package directory (`~/catkin_ws/src/part1_pubsub/`), locate the `publisher.py` file that you have just created in the `/part1_pubsub/src/` folder and click on the file to open it. 
+
+1. Once opened, copy [the code provided here](./part1/publisher.md) into the empty file and save it. <a name="ex5_ret"></a>
+    
+    !!! note
+        It's important that you understand how this code works, so make sure that you **read the annotations**!
+    
+1. **Make sure that you've saved the `publisher.py` file (in VS Code) before trying to run it!**
+    
+    Do this by using the ++ctrl+s++ keyboard shortcut, or going to `File > Save` from the menu at the top of the VS Code screen.
+
+1. We can now run this node using the `rosrun` **ROS command**. However, because we closed everything down earlier on, the *ROS Master* is no longer active. First then, we need to re-launch it manually using `roscore`:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    roscore
+    ```
+    ***
+
+1. Then, in **TERMINAL 2**, use `rosrun` to execute the `publisher.py` script that you have just created by providing the relevant information to the `rosrun` command. Remember: `rosrun {package name} {script name}`, so:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    rosrun part1_pubsub publisher.py
+    ```
+    ***
+
+    ... Hmmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:
+
+    ``` { .txt .no-copy }
+    [rosrun] Couldn't find executable named publisher.py below /home/student/catkin_ws/src/part1_pubsub
+    [rosrun] Found the following, but they're either not files,
+    [rosrun] or not executable:
+    [rosrun]   /home/student/catkin_ws/src/part1_pubsub/src/publisher.py
+    ``` 
+
+    The clue there is the word *"executable"*. When we create a file, using `touch` it is given certain *permissions*. Run `ls -l` again (making sure that your terminal is in the right location: `~/catkin_ws/src/part1_pubsub/src/`).
+        
+    The first bit tells us about the permissions that are currently set: `-rw-r--r--`. This tells us *who* has permission to do *what* with this file and (currently) the first bit: `-rw-`, tells us that we (as the user `student`) have permission to **R**ead or **W**rite to it. There is a *third* option we can set too though, which is the *execute* permission, and we can set this using the `chmod` **Linux command**...
+
+1. Run the `chmod` command as follows:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    chmod +x publisher.py
+    ```
+    ***
+
+1. Now, run `ls -l` again to see what has changed:
+    
+    ***
+    **TERMINAL 2:**
+    ```bash
+    ls -l
+    ```
+    ***
+
+    We have now granted permission for the file to be e**X**ecuted too:
+    
+    ``` { .txt .no-copy }
+    -rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
+    ```
+
+1. OK, now use `rosrun` again to (*hopefully!*) run the `publisher.py` node (remember: `rosrun {package name} {script name}`).
+    
+    If you see a message in the terminal similar to the following then the node has been launched successfully:
+        
+    ``` { .txt .no-copy }
+    [INFO] [#####]: The 'simple_publisher' node is active...
+    ```
+
+    Phew!
+
+1. We can further verify that our publisher node is running using a number of different tools. Try running the following commands in **TERMINAL 3**:
+
+    1. `rosnode list`: This will provide a list of all the nodes that are currently active on the system. Verify that the name of our publisher node is visible in this list.
+    1. `rostopic list`: This will provide a list of the topics that are currently being used by nodes on the system. Verify that the name of the topic that our publisher is publishing messages to is present within this list.
