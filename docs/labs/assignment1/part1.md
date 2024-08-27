@@ -125,7 +125,7 @@ The `ros2` Command Line Interface (CLI) includes a tool to create a new ROS pack
     
     `ros2 pkg create --build-type ament_python`
 
-    Packages are structured slightly differently in each case
+    Packages are structured slightly differently in each case.
 
 You can learn more about all this from the [Official ROS2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html), if you're interested.
 
@@ -188,8 +188,6 @@ We'll be using Python throughout this course, but we'll actually take a slightly
         (`#!py from part1_pubsub.minimal_module import ...`, for example)
     
     * `package.xml` and `CMakeLists.txt`: are both *files* that define our package, and how it must be built (using `colcon build`). We'll explore these more shortly... 
-    
-... TODO from here
 
 #### :material-pen: Exercise Y: Creating a publisher node {#exy}
 
@@ -217,8 +215,8 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     ``` { .txt .no-copy }
     ~/ros2_ws/src/part1_pubsub/scripts$ ls -l
     total 4
-    -rwxr-xr-x 1 tom tom 339 Aug 26 11:51 minimal_node.py
-    -rw-r--r-- 1 tom tom   0 Aug 26 11:52 publisher.py
+    -rwxr-xr-x 1 student student 339 MMM DD HH:MM minimal_node.py
+    -rw-r--r-- 1 student student   0 MMM DD HH:MM publisher.py
     ```
 
     This confirms that the file exists, and the `0` in the middle of the bottom line there indicates that the file is empty (i.e. its current size is 0 bytes), which is what we'd expect.
@@ -234,52 +232,41 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 
     [TODO: how does this vary based on the environment?? (Nix/WSL...?)]
 
-1. Using the VS Code File Explorer, navigate to your `part1_pubsub` package directory (`~/catkin_ws/src/part1_pubsub/`), locate the `publisher.py` file that you have just created in the `/part1_pubsub/src/` folder and click on the file to open it. 
+1. Using the VS Code File Explorer, locate the `publisher.py` file that you have just created (`ros_ws/src/part1_pubsub/scripts/`) and click on the file to open it in the main editor. 
 
-1. Once opened, copy [the code provided here](./part1/publisher.md) into the empty file and save it. <a name="ex5_ret"></a>
+1. Once opened, copy [the code provided here](./part1/publisher.md) into the empty file and save it. <a name="pub_ret"></a>
     
     !!! note
         It's important that you understand how this code works, so make sure that you **read the annotations**!
     
 1. **Make sure that you've saved the `publisher.py` file (in VS Code) before trying to run it!**
     
-    Do this by using the ++ctrl+s++ keyboard shortcut, or going to `File > Save` from the menu at the top of the VS Code screen.
+    Do this by using the ++ctrl+s++ keyboard shortcut, or going to `File` > `Save` from the menu at the top of the VS Code screen.
 
-1. We can now run this node using the `rosrun` **ROS command**. However, because we closed everything down earlier on, the *ROS Master* is no longer active. First then, we need to re-launch it manually using `roscore`:
+1. We can now run this node using the `ros2 run` **ROS command**. Remember: `ros2 run {package name} {script name}`, so:
 
     ***
     **TERMINAL 1:**
     ```bash
-    roscore
-    ```
-    ***
-
-1. Then, in **TERMINAL 2**, use `rosrun` to execute the `publisher.py` script that you have just created by providing the relevant information to the `rosrun` command. Remember: `rosrun {package name} {script name}`, so:
-
-    ***
-    **TERMINAL 2:**
-    ```bash
-    rosrun part1_pubsub publisher.py
+    ros2 run part1_pubsub publisher.py
     ```
     ***
 
     ... Hmmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:
 
     ``` { .txt .no-copy }
-    [rosrun] Couldn't find executable named publisher.py below /home/student/catkin_ws/src/part1_pubsub
-    [rosrun] Found the following, but they're either not files,
-    [rosrun] or not executable:
-    [rosrun]   /home/student/catkin_ws/src/part1_pubsub/src/publisher.py
+    $ ros2 run part1_pubsub publisher.py
+    No executable found
     ``` 
 
-    The clue there is the word *"executable"*. When we create a file, using `touch` it is given certain *permissions*. Run `ls -l` again (making sure that your terminal is in the right location: `~/catkin_ws/src/part1_pubsub/src/`).
+    When we create a file, using `touch` it is given certain *permissions*. Run `ls -l` again (making sure that your terminal is in the right location: `~/ros2_ws/src/part1_pubsub/scripts/`).
         
     The first bit tells us about the permissions that are currently set: `-rw-r--r--`. This tells us *who* has permission to do *what* with this file and (currently) the first bit: `-rw-`, tells us that we (as the user `student`) have permission to **R**ead or **W**rite to it. There is a *third* option we can set too though, which is the *execute* permission, and we can set this using the `chmod` **Linux command**...
 
 1. Run the `chmod` command as follows:
 
     ***
-    **TERMINAL 2:**
+    **TERMINAL 1:**
     ```bash
     chmod +x publisher.py
     ```
@@ -288,7 +275,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 1. Now, run `ls -l` again to see what has changed:
     
     ***
-    **TERMINAL 2:**
+    **TERMINAL 1:**
     ```bash
     ls -l
     ```
@@ -297,20 +284,71 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     We have now granted permission for the file to be e**X**ecuted too:
     
     ``` { .txt .no-copy }
-    -rwxr-xr-x 1 student student 1557 MMM DD HH:MM publisher.py
+    -rwxr-xr-x 1 student student 1125 MMM DD HH:MM publisher.py
     ```
 
-1. OK, now use `rosrun` again to (*hopefully!*) run the `publisher.py` node (remember: `rosrun {package name} {script name}`).
+1. OK, now use `ros2 run` again to (*hopefully!*) run the `publisher.py` node (remember: `ros2 run {package name} {script name}`).
     
     If you see a message in the terminal similar to the following then the node has been launched successfully:
         
     ``` { .txt .no-copy }
-    [INFO] [#####]: The 'simple_publisher' node is active...
+    [INFO] [#####] [simple_publisher]: The 'simple_publisher' node is inisialised.
     ```
 
     Phew!
 
-1. We can further verify that our publisher node is running using a number of different tools. Try running the following commands in **TERMINAL 3**:
+1. We can further verify that our publisher node is running using a number of different tools. Try running the following commands in **TERMINAL 2**:
 
-    1. `rosnode list`: This will provide a list of all the nodes that are currently active on the system. Verify that the name of our publisher node is visible in this list.
-    1. `rostopic list`: This will provide a list of the topics that are currently being used by nodes on the system. Verify that the name of the topic that our publisher is publishing messages to is present within this list.
+    1. `ros2 node list`: This will provide a list of all the *nodes* that are currently active on the system. Verify that the name of our publisher node is visible in this list (it's probably the only item in the list at the moment!)
+    1. `ros2 topic list`: This will provide a list of the *topics* that are currently being used by nodes on the system. Verify that the name of the topic that our publisher is publishing messages to (`/my_topic`) is present within this list.
+
+#### Interrogating ROS Topics {#rostopic}
+
+So far we have used the `ros2 topic` ROS command with two additional arguments: [TODO: check this!]
+
+* `list`: to provide us with a *list* of all the topics that are active on our ROS system, and
+* `info`: to provide us with *information* on a particular topic of interest.
+
+We can use the *autocomplete functionality* of the Linux terminal to provide us with a list of *all* the available options that we can use with the `ros2 topic` command.  To do this type `ros2 topic` followed by a ++space++ and then press the ++tab++ key twice:
+
+``` { .bash .no-copy }
+rostopic[SPACE][TAB][TAB]
+```
+
+You should then be presented with a list of all options:
+
+[TODO: a gif]
+
+<!-- <figure markdown>
+  ![](../../images/ros-cli/rostopic_autocomplete.gif)
+</figure> -->
+
+* `ros2 topic hz {topic name}` provides information on the frequency (in Hz) at which messages are being published to a topic:
+
+    ```bash
+    ros2 topic hz /my_topic
+    ```
+
+    This should tell us that our publisher node is publishing messages to the `/my_topic` topic at (or close to) 1 Hz, which is exactly what we ask for in the `publisher.py` file (in the `__init__` part of our `Publisher` class). Enter ++ctrl+c++ to stop this command.
+
+* `ros2 topic echo {topic name}` shows the messages being published to a topic:
+
+    ```bash
+    ros2 topic echo /my_topic
+    ```
+
+    This will provide a live stream of the messages that our `publisher.py` node is publishing to the `/my_topic` topic. Enter ++ctrl+c++ to stop this.
+
+* We can see some additional options for the `echo` command by viewing the help documentation for this too:
+
+    ```bash
+    ros2 topic echo --help
+    ```
+
+    From here, for instance, we can learn that if we just wanted to print the first message that was recieved we could use the `-once` option, for example:
+
+    ```bash
+    ros2 topic echo /my_topic -once
+    ```
+
+#### :material-pen: Exercise Z: Creating a subscriber node {#ex6}
