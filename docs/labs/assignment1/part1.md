@@ -89,6 +89,8 @@ We've put together a few ROS packages specifically for this course. These all li
 
     Don't worry too much about what you just did, for now. We'll cover this in more detail throughout the course. That's it for now though, we'll start using some of the packages that we've just installed a bit later on..
 
+1. Source the `.bashrc`...
+
 
 
 
@@ -232,18 +234,64 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 
     [TODO: how does this vary based on the environment?? (Nix/WSL...?)]
 
-1. Using the VS Code File Explorer, locate the `publisher.py` file that you have just created (`ros_ws/src/part1_pubsub/scripts/`) and click on the file to open it in the main editor. 
+1. Using the VS Code File Explorer, locate the `publisher.py` file that you have just created (`ros2_ws/src/part1_pubsub/scripts/`) and click on the file to open it in the main editor. 
 
 1. Once opened, copy [the code provided here](./part1/publisher.md) into the empty file and save it. <a name="pub_ret"></a>
     
     !!! note
         It's important that you understand how this code works, so make sure that you **read the annotations**!
     
-1. **Make sure that you've saved the `publisher.py` file (in VS Code) before trying to run it!**
-    
-    Do this by using the ++ctrl+s++ keyboard shortcut, or going to `File` > `Save` from the menu at the top of the VS Code screen.
+1. Next, we need to add our `publisher.py` file as an executable to our package's `CMakeLists.txt`. This will ensure that it then gets built when we run `colcon build` (in the next step).
 
-1. We can now run this node using the `ros2 run` **ROS command**. Remember: `ros2 run {package name} {script name}`, so:
+    In VS Code, open the `CMakeLists.txt` file that is at the root of your `part1_pubsub` package directory (`ros2_ws/src/part1_pubsub/CMakeLists.txt`). Locate the lines (near the bottom of the file) that read:
+
+    ``` { .txt .no-copy}
+    # Install Python executables
+    install(PROGRAMS
+      scripts/minimal_node.py
+      DESTINATION lib/${PROJECT_NAME}
+    )
+    ```
+
+    Replace `minimal_node.py` with `publisher.py` to define this as a Python executable in your package:
+
+    ``` { .txt .no-copy }
+    # Install Python executables
+    install(PROGRAMS
+      scripts/publisher.py
+      DESTINATION lib/${PROJECT_NAME}
+    )
+    ```
+
+1. Now, use `colcon` to build your package.
+    
+    1. First, it's important to run this from the **root** of your Colcon Workspace (i.e.: `~/ros2_ws/`), **NOT** the `src` directory (`~/ros2_ws/src/`), so navigate there now using `cd`:
+
+        ```bash
+        cd ~/ros2_ws/
+        ```
+
+    1. Then, use the following `colcon` command to build your package:
+
+        ```bash
+        colcon build --packages-select part1_pubsub --symlink-install
+        ```
+
+        !!! info
+            **What do the additional arguments above do?**
+
+            * `--packages-select`: Build *only* the `part1_pubsub` package, nothing else (without this `colcon` would attempt to build *every* package in the Workspace).
+            * `--symlink-install`: Ensures that you don't have to re-run `colcon build` every time you make a change to your package's executables (i.e. your Python files in the `scripts` directory).
+    
+    1. Finally, re-source your `bashrc`:
+
+        ```bash
+        source ~/.bashrc
+        ```
+
+1. We should now be able to run this node using the `ros2 run` command.
+    
+    Remember: `ros2 run {package name} {script name}`, so:
 
     ***
     **TERMINAL 1:**
@@ -261,7 +309,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 
     When we create a file, using `touch` it is given certain *permissions*. Run `ls -l` again (making sure that your terminal is in the right location: `~/ros2_ws/src/part1_pubsub/scripts/`).
         
-    The first bit tells us about the permissions that are currently set: `-rw-r--r--`. This tells us *who* has permission to do *what* with this file and (currently) the first bit: `-rw-`, tells us that we (as the user `student`) have permission to **R**ead or **W**rite to it. There is a *third* option we can set too though, which is the *execute* permission, and we can set this using the `chmod` **Linux command**...
+    The first bit tells us about the permissions that are currently set: `-rw-r--r--`. This tells us *who* has permission to do *what* with this file and (currently) the first bit: `-rw-`, tells us that we have permission to **R**ead or **W**rite to it. There is a *third* option we can set too though, which is the *execute* permission, and we can set this using the `chmod` **Linux command**...
 
 1. Run the `chmod` command as follows:
 
@@ -345,10 +393,10 @@ You should then be presented with a list of all options:
     ros2 topic echo --help
     ```
 
-    From here, for instance, we can learn that if we just wanted to print the first message that was recieved we could use the `-once` option, for example:
+    From here, for instance, we can learn that if we just wanted to print the first message that was received we could use the `-once` option, for example:
 
     ```bash
-    ros2 topic echo /my_topic -once
+    ros2 topic echo /my_topic --once
     ```
 
 #### :material-pen: Exercise Z: Creating a subscriber node {#ex6}

@@ -77,6 +77,8 @@ Copy **all** the code below into your `publisher.py` file and **review the annot
 
 10. Finally we call the `#!python main()` function to set everything going. We do this inside an `#!python if` statement, to ensure that our node is the *main executable* (i.e. it has been executed directly (via `ros2 run`), and hasn't been called by another script)
 
+## Defining Package Dependencies
+
 ## The Shebang {#shebang}
 
 The very first line of code looks like a comment, but it is actually a very crucial part of the script:
