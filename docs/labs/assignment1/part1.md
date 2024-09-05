@@ -44,15 +44,9 @@ Either way, you should now have access to ROS via a Linux terminal instance, and
 
 We've put together a few ROS packages specifically for this course. These all live within [this GitHub repo](https://github.com/tom-howard/tuos_ros), and you'll need to download and install this into your ROS environment now, before going any further.
 
-1. In **TERMINAL 1**, create a *"ROS2 Workspace"* in your home directory[^ros2_ws]:
+1. In **TERMINAL 1**, Navigate into the *"ROS2 Workspace"* using the `cd` command[^ros2_ws]:
 
     [^ros2_ws]: What is a ROS2 Workspace? [You can find out more here](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#background). 
-
-    ```bash
-    mkdir -p ~/ros2_ws/src/
-    ```
-
-1. Navigate into this using the `cd` Linux command:
 
     ```bash
     cd ~/ros2_ws/src/
@@ -65,9 +59,6 @@ We've put together a few ROS packages specifically for this course. These all li
     ```bash
     git clone https://github.com/tom-howard/tuos_ros.git -b humble
     ```
-    
-    [WIP: once complete, the `-b humble` bit shouldn't be needed]
-
     ***
 
 1. Once this is done, you'll need to build this using a tool called *"Colcon"*[^colcon]:
@@ -77,28 +68,18 @@ We've put together a few ROS packages specifically for this course. These all li
     ***
     **TERMINAL 1:**
     ```bash
-    cd ~/ros2_ws/ && colcon build --packages-up-to tuos_ros
+    cd ~/ros2_ws/ && colcon build --packages-up-to tuos_ros && source ~/.bashrc
     ```
     ***
 
-1. Add a line to the bashrc to source this overlay...
-
-    ```bash
-    echo "source ~/ros2_ws/install/setup.bash" >> ~/.bashrc
-    ```
-
-    Don't worry too much about what you just did, for now. We'll cover this in more detail throughout the course. That's it for now though, we'll start using some of the packages that we've just installed a bit later on..
-
-1. Source the `.bashrc`...
-
-
+Don't worry too much about what you just did, for now. We'll cover this in more detail throughout the course. That's it for now though, we'll start using some of the packages that we've just installed a bit later on..
 
 
 
 
 ## Creating Your First ROS Applications
 
-Shortly you will create some simple publisher and subscriber nodes in Python and send simple ROS messages between them. As we learnt earlier though, ROS applications must be created within *packages*, and so we need to create a package first in order to start creating our own ROS nodes. 
+Shortly you will create some simple publisher and subscriber nodes in Python and send simple ROS messages between them. As we learnt earlier though, ROS applications must be contained within *packages*, and so we need to create a package first in order to start creating our own ROS nodes. 
 
 It's important to work in a specific filesystem location when we create and work on our own ROS packages. These are called *"Workspaces"* and you should already have one ready to go within your local ROS environment[^workspaces]:
 
@@ -129,9 +110,9 @@ The `ros2` Command Line Interface (CLI) includes a tool to create a new ROS pack
 
     Packages are structured slightly differently in each case.
 
-You can learn more about all this from the [Official ROS2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html), if you're interested.
+You can learn more about all this from the [Official ROS2 Tutorials](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html) (if you're interested).
 
-We'll be using Python throughout this course, but we'll actually take a slightly different approach to package creation that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2). We've therefore created a helper script (inside the `tuos_ros` Course Repo) to help you create packages without using *either* of the above two scripts. The approach we'll take is based on [this tutorial (courtesy of the Robotics Backend)](https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/), so feel free to look at this if you'd like to find out more. Then, simply follow the steps below to create your first ROS package for this course, using the `create_pkg.sh` helper tool!
+We'll be using Python throughout this course, but we'll actually take a slightly different approach to package creation that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2). We've therefore created a helper script (inside the `tuos_ros` Course Repo) to help you create packages without using *either* of the above two commands. The approach we'll take is based on [this tutorial (courtesy of the Robotics Backend)](https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/), so feel free to look at this if you'd like to find out more. Then, simply follow the steps below to create your first ROS package for this course, using the `create_pkg.sh` helper tool.
 
 1. Navigate into the `tuos_ros` Course Repo that you downloaded earlier by using the Linux `cd` command (**c**hange **d**irectory). In **TERMINAL 1** enter the following:
 
@@ -161,9 +142,9 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     ***
 
     !!! info
-        `..` means "go back one directory", so that command above is telling `cd` to navigate *out* of the `tuos_ros` directory (and therefore back to `~/ros2_ws/src/`), and then go *into* the `part1_pubsub` directory from there.
+        `..` means "go back one directory," so that command above is telling `cd` to navigate *out* of the `tuos_ros` directory (and therefore back to `~/ros2_ws/src/`), and then go *into* the `part1_pubsub` directory from there.
 
-1. `tree` is a **Linux command** which shows us the content of the current directory in a nice tree-like format (you may need to install it first, using `sudo apt install tree`). Use `tree` now to show the current content of the `part1_pubsub` directory:
+1. `tree` is a **Linux command** which shows us the content of the current directory in a nice tree-like format. Use `tree` now to show the current content of the `part1_pubsub` directory:
 
     ``` { .txt .no-copy }
     ~/ros2_ws/src/part1_pubsub$ tree
@@ -179,7 +160,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     ├── scripts
     │   └── minimal_node.py
     └── src
-        └── miminal_node.cpp
+        └── minimal_node.cpp
 
     5 directories, 7 files
     ```
@@ -232,7 +213,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     ```
     ***
 
-    [TODO: how does this vary based on the environment?? (Nix/WSL...?)]
+    [TODO: does this work for Docker??]
 
 1. Using the VS Code File Explorer, locate the `publisher.py` file that you have just created (`ros2_ws/src/part1_pubsub/scripts/`) and click on the file to open it in the main editor. 
 
@@ -265,7 +246,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 
 1. Now, use `colcon` to build your package.
     
-    1. First, it's important to run this from the **root** of your Colcon Workspace (i.e.: `~/ros2_ws/`), **NOT** the `src` directory (`~/ros2_ws/src/`), so navigate there now using `cd`:
+    1. You **MUST** run this from the **root** of your Colcon Workspace (i.e.: `~/ros2_ws/`), **NOT** the `src` directory (`~/ros2_ws/src/`), so navigate there now using `cd`:
 
         ```bash
         cd ~/ros2_ws/
@@ -277,13 +258,14 @@ We'll be using Python throughout this course, but we'll actually take a slightly
         colcon build --packages-select part1_pubsub --symlink-install
         ```
 
-        !!! info
-            **What do the additional arguments above do?**
+        !!! info "What do the additional arguments above do?"
 
-            * `--packages-select`: Build *only* the `part1_pubsub` package, nothing else (without this `colcon` would attempt to build *every* package in the Workspace).
+            * `--packages-select`: Build *only* the `part1_pubsub` package, nothing else (without this `colcon` would attempt to build *every* package in the workspace).
             * `--symlink-install`: Ensures that you don't have to re-run `colcon build` every time you make a change to your package's executables (i.e. your Python files in the `scripts` directory).
     
-    1. Finally, re-source your `bashrc`:
+    1. Finally, "re-source" your `bashrc`[^source-bashrc]:
+
+        [^source-bashrc]: What does `source ~/.bashrc` do? [See here for an explanation](https://devconnected.com/source-command-on-linux-explained/#Source_to_update_your_current_shell_environment_bashrc).
 
         ```bash
         source ~/.bashrc
@@ -300,16 +282,16 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     ```
     ***
 
-    ... Hmmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:
+    ... Hmm, something not quite right? If you typed the command exactly as above and then tried to run it, you probably just received the following error:
 
     ``` { .txt .no-copy }
     $ ros2 run part1_pubsub publisher.py
     No executable found
     ``` 
 
-    When we create a file, using `touch` it is given certain *permissions*. Run `ls -l` again (making sure that your terminal is in the right location: `~/ros2_ws/src/part1_pubsub/scripts/`).
+    When we create a file using `touch` it is given certain *permissions* by default. Run `ls -l` again (making sure that your terminal is in the right location: `~/ros2_ws/src/part1_pubsub/scripts/`).
         
-    The first bit tells us about the permissions that are currently set: `-rw-r--r--`. This tells us *who* has permission to do *what* with this file and (currently) the first bit: `-rw-`, tells us that we have permission to **R**ead or **W**rite to it. There is a *third* option we can set too though, which is the *execute* permission, and we can set this using the `chmod` **Linux command**...
+    The first bit tells us about the permissions that are currently set: `-rw-r--r--`. This tells us *who* has permission to do *what* with this file and (currently) the first bit: `-rw-`, tells us that we have permission to **r**ead or **w**rite to it. There is a *third* option we can set too though, which is the *execute* permission, and we can set this using the `chmod` **Linux command**...
 
 1. Run the `chmod` command as follows:
 
@@ -329,7 +311,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     ```
     ***
 
-    We have now granted permission for the file to be e**X**ecuted too:
+    We have now granted permission for the file to be e**x**ecuted too:
     
     ``` { .txt .no-copy }
     -rwxr-xr-x 1 student student 1125 MMM DD HH:MM publisher.py
@@ -399,4 +381,65 @@ You should then be presented with a list of all options:
     ros2 topic echo /my_topic --once
     ```
 
-#### :material-pen: Exercise Z: Creating a subscriber node {#ex6}
+#### :material-pen: Exercise Z: Creating a subscriber node {#exZ}
+
+To illustrate how information can be passed from one node to another (via topics and messages) we'll now create another node to *subscribe* to the topic that our publisher node is broadcasting messages to.
+
+1. In **TERMINAL 2** use the filesystem commands that were introduced earlier (`cd`, `ls`, etc.) to navigate to the `scripts` folder of your `part1_pubsub` package.
+
+1. Use the same procedure as before to create a new empty Python file called `subscriber.py` and remember to make it executable! <a name="sub_ret"></a>
+
+1. Then, open the newly created `subscriber.py` file in VS Code, paste in [the code here](./part1/subscriber.md) and save it. 
+    
+    Once again, it's important that you understand how this code works, so **make sure you read the code annotations**! 
+
+1. Next, we need to add this as an additional executable for our package. 
+
+    Open up the `CMakeLists.txt` file at the root of your `part1_pubsub` package directory again, head back to the `# Install Python executables` section and add the `subscriber.py` file:
+
+    ``` { .txt .no-copy }
+    # Install Python executables
+    install(PROGRAMS
+      scripts/publisher.py
+      scripts/subscriber.py
+      DESTINATION lib/${PROJECT_NAME}
+    )
+    ```
+
+1. Now we need to `colcon build` again.
+    
+    1. Make sure you're at the **root** of the Colcon Workspace:
+
+        ```bash
+        cd ~/ros2_ws/
+        ```
+
+    1. Run `colcon build` on *only* the `part1_pubsub` package:
+
+        ```bash
+        colcon build --packages-select part1_pubsub --symlink-install
+        ```
+
+    1. And then re-source the `bashrc`:
+
+        ```bash
+        source ~/.bashrc
+        ```
+
+1. Use `ros2 run` to execute your newly created `subscriber.py` node (remember: `ros2 run {package name} {script name}`). If your publisher and subscriber nodes are working correctly you should see an output like this:
+    
+    [TODO: another gif]
+
+    <!-- <figure markdown>
+      ![](part1/subscriber_output.gif)
+    </figure> -->
+
+1. As before, we can find out what nodes are running on our system by using the `ros2 node list` command. Run this in **TERMINAL 3**, you should see both your publisher *and* subscriber nodes listed there.
+
+1. Finally, close down your publisher and subscriber nodes by entering ++ctrl+c++ in the terminals where they are running (should be 1 & 2).
+
+**Advanced**: <a name="pubsub_plus"></a> 
+
+You've now created a publisher and subscriber, both of which were able to communicate with one another over the `/chatter` topic, using the `String` *standard* ROS message type. This message is provided, by ROS, as part of the `std_msgs` package, but there are other simple message types within this package that we can use too to pass data around a ROS network too, one of which is `Float64`.
+
+* How could you adapt your publisher and subscriber nodes to use the `Float64` message type, instead of `String`?
