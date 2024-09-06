@@ -75,7 +75,7 @@ Copy **all** the code below into your `publisher.py` file and **review the annot
     1. Destroy the node once termination is requested (triggered by entering ++ctrl+c++ in the terminal).
     1. Shutdown the `rclpy` library.
 
-10. Finally we call the `#!python main()` function to set everything going. We do this inside an `#!python if` statement, to ensure that our node is the *main executable* (i.e. it has been executed directly (via `ros2 run`), and hasn't been called by another script)
+10. Finally, we call the `#!python main()` function to set everything going. We do this inside an `#!python if` statement, to ensure that our node is the *main executable* (i.e. it has been executed directly (via `ros2 run`), and hasn't been called by another script)
 
 ## Defining Package Dependencies
 
@@ -88,18 +88,15 @@ from rclpy.node import Node
 from std_msgs.msg import String
 ```
 
-Its good practice to add these dependencies to your `package.xml` file. Locate this file (`ros2_ws/src/part1_pubsub/package.xml`), open it up and find the following lines:
-
-```xml
-<description>TODO: Package description</description>
-<maintainer email="your.name@sheffield.ac.uk">Name</maintainer>
-<license>TODO: License declaration</license>
-```
-
-Below this, add the following two *execution dependencies* (to declare that the package needs these two libraries when your code is run):
+Its good practice to add these dependencies to your `package.xml` file. Locate this file (`ros2_ws/src/part1_pubsub/package.xml`), open it up and find the following line:
 
 ```xml
 <exec_depend>rclpy</exec_depend>
+```
+
+`rclpy` is therefore already defined as an *execution dependency* (which means that our package needs this library in order to execute our code), but we need to add `std_msgs` as well, so add the following additional line underneath:
+
+```xml
 <exec_depend>std_msgs</exec_depend>
 ```
 
