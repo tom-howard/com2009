@@ -4,7 +4,7 @@
 import rclpy # (1)!
 from rclpy.node import Node
 
-from std_msgs.msg import String
+from example_interfaces.msg import String
 
 class SimpleSubscriber(Node): # (2)! 
 

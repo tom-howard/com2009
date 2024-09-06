@@ -19,7 +19,7 @@ Copy **all** the code below into your `publisher.py` file and **review the annot
     
     We also import the `Node` class from the `rclpy.node` library. This is a ready-made Python Class that contains all the necessary functionality that a Python ROS Node might need, so we'll use this as the basis for our own node (which we'll create shortly).
 
-2. We also need to import the `String` message type from the `std_msgs.msg` library for publishing our messages.
+2. We also need to import the `String` message type from the `example_interfaces.msg` library for publishing our messages.
 
 3. We create a *Python class* called `#!python SimplePublisher()`, which we'll use to encapsulate all the functionality of our node.
     
@@ -33,7 +33,7 @@ Copy **all** the code below into your `publisher.py` file and **review the annot
 
     1. `msg_type`: The **type** of message that we want to publish.
         
-        In our case, a `String` message from the `std_msgs.msg` module.
+        In our case, a `String` message from the `example_interfaces.msg` module.
     
     1. `topic`: The **name of the topic** that we want to publish these messages to.
         
@@ -79,13 +79,13 @@ Copy **all** the code below into your `publisher.py` file and **review the annot
 
 ## Defining Package Dependencies
 
-We're importing a couple of Python libraries into our node here, which means that our package has two *dependencies*: `rclpy` and `std_msgs`:
+We're importing a couple of Python libraries into our node here, which means that our package has two *dependencies*: `rclpy` and `example_interfaces`:
 
 ```py
 import rclpy 
 from rclpy.node import Node
 
-from std_msgs.msg import String
+from example_interfaces.msg import String
 ```
 
 Its good practice to add these dependencies to your `package.xml` file. Locate this file (`ros2_ws/src/part1_pubsub/package.xml`), open it up and find the following line:
@@ -94,10 +94,10 @@ Its good practice to add these dependencies to your `package.xml` file. Locate t
 <exec_depend>rclpy</exec_depend>
 ```
 
-`rclpy` is therefore already defined as an *execution dependency* (which means that our package needs this library in order to execute our code), but we need to add `std_msgs` as well, so add the following additional line underneath:
+`rclpy` is therefore already defined as an *execution dependency* (which means that our package needs this library in order to execute our code), but we need to add `example_interfaces` as well, so add the following additional line underneath:
 
 ```xml
-<exec_depend>std_msgs</exec_depend>
+<exec_depend>example_interfaces</exec_depend>
 ```
 
 Job done. Save the file and close it.

@@ -10,7 +10,7 @@ Copy **all** the code below into your `subscriber.py` file and (again) *make sur
 --8<-- "code_templates/subscriber.py"
 ```
 
-1. As with our publisher node, we need to import the `rclpy` client library and the `String` message type from the `std_msgs.msg` library in order to write a Python ROS Node and use the relevant ROS messages:
+1. As with our publisher node, we need to import the `rclpy` client library and the `String` message type from the `example_interfaces.msg` library in order to write a Python ROS Node and use the relevant ROS messages:
 
 2. This time, we create a Python Class called `SimpleSubscriber()` instead, but which still inherits the `Node` class from `rclpy` as we did with the Publisher before.
 
@@ -20,7 +20,7 @@ Copy **all** the code below into your `subscriber.py` file and (again) *make sur
 
     1. `msg_type`: The **type** of message that the topic uses (which we could obtain by running the `ros2 topic info` command).
         
-        We know (having just created the publisher), that our topic uses `String` messages (from `std_msgs`).
+        We know (having just created the publisher), that our topic uses `String` messages (from `example_interfaces`).
     
     1. `topic`: The **name of the topic** that we want to listen (or subscribe) to.
         
