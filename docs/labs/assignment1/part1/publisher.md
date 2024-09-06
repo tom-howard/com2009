@@ -102,34 +102,6 @@ Its good practice to add these dependencies to your `package.xml` file. Locate t
 
 Job done. Save the file and close it.
 
-## Defining Package Dependencies
-
-We're importing a couple of Python libraries into our node here, which means that our package has two *dependencies*: `rclpy` and `std_msgs`:
-
-```py
-import rclpy 
-from rclpy.node import Node
-
-from std_msgs.msg import String
-```
-
-Its good practice to add these dependencies to your `package.xml` file. Locate this file (`ros2_ws/src/part1_pubsub/package.xml`), open it up and find the following lines:
-
-```xml
-<description>TODO: Package description</description>
-<maintainer email="your.name@sheffield.ac.uk">Name</maintainer>
-<license>TODO: License declaration</license>
-```
-
-Below this, add the following two *execution dependencies* (to declare that the package needs these two libraries when your code is run):
-
-```xml
-<exec_depend>rclpy</exec_depend>
-<exec_depend>std_msgs</exec_depend>
-```
-
-Job done. Save the file and close it.
-
 ## The Shebang {#shebang}
 
 The very first line of code looks like a comment, but it is actually a very crucial part of the script:
