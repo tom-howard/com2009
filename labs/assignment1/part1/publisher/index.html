@@ -948,7 +948,7 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">rclpy</span> <span class="c1"># (1)!</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span> <span class="nn">example_interfaces.msg</span> <span class="kn">import</span> <span class="n">String</span> <span class="c1"># (2)!</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">class</span> <span class="nc">SimplePublisher</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span> <span class="c1"># (3)!</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
@@ -996,7 +996,7 @@
 <p>We also import the <code>Node</code> class from the <code>rclpy.node</code> library. This is a ready-made Python Class that contains all the necessary functionality that a Python ROS Node might need, so we'll use this as the basis for our own node (which we'll create shortly).</p>
 </li>
 <li>
-<p>We also need to import the <code>String</code> message type from the <code>std_msgs.msg</code> library for publishing our messages.</p>
+<p>We also need to import the <code>String</code> message type from the <code>example_interfaces.msg</code> library for publishing our messages.</p>
 </li>
 <li>
 <p>We create a <em>Python class</em> called <code class="highlight"><span class="n">SimplePublisher</span><span class="p">()</span></code>, which we'll use to encapsulate all the functionality of our node.</p>
@@ -1011,7 +1011,7 @@
 <ol>
 <li>
 <p><code>msg_type</code>: The <strong>type</strong> of message that we want to publish.</p>
-<p>In our case, a <code>String</code> message from the <code>std_msgs.msg</code> module.</p>
+<p>In our case, a <code>String</code> message from the <code>example_interfaces.msg</code> module.</p>
 </li>
 <li>
 <p><code>topic</code>: The <strong>name of the topic</strong> that we want to publish these messages to.</p>
@@ -1066,17 +1066,17 @@
 </li>
 </ol>
 <h2 id="defining-package-dependencies">Defining Package Dependencies<a class="headerlink" href="#defining-package-dependencies" title="Permanent link">&para;</a></h2>
-<p>We're importing a couple of Python libraries into our node here, which means that our package has two <em>dependencies</em>: <code>rclpy</code> and <code>std_msgs</code>:</p>
+<p>We're importing a couple of Python libraries into our node here, which means that our package has two <em>dependencies</em>: <code>rclpy</code> and <code>example_interfaces</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kn">import</span> <span class="nn">rclpy</span> 
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span> <span class="nn">std_msgs.msg</span> <span class="kn">import</span> <span class="n">String</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span> <span class="nn">example_interfaces.msg</span> <span class="kn">import</span> <span class="n">String</span>
 </code></pre></div>
 <p>Its good practice to add these dependencies to your <code>package.xml</code> file. Locate this file (<code>ros2_ws/src/part1_pubsub/package.xml</code>), open it up and find the following line:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span>
 </code></pre></div>
-<p><code>rclpy</code> is therefore already defined as an <em>execution dependency</em> (which means that our package needs this library in order to execute our code), but we need to add <code>std_msgs</code> as well, so add the following additional line underneath:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;exec_depend&gt;</span>std_msgs<span class="nt">&lt;/exec_depend&gt;</span>
+<p><code>rclpy</code> is therefore already defined as an <em>execution dependency</em> (which means that our package needs this library in order to execute our code), but we need to add <code>example_interfaces</code> as well, so add the following additional line underneath:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;exec_depend&gt;</span>example_interfaces<span class="nt">&lt;/exec_depend&gt;</span>
 </code></pre></div>
 <p>Job done. Save the file and close it.</p>
 <h2 id="shebang">The Shebang<a class="headerlink" href="#shebang" title="Permanent link">&para;</a></h2>
@@ -1109,7 +1109,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-06T08:49:32+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-06T15:37:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-06</span>
   </span>
 
     
