@@ -111,7 +111,7 @@ Vector3  angular
 
 ### Velocity Commands
 
-There are **six** *"fields"* that we can assign values to here, **two** velocity *types*, each with **three** velocity *components*: 
+There are **six** *"fields"* that we can assign values to here: **two** velocity *types*, each with **three** velocity *components*: 
 
 <center>
 
@@ -122,7 +122,7 @@ There are **six** *"fields"* that we can assign values to here, **two** velocity
 
 </center>
 
-These relate to a robot's **six degrees of freedom**, and these topic messages are therefore formatted to give a ROS Programmer the ability to *ask* a robot to move in any one of its six DOFs. 
+These relate to a robot's **six degrees of freedom**, and the topic messages are therefore formatted to give a ROS Programmer the ability to *ask* a robot to move in any one of its six DOFs. 
 
 <center>
 
@@ -136,7 +136,7 @@ These relate to a robot's **six degrees of freedom**, and these topic messages a
 
 ### The Degrees of Freedom of a Waffle
 
-The three "axes" in the table above are termed the *"Principal Axes"*. In the context of our TurtleBot3 Waffle, these axes and the motion about them are as follows:
+The three "axes" in the table above are termed the *"Principal Axes"*. In the context of our TurtleBot3 Waffle, these axes and the motion about them are defined as follows:
 
 <a name="principal-axes"></a>
 
@@ -156,7 +156,7 @@ It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*)
 
 <center>
 
-| Component (Axis) | Linear Velocity | Angular Velocity | 
+| Principal Axis | Linear Velocity | Angular Velocity | 
 | :---: | :---: | :---: |
 | **X** | **"Forwards/Backwards"** | ~~"Roll"~~ |
 | **Y** | ~~"Left/Right"~~ | ~~"Pitch"~~ |
@@ -178,7 +178,7 @@ It can therefore only move **linearly** in the **x**-axis (*Forwards/Backwards*)
 
 ## Odometry (Position) {#odometry}
 
-### First Look (In Action)
+### Odometry In Action
 
 Let's take another look at *all* the topics that can be used to communicate with our robot:
 
@@ -217,7 +217,7 @@ Let's explore this further now, using `rqt`.
 
 1. Next, launch a new terminal instance, we'll call this one **TERMINAL 3**. Arrange this next to the `rqt` window, so that you can see them both simultaneously.
 
-1. In **TERMINAL 3** launch the `teleop_keyboard` node [as you did last time](./part1.md#teleop): <a name="teleop"></a>
+1. In **TERMINAL 3** launch the `teleop_keyboard` node [as you did in Part 1](./part1.md#teleop): <a name="teleop"></a>
 
     ***
     **TERMINAL 3:**
@@ -230,13 +230,13 @@ Let's explore this further now, using `rqt`.
 
     !!! question "Questions"
         1. Which `pose` fields are changing?
-        1. Is there anything in the `twist` part of the message that corresponds to the `angular velocity` that is being published by the `teleop_keyboard` node in **TERMINAL 3**? 
+        1. Is there anything in the `twist` part of the message that corresponds to the *angular* velocity that is being published by the `teleop_keyboard` node in **TERMINAL 3**? 
 
 1. Now press the ++s++ key to halt the robot, then press ++w++ a couple of times to make the robot drive forwards.
 
     !!! question "Questions"
         1. Which `pose` fields are changing *now*? How does this relate to the position of the robot in the simulated world?
-        1. How does the `twist` part of the message *now* correspond to the `linear velocity` setting in **TERMINAL 3**?
+        1. How does the `twist` part of the message now correspond with the *linear* velocity setting in **TERMINAL 3**?
 
 1. Now press ++d++ a couple of times and your robot should start to move in a circle.
 
@@ -267,7 +267,7 @@ Let's explore this further now, using `rqt`.
 
 ### Odometry: Explained
 
-Hopefully you have a good idea of what Odometry is now, having seeing it in action, but let's dig a little deeper using some key ROS command line tools again:
+Hopefully you have a good idea of what Odometry is now, but let's dig a little deeper using some key ROS command line tools again:
 
 ***
 **TERMINAL 2:**
@@ -327,9 +327,7 @@ geometry_msgs/PoseWithCovariance pose
 As you can see above, there are two key components to Pose:
 
 1. **Position**: Tells us where our robot is located in 3-dimensional space. This is expressed in units of **meters**.
-1. **Orientation**: Tells us which way our robot is pointing in its environment. This is expressed in units of **Quaternions**, which is a mathematically convenient way to store data related to a robot's orientation, but it's a bit hard for us humans to understand and visualise[^quaternions].
-
-    [^quaternions]: [Quaternions are explained very nicely here](https://automaticaddison.com/how-to-convert-a-quaternion-to-a-rotation-matrix/#What_is_a_Quaternion), if you'd like to learn more.
+1. **Orientation**: Tells us which way our robot is pointing in its environment. This is expressed in units of **Quaternions**, which is a mathematically convenient way to store data related to a robot's orientation (it's a bit hard for us humans to understand and visualise this though, so we'll talk about how to convert it to a different format later).
 
 Pose is defined relative to an arbitrary reference point (typically where the robot was when it was turned on), and is determined from:
 
@@ -339,9 +337,11 @@ Pose is defined relative to an arbitrary reference point (typically where the ro
 
 All the above information can then be used to calculate (and keep track of) the distance travelled by the robot from its pre-defined reference point using a process called *"dead-reckoning."*
 
-##### What are Quaternions?
+#### What are Quaternions?
 
-Quaternions use **four values** to represent the orientation of something in 3 dimensional space, as we can observe from the structure of the `nav_msgs/msg/Odometry` ROS message:
+Quaternions use **four values** to represent the orientation of something in 3 dimensional space[^quaternions], as we can observe from the structure of the `nav_msgs/msg/Odometry` ROS message:
+
+[^quaternions]: [Quaternions are explained very nicely here](https://automaticaddison.com/how-to-convert-a-quaternion-to-a-rotation-matrix/#What_is_a_Quaternion), if you'd like to learn more.
 
 ``` { .txt .no-copy }
 Quaternion orientation
@@ -391,7 +391,7 @@ Odometry data can be really useful for robot navigation, allowing us to keep tra
 
 #### :material-pen: Exercise 2: Creating a Python node to process Odometry data {#ex2}
 
-In Part 1 you learnt how to create a package and build simple nodes in Python to publish and subscribe to messages on a topic. In this exercise you will build a new subscriber node, much like you did in the previous session, but this one will subscribe to the `/odom` topic that we've been talking about above. You'll also create a new package called `part2_navigation` for this node to live in!
+In Part 1 we learnt how to create a package and build simple Python nodes to publish and subscribe to messages on a topic. In this exercise we'll build a new subscriber node, much like you did in the previous session, but this one will subscribe to the `/odom` topic that we've been talking about above. We'll also create a new package called `part2_navigation` for this node to live in!
 
 1. First, head to the `src` folder of your ROS2 workspace in your terminal:
 
@@ -411,14 +411,15 @@ In Part 1 you learnt how to create a package and build simple nodes in Python to
     cd part2_navigation/scripts/
     ```
 
-1. The subscriber that we will build here will be structured in much the same way as the subscriber that we built in Part 1. The difference now though is that this one will subscribe to the `/odom` topic (instead of the rather meaningless `"/my_topic"` topic that we were using before). 
+1. The subscriber that we will build here will be structured in much the same way as the subscriber that we built in Part 1. The difference now though is that this one will subscribe to the `/odom` topic (instead of the rather meaningless `"/my_topic"` topic that we were using in Part 1). 
     
-    The callback function in this new node will therefore receive `Odometry` type messages, so we'll have to deal with those a bit differently. We've created a template for this to help you to get started. Download this from GitHub using the `wget` command:
+    As a starting point, copy across the `subscriber.py` file from your `part1_pubsub` package:
 
     ```bash
-    wget -O odom_subscriber.py \
-    https://raw.githubusercontent.com/tom-howard/tuos_ros/humble/tuos_examples/tuos_examples/odom_subscriber_template.py
+    cp ~/ros2_ws/src/part1_pubsub/scripts/subscriber.py ./odom_subscriber.py
     ```
+
+1. [The steps for converting this into an Odometry subscriber are outlined here](./part2/odom_subscriber.md). <a name="odom_sub_ret"></a>
 
 1. You'll need to add a new dependency to your package's `package.xml` file. Below the `#!xml <exec_depend>rclpy</exec_depend>` line, add an execution dependency for `nav_msgs`:
 
