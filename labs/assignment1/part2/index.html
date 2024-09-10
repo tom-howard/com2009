@@ -775,13 +775,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#first-look-in-action" class="md-nav__link">
+  <a href="#odometry-in-action" class="md-nav__link">
     <span class="md-ellipsis">
-      First Look (In Action)
+      Odometry In Action
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="First Look (In Action)">
+    <nav class="md-nav" aria-label="Odometry In Action">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -815,8 +815,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pose">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#what-are-quaternions" class="md-nav__link">
@@ -824,11 +823,6 @@
       What are Quaternions?
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1217,13 +1211,13 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#first-look-in-action" class="md-nav__link">
+  <a href="#odometry-in-action" class="md-nav__link">
     <span class="md-ellipsis">
-      First Look (In Action)
+      Odometry In Action
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="First Look (In Action)">
+    <nav class="md-nav" aria-label="Odometry In Action">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1257,8 +1251,7 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Pose">
-      <ul class="md-nav__list">
+</li>
         
           <li class="md-nav__item">
   <a href="#what-are-quaternions" class="md-nav__link">
@@ -1266,11 +1259,6 @@
       What are Quaternions?
     </span>
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -1462,7 +1450,7 @@
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        float64 z
 </code></pre></div>
 <h3 id="velocity-commands">Velocity Commands<a class="headerlink" href="#velocity-commands" title="Permanent link">&para;</a></h3>
-<p>There are <strong>six</strong> <em>"fields"</em> that we can assign values to here, <strong>two</strong> velocity <em>types</em>, each with <strong>three</strong> velocity <em>components</em>: </p>
+<p>There are <strong>six</strong> <em>"fields"</em> that we can assign values to here: <strong>two</strong> velocity <em>types</em>, each with <strong>three</strong> velocity <em>components</em>: </p>
 <p><center></p>
 <table>
 <thead>
@@ -1489,7 +1477,7 @@
 </tbody>
 </table>
 <p></center></p>
-<p>These relate to a robot's <strong>six degrees of freedom</strong>, and these topic messages are therefore formatted to give a ROS Programmer the ability to <em>ask</em> a robot to move in any one of its six DOFs. </p>
+<p>These relate to a robot's <strong>six degrees of freedom</strong>, and the topic messages are therefore formatted to give a ROS Programmer the ability to <em>ask</em> a robot to move in any one of its six DOFs. </p>
 <p><center></p>
 <table>
 <thead>
@@ -1519,7 +1507,7 @@
 </table>
 <p></center></p>
 <h3 id="the-degrees-of-freedom-of-a-waffle">The Degrees of Freedom of a Waffle<a class="headerlink" href="#the-degrees-of-freedom-of-a-waffle" title="Permanent link">&para;</a></h3>
-<p>The three "axes" in the table above are termed the <em>"Principal Axes"</em>. In the context of our TurtleBot3 Waffle, these axes and the motion about them are as follows:</p>
+<p>The three "axes" in the table above are termed the <em>"Principal Axes"</em>. In the context of our TurtleBot3 Waffle, these axes and the motion about them are defined as follows:</p>
 <p><a name="principal-axes"></a></p>
 <figure>
 <p><img alt="" src="../../../images/waffle/principal_axes.svg" width="800" /></p>
@@ -1534,7 +1522,7 @@
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">Component (Axis)</th>
+<th style="text-align: center;">Principal Axis</th>
 <th style="text-align: center;">Linear Velocity</th>
 <th style="text-align: center;">Angular Velocity</th>
 </tr>
@@ -1586,7 +1574,7 @@
 <p></center></p>
 </div>
 <h2 id="odometry">Odometry (Position)<a class="headerlink" href="#odometry" title="Permanent link">&para;</a></h2>
-<h3 id="first-look-in-action">First Look (In Action)<a class="headerlink" href="#first-look-in-action" title="Permanent link">&para;</a></h3>
+<h3 id="odometry-in-action">Odometry In Action<a class="headerlink" href="#odometry-in-action" title="Permanent link">&para;</a></h3>
 <p>Let's take another look at <em>all</em> the topics that can be used to communicate with our robot:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
 </code></pre></div>
@@ -1622,7 +1610,7 @@
 <p>Next, launch a new terminal instance, we'll call this one <strong>TERMINAL 3</strong>. Arrange this next to the <code>rqt</code> window, so that you can see them both simultaneously.</p>
 </li>
 <li>
-<p>In <strong>TERMINAL 3</strong> launch the <code>teleop_keyboard</code> node <a href="../part1/#teleop">as you did last time</a>: <a name="teleop"></a></p>
+<p>In <strong>TERMINAL 3</strong> launch the <code>teleop_keyboard</code> node <a href="../part1/#teleop">as you did in Part 1</a>: <a name="teleop"></a></p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>teleop_keyboard
@@ -1635,7 +1623,7 @@
 <p class="admonition-title">Questions</p>
 <ol>
 <li>Which <code>pose</code> fields are changing?</li>
-<li>Is there anything in the <code>twist</code> part of the message that corresponds to the <code>angular velocity</code> that is being published by the <code>teleop_keyboard</code> node in <strong>TERMINAL 3</strong>? </li>
+<li>Is there anything in the <code>twist</code> part of the message that corresponds to the <em>angular</em> velocity that is being published by the <code>teleop_keyboard</code> node in <strong>TERMINAL 3</strong>? </li>
 </ol>
 </div>
 </li>
@@ -1645,7 +1633,7 @@
 <p class="admonition-title">Questions</p>
 <ol>
 <li>Which <code>pose</code> fields are changing <em>now</em>? How does this relate to the position of the robot in the simulated world?</li>
-<li>How does the <code>twist</code> part of the message <em>now</em> correspond to the <code>linear velocity</code> setting in <strong>TERMINAL 3</strong>?</li>
+<li>How does the <code>twist</code> part of the message now correspond with the <em>linear</em> velocity setting in <strong>TERMINAL 3</strong>?</li>
 </ol>
 </div>
 </li>
@@ -1684,7 +1672,7 @@
 </li>
 </ol>
 <h3 id="odometry-explained">Odometry: Explained<a class="headerlink" href="#odometry-explained" title="Permanent link">&para;</a></h3>
-<p>Hopefully you have a good idea of what Odometry is now, having seeing it in action, but let's dig a little deeper using some key ROS command line tools again:</p>
+<p>Hopefully you have a good idea of what Odometry is now, but let's dig a little deeper using some key ROS command line tools again:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/odom
@@ -1752,9 +1740,7 @@
 <p>As you can see above, there are two key components to Pose:</p>
 <ol>
 <li><strong>Position</strong>: Tells us where our robot is located in 3-dimensional space. This is expressed in units of <strong>meters</strong>.</li>
-<li>
-<p><strong>Orientation</strong>: Tells us which way our robot is pointing in its environment. This is expressed in units of <strong>Quaternions</strong>, which is a mathematically convenient way to store data related to a robot's orientation, but it's a bit hard for us humans to understand and visualise<sup id="fnref:quaternions"><a class="footnote-ref" href="#fn:quaternions">1</a></sup>.</p>
-</li>
+<li><strong>Orientation</strong>: Tells us which way our robot is pointing in its environment. This is expressed in units of <strong>Quaternions</strong>, which is a mathematically convenient way to store data related to a robot's orientation (it's a bit hard for us humans to understand and visualise this though, so we'll talk about how to convert it to a different format later).</li>
 </ol>
 <p>Pose is defined relative to an arbitrary reference point (typically where the robot was when it was turned on), and is determined from:</p>
 <ul>
@@ -1763,8 +1749,8 @@
 <li>A <em>kinematic model</em> of the robot</li>
 </ul>
 <p>All the above information can then be used to calculate (and keep track of) the distance travelled by the robot from its pre-defined reference point using a process called <em>"dead-reckoning."</em></p>
-<h5 id="what-are-quaternions">What are Quaternions?<a class="headerlink" href="#what-are-quaternions" title="Permanent link">&para;</a></h5>
-<p>Quaternions use <strong>four values</strong> to represent the orientation of something in 3 dimensional space, as we can observe from the structure of the <code>nav_msgs/msg/Odometry</code> ROS message:</p>
+<h4 id="what-are-quaternions">What are Quaternions?<a class="headerlink" href="#what-are-quaternions" title="Permanent link">&para;</a></h4>
+<p>Quaternions use <strong>four values</strong> to represent the orientation of something in 3 dimensional space<sup id="fnref:quaternions"><a class="footnote-ref" href="#fn:quaternions">1</a></sup>, as we can observe from the structure of the <code>nav_msgs/msg/Odometry</code> ROS message:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>Quaternion orientation
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>        float64 x
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>        float64 y
@@ -1802,7 +1788,7 @@
 <h3 id="odometry-data-as-a-feedback-signal">Odometry Data as a Feedback Signal<a class="headerlink" href="#odometry-data-as-a-feedback-signal" title="Permanent link">&para;</a></h3>
 <p>Odometry data can be really useful for robot navigation, allowing us to keep track of where a robot is, how it's moving and how to get back to where we started. We therefore need to know how to use odometry data effectively within our Python nodes, and we'll explore this now.</p>
 <h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 2: Creating a Python node to process Odometry data<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
-<p>In Part 1 you learnt how to create a package and build simple nodes in Python to publish and subscribe to messages on a topic. In this exercise you will build a new subscriber node, much like you did in the previous session, but this one will subscribe to the <code>/odom</code> topic that we've been talking about above. You'll also create a new package called <code>part2_navigation</code> for this node to live in!</p>
+<p>In Part 1 we learnt how to create a package and build simple Python nodes to publish and subscribe to messages on a topic. In this exercise we'll build a new subscriber node, much like you did in the previous session, but this one will subscribe to the <code>/odom</code> topic that we've been talking about above. We'll also create a new package called <code>part2_navigation</code> for this node to live in!</p>
 <ol>
 <li>
 <p>First, head to the <code>src</code> folder of your ROS2 workspace in your terminal:</p>
@@ -1820,11 +1806,13 @@
 </code></pre></div>
 </li>
 <li>
-<p>The subscriber that we will build here will be structured in much the same way as the subscriber that we built in Part 1. The difference now though is that this one will subscribe to the <code>/odom</code> topic (instead of the rather meaningless <code>"/my_topic"</code> topic that we were using before). </p>
-<p>The callback function in this new node will therefore receive <code>Odometry</code> type messages, so we'll have to deal with those a bit differently. We've created a template for this to help you to get started. Download this from GitHub using the <code>wget</code> command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>wget<span class="w"> </span>-O<span class="w"> </span>odom_subscriber.py<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>https://raw.githubusercontent.com/tom-howard/tuos_ros/humble/tuos_examples/tuos_examples/odom_subscriber_template.py
+<p>The subscriber that we will build here will be structured in much the same way as the subscriber that we built in Part 1. The difference now though is that this one will subscribe to the <code>/odom</code> topic (instead of the rather meaningless <code>"/my_topic"</code> topic that we were using in Part 1). </p>
+<p>As a starting point, copy across the <code>subscriber.py</code> file from your <code>part1_pubsub</code> package:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>cp<span class="w"> </span>~/ros2_ws/src/part1_pubsub/scripts/subscriber.py<span class="w"> </span>./odom_subscriber.py
 </code></pre></div>
+</li>
+<li>
+<p><a href="odom_subscriber/">The steps for converting this into an Odometry subscriber are outlined here</a>. <a name="odom_sub_ret"></a></p>
 </li>
 <li>
 <p>You'll need to add a new dependency to your package's <code>package.xml</code> file. Below the <code class="highlight"><span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span></code> line, add an execution dependency for <code>nav_msgs</code>:</p>
@@ -2053,7 +2041,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-09T15:48:35+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T15:48:15+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
   </span>
 
     
