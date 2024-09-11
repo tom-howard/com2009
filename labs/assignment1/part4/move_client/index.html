@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://tom-howard.github.io/com2009/labs/assignment1/part2/odom_subscriber/">
+        <link rel="canonical" href="https://tom-howard.github.io/com2009/labs/assignment1/part4/move_client/">
       
       
-        <link rel="prev" href="../../part1/subscriber/">
+        <link rel="prev" href="../../part2/odom_subscriber/">
       
       
-        <link rel="next" href="../../part4/move_client/">
+        <link rel="next" href="../move_server/">
       
       
       <link rel="icon" href="../../../../assets/tuos_logo.svg">
@@ -24,7 +24,7 @@
     
     
       
-        <title>An Odomerty Subscriber Node - COM2009: ROS2 Labs</title>
+        <title>Part 4 Move Service-Client - COM2009: ROS2 Labs</title>
       
     
     
@@ -90,7 +90,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#the-initial-code" class="md-skip">
+        <a href="#part-4-move-service-client" class="md-skip">
           Skip to content
         </a>
       
@@ -133,7 +133,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              An Odomerty Subscriber Node
+              Part 4 Move Service-Client
             
           </span>
         </div>
@@ -652,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../part2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -694,7 +694,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part4/" class="md-nav__link">
+      <a href="../" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -915,83 +915,8 @@
   
   
   
+    
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#the-initial-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      The Initial Code
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#from-simple-subscriber-to-odom-subscriber" class="md-nav__link">
-    <span class="md-ellipsis">
-      From Simple Subscriber to Odom Subscriber
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="From Simple Subscriber to Odom Subscriber">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#imports" class="md-nav__link">
-    <span class="md-ellipsis">
-      Imports
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#change-the-class-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      Change the Class Name
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#initialising-the-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      Initialising the Class
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#modifying-the-message-callback" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modifying the Message Callback
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#updating-main" class="md-nav__link">
-    <span class="md-ellipsis">
-      Updating "Main"
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
   
 </nav>
                   </div>
@@ -1006,7 +931,7 @@
                   
 
   
-    <a href="https://github.com/tom-howard/com2009/edit/main/docs/labs/assignment1/part2/odom_subscriber.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/com2009/edit/main/docs/labs/assignment1/part4/move_client.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1015,165 +940,58 @@
     
       
     
-    <a href="https://github.com/tom-howard/com2009/raw/main/docs/labs/assignment1/part2/odom_subscriber.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/com2009/raw/main/docs/labs/assignment1/part4/move_client.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-  <h1>An Odomerty Subscriber Node</h1>
-
-<h2 id="the-initial-code">The Initial Code<a class="headerlink" href="#the-initial-code" title="Permanent link">&para;</a></h2>
-<p>Having copied the <code>subscriber.py</code> file from your <code>part1_pubsub</code> package, you'll start out with the following code:</p>
+<h1 id="part-4-move-service-client">Part 4 Move Service-Client<a class="headerlink" href="#part-4-move-service-client" title="Permanent link">&para;</a></h1>
+<p>Copy <strong>all</strong> the code below into your <code>move_client.py</code> file and review the annotations to understand how it all works.</p>
+<div class="admonition note">
+<p class="admonition-title">DFTS!!</p>
+<p>(Don't forget the shebang!)
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/usr/bin/env python3</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># A simple ROS2 Subscriber</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">import</span> <span class="nn">rclpy</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="kn">from</span> <span class="nn">example_interfaces.msg</span> <span class="kn">import</span> <span class="n">String</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">class</span> <span class="nc">SimpleSubscriber</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> 
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;simple_subscriber&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">my_subscriber</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>            <span class="n">msg_type</span><span class="o">=</span><span class="n">String</span><span class="p">,</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{BLANK}</span><span class="s2">&quot;</span><span class="p">,</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">msg_callback</span><span class="p">,</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>            <span class="n">qos_profile</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>        <span class="p">)</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            <span class="sa">f</span><span class="s2">&quot;The &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39; node is initialised.&quot;</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="p">)</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    <span class="k">def</span> <span class="nf">msg_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_message</span><span class="p">:</span> <span class="n">String</span><span class="p">):</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="c1"># (7)!</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;The &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39; node heard:&quot;</span><span class="p">)</span> 
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">topic_message</span><span class="o">.</span><span class="n">data</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>    <span class="n">my_simple_subscriber</span> <span class="o">=</span> <span class="n">SimpleSubscriber</span><span class="p">()</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">my_simple_subscriber</span><span class="p">)</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="n">my_simple_subscriber</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span> 
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>    <span class="n">main</span><span class="p">()</span>
+</code></pre></div></p>
+</div>
+<div class="highlight"><span class="filename">move_client.py</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/usr/bin/env python3</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span> <span class="nn">rclpy</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span> <span class="nn">rclpy.node</span> <span class="kn">import</span> <span class="n">Node</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span> <span class="nn">std_srv.srv</span> <span class="kn">import</span> <span class="n">SetBool</span>  <span class="c1"># Import the standard SetBool service</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">class</span> <span class="nc">MoveServiceClient</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">def</span> <span class="nf">_init_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_init_</span><span class="p">(</span><span class="s1">&#39;move_service_client&#39;</span><span class="p">)</span>  <span class="c1"># Initialize the node with a name</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="n">SetBool</span><span class="p">,</span> <span class="s1">&#39;setbool&#39;</span><span class="p">)</span>  <span class="c1"># Create a service client</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Waiting for the move_service to be available...&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">=</span> <span class="n">SetBool</span><span class="o">.</span><span class="n">Request</span><span class="p">()</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="k">def</span> <span class="nf">send_request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="n">request</span> <span class="o">=</span> <span class="n">SetBool</span><span class="o">.</span><span class="n">Request</span><span class="p">()</span>  <span class="c1"># Create a request object</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="n">request</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set the request data</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>        <span class="n">future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">call_async</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>  <span class="c1"># Call the service asynchronously</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">)</span>  <span class="c1"># Wait until the future completes</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        <span class="k">if</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>            <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Response: </span><span class="si">{</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">success</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>            <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Service call failed&#39;</span><span class="p">)</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>  <span class="c1"># Initialize the rclpy library</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">MoveServiceClient</span><span class="p">()</span>  <span class="c1"># Create a client node</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="n">client</span><span class="o">.</span><span class="n">send_request</span><span class="p">()</span>  <span class="c1"># Send the request to the service</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    <span class="n">client</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>  <span class="c1"># Clean up the node</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>  <span class="c1"># Shutdown rclpy</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="k">if</span> <span class="n">_name_</span> <span class="o">==</span> <span class="s1">&#39;_main_&#39;</span><span class="p">:</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>    <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
-<p>Let's look at what we need to change now.</p>
-<h2 id="from-simple-subscriber-to-odom-subscriber">From Simple Subscriber to Odom Subscriber<a class="headerlink" href="#from-simple-subscriber-to-odom-subscriber" title="Permanent link">&para;</a></h2>
-<h3 id="imports">Imports<a class="headerlink" href="#imports" title="Permanent link">&para;</a></h3>
-<p>We will generally rely on <code>rclpy</code> and the <code>Node</code> class from the <code>rclpy.node</code> library, for most nodes that we will create, so our first two imports will remain the same. </p>
-<p>We won't be working with <code>String</code> type messages any more however, so we need to replace this line in order to import the correct message type. As we know from <a href="../#odometry-explained">earlier in Part 2</a>, the <code>/odom</code> topic uses messages of the type <code>nav_msgs/msg/Odometry</code>:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$<span class="w"> </span>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/odom
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>Type:<span class="w"> </span>nav_msgs/msg/Odometry
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>...
-</code></pre></div>
-<p>This tells us everything we need to know to construct the Python import statement correctly:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">nav_msgs.msg</span> <span class="kn">import</span> <span class="n">Odometry</span>
-</code></pre></div>
-<p>We'll also need to import a handy function that should already exist as an importable module in your <code>part2_navigation</code> package called <code>tb3_tools</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">part2_navigation.tb3_tools</span> <span class="kn">import</span> <span class="n">quaternion_to_euler</span>
-</code></pre></div>
-<p>As the name suggests, we'll use this to convert the raw orientation values from <code>/odom</code> into their Euler Angle representation.</p>
-<details class="info">
-<summary>Info</summary>
-<p>This module can be found here: <code>part2_navigation/part2_navigation/tb3_tools.py</code>, if you want to have a look.</p>
-</details>
-<h3 id="change-the-class-name">Change the Class Name<a class="headerlink" href="#change-the-class-name" title="Permanent link">&para;</a></h3>
-<p>Previously our class was called <code class="highlight"><span class="n">SimpleSubscriber</span><span class="p">()</span></code>, change this to something more appropriate now, e.g.: <code class="highlight"><span class="n">OdomSubscriber</span><span class="p">()</span></code>.</p>
-<h3 id="initialising-the-class">Initialising the Class<a class="headerlink" href="#initialising-the-class" title="Permanent link">&para;</a></h3>
-<p>The structure of this remains largely the same, we just need to modify a few things: </p>
-<ol>
-<li>
-<p>Change the name that is used to register the node on the ROS Network:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;odom_subscriber&quot;</span><span class="p">)</span>
-</code></pre></div>
-</li>
-<li>
-<p>Change the subscription parameters:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">my_subscriber</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_subscription</span><span class="p">(</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">msg_type</span><span class="o">=</span><span class="n">Odometry</span><span class="p">,</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;odom&quot;</span><span class="p">,</span> <span class="c1"># (2)!</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>    <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">msg_callback</span><span class="p">,</span> 
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>    <span class="n">qos_profile</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="p">)</span>
-</code></pre></div>
-<ol>
-<li><code>/odom</code> uses the Odometry message type (as imported above)</li>
-<li>The topic name is <code>"odom"</code>, of course!</li>
-</ol>
-</li>
-</ol>
-<p>The final thing we'll do inside our class' <code>__init__</code> method (after we've set up the subscriber) is initialise a counter:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span> 
-</code></pre></div>
-<p>The reason for this will become clear shortly...</p>
-<h3 id="modifying-the-message-callback">Modifying the Message Callback<a class="headerlink" href="#modifying-the-message-callback" title="Permanent link">&para;</a></h3>
-<p>This is where the changes are a bit more significant...</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span> <span class="nf">msg_subscriber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_message</span><span class="p">:</span> <span class="n">Odometry</span><span class="p">):</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">pose</span> <span class="o">=</span> <span class="n">topic_data</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span> <span class="c1"># (2)!</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="c1"># (3)!</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">pos_x</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>    <span class="n">pos_y</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">y</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>    <span class="n">pos_z</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">z</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>    <span class="n">roll</span><span class="p">,</span> <span class="n">pitch</span><span class="p">,</span> <span class="n">yaw</span> <span class="o">=</span> <span class="n">quaternion_to_euler</span><span class="p">(</span><span class="n">pose</span><span class="o">.</span><span class="n">orientation</span><span class="p">)</span> <span class="c1"># (4)!</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span> <span class="c1"># (5)!</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x = </span><span class="si">{</span><span class="n">pos_x</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (m), y = ? (m), theta_z = ? (radians)&quot;</span><span class="p">)</span> <span class="c1"># (6)!</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>    <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></div>
-<ol>
-<li>When defining our message callback, we should modify the type of the <code>topic_message</code> input.</li>
-<li>
-<p>There are two key parts to an odometry message: Pose and Twist.</p>
-<p>We're only really interested in the Pose part of the message here, so grab this first.</p>
-</li>
-<li>
-<p>As we know by now, Pose contains information about both the "position" and "orientation" of the robot, we extract the position values first and assign them to the variables <code>pos_x</code>, <code>pos_y</code> and <code>pos_z</code>.</p>
-<p>Position data is provided in meters, so we don't need to do any conversion on this and can use the data directly.</p>
-</li>
-<li>
-<p>Orientation data is in quaternions, so we convert this by passing it to the <code>quaternion_to_euler</code> function that we imported from <code>tb3_tools</code> earlier.</p>
-<p>This function provides us with the orientation of the robot about its 3 principal axes:</p>
-<ul>
-<li><code>&theta;<sub>x</sub></code>: "Roll"</li>
-<li><code>&theta;<sub>y</sub></code>: "Pitch"</li>
-<li><code>&theta;<sub>z</sub></code>: "Yaw"</li>
-</ul>
-</li>
-<li>
-<p>Here we print out the values that we're interested in to the terminal.</p>
-<p>This callback function will execute every time a new message is published to the <code>odom</code> topic, which occurs at a rate of around 20 times per second (20 Hz).</p>
-<details class="tip">
-<summary>Tip</summary>
-<p>We can use he <code>ros2 topic hz</code> function to tell us this:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>$ ros2 topic hz /odom
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>average rate: 18.358
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>min: 0.037s max: 0.088s std dev: 0.01444s window: 20
-</code></pre></div>
-</details>
-<p>That's a lot of messages to be printed to the terminal every second! We therefore use an <code>if</code> statement and a <code>counter</code> to ensure that our <code>print</code> statement only executes for 1 in every 10 topic messages instead.</p>
-</li>
-<li>
-<p><strong>Task</strong>: Continue formatting the <code>print</code> message to display the three odometry values that are relevant to our robot!  </p>
-</li>
-</ol>
-<h3 id="updating-main">Updating "Main"<a class="headerlink" href="#updating-main" title="Permanent link">&para;</a></h3>
-<p>The only thing left to do now is update any relevant parts of the <code>main</code> function to ensure that you are instantiating, spinning and shutting down your node correctly.</p>
-<p align="center">
-  <a href="../../part2#odom_sub_ret">&#8592; Back to Part 2</a>
-</p>
 
 
 
@@ -1196,7 +1014,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T15:48:15+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T17:55:20+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
   </span>
 
     
@@ -1206,7 +1024,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T15:48:15+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T17:55:20+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
   </span>
 
     
@@ -1243,7 +1061,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../part1/subscriber/" class="md-footer__link md-footer__link--prev" aria-label="Previous: A Simple Subscriber Node">
+          <a href="../../part2/odom_subscriber/" class="md-footer__link md-footer__link--prev" aria-label="Previous: An Odomerty Subscriber Node">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1253,20 +1071,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                A Simple Subscriber Node
+                An Odomerty Subscriber Node
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../part4/move_client/" class="md-footer__link md-footer__link--next" aria-label="Next: Part 4 Move Service-Client">
+          <a href="../move_server/" class="md-footer__link md-footer__link--next" aria-label="Next: Part 4 Move Service-Server">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Part 4 Move Service-Client
+                Part 4 Move Service-Server
               </div>
             </div>
             <div class="md-footer__button md-icon">

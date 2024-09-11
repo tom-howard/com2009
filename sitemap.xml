@@ -2,62 +2,70 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://tom-howard.github.io/com2009/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/about/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/extras/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment1/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment1/part1/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment1/part2/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment1/part3/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment1/part4/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment1/part1/publisher/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment1/part1/subscriber/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment1/part2/odom_subscriber/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
+    </url>
+    <url>
+         <loc>https://tom-howard.github.io/com2009/labs/assignment1/part4/move_client/</loc>
+         <lastmod>2024-09-11</lastmod>
+    </url>
+    <url>
+         <loc>https://tom-howard.github.io/com2009/labs/assignment1/part4/move_server/</loc>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/labs/assignment2/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/ros/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
     <url>
          <loc>https://tom-howard.github.io/com2009/waffles/</loc>
-         <lastmod>2024-09-10</lastmod>
+         <lastmod>2024-09-11</lastmod>
     </url>
 </urlset>
