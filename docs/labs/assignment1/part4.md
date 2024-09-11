@@ -239,7 +239,7 @@ To start with, let's set up a service and learn how to make a call to it from th
     !!! tip 
         You can also view the type of all services at the same time by adding `-t` to the `ros2 service list` command.
 
-1. We can also call this service from the command line using `ros2 service call`. 
+1. We can also call this service from the command line using `ros2 service call`.<a name="cl_call"></a> 
     ```bash
     ros2 service call <service_name> <service_type> <arguments> 
     ```
@@ -302,8 +302,7 @@ string message   <-- Response (Parameter 2 of 2)
 
 In order to *Call* a service, we need to provide data to it in the format specified in the **Request** section. A service *Server* (like the [Python node we created above](./part4/move_server.md#code)) will then send data back to the caller in the format specified in the **Response** section.
 
-The `std_srvs/srv/SetBool` service that we're working with here has 
-a **one** request parameter:
+The `std_srvs/srv/SetBool` service that we're working with here has **one** request parameter:
 
 1. A *boolean* input called `data`  
     ...which is the only thing we need to send to the Service Server in 
@@ -349,6 +348,8 @@ The response should be exactly the same when we called the service from the comm
 #### :material-pen: Exercise 3: Learn to create custom services {#ex3}
 In previous exercises you learned about messages, topics and services by using the predefined definitions of them. While using predefined interfaces is considered a good practice, it is also important to know how you can custom define these interfaces based on your own need. This exercise will teach you, step-by-step, how to create custom service definition and use it to move the robot to the requested position (providing x and y coordinates).
 
+**Procedure**  
+
 1. Close down the Service Server that is currently running in **TERMINAL 2**
 1. Navigate to your `part4_services` package 
     
@@ -362,6 +363,7 @@ and make a new directory `srv` by running the following command:
     mkdir srv
     ```
     ***
+
 1. Now navigate into the newly created directory `srv` and create new file called `MoveToPosition.srv`
 
     !!!note 
@@ -370,13 +372,53 @@ and make a new directory `srv` by running the following command:
 1. As we learned earlier, a service file consists of two parts: `Request` and `Response`. Here we will provide our own definition for each one of these parts as follow:
 
     ```bash
-    float32 goal_x
-    float32 goal_y
+    float32 goal_x      <-- request parameter 1 of 2
+    float32 goal_y      <-- request parameter 2 of 2
     ---
-    bool success
+    bool success        <-- response 
     ```
-1. Open the VS Code, copy and paste the above lines and save the file. 
+ The service takes in two user inputs `goal_x` and `goal_y` of type `float` for the `x` and `y` coordinates to where the robot needs to move.
+***
 
+1. Open the VS Code, copy and paste the above lines and save the file. 
+1. We need to add a few lines in the `CMakeList.txt` to convert the defined service into language-specific code (C++ and Python) and make it usable:
+
+    ```bash 
+    find_package(rosidl_default_generators REQUIRED)
+    rosidl_generate_interfaces(${PROJECT_NAME}
+    "srv/MoveToPosition.srv"
+    )
+    ```
+
+1. Now open the `Package.xml` file and add the following lines:
+    ```bash 
+    <build_depend>rosidl_default_generators></build_depend>
+    <exec_depend>rosidl_default_runtime></exec_depend>
+    <member_of_group>rosidl_interface_packages></member_of_group>
+    ```
+    These lines specify the dependencies required to run the custom service. 
+    
+    ***
+
+1. Next, navigate to the `scripts` folder of the `part4_services` package and create an empty file called `MoveToPosition.py`. 
+
+1. Open the newly created file in VS Code. Copy and paste the code provided [here](./part4/MoveToPosition.md). 
+1. Now modify the code as follow:
+
+    1. Change the imports to utilise the service we just created 
+    1. Develop the callback_function() to: 
+        1. Process the **two** parameters that will be provided to the server via the `service request
+        1. Retrieve the current position and calculate the difference to goal
+        1. Generate movement command to the specific coordinates
+        1. Return a correctly formatted service response message to the service caller
+    1. Launch the server node using `ros2 run` command from **TERMINAL 2** and `call` the service from the command-line using `ros2 service call` in **TERMINAL 3** [as you did earlier](#cl_call)
+
+1. Make sure you build the package in the root directory of ros2 workspace using `colcon` and source the environment: 
+
+    ??? tip 
+        For convenience, you can use a handy alias `src` instead of writing the whole `source ~/.bashrc`
+
+***
 
 ## A recap on everything you've learnt so far...
 
