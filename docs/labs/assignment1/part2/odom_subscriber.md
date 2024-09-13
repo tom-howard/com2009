@@ -1,14 +1,10 @@
 ---  
-title: "An Odomerty Subscriber Node"
+title: "An Odometry Subscriber Node"
 ---
 
 ## The Initial Code
 
-Having copied the `subscriber.py` file from your `part1_pubsub` package, you'll start out with the following code:
-
-```python
---8<-- "code_templates/subscriber_bare.py"
-```
+Having copied the `subscriber.py` file from your `part1_pubsub` package, you'll start out with [the code discussed here](../part1/subscriber.md).
 
 Let's look at what we need to change now.
 
@@ -45,7 +41,11 @@ As the name suggests, we'll use this to convert the raw orientation values from 
 
 ### Change the Class Name
 
-Previously our class was called `#!python SimpleSubscriber()`, change this to something more appropriate now, e.g.: `#!python OdomSubscriber()`.
+Previously our class was called `#!python SimpleSubscriber()`, change this to something more appropriate now, e.g.: `#!python OdomSubscriber()`:
+
+```py
+class OdomSubscriber(Node):
+```
 
 ### Initialising the Class
 
@@ -71,17 +71,17 @@ The structure of this remains largely the same, we just need to modify a few thi
     1. `/odom` uses the Odometry message type (as imported above)
     2. The topic name is `"odom"`, of course!
 
-The final thing we'll do inside our class' `__init__` method (after we've set up the subscriber) is initialise a counter:
+1. The final thing we'll do inside our class' `__init__` method (after we've set up the subscriber) is initialise a counter:
 
-```py
-self.counter = 0 
-```
+    ```py
+    self.counter = 0 
+    ```
 
-The reason for this will become clear shortly...
+    The reason for this will be explained shortly...
 
 ### Modifying the Message Callback
 
-This is where the changes are a bit more significant...
+This is where the changes are a bit more significant:
 
 ```py
 def msg_subscriber(self, topic_message: Odometry): # (1)!
@@ -97,14 +97,16 @@ def msg_subscriber(self, topic_message: Odometry): # (1)!
 
     if self.counter > 10: # (5)!
         self.counter = 0
-        print(f"x = {pos_x:.3f} (m), y = ? (m), theta_z = ? (radians)") # (6)!
+        self.get_logger().info(
+            f"x = {pos_x:.3f} (m), y = ? (m), theta_z = ? (radians)"
+        ) # (6)!
     else:
         self.counter += 1
 
 ```
 
-1. When defining our message callback, we should modify the type of the `topic_message` input.
-2. There are two key parts to an odometry message: Pose and Twist.
+1. When defining the message callback, modify the *type annotation* for the `topic_message` input.
+2. There are [two key parts to an odometry message](../part2.md#odom-base-fields): Pose and Twist.
 
     We're only really interested in the Pose part of the message here, so grab this first.
 

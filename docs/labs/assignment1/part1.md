@@ -419,7 +419,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     ├── package.xml
     ├── part1_pubsub
     │   ├── __init__.py
-    │   └── minimal_module.py
+    │   └── tb3_tools.py
     ├── scripts
     │   └── minimal_node.py
     └── src
@@ -431,7 +431,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     * `scripts`: is a *directory* that will contain all the Python Nodes that we'll create (you'll notice a `minimal_node.py` already exists in there).
     * `part1_pubsub`: is a *directory* that we can use to store Python *modules*, that we can then import into our main Python nodes
         
-        (`#!py from part1_pubsub.minimal_module import ...`, for example)
+        (`#!py from part1_pubsub.tb3_tools import ...`, for example)
     
     * `package.xml` and `CMakeLists.txt`: are both *files* that define our package, and how it must be built (using `colcon build`). We'll explore these more shortly... 
 
@@ -534,7 +534,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
         source ~/.bashrc
         ```
 
-1. We should now be able to run this node using the `ros2 run` command.
+1. We should now be able to run this node using the `ros2 run` command. 
     
     Remember: `ros2 run {package name} {script name}`, so:
 
@@ -551,6 +551,8 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     $ ros2 run part1_pubsub publisher.py
     No executable found
     ``` 
+
+    <a name="chmod"></a>
 
     When we create a file using `touch` it is given certain *permissions* by default. Run `ls -l` again (making sure that your terminal is in the right location: `~/ros2_ws/src/part1_pubsub/scripts/`).
         
