@@ -345,7 +345,7 @@ Instead of calling a service from command-line we can also build Python Service 
 ***
 The response should be exactly the same when we called the service from the command line. 
 
-#### :material-pen: Exercise 3: Learn to create custom services {#ex3}
+#### :material-pen: Exercise 3: Learn to create custom services {#ex3} <a name="custom_service"></a>
 In previous exercises you learned about messages, topics and services by using the predefined definitions of them. While using predefined interfaces is considered a good practice, it is also important to know how you can custom define these interfaces based on your own need. This exercise will teach you, step-by-step, how to create custom service definition and use it to move the robot to the requested position (providing x and y coordinates).
 
 **Procedure**  
@@ -364,7 +364,7 @@ and make a new directory `srv` by running the following command:
     ```
     ***
 
-1. Now navigate into the newly created directory `srv` and create new file called `MoveToPosition.srv`
+1. Now navigate into the newly created directory `srv` and create new file called `TimedMovement.srv`
 
     !!!note 
         It is important that your file name should end with `.srv` extension as this identifies the file as a ROS service.
@@ -372,25 +372,27 @@ and make a new directory `srv` by running the following command:
 1. As we learned earlier, a service file consists of two parts: `Request` and `Response`. Here we will provide our own definition for each one of these parts as follow:
 
     ```bash
-    float32 goal_x      <-- request parameter 1 of 2
-    float32 goal_y      <-- request parameter 2 of 2
+    string heading              #<-- request parameter 1 of 2
+    float32 time_forward        #<-- request parameter 2 of 2
     ---
-    bool success        <-- response 
+    bool success                #<-- response 1 
+    float32 distance            #<-- response 2 
     ```
- The service takes in two user inputs `goal_x` and `goal_y` of type `float` for the `x` and `y` coordinates to where the robot needs to move.
+ The service takes in two user inputs a string type `heading ` for the direction a robot should move to and `time` of type `float` for the duration it should move in the specified heading. 
 ***
 
 1. Open the VS Code, copy and paste the above lines and save the file. 
-1. We need to add a few lines in the `CMakeList.txt` to convert the defined service into language-specific code (C++ and Python) and make it usable:
+1. Now we need to add a few lines in the `CMakeList.txt` to convert the defined service into language-specific code (C++ and Python) and make it usable. 
 
     ```bash 
     find_package(rosidl_default_generators REQUIRED)
     rosidl_generate_interfaces(${PROJECT_NAME}
-    "srv/MoveToPosition.srv"
+    "srv/TimedMovement.srv"
     )
     ```
 
 1. Now open the `Package.xml` file and add the following lines:
+   
     ```bash 
     <build_depend>rosidl_default_generators></build_depend>
     <exec_depend>rosidl_default_runtime></exec_depend>
@@ -400,17 +402,25 @@ and make a new directory `srv` by running the following command:
     
     ***
 
-1. Next, navigate to the `scripts` folder of the `part4_services` package and create an empty file called `MoveToPosition.py`. 
+1. Finally, build the package and source the environment. By now, you should know how to do that. 
 
-1. Open the newly created file in VS Code. Copy and paste the code provided [here](./part4/MoveToPosition.md). 
+You have now successfully created a service message which we will use in the next exercise. Ensure that you understand the process of creating the services and how to use them before moving on to the next exercise. 
+
+***
+#### :material-pen: Exercise 4: Using the custom service to move the robot in a specified direction and calling it from the command line 
+In the previous exercise, you learned how to create a service message by defining different parameters. It is now time to use them in practice:
+
+1. Navigate to the `scripts` folder of the `part4_services` package and create an empty file called `time_movement.py`. 
+
+1. Open the newly created file in VS Code. Copy and paste the code provided [here](./part4/timed_movement.md). 
 1. Now modify the code as follow:
 
     1. Change the imports to utilise the service we just created 
+    1. Fill the blanks in the code template with appropriate information to make the code run as intended
     1. Develop the callback_function() to: 
-        1. Process the **two** parameters that will be provided to the server via the `service request
-        1. Retrieve the current position and calculate the difference to goal
-        1. Generate movement command to the specific coordinates
-        1. Return a correctly formatted service response message to the service caller
+        1. Process the **two** parameters that will be provided to the server via the `service request`
+        1. Generate movement command to the specific `service request`
+        1. Return a correctly formatted service `response` to the service caller
     1. Launch the server node using `ros2 run` command from **TERMINAL 2** and `call` the service from the command-line using `ros2 service call` in **TERMINAL 3** [as you did earlier](#cl_call)
 
 1. Make sure you build the package in the root directory of ros2 workspace using `colcon` and source the environment: 
@@ -427,7 +437,56 @@ You should now hopefully understand how to use the ROS2 Service architecture and
 !!! tip "Remember"
     Services are **synchronous** and are useful for one-off, quick actions or for offloading jobs or computations that might need to be done before something else can happen. (Think of it as a transaction that you might make in a shop: You hand over some money, and in return you get a chocolate bar, for example!)
 
-#### :material-pen: Exercise 4: Creating your own Service {#ex4}
+Uptil now, you have covered a range of key ROS2 tools and hopefully are ready to consolidate them in this final exercise. 
 
-In this exercise you will create your own service Server to make the Waffle perform a specific movement for a given amount of time and then stop.
+## Manipulating the Environment in Gazebo {#sim-env-mods}
+In order to carry out the last exercise you'll also need to be able to manipulate the robot's simulated environment using some basic tools in Gazebo. First, make sure that there are no active processes running in **TERMINALS 2** or **3**, but leave the Gazebo simulation in **TERMINAL 1** running.
 
+In the Gazebo simulation window, use the "Cylinder" tool in the top toolbar to place a cylinder anywhere around the robot.
+
+<figure markdown>
+  ![](../../images/gz/cylinder.png){width=700px}
+</figure>
+
+Use the "Scale Mode" button to resize the cylinder and use the "Translation 
+Mode" button to reposition it.
+
+<figure markdown>
+  ![](../../images/gz/translational_toolbar.png)
+</figure>
+<figure markdown>
+  ![](../../images/gz/rotational_toolbar.png)
+</figure>
+
+Once you are happy with this, right-click on the object and select 
+"Delete" to remove it from the world. 
+
+<figure markdown>
+  ![](../../images/gz/deletion.png)
+</figure>
+---
+
+
+#### :material-pen: Exercise 5: Custom service for obstacle detection 
+
+In this last  exercise you will create your own `service message` and `Python Server` to make the Waffle perform the following tasks:
+1. The robot should be able turn based on the input provided by the user. As you know, you'll do this by publishing velocity commands to the `/cmd_vel` topic.
+
+1. While turning, the server node must look for any obstacle that you have placed around the waffle by subscribing to the `/scan` topic. 
+1. Once the obstacle is detected, it should stop turning and process the distance information using the `lidar data` to calculate how far away the obstacle is from the robot. 
+1. The server node should consider *a single service `request`* and process it: 
+    1. The *angular velocity (rad/s)* at which the robot starts turning either in one direction
+1. The Service `response` should consist of two elements:
+    1. *Success* indicating whether an obstacle is detected or not.
+    1. *Distance* to the obstacle if found or 0 if no obstacle present in the environment 
+1. Carefully consider the above `request` and `response` parameters in creating your own service message [as you learned earlier](#custom_service)
+1. We haven't really done much work with the LiDAR data published to the 
+`/scan` topic yet, so you might want to consider [this suggested 
+approach](./part4/scan_callback.md) for building a `/scan` callback 
+function. <a name="ex4_ret"></a>
+
+    !!! tip
+        You should use a class structure in your Python code here. 
+        
+Start off with the [Server code from Exercise 1](./part4/move_server.md) and add to this to build the functionality required for this 
+exercise.
