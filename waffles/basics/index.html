@@ -1,0 +1,2231 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="The Practical Robotics Course for COM2009 at The University of Sheffield, with ROS2 and the TurtleBot3 Waffle.">
+      
+      
+      
+        <link rel="canonical" href="https://tom-howard.github.io/com2009/waffles/basics/">
+      
+      
+        <link rel="prev" href="../launching-ros/">
+      
+      
+        <link rel="next" href="../key-info/">
+      
+      
+      <link rel="icon" href="../../assets/tuos_logo.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
+    
+    
+      
+        <title>Waffle (& ROS) Basics - ROS2 Course for COM2009</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.a40c8224.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../assets/external/fonts.googleapis.com/css.c3479dc1.css">
+        <style>:root{--md-text-font:"Source Sans Pro";--md-code-font:"Source Code Pro"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Waffle (& ROS) Basics - ROS2 Course for COM2009" >
+      
+        <meta  property="og:description"  content="The Practical Robotics Course for COM2009 at The University of Sheffield, with ROS2 and the TurtleBot3 Waffle." >
+      
+        <meta  property="og:image"  content="https://tom-howard.github.io/com2009/assets/images/social/waffles/basics.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://tom-howard.github.io/com2009/waffles/basics/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Waffle (& ROS) Basics - ROS2 Course for COM2009" >
+      
+        <meta  name="twitter:description"  content="The Practical Robotics Course for COM2009 at The University of Sheffield, with ROS2 and the TurtleBot3 Waffle." >
+      
+        <meta  name="twitter:image"  content="https://tom-howard.github.io/com2009/assets/images/social/waffles/basics.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#waffle-ros-basics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  This site is still being prepared and will be ready by 10th February 2025.
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="ROS2 Course for COM2009" class="md-header__button md-logo" aria-label="ROS2 Course for COM2009" data-md-component="logo">
+      
+  <img src="../../assets/tuos.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            ROS2 Course for COM2009
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Waffle (& ROS) Basics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/tom-howard/com2009" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tom-howard/com2009
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../about/" class="md-tabs__link">
+        
+  
+    
+  
+  About
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../ros/" class="md-tabs__link">
+          
+  
+    
+  
+  ROS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../course/" class="md-tabs__link">
+          
+  
+    
+  
+  Coursework
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+    
+  
+  The Waffles
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="ROS2 Course for COM2009" class="md-nav__button md-logo" aria-label="ROS2 Course for COM2009" data-md-component="logo">
+      
+  <img src="../../assets/tuos.png" alt="logo">
+
+    </a>
+    ROS2 Course for COM2009
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/tom-howard/com2009" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    tom-howard/com2009
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../ros/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    ROS
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            ROS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Coursework
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Coursework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/assignment1/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Assignment #1: An Introduction to ROS
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment #1: An Introduction to ROS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/assignment1/part1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 1: Getting Started with ROS 2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/assignment1/part2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 2: Odometry & Navigation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/assignment1/part3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 3: Beyond the Basics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/assignment1/part4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 4: Services
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/assignment1/part5/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 5: Actions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/assignment1/part6/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Part 6: Cameras, Machine Vision & OpenCV
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/assignment2/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Assignment #2: Team Robotics Project
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment #2: Team Robotics Project
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/assignment2/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started (Week 1)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/extras/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Additional Resources
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Additional Resources
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/extras/launch-files/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launch Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    The Waffles
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            The Waffles
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../launching-ros/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Launching ROS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Waffle (& ROS) Basics
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Waffle (& ROS) Basics
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisite-robot-laptop-bridging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisite: Robot-Laptop 'Bridging'
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manual Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exMove" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Making the Robot Move
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages-and-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages and Nodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensors-visualisation-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensors &amp; Visualisation Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensors & Visualisation Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exViz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Seeing the Sensors in Action
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Visualising the ROS Network
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishers-and-subscribers-a-ros-communication-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishers and Subscribers: A ROS Communication Method
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishers and Subscribers: A ROS Communication Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exTopicMsg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Exploring ROS Topics and Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#velocity-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Velocity Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Velocity Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exSimpleVelCtrl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Creating A Velocity Control Node (with Python)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      SLAM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SLAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exSlam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Using SLAM to create a map of the environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../key-info/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Essential Information
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shutdown/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Shutdown Procedures
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#quick-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quick Links
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisite-robot-laptop-bridging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisite: Robot-Laptop 'Bridging'
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manual-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manual Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Manual Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exMove" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 1: Making the Robot Move
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#packages-and-nodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packages and Nodes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sensors-visualisation-tools" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sensors &amp; Visualisation Tools
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sensors & Visualisation Tools">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exViz" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 2: Seeing the Sensors in Action
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exNet" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 3: Visualising the ROS Network
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#publishers-and-subscribers-a-ros-communication-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      Publishers and Subscribers: A ROS Communication Method
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Publishers and Subscribers: A ROS Communication Method">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exTopicMsg" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Exploring ROS Topics and Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#velocity-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      Velocity Control
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Velocity Control">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exSimpleVelCtrl" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Creating A Velocity Control Node (with Python)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      SLAM
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SLAM">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exSlam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Using SLAM to create a map of the environment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/tom-howard/com2009/edit/main/docs/waffles/basics.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/tom-howard/com2009/raw/main/docs/waffles/basics.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+    </a>
+  
+
+
+<h1 id="waffle-ros-basics">Waffle (&amp; ROS) Basics<a class="headerlink" href="#waffle-ros-basics" title="Permanent link">&para;</a></h1>
+<p>Having completed the steps on <a href="../launching-ros/">the previous page</a>, your robot and laptop should now be paired, and ROS should be up and running (on the robot). You're ready to bring the robot to life! </p>
+<p>On this page are a series of exercises for you to work through <strong>in your teams</strong>, to explore how the robots work. We'll also talk through some core ROS concepts and use some key ROS tools, in case you haven't had a chance to explore these in simulation yet.</p>
+<h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#exMove">Exercise 1: Making the Robot Move</a></li>
+<li><a href="#exViz">Exercise 2: Seeing the Sensors in Action</a></li>
+<li><a href="#exNet">Exercise 3: Visualising the ROS Network</a></li>
+<li><a href="#exTopicMsg">Exercise 4: Exploring ROS Topics and Interfaces</a></li>
+<li><a href="#exSimpleVelCtrl">Exercise 5: Creating A Velocity Control Node (with Python)</a></li>
+<li><a href="#exSlam">Exercise 6: Using SLAM to create a map of the environment</a></li>
+</ul>
+<h2 id="prerequisite-robot-laptop-bridging">Prerequisite: Robot-Laptop 'Bridging'<a class="headerlink" href="#prerequisite-robot-laptop-bridging" title="Permanent link">&para;</a></h2>
+<p>The robot and laptop both communicate over the University network via <a href="https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds">a Zenoh Bridge</a>. The bridge should already be running on the robot after having run the <code>tb3_bringup</code> command on the robot earlier. The next step is to establish a connection to this bridge from the laptop, so that all ROS nodes, topics etc. can communicate as necessary. </p>
+<p>Open up a new terminal instance on the laptop (either by using the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span> keyboard shortcut, or by clicking the Terminal App icon) and enter the following command:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>waffle<span class="w"> </span>X<span class="w"> </span>bridge
+</code></pre></div>
+You should now have two terminals active: </p>
+<ol>
+<li><a href="../launching-ros/#tmux">The <em>robot</em> terminal where you ran the <code>tb3_bringup</code> command</a><sup id="fnref:term_recover"><a class="footnote-ref" href="#fn:term_recover">1</a></sup></li>
+<li>The <em>laptop</em> terminal where you just ran the <code>bridge</code> command (above)</li>
+</ol>
+<p>Leave both of these terminals alone, but <strong>keep them running in the background at all times</strong> while working with your robot.</p>
+<h2 id="manual-control">Manual Control<a class="headerlink" href="#manual-control" title="Permanent link">&para;</a></h2>
+<h4 id="exMove"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 1: Making the Robot Move<a class="headerlink" href="#exMove" title="Permanent link">&para;</a></h4>
+<p>There's a very useful ready-made ROS application called <code>teleop_keyboard</code> (from the <code>turtlebot3_teleop</code> package) that we will use to drive a Waffle around. This node works in exactly the same way in both simulation and in the real-world!</p>
+<ol>
+<li>
+<p>Open up a new terminal instance on the laptop either by using the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span> keyboard shortcut, or by clicking the Terminal App icon, we'll refer to this as <strong>TERMINAL 1</strong>. In this terminal enter the following <code>ros2 run</code> command to launch the <code>teleop_keyboard</code> node:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>turtlebot3_teleop<span class="w"> </span>teleop_keyboard
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Follow the instructions provided in the terminal to drive the robot around using specific buttons on the keyboard:</p>
+<p><figure markdown>
+  <img alt="" src="../../images/cli/teleop_keymap.svg" />
+</figure></p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Take care to avoid any obstacles or other people in the lab as you do this!</p>
+</div>
+</li>
+<li>
+<p>Once you've spent a bit of time on this, close the application down by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 1</strong>.</p>
+</li>
+</ol>
+<h2 id="packages-and-nodes">Packages and Nodes<a class="headerlink" href="#packages-and-nodes" title="Permanent link">&para;</a></h2>
+<p>ROS applications are organised into <em>packages</em>. Packages are basically folders containing scripts, configurations and launch files (ways to launch those scripts and configurations).  </p>
+<p><em>Scripts</em> tell the robot what to do and how to act. In ROS, these scripts are called <em>nodes</em>. <em>ROS Nodes</em> are executable programs that perform specific robot tasks and operations. These are typically written in C++ or Python, but it's possible to write ROS Nodes using other programming languages too.</p>
+<p>There are two key ways to launch ROS applications:</p>
+<ol>
+<li><code>ros2 launch</code></li>
+<li><code>ros2 run</code></li>
+</ol>
+<p>Recall that we just used the <code>ros2 run</code> command in Exercise 1 to launch the <code>teleop_keyboard</code> node. This command has the following structure:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>run<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Node<span class="w"> </span>name<span class="o">}</span>
+</code></pre></div>
+<p><strong>Part [1]</strong> specifies the name of the <em>ROS package</em> containing the functionality that we want to execute. <strong>Part [2]</strong> is used to specify a <em>single</em> script within that package that we want to execute. We therefore use <code>ros2 run</code> commands to launch <strong>single</strong> executables (aka <em>Nodes</em>) onto the ROS network (in Exercise 1 for example, we launched the <code>teleop_keyboard</code> node).</p>
+<p>The <code>ros2 launch</code> command has a <em>similar</em> structure:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span><span class="o">{[</span><span class="m">1</span><span class="o">]</span><span class="w"> </span>Package<span class="w"> </span>name<span class="o">}</span><span class="w"> </span><span class="o">{[</span><span class="m">2</span><span class="o">]</span><span class="w"> </span>Launch<span class="w"> </span>file<span class="o">}</span>
+</code></pre></div>
+<p>Here, <strong>Part [1]</strong> is the same as the <code>ros2 run</code> command, but <strong>Part [2]</strong> is slightly different: <code>{[2] Launch file}</code>. In this case, <strong>Part [2]</strong> is a file within that package that specifies any number of Nodes that we want to launch onto the ROS network. We can therefore launch <em>multiple</em> nodes at the same time from a single launch file.</p>
+<h2 id="sensors-visualisation-tools">Sensors &amp; Visualisation Tools<a class="headerlink" href="#sensors-visualisation-tools" title="Permanent link">&para;</a></h2>
+<p>Our Waffles have some pretty sophisticated sensors on them, allowing them to "see" the world around them. Let's now see what our robot sees, using some handy ROS tools.</p>
+<h4 id="exViz"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 2: Seeing the Sensors in Action<a class="headerlink" href="#exViz" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>There shouldn't be anything running in <strong>TERMINAL 1</strong> now, after you closed down the <code>teleop_keyboard</code> node (using <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span>) at the end of the previous exercise. Return to this terminal and enter the following command:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_tb3_tools<span class="w"> </span>rviz.launch.py
+</code></pre></div></p>
+<hr />
+<p>This will launch an application called <em>RViz</em>, which is a handy tool that allows us to <em>visualise</em> the data from all the sensors on-board our robots. When RViz opens, you should see something similar to the following:</p>
+<p><figure markdown>
+  <img alt="" src="../../images/waffle/rviz.png" width="600px" />
+</figure></p>
+<p>In the bottom left-hand corner of the RViz screen there should be a Camera panel, displaying a live image feed from the robot's camera.</p>
+<details class="bug">
+<summary>No camera images?</summary>
+<ol>
+<li>In the top-left "Displays" panel, scroll down to the "Camera" item.</li>
+<li>Under "Topic", find the "Reliability Policy" option.</li>
+<li>From the Drop-down box, change this from "Best Effort" to "Reliable".</li>
+</ol>
+<p><figure markdown>
+  <img alt="" src="../../images/waffle/rviz_cam_relpol.svg" width="400px" />
+</figure> </p>
+</details>
+<p>In the main RViz panel you should see a digital render of the robot, surrounded by lots of green dots. This is a representation of the <em>laser displacement data</em> coming from the LiDAR sensor (the black device on the top of the robot). The LiDAR sensor spins continuously, sending out laser pulses into the environment as it does so. When a pulse hits an object it is reflected back to the sensor, and the time it takes for this to happen is used to calculate how far away the object is.</p>
+<p>The LiDAR sensor spins and performs this process continuously, so a full 360&deg; scan of the environment can be generated. This data is therefore really useful for things like <em>obstacle avoidance</em> and <em>mapping</em>. <!-- We'll explore this in more detail later. --></p>
+</li>
+<li>
+<p>Place your hand in front of the robot and see if the position of the green dots change to match your hand's location. Move your hand up and down and consider at what height the LiDAR sensor is able to detect it.</p>
+</li>
+<li>
+<p>Then, move your hand closer and further away and watch how the green dots move to match this. </p>
+</li>
+<li>
+<p>Open up a new terminal instance (<strong>TERMINAL 2</strong>) and launch the <code>teleop_keyboard</code> node as you did in Exercise 1. Watch how the data in the RViz screen changes as you drive the robot around a bit.</p>
+</li>
+</ol>
+<h4 id="exNet"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 3: Visualising the ROS Network<a class="headerlink" href="#exNet" title="Permanent link">&para;</a></h4>
+<p>Using <code>ros2 run</code> and <code>ros2 launch</code>, as we have done so far, it's easy to end up with a lot of different processes or <em>ROS Nodes</em> running on the network, some of which we will interact with, but others may just be running in the background. It is often useful to know exactly what <em>is</em> running on the ROS network, and there are a few ways to do this.</p>
+<ol>
+<li>
+<p>Open up a new terminal instance now (<strong>TERMINAL 3</strong>) and from here use the <code>ros2 node</code> command to <em>list</em> the nodes that are currently running:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ros2<span class="w"> </span>node<span class="w"> </span>list
+</code></pre></div></p>
+<hr />
+<p>You may notice up to 4 items in the list.</p>
+</li>
+<li>
+<p>We can visualise the connections between the active nodes by using a ROS node called <code>rqt_graph</code>. Launch this as follows:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rqt
+</code></pre></div></p>
+<hr />
+<p>A window should then open:</p>
+<p><figure markdown>
+  <img alt="" src="../../images/rqt/main.png" width="600" />
+</figure></p>
+</li>
+<li>
+<p>From here, we then want to load the <em>Node Graph</em> plugin. From the top menu select <code>Plugins</code> &gt; <code>Introspection</code> &gt; <code>Node Graph</code>.</p>
+</li>
+<li>
+<p>In the window that opens, select <code>Nodes/Topics (active)</code> from the dropdown menu in the top left. </p>
+<p>What you should then see is a map of all the nodes in the list from above (as ovals), and arrows to illustrate the flow of information between them. This is a visual representation of the ROS network!</p>
+<p>Items that have a rectangular border are <em>ROS Topics</em>. ROS Topics are essentially communication channels, and ROS Nodes can read (<em>subscribe</em>) or write (<em>publish</em>) to these topics to access sensor data, pass information around the network and make things happen.</p>
+<p>If the <code>teleop_keyboard</code> Node is still active (in <strong>TERMINAL 2</strong>) then this graph should show us that the node is publishing messages to a topic called <code>/cmd_vel</code>, which in turn is being subscribed to by the <code>zenoh_bridge_ros2dds</code> Node. The Zenoh Bridge node handles all communication between the robot and the laptop, so this node is tunnelling the data from <code>/cmd_vel</code> to the robot to make it move.</p>
+</li>
+</ol>
+<p>A ROS Robot could have hundreds of individual nodes running simultaneously to carry out all its necessary operations and actions. Each node runs independently, but uses <em>ROS communication methods</em> to communicate and share data with the other nodes on the ROS Network.</p>
+<h2 id="publishers-and-subscribers-a-ros-communication-method">Publishers and Subscribers: A <em>ROS Communication Method</em><a class="headerlink" href="#publishers-and-subscribers-a-ros-communication-method" title="Permanent link">&para;</a></h2>
+<p>ROS Topics are key to making things happen on a robot. Nodes can publish (<em>write</em>) and/or subscribe to (<em>read</em>) ROS Topics in order to share data around the ROS network. Data is published to topics via <em>message interfaces</em>.</p>
+<p>Let's have a look at this in a bit more detail...</p>
+<h4 id="exTopicMsg"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 4: Exploring ROS Topics and Interfaces<a class="headerlink" href="#exTopicMsg" title="Permanent link">&para;</a></h4>
+<p>Much like the <code>ros2 node list</code> command, we can use <code>ros2 topic list</code> to list all the <em>topics</em> that are currently active on the ROS network.</p>
+<ol>
+<li>
+<p>Close down the RQT Graph window if you haven't done so already. This will release <strong>TERMINAL 3</strong> so that we can enter commands in it again. Return to this terminal window and enter the following:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
+</code></pre></div></p>
+<hr />
+<p>A much larger list of items should be printed to the terminal now. See if you can spot the <code>/cmd_vel</code> item in the list.</p>
+<p>This topic is used to control the velocity of the robot (<em>'command velocity'</em>).</p>
+</li>
+<li>
+<p>Let's find out more about this using the <code>ros2 topic info</code> command.</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/cmd_vel
+</code></pre></div></p>
+<hr />
+<p>This should provide an output similar to the following: </p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Type: geometry_msgs/msg/Twist
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>Publisher count: 1
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>Subscription count: 1
+</code></pre></div>
+<p>This tells us that the <em>type</em> of data being communicated on the <code>/cmd_vel</code> topic is called: <code>geometry_msgs/msg/Twist</code>. </p>
+<p>The interface description has three parts:</p>
+<ol>
+<li><code>geometry_msgs</code>: The name of the ROS package that this interface belongs to.</li>
+<li><code>msg</code>: The type of interface. In this case <em>message</em>, but there are other types too. </li>
+<li><code>Twist</code>: The name of the message interface. </li>
+</ol>
+<p>We have just learnt then, that if we want to make the robot move we need to publish <code>Twist</code> <em>messages</em> to the <code>/cmd_vel</code> topic. </p>
+</li>
+<li>
+<p>We can use the <code>ros2 interface</code> command to find out more about the <code>Twist</code> message:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>geometry_msgs/msg/Twist
+</code></pre></div></p>
+<hr />
+<p>From this, we should obtain the following:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Vector3  linear
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>        float64 x
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>        float64 y
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>        float64 z
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>Vector3  angular
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>        float64 x
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>        float64 y
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>        float64 z
+</code></pre></div>
+<p>Let's find out what it all means...</p>
+</li>
+</ol>
+<h2 id="velocity-control">Velocity Control<a class="headerlink" href="#velocity-control" title="Permanent link">&para;</a></h2>
+<p>The motion of any mobile robot can be defined in terms of its three <em>principal axes</em>: <code>X</code>, <code>Y</code> and <code>Z</code>. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are defined as follows:</p>
+<figure>
+<p><img alt="" src="../../images/waffle/principal_axes.svg" width="600" /></p>
+</figure>
+<p>In theory then, a robot can move <em>linearly</em> or <em>angularly</em> about any of these three axes, as shown by the arrows in the figure. That's six <em>Degrees of Freedom</em> (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. Take a look back at the <code>ros2 interface show</code> output above. Hopefully it's a bit clearer now that these topic messages are formatted to give a ROS Programmer the ability to <em>ask</em> a robot to move in any one of its six DOFs. </p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Vector3  linear
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>        float64 x  &lt;-- Forwards (or Backwards)
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>        float64 y  &lt;-- Left (or Right)
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>        float64 z  &lt;-- Up (or Down)
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>Vector3  angular
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>        float64 x  &lt;-- &quot;Roll&quot;
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>        float64 y  &lt;-- &quot;Pitch&quot;
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>        float64 z  &lt;-- &quot;Yaw&quot;
+</code></pre></div>
+<p>Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! The two motors can be controlled independently, which gives it what is called a <em>"differential drive"</em> configuration, but this still only allows it to move with <strong>two degrees of freedom</strong> in total, as illustrated below.</p>
+<figure>
+<p><img alt="" src="../../images/waffle/velocities.svg" width="600" /></p>
+</figure>
+<p>It can therefore only move <strong>linearly</strong> in the <strong>x-axis</strong> (<em>Forwards/Backwards</em>) and <strong>angularly</strong> in the <strong>z-axis</strong> (<em>Yaw</em>). </p>
+<h4 id="exSimpleVelCtrl"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 5: Creating A Velocity Control Node (with Python)<a class="headerlink" href="#exSimpleVelCtrl" title="Permanent link">&para;</a></h4>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Before you start this, close down RViz (click the "Close without saving" button, if asked) and stop the <code>teleop_keyboard</code> node by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 2</strong>.</p>
+</div>
+<p>As we've seen, making a robot move with ROS is simply a case of publishing the right ROS Interface (<code>geometry_msgs/msg/Twist</code>) to the right ROS Topic (<code>/cmd_vel</code>). Earlier we used the <code>teleop_keyboard</code> node to drive the robot around, a bit like a remote control car. In the background here all that was really happening was that the node was converting our keyboard button presses into velocity commands and publishing these to the <code>/cmd_vel</code> topic.</p>
+<p>In reality, robots need to be able to navigate complex environments autonomously, which is quite a difficult task, and requires us to build bespoke applications. We can build these applications using Python, and we'll look at the core concepts behind this now by building a simple node that will allow us to make our robot a bit more "autonomous". What we will do here forms the basis of the more complex applications that you will learn about in the lab course!</p>
+<ol>
+<li>
+<p>Above we talked about how ROS Nodes should be contained within packages, so let's create one now using a helper script that we've already put together. (This is covered in more detail in the ROS course, but for the purposes of this exercise let's just go ahead and run the script without worrying too much about it!)</p>
+<p>In <strong>TERMINAL 1</strong>, navigate to the <code>tuos_ros</code> Course Repo, which is located in the ROS2 Workspace on the laptop:</p>
+<hr />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/tuos_ros/
+</code></pre></div>
+<p>Here you'll find the <code>create_pkg.sh</code> helper script. Run this now using the following command to create a new ROS package called <code>waffle_demo</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>./create_pkg.sh<span class="w"> </span>waffle_demo
+</code></pre></div>
+<hr />
+</li>
+<li>
+<p>Navigate into this new package directory (using <code>cd</code>):</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">cd</span><span class="w"> </span>../waffle_demo/scripts/<span class="w"> </span>
+</code></pre></div></p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p><code>..</code> means "go back one directory," so that command above is telling <code>cd</code> to navigate out of the <code>tuos_ros</code> directory (and therefore back to <code>~/ros2_ws/src/</code>), and then go <em>into</em> the <code>waffle_demo</code> package directory from there (and then into the <code>scripts</code> directory within that).</p>
+</div>
+<hr />
+</li>
+<li>
+<p>Here, create a Python file called <code>square.py</code> using the <code>touch</code> command:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>touch<span class="w"> </span>square.py
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>You'll need to change the <em>execution permissions</em> for this file in order to be able to run it later on. This is also covered in more depth in the ROS course but, for now, simply run the following command:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>square.py
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Now we need to start editing files in our package, and we'll do that using <em>Visual Studio Code</em> (VS Code). </p>
+<p>First, use <code>cd</code> to navigate back one directory, to get us back to the root of our package:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nb">cd</span><span class="w"> </span>..
+</code></pre></div></p>
+<p>Verify that you're in the right place by using the <code>pwd</code> command, which should provide the following output:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>$<span class="w"> </span><span class="nb">pwd</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>/home/student/ros2_ws/src/waffle_demo
+</code></pre></div>
+<p>Having confirmed that you're in the right place, open up VS Code in this directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>code<span class="w"> </span>.
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Don't forget to include the <code>.</code> at the end there, it's important!!</p>
+</div>
+<hr />
+</li>
+<li>
+<p>Next, we need to add our <code>square.py</code> file as an executable to our package's <code>CMakeLists.txt</code>. </p>
+<p>In VS Code, open the <code>CMakeLists.txt</code> file that is at the root of the <code>waffle_demo</code> package directory (<code>/home/student/ros2_ws/src/waffle_demo/CMakeLists.txt</code>). </p>
+<p>Locate the lines (near the bottom of the file) that read:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a># Install Python executables
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>install(PROGRAMS
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>  scripts/minimal_node.py
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>  DESTINATION lib/${PROJECT_NAME}
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>)
+</code></pre></div>
+<p>Replace <code>minimal_node.py</code> with <code>square.py</code> to define this as an executable of your package:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a># Install Python executables
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>install(PROGRAMS
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>  scripts/square.py
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>  DESTINATION lib/${PROJECT_NAME}
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>)
+</code></pre></div>
+</li>
+<li>
+<p>Next, in the VS Code file explorer, open up the <code>scripts</code> directory and click on the <code>square.py</code> file to open it up in the editor.</p>
+</li>
+<li>
+<p>Paste the following content into the <code>square.py</code> file: <a name="timedSquareCode"></a></p>
+<div class="highlight"><span class="filename">square.py</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="ch">#!/usr/bin/env python3</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="c1"># TODO: shutdown hook</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span> <span class="c1"># (1)!</span>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="kn">from</span><span class="w"> </span><span class="nn">geometry_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Twist</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="kn">from</span><span class="w"> </span><span class="nn">math</span><span class="w"> </span><span class="kn">import</span> <span class="n">sqrt</span><span class="p">,</span> <span class="nb">pow</span><span class="p">,</span> <span class="n">pi</span> <span class="c1"># (3)!</span>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a><span class="k">class</span><span class="w"> </span><span class="nc">Square</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span> <span class="c1"># (4)!</span>
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;square&quot;</span><span class="p">)</span> <span class="c1"># (5)!</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">vel_pub</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_publisher</span><span class="p">(</span>
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>            <span class="n">msg_type</span><span class="o">=</span><span class="n">Twist</span><span class="p">,</span>
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>            <span class="n">topic</span><span class="o">=</span><span class="s2">&quot;cmd_vel&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>            <span class="n">qos_profile</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>        <span class="p">)</span> <span class="c1"># (6)!</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">change_state</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a>
+<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">vel</span> <span class="o">=</span> <span class="n">Twist</span><span class="p">()</span> <span class="c1"># (7)!</span>
+<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>
+<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>        <span class="n">ctrl_rate</span> <span class="o">=</span> <span class="mi">10</span> 
+<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">timer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_timer</span><span class="p">(</span>
+<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>            <span class="n">timer_period_sec</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="n">ctrl_rate</span><span class="p">,</span>
+<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>            <span class="n">callback</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timer_callback</span><span class="p">,</span>
+<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a>        <span class="p">)</span> <span class="c1"># (8)!</span>
+<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a>
+<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a>        <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">seconds_nanoseconds</span><span class="p">()</span> <span class="c1"># (9)!</span>
+<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a>
+<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a>            <span class="sa">f</span><span class="s2">&quot;The &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2">&#39; node is initialised.&quot;</span>
+<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a>        <span class="p">)</span>
+<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a>
+<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">timer_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span> <span class="c1"># (10)!</span>
+<a id="__codelineno-23-40" name="__codelineno-23-40" href="#__codelineno-23-40"></a>        <span class="p">[</span><span class="n">time_now</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">seconds_nanoseconds</span><span class="p">()</span>
+<a id="__codelineno-23-41" name="__codelineno-23-41" href="#__codelineno-23-41"></a>        <span class="n">elapsed_time</span> <span class="o">=</span> <span class="n">time_now</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span> <span class="c1"># (11)!</span>
+<a id="__codelineno-23-42" name="__codelineno-23-42" href="#__codelineno-23-42"></a>        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">change_state</span><span class="p">:</span> <span class="c1"># (12)!</span>
+<a id="__codelineno-23-43" name="__codelineno-23-43" href="#__codelineno-23-43"></a>            <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">timestamp</span><span class="p">,</span> <span class="n">_</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_clock</span><span class="p">()</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">seconds_nanoseconds</span><span class="p">()</span>
+<a id="__codelineno-23-44" name="__codelineno-23-44" href="#__codelineno-23-44"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">change_state</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-23-45" name="__codelineno-23-45" href="#__codelineno-23-45"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-23-46" name="__codelineno-23-46" href="#__codelineno-23-46"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-23-47" name="__codelineno-23-47" href="#__codelineno-23-47"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-23-48" name="__codelineno-23-48" href="#__codelineno-23-48"></a>                <span class="sa">f</span><span class="s2">&quot;Changing to state: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">state</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-23-49" name="__codelineno-23-49" href="#__codelineno-23-49"></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span> <span class="c1"># (13)!</span>
+<a id="__codelineno-23-50" name="__codelineno-23-50" href="#__codelineno-23-50"></a>            <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+<a id="__codelineno-23-51" name="__codelineno-23-51" href="#__codelineno-23-51"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="mi">2</span>
+<a id="__codelineno-23-52" name="__codelineno-23-52" href="#__codelineno-23-52"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">change_state</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-23-53" name="__codelineno-23-53" href="#__codelineno-23-53"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-23-54" name="__codelineno-23-54" href="#__codelineno-23-54"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.05</span>
+<a id="__codelineno-23-55" name="__codelineno-23-55" href="#__codelineno-23-55"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-23-56" name="__codelineno-23-56" href="#__codelineno-23-56"></a>        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span> <span class="c1"># (14)!</span>
+<a id="__codelineno-23-57" name="__codelineno-23-57" href="#__codelineno-23-57"></a>            <span class="k">if</span> <span class="n">elapsed_time</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">:</span>
+<a id="__codelineno-23-58" name="__codelineno-23-58" href="#__codelineno-23-58"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">state</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-23-59" name="__codelineno-23-59" href="#__codelineno-23-59"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">change_state</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-23-60" name="__codelineno-23-60" href="#__codelineno-23-60"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-23-61" name="__codelineno-23-61" href="#__codelineno-23-61"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.2</span>
+<a id="__codelineno-23-62" name="__codelineno-23-62" href="#__codelineno-23-62"></a>                <span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-23-63" name="__codelineno-23-63" href="#__codelineno-23-63"></a>
+<a id="__codelineno-23-64" name="__codelineno-23-64" href="#__codelineno-23-64"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-23-65" name="__codelineno-23-65" href="#__codelineno-23-65"></a>            <span class="sa">f</span><span class="s2">&quot;Publishing Velocities:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-23-66" name="__codelineno-23-66" href="#__codelineno-23-66"></a>            <span class="sa">f</span><span class="s2">&quot;  linear.x: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="o">.</span><span class="n">linear</span><span class="o">.</span><span class="n">x</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> [m/s] | angular.z: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="o">.</span><span class="n">angular</span><span class="o">.</span><span class="n">z</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> [rad/s].&quot;</span><span class="p">,</span>
+<a id="__codelineno-23-67" name="__codelineno-23-67" href="#__codelineno-23-67"></a>            <span class="n">throttle_duration_sec</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<a id="__codelineno-23-68" name="__codelineno-23-68" href="#__codelineno-23-68"></a>        <span class="p">)</span>
+<a id="__codelineno-23-69" name="__codelineno-23-69" href="#__codelineno-23-69"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">vel_pub</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">vel</span><span class="p">)</span> <span class="c1"># (15)!</span>
+<a id="__codelineno-23-70" name="__codelineno-23-70" href="#__codelineno-23-70"></a>
+<a id="__codelineno-23-71" name="__codelineno-23-71" href="#__codelineno-23-71"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span> <span class="c1"># (16)!</span>
+<a id="__codelineno-23-72" name="__codelineno-23-72" href="#__codelineno-23-72"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>
+<a id="__codelineno-23-73" name="__codelineno-23-73" href="#__codelineno-23-73"></a>    <span class="n">node</span> <span class="o">=</span> <span class="n">Square</span><span class="p">()</span>
+<a id="__codelineno-23-74" name="__codelineno-23-74" href="#__codelineno-23-74"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">node</span><span class="p">)</span>
+<a id="__codelineno-23-75" name="__codelineno-23-75" href="#__codelineno-23-75"></a>    <span class="n">node</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+<a id="__codelineno-23-76" name="__codelineno-23-76" href="#__codelineno-23-76"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<a id="__codelineno-23-77" name="__codelineno-23-77" href="#__codelineno-23-77"></a>
+<a id="__codelineno-23-78" name="__codelineno-23-78" href="#__codelineno-23-78"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<a id="__codelineno-23-79" name="__codelineno-23-79" href="#__codelineno-23-79"></a>    <span class="n">main</span><span class="p">()</span>
+</code></pre></div>
+<ol>
+<li><code>rclpy</code> is the ROS client library for Python. We need this (and the <code>Node</code> class from it) in order to build and run Python ROS nodes.</li>
+<li>We know from earlier that in order to make a robot move we need to publish messages to the <code>/cmd_vel</code> topic, and that this topic uses the <code>geometry_msgs/msg/Twist</code> interface messages. This is how we import that message into the node, in order to create velocity commands in Python (which we'll get to shortly...)</li>
+<li>
+<p>Here we're importing some mathematical operators that could be useful... </p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Mathematical Operation</th>
+<th style="text-align: center;">Python Syntax</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\sqrt{a+b}\)</span></td>
+<td style="text-align: center;"><code class="highlight"><span class="n">sqrt</span><span class="p">(</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(a^{2}+(bc)^{3}\)</span></td>
+<td style="text-align: center;"><code class="highlight"><span class="nb">pow</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">+</span> <span class="nb">pow</span><span class="p">(</span><span class="n">b</span><span class="o">*</span><span class="n">c</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span></code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span class="arithmatex">\(\pi r^2\)</span></td>
+<td style="text-align: center;"><code class="highlight"><span class="n">pi</span> <span class="o">*</span> <span class="nb">pow</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span></code></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>All the functionality of our Python node is contained within a Class called <code>Square</code>.    </p>
+</li>
+<li>When we initialise this class, we provide a name for our node, which is the name that is used to register it on the ROS network. We're calling this one "square".</li>
+<li>Here we are setting up a publisher to the <code>/cmd_vel</code> topic so that the node can write <code>Twist</code> messages to this topic to make the robot move.</li>
+<li>We're instantiating a <code>Twist</code> message here and calling it <code>vel</code> (we'll assign velocity values to this later on). A <code>Twist</code> message contains six different components that we can assign values to. Any idea <a href="#velocity-control">what these six values might represent</a>?  </li>
+<li>We want our node to run at a rate of 10 times per second (10 Hz), so we create a timer object here, set the timer period (<code>timer_period_sec</code>) and then point the object to a <em>"callback function"</em> that is defined later on in the code. This callback function will execute at the rate that we specify with <code>timer_period_sec</code>...</li>
+<li>What time is it right now? (This will help us to keep track of elapsed time in our main timer callback...)</li>
+<li>Here we're defining our timer callback function. Everything here will execute at the rate that we specified earlier, so we can encapsulate our main control code in here and be confident that it will execute repeatedly (and indefinitely) at our desired rate.</li>
+<li>Here we're comparing the time <em>now</em> to the time the last time we checked, to tell us how much time has elapsed since then (converting from nanoseconds to seconds by multiplying by <code>1e-9</code>). We'll use that information to decide what the robot should do...</li>
+<li>This variable is used to stop the robot (if necessary), check the time again, and then move into a new state.</li>
+<li>In state <code>1</code> we set velocities that will make the robot move forwards (linear-X velocity only). If the elapsed time is greater than <strong>2 seconds</strong> however, we move on to state <code>2</code>.</li>
+<li>In state <code>2</code> we set velocities that will make the robot turn on the spot (angular-Z velocity only). In this case, if the elapsed time is greater than <strong>4 seconds</strong>, we move back to state <code>1</code>.</li>
+<li>Regardless of what happens in the <code>if</code> statements above, we <em>always</em> publish a velocity command to the <code>/cmd_vel</code> topic here (i.e. every time this timer callback executes).</li>
+<li>The rest of the code here is <em>"boilerplate"</em>: a standard approach that we'll use to instantiate our nodes and execute them. You'll learn about all of this throughout the lab course.</li>
+<li>We're defining a class method here that we can call when our node needs to shut down. We're controlling a robot here, so it's important to make sure the robot stops moving when this happens.</li>
+</ol>
+<p>Click on the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 13h-4v4h-2v-4H7v-2h4V7h2v4h4m-5-9A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2"/></svg></span> icons above to expand the code annotations. Read these carefully to ensure that you understand what's going on and how this code works.</p>
+</li>
+<li>
+<p>Having programmed our node and defined it as an executable in our package, we're now ready to build the package so that we can run it. We use a tool called "Colcon" to do this, but this <strong>MUST</strong> be run from the root of the ROS Workspace (i.e.: <code>~/ros2_ws/</code>), so let's navigate there now using <code>cd</code>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span>
+</code></pre></div></p>
+<p>Then, use the <code>colcon build</code> command to build your package:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>waffle_demo<span class="w"> </span>--symlink-install
+</code></pre></div>
+<p>And finally, "re-source" the environment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+<hr />
+</li>
+<li>
+<p>Now, run the code.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure the robot is on the floor and has enough room to roam around before you do this!</p>
+</div>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>waffle_demo<span class="w"> </span>square.py
+</code></pre></div></p>
+<hr />
+<p>Observe what the robot does. When you've seen enough, enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 1</strong> to stop the node from running, which should also stop the robot from moving.</p>
+</li>
+<li>
+<p>Now it's time to <strong>adapt the code</strong>:</p>
+<p>The aim here is to make the robot follow a square motion path. What you may have observed when you actually ran the code is that the robot doesn't actually do that! We're using a time-based approach to make the robot switch between two different states continuously:</p>
+<ol>
+<li>Moving forwards</li>
+<li>Turning on the spot</li>
+</ol>
+<p>Have a look at the code to work out how much time the robot will currently spend in each state.</p>
+<p>We want the robot to follow a <strong>0.5m x 0.5m square</strong> motion path.  In order to properly achieve this you'll need to adjust the timings, or the robot's velocity, or both. Edit the code so that the robot actually follows a <strong>0.5m x 0.5m square motion path</strong>!</p>
+</li>
+</ol>
+<h2 id="slam">SLAM<a class="headerlink" href="#slam" title="Permanent link">&para;</a></h2>
+<p>Simultaneous Localisation and Mapping (SLAM) is a sophisticated tool that is built into ROS. Using data from the robot's LiDAR sensor, plus knowledge of how far the robot has moved<sup id="fnref:odom"><a class="footnote-ref" href="#fn:odom">2</a></sup> a robot is able to create a map of its environment <em>and</em> keep track of its location within that environment at the same time. In the exercise that follows you'll see how easy it is to implement SLAM with the Waffle.  </p>
+<h4 id="exSlam"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 6: Using SLAM to create a map of the environment<a class="headerlink" href="#exSlam" title="Permanent link">&para;</a></h4>
+<ol>
+<li>
+<p>In <strong>TERMINAL 1</strong> enter the following command to launch all the necessary SLAM nodes on the laptop:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py
+</code></pre></div></p>
+<details class="tip">
+<summary>Tip</summary>
+<p>On the laptop, this command is also available as an alias: <code>tb3_slam</code>!</p>
+</details>
+<hr />
+<p>This will launch a new RViz instance, showing a top-down view of the environment, and dots of various colours representing the real-time LiDAR data. Rather than a robot <em>model</em>, the robot is now represented in the environment as a series of links denoted by 3-dimensional red/green/blue crosses (you can turn these off by unchecking the <code>TF</code> option in the left-hand "Displays" menu, if you want to). </p>
+<p><figure markdown>
+    <img alt="" src="../../images/waffle/slam_step0.png" width="600px" />
+</figure></p>
+<p>SLAM will already have begun processing this data to start building a map of the boundaries that are currently visible to the Waffle based on its location in the environment.</p>
+</li>
+<li>
+<p>Return to <strong>TERMINAL 2</strong> and launch the <code>teleop_keyboard</code> node. Start to drive the robot around <em>slowly</em> and <em>carefully</em> to build up a complete map of the area.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It's best to do this slowly and perform multiple circuits of the area to build up a more accurate map.</p>
+</div>
+<p><figure markdown>
+  <img alt="" src="../../images/waffle/slam_step1.png" width="500px" />
+  <img alt="" src="../../images/waffle/slam_step2.png" width="500px" />
+  <img alt="" src="../../images/waffle/slam_step3.png" width="500px" />
+</figure></p>
+</li>
+<li>
+<p>Once you're happy that your robot has built up a good map of its environment, you can save this map using the <code>map_saver_cli</code> node from a package called <code>nav2_map_server</code>:</p>
+<ol>
+<li>
+<p>First, create a new directory within your ROS package on the laptop. Return to <strong>TERMINAL 3</strong> and navigate to the root of the <code>waffle_demo</code> package that you created earlier. We can use the <code>colcon_cd</code> tool to do this now:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>colcon_cd<span class="w"> </span>waffle_demo
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Create a directory in here called <code>maps</code>: </p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>mkdir<span class="w"> </span>maps
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Navigate into this directory:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nb">cd</span><span class="w"> </span>maps/
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Then, use <code>ros2 run</code> to run the <code>map_saver_cli</code> node and save a copy of your robot's map:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>MAP_NAME
+</code></pre></div></p>
+<p>Replacing <code>MAP_NAME</code> with an appropriate name for your map. This will create two files: </p>
+<ol>
+<li>a <code>MAP_NAME.pgm</code> </li>
+<li>a <code>MAP_NAME.yaml</code> file</li>
+</ol>
+<p>...both of which contain data related to the map that you have just created.</p>
+<hr />
+</li>
+<li>
+<p>The <code>.pgm</code> file can be opened using an application called <code>eog</code> on the laptop: </p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>eog<span class="w"> </span>MAP_NAME.pgm
+</code></pre></div></p>
+<hr />
+</li>
+</ol>
+</li>
+<li>
+<p>Return to <strong>TERMINAL 1</strong> and close down SLAM by pressing <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span>. The process should stop and RViz should close down.</p>
+</li>
+<li>
+<p>Close down the <code>teleop_keyboard</code> node in <strong>TERMINAL 2</strong> as well, if that's still running.</p>
+</li>
+</ol>
+<h2 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h2>
+<p>"<strong>Pro Tips</strong>": There are some important things to consider when working with the Real Waffles. <a href="../key-info/">Move onto the next page to find out more</a>...</p>
+<p>... and when you've done that, don't forget to <a href="../shutdown/">power off your robot properly</a>. </p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:term_recover">
+<p>If you happen to have closed down the <em>robot</em> terminal, you can return to it by entering <code>waffle X term</code> from a new terminal instance on the laptop.&#160;<a class="footnote-backref" href="#fnref:term_recover" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:odom">
+<p>You'll learn much more about "Robot Odometry" in the lab course.&#160;<a class="footnote-backref" href="#fnref:odom" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-26T16:39:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-26</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-26T16:39:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-26</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../launching-ros/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Launching ROS">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Launching ROS
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../key-info/" class="md-footer__link md-footer__link--next" aria-label="Next: Essential Information">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Essential Information
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../assets/external/i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br />  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2025.
+
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="../../https:/polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
