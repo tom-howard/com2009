@@ -1,7 +1,5 @@
 nav:
-  - "About": about
-  - "Installing ROS": ros
-  - "The Labs": labs
+  - "About": about.md
+  - "ROS": ros
+  - "Coursework": course
   - "The Waffles": waffles
-  - "ROS Extras": extras
-  # - "Other Courses": others

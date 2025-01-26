@@ -2,4 +2,4 @@
 title: Installing ROS
 ---
 
-Details on the ROS2 Simulation environment (TODO)
+Installing ROS2 on your own computer, or accessing it on the University of Sheffield Campus (TODO).

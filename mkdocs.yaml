@@ -1,6 +1,6 @@
-site_name: "COM2009: ROS2 Labs"
+site_name: "ROS2 Course for COM2009"
 site_url: https://tom-howard.github.io/com2009/
-site_description: ROS2 Labs for the COM2009 (& COM3009) Robotics Course at The University of Sheffield. 
+site_description: The Practical Robotics Course for COM2009 at The University of Sheffield, with ROS2 and the TurtleBot3 Waffle.  
 theme:
   name: material
   icon:
@@ -42,8 +42,8 @@ theme:
     - content.action.view
 
 copyright: >
-  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2024 (License: <a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC</a>)<br />
-  <a href="#__consent">Change cookie settings</a>
+  <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br /> 
+  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2025.
 repo_url: https://github.com/tom-howard/com2009
 repo_name: tom-howard/com2009
 edit_uri: ./edit/main/docs
@@ -57,22 +57,24 @@ plugins:
       enabled: !ENV [CI, false]
   - privacy:
       enabled: !ENV [CI, false]
+  - social:
+      enabled: !ENV [CI, false]
+      cards_layout_options:
+        font_family: Noto Sans
 
 markdown_extensions:
-  - admonition                   # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
-  - pymdownx.highlight:          # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
-                                 # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#inlinehilite
-      anchor_linenums: true      # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
-  - pymdownx.inlinehilite        # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#inlinehilite
-  - pymdownx.snippets            # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#snippets
-  - pymdownx.details             # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
-  - pymdownx.superfences         # https://squidfunk.github.io/mkdocs-material/reference/admonitions/
-                                 # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#highlight
-  - pymdownx.emoji:              # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown-extensions/#emoji
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.emoji:
       emoji_index: !!python/name:material.extensions.emoji.twemoji
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - toc:
-      permalink: true            # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#+toc.permalink
+      permalink: true
   - attr_list
   - md_in_html
   - footnotes
@@ -95,15 +97,3 @@ extra_javascript:
   - javascripts/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-
-extra:
-  analytics:
-    provider: google
-    property: G-F7SQFPV0T8
-  consent:
-    title: Cookie consent
-    description: 
-      We use cookies to monitor the usage of these resources, and to understand 
-      how effective they are in supporting your learning. Cookies also help us to 
-      evaluate how much impact our teaching materials are making in the community.
-      With your support, you are helping us to make our teaching resources better.

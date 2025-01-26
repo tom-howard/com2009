@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="32.310524mm"
+   height="25.555864mm"
+   viewBox="0 0 32.310524 25.555864"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="bash_terminal_icon.svg">
+  <metadata
+     id="metadata11">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.77781746"
+     inkscape:cx="-296.57987"
+     inkscape:cy="11.582551"
+     inkscape:window-width="1920"
+     inkscape:window-height="1017"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0" />
+  <defs
+     id="defs2">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1109">
+      <rect
+         style="opacity:1;fill:none;stroke:#ff0000;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect1111"
+         width="9.0396748"
+         height="5.9002151"
+         x="27.418762"
+         y="244.85999" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1188">
+      <rect
+         style="fill:none;stroke:#00ff00;stroke-width:0.264583;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect1190"
+         width="32.310524"
+         height="25.555864"
+         x="92.902252"
+         y="55.16927" />
+    </clipPath>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-92.902252,-55.16927)">
+    <image
+       width="64.822914"
+       height="66.145836"
+       preserveAspectRatio="none"
+       xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPUAAAD6CAMAAABOOfGCAAABelBMVEUAAAAAAAAAAAAAAAAAAAB/ f38AAAAAAAAAAAAAAABFRUUAAABQUFAAAABFRUUAAABHR0dISEgAAAAAAAAAAAAAAAAAAABPT09F RUVPT08CAgIBAQEAAABOTk5+fn5HR0d7e3tCQkJHR0csLCxRUVEaGhoICAgAAAB3d3d5eXlKSkpt bW1HR0c8PDx/f39DQ0N9fX1CQkJKSkpKSko1NTVQUFBpaWlmZmZUVFRJSUllZWVPT09PT09bW1tD Q0N7e3tKSkpAQEA+Pj4qKipFRUVfX19hYWFAQEB4eHg8PDx5eXk2NjZMTEwyMjIzMzNVVVVNTU3y 8vJPT09jY2NRUVFLS0tSUlJISEjU1NTBwcFFRUVKSkr09PRHR0fx8fF7e3tWVlba2tpqampmZmaQ kJBubm7p6en29vbz8/Pr6+vW1ta1tbXl5eXJycmwsLCpqamenp50dHRbW1vd3d3Nzc3ExMS+vr6f n5+JiYmDg4Pi4uKgoKCXl5eFhYUdmJqJAAAAT3RSTlMAAgYEBcQZHRshxxeQEcYTl5ESCQsfI5XF liQnD5bD7Oesfkg5OS4NqpuNeHJd/r+7toiEZ1pYUEP99/fl5M20s5+CUzCzrpSMiYhwa1E33hDh GwAABLFJREFUeNrswYEAAAAAgKD9qRepAgAAAAAAAAAAAAAAAAAAmL167UkbiuM4PgprS6pBge2B Yw0xJIIYY7Z4iYnxiVuWZRn/AxyqvdDSCop4v7vLe18tzi1Q0BDLKeV8XkG/+Z3TQ1EURVEURVFB FfLQKz8K9RTc/pAjHI5EmB4iPYT783O4k8wkUzGB5XmO497c4/rie2J7EQQhFk8lGZ902x8RmROi M5mV/JdcdnNJFMXXL0wUl5Y2s7mv+ZUMx8YTPsi2d06wM6u59KJ+Vq+bllXyhGWZ9fqZvpjOrXIC QzbbiU5G10TdPC/DEJTPTV3M8ESzneOdiK6kS0UYmmIpvcqGiWbbd1rIpA0YKiO9FSdY7VzqmawB Q2ZkuQixbGfq2No6DN16Zo5oNcPnyzB05XyMZHU48fYTEPCZJ/ZoO9f63QYQsBENE6yOpL4bQICx xRCsZuLLQMRakmR1jFD18hzJamEBupV+AQZvfUsRrZ6FLvhkr3Fc8rZ7YZJkNfsBuuADhNTqkY49 DJ8lWz0PnbDVRLZ9tXYDnnV/jJOrDjP8NHTCtw3UttdomR4NPk+2ego6YaVwUqsih6oe/fakez7m s2rAWFL0nSZy7Ks/To2XD5/2XbXTrZ3/rKE2tXltdmYHsfq+W9Hku6vmQ3dNgU5BrLZhRZIrDzf8 QHIbO4jVzkEvHTfGrBrD7jZS0ThVY2y1Dvf2kePidCyq7ZkvVRU5qpe7sjYG/3BsHT/O3Liuy5oy Bu/12Tb6O/PFjSFL3c0BrMZ69aH56FbWJNzdPOLVIddqXEO2w5Z5PzMGT0zHfVYNSgtVa6fFPjMH sRrXrxalvjMHshpLT8wcxGqAp5tHu5qdgueg1WNUjd3A/4JXjfUdNwo8CmT1LnIj/1ubVtNqv1YX nwHutt1oUBwU4er3hecoY0Vq02xym1IsDGxiFKoLlS7lSqUwuInJUah2Rav/sHN/rQlCYRzHp0cW Z2dN6JhrGoiJBiOJ/txEEf25GGOMByR8/y9lHBcVo20nKB+L53sXxKGP3UTi72S1LprUpCY1qbXU L6ATqUlNalKTmtQH6jvNSE1qUp+otkj9R7emfgadbkwtSP17pCb1df4iPUF9Q/8Mn1F9Rfc+SF1q j7ahySY1qa9SLRipy0ypHwGlV2HhqZkYAkpDVLU9ApRGwsRUdwClDq66Byj1UNX1FFBKbUx1OwKU PjHVhpPkgFAe11FnYrwZIDRLuphqiy8AoYXvWIhqJjqA0Iqjqo16PIXSm0ZCMiy0UptumEPJ5YOk baKO2TE7DqDkgqjmWKhqw2ymwQZKbBOMfdSvumA7PJpPshxKKc8m83XSkBa22pD3fhoGxWPWmWpz 9jJVscoRhOPYqyOi92zmCO5H49XbMhz0W60HzZ6O19qlXm3f2u8PwuX7xzpOuN2VFvrAsqFiliyW tGtNzrnreZ67i/9Tc1vtWNvjfJXn8ppotB1pMnT0wWo60xxHN3TaHau22KWUTpGUpsmqsSB+3oX8 n8fuL6ipLmBFVtO/u9DQf3UX8g+7wEesOpmiKIqiKIr6Yg8OBAAAAACA/F8bQVVVVVVVVVVVVVVV VVVVZaOA+gAAE5ZiX38klgYAAAAASUVORK5CYII= "
+       id="image912"
+       x="76.886597"
+       y="34.874283"
+       clip-path="url(#clipPath1188)"
+       inkscape:export-filename="G:\My Drive\04 DEV\robotics\COM2009.wiki\figures\rr\bash_terminal_icon.png"
+       inkscape:export-xdpi="94.330002"
+       inkscape:export-ydpi="94.330002" />
+  </g>
+</svg>

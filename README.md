@@ -1,6 +1,8 @@
-# com2009
+# The COM2009 Course Site
 
-Content for the COM2009 ROS lab course site
+Course material for the COM2009 ROS2 Course Assignments.
+
+Access the site here: https://tom-howard.github.io/com2009/
 
 ## Contributing
 
@@ -14,22 +16,18 @@ First, create a Python virtual environment (ideally 3.9 or higher):
 python -m venv venv
 ```
 
-**[Activate the environment](https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment)** and install the latest version of Material for MKDocs:
+**[Activate the environment](https://realpython.com/what-is-pip/#using-pip-in-a-python-virtual-environment)** and install the latest version of Material for MKDocs along with the following plugins:
+
+* MKDocs [Awesome Pages Plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin)
+* [Git Revision Date Localised Plugin](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin)
+* [Plugins for social card generation](https://squidfunk.github.io/mkdocs-material/plugins/requirements/image-processing/)
 
 ```
-pip install mkdocs-material
-```
-
-The MKDocs [Awesome Pages Plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin):
-
-```
-pip install mkdocs-awesome-pages-plugin
-```
-
-And the [Git Revision Date Localised Plugin](https://github.com/timvink/mkdocs-git-revision-date-localized-plugin):
-
-```
-pip install mkdocs-git-revision-date-localized-plugin
+pip install \
+    mkdocs-material \
+    mkdocs-awesome-pages-plugin \
+    mkdocs-git-revision-date-localized-plugin \
+    "mkdocs-material[imaging]"
 ```
 
 ### Editing

@@ -1,2 +1,7 @@
 nav:
   - "The Waffles": README.md
+  - "Introduction": intro.md
+  - "Launching ROS": launching-ros.md
+  - "Waffle (& ROS) Basics": basics.md
+  - "Essential Information": key-info.md
+  - "Shutdown Procedures": shutdown.md
