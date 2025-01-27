@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
-# TODO: shutdown hook
-
 import rclpy
 from rclpy.node import Node # (1)!
+from rclpy.signals import SignalHandlerOptions
 
 from geometry_msgs.msg import Twist # (2)!
 from math import sqrt, pow, pi # (3)!
@@ -30,17 +29,18 @@ class Square(Node): # (4)!
             callback=self.timer_callback,
         ) # (8)!
 
-        [self.timestamp, _] = self.get_clock().now().seconds_nanoseconds() # (9)!
+        self.timestamp = self.get_clock().now().nanoseconds # (9)!
+        self.shutdown = False
 
         self.get_logger().info(
             f"The '{self.get_name()}' node is initialised."
         )
     
     def timer_callback(self): # (10)!
-        [time_now, _] = self.get_clock().now().seconds_nanoseconds()
-        elapsed_time = time_now - self.timestamp # (11)!
+        time_now = self.get_clock().now().nanoseconds
+        elapsed_time = (time_now - self.timestamp) * 1e-9 # (11)!
         if self.change_state: # (12)!
-            [self.timestamp, _] = self.get_clock().now().seconds_nanoseconds()
+            self.timestamp = self.get_clock().now().nanoseconds
             self.change_state = False
             self.vel.linear.x = 0.0
             self.vel.angular.z = 0.0
@@ -68,12 +68,26 @@ class Square(Node): # (4)!
         )
         self.vel_pub.publish(self.vel) # (15)!
 
+    def on_shutdown(self): # (17)!
+        for i in range(5):
+            self.vel_pub.publish(Twist())
+        self.shutdown = True
+
 def main(args=None): # (16)!
-    rclpy.init(args=args)
+    rclpy.init(
+        args=args,
+        signal_handler_options=SignalHandlerOptions.NO
+    )
     node = Square()
-    rclpy.spin(node)
-    node.destroy_node()
-    rclpy.shutdown()
+    try:
+        rclpy.spin(node)
+    except KeyboardInterrupt:
+        node.on_shutdown()
+    finally:
+        while not node.shutdown:
+            continue
+        node.destroy_node()
+        rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
