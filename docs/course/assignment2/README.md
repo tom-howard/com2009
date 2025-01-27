@@ -16,7 +16,7 @@ Assignment #2 is split into two parts: **Part A** and **Part B**. You will compl
 
 | Part | Tasks | Marks<br />(/100) | Submission |
 | :---: | :---  | :---: | :---: |
-| **A** | **Task 1**: [Velocity Control]()<br />**Task 2**: [Avoiding Obstacles]() | 20<br />20 | Week 6 |
+| **A** | **Task 1**: [Velocity Control](./part-a/task1.md)<br />**Task 2**: [Avoiding Obstacles](./part-a/task2.md) | 20<br />20 | Week 6 |
 | **B** | **Tasks 3 & 4**:<br />More Details Coming Soon... | 60 | Week 12 |
 
 </center>

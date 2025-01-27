@@ -710,7 +710,7 @@ Some things to review:
 
 1. Finally, consider the shutdown operations.
 
-### Implementing an "Exploration" strategy using the Action Framework
+### Implementing an "Exploration" strategy using the Action Framework {#explore}
 
 An exploration strategy allows a robot to autonomously navigate an unknown environment while simultaneously avoiding crashing into things! One way to achieve this is to utilise two distinct motion states: moving forwards and turning on the spot, and repeatedly switching between them. *Brownian Motion* and *Levy Flight* are examples of this kind of approach. Randomising the time spent in either, or both, of these two states will result in a navigation strategy that allows a robot to slowly and randomly explore an environment. Forward motion could be performed until - say - a certain distance has been travelled, a set time has elapsed or something gets in the way. Likewise, the direction, speed and/or duration of turning could also be randomised to achieve this.
 

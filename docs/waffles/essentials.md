@@ -1,14 +1,12 @@
 ---  
-title: Essential Information 
+title: Further (Essential) Exercises 
 ---
-
-# Essential Information
 
 By working through the additional short exercises below, you will become aware of the key differences in how our TurtleBot3 Waffles work in the real world, compared to how they work in simulation. Be mindful of the differences that we are trying to highlight here and the implications that they will have on the applications that you develop. 
 
 As a general rule, when developing code for real-world applications, it's a good idea to get the basics working in simulation first, but **always** test out your code in the real-world... *just because it works in simulation, **doesn't** automatically mean it will work on the real robots!!*
 
-## Tip 1: Publishing Velocity Commands
+## :material-pen: Essential Exercise 1: Publishing Velocity Commands {#ex1}
 
 This one actually applies to both the real Waffles *and* the simulation too. The issue is more critical when working with real thing though, since we're working with real hardware in a real-world environment, where things could get damaged or people could get hurt. 
 
@@ -52,7 +50,7 @@ The same applies to ROS nodes when we shut them down: if a stop command is not s
 
 ***You must ensure*** that your nodes are programmed with correct shutdown procedures, to ensure that the robot actually stops moving when a node is terminated. This is covered in [Part 2 of the ROS Course](../course/assignment1/part2.md#ex5), but you can also see this in action in [the Velocity Control Node that we created in the previous section](./basics.md#timedSquareCode). 
 
-## Tip 2: Out of Range LiDAR Data
+## :material-pen: Essential Exercise 2: Out of Range LiDAR Data {#ex2}
 
 The robot's LiDAR sensor can only obtain measurements from objects within a certain distance range. In Part 3 we look at how to work out what this range is, using the `ros2 topic echo` command. Let's apply the same techniques to the real robot now to discover the **maximum** and **minimum** distances that the real robot's LiDAR sensor can measure:
 
@@ -90,9 +88,9 @@ valid_data = front[front != float("inf")] # (1)!
 
 If you apply the same technique to a real-world application, then this filtering will be ineffective, because out-of-range values are not `inf` here... You'll need to adapt this for real-world scenarios[^lidar-hint].
 
-[^lidar-hint]: **Tip 2 Hint**: Out-of-range values on the real robots are actually reported as `0.0`!
+[^lidar-hint]: **Exercise 2 Hint**: Out-of-range values on the real robots are actually reported as `0.0`!
 
-## Tip 3: The Camera Image Topic {#mission2}
+## :material-pen: Essential Exercise 3: The Camera Image Topic {#ex3}
 
 In Part 6 of the ROS Course we work extensively with the robot's camera and the processing of the images that are captured by it. This is done in simulation (of course), where the image data is published to a topic called `/camera/image_raw`. The name of the camera image topic is **not the same** on the real robots!
 
@@ -102,9 +100,9 @@ With the real robot to hand now, use ROS command-line tools such as `ros2 topic 
 
 You'll likely do a lot of development work for your real-robot applications in simulation, outside the lab sessions. Some of these applications may involve camera data and image processing. If you set up a subscriber to a topic that doesn't exist, then **ROS will not warn you about it**! It will simply sit quietly and wait, assuming that the topic will (sooner or later) become available. As a result, if you are running an application on a real robot, that is subscribing to image data on the `/camera/image_raw` topic, then your application will never receive any image data and any associated callback functions will never execute![^cam-topic-hint]
 
-[^cam-topic-hint]: **Tip 3 Hint**: On the real robots, the camera image topic is `/camera/color/image_raw`!
+[^cam-topic-hint]: **Exercise 3 Hint**: On the real robots, the camera image topic is `/camera/color/image_raw`!
 
-## Tip 4: Camera Image Resolution
+## :material-pen: Essential Exercise 4: Camera Image Resolution {#ex4}
 
 In Part 6 of the ROS Course we also explore how images can be reduced in size by *cropping* them, to make the data processing a bit quicker and easier. We need to be aware of the original image size (i.e. *resolution*) however, in order to apply cropping techniques appropriately. 
 
@@ -127,9 +125,9 @@ The outputs here will indicate the `height` and `width` of the images, in pixels
 
 We'll learn a lot about image cropping and other image processing techniques through simulation, but (as above) the native image resolution of the simulated robot's camera is *much larger* than that of the real robot. As such, if you apply the same cropping techniques to real-world applications, without adjustment, then you will end up cropping too much of the image out, leaving *nothing* to actually apply any further processing to![^img-res]
 
-[^img-res]: **Tip 4 Hint**: In *simulation*, camera images have a resolution of **1080x1920** pixels, whereas on the real robots the resolution is **640x480** pixels.
+[^img-res]: **Exercise 4 Hint**: In *simulation*, camera images have a resolution of **1080x1920** pixels, whereas on the real robots the resolution is **640x480** pixels.
 
-## Tip 5: Object Detection
+## :material-pen: Essential Exercise 5: Object Detection {#ex5}
 
 In general, image detection gets a little more challenging in the real-world, where the same object might appear (to a robot's camera) to have slightly different colour tones under different light conditions, from different angles, in different levels of shade, etc. In simulation (again in Part 6 of the Course), you may build an extremely effective `colour_search.py` node to detect each of the four coloured pillars in the `tuos_simulations/coloured_pillars` world, but this might not perform as well in the real world without some fine-tuning
 

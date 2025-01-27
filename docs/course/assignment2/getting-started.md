@@ -32,13 +32,22 @@ Nominate **only one member of your team** to do this bit.
 
     You should then be presented with a **Create a new repository** screen.
 
-1. In the `Repository name` box enter `com2009_teamXX_2025`, replacing `XX` with your COM2009 Assignment #2 Team Number.
+1. The name for your repository **must** be as follows:
 
-    **If your team number is less than 10**: put a zero before the number, so that it's 2 digits long
+    ``` { .txt .no-copy }
+    com2009_teamXX_2025
+    ```
+
+    ... where `XX` should be replaced with *your* COM2009 Assignment #2 Team Number. Enter this in the `Repository name` box.
+
+    **If your team number is less than 10**: put a zero before the number, so that the team number is **always** 2 digits long, e.g.: 
     
-    e.g.: `com2009_team08_2025` for **Team 8**.
+    * `com2009_team03_2025` for **Team 3**
+    * `com2009_team08_2025` for **Team 8**
+    * `com2009_team15_2025` for **Team 15**
 
-1. Select the option to **make the repository private**, then click the green `Create repository` button. 
+
+1. Select `Private` to **make the repository private**, then click the green `Create repository` button. 
 
     <figure markdown>
       ![](./getting-started/create_repo.png){width=500px}
@@ -64,7 +73,11 @@ Nominate **only one member of your team** to do this bit.
 
 Having created your package, you'll need to tell us your GitHub username and the URL to your team's GitHub repository, so that we can access it and pull download your work when the submissions are due.
 
-There is a form available on Blackboard that **you must complete** (as a team), to register your ROS package with us for Assignment #2. The team member who created the Repo (in the step above) should now head to Blackboard and fill in this form.
+There is a form that **you must complete** (as a team), to register your ROS package with us for Assignment #2. 
+
+[Access the form here](https://forms.gle/p75DDXkLcnFDB2A59) (also available on Blackboard). You **must** be signed in to your university email account (`...@sheffield.ac.uk`) to access this. 
+
+The team member who created the Repo (in the step above) should fill in this form **now**.
 
 !!! warning
     Failure to do this (and do it properly) could result in you receiving **0 marks** for the assignment tasks!
@@ -185,7 +198,7 @@ Assignment #2 involves extensive work with our real robots, and you'll therefore
     * [ ] Read about [the hardware](../../waffles/intro.md).
     * [ ] Learn how to [launch ROS and get the robots up and running](../../waffles/launching-ros.md).
     * [ ] Work through the [Waffle (& ROS) Basics](../../waffles/basics.md), which will help to get you started and understand how ROS and the robots work.
-    * [ ] There is also some [Essential Information](../../waffles/key-info.md) that you must all be aware of when working with the real robots. Work through the further exercises on this page now.
+    * [ ] There is also some [Essential Information](../../waffles/essentials.md) that you must all be aware of when working with the real robots. Work through the further exercises on this page now.
 
     * [ ] Finally, review the [Shutdown Procedures](../../waffles/shutdown.md) and follow the steps here to shut down the robot and power off the robotics laptop at the end of each lab session.
     

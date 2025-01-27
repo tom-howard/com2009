@@ -3,5 +3,5 @@ nav:
   - "Introduction": intro.md
   - "Launching ROS": launching-ros.md
   - "Waffle (& ROS) Basics": basics.md
-  - "Essential Information": key-info.md
+  - essentials.md
   - "Shutdown Procedures": shutdown.md

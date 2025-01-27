@@ -565,6 +565,6 @@ Simultaneous Localisation and Mapping (SLAM) is a sophisticated tool that is bui
 
 ## Next Steps
 
-"**Pro Tips**": There are some important things to consider when working with the Real Waffles. [Move onto the next page to find out more](./key-info.md)...
+"**Pro Tips**": There are some important things to consider when working with the Real Waffles. [Move onto the next page to find out more](./essentials.md)...
 
 ... and when you've done that, don't forget to [power off your robot properly](./shutdown.md). 

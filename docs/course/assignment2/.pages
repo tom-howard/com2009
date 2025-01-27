@@ -1,3 +1,5 @@
 nav:
   - README.md
   - getting-started.md
+  - ros-pkg-tips.md
+  - "Part A": part-a
