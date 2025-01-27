@@ -10,28 +10,28 @@
       
       
       
-        <link rel="canonical" href="https://tom-howard.github.io/com2009/course/assignment1/part4/move_server/">
+        <link rel="canonical" href="https://tom-howard.github.io/com2009/course/assignment2/ros-pkg-tips/">
       
       
-        <link rel="prev" href="../move_client/">
+        <link rel="prev" href="../getting-started/">
       
       
-        <link rel="next" href="../../part6/line_follower/">
+        <link rel="next" href="../part-a/">
       
       
-      <link rel="icon" href="../../../../assets/tuos_logo.svg">
+      <link rel="icon" href="../../../assets/tuos_logo.svg">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.50">
     
     
       
-        <title>Part 4 Move Service-Server - ROS2 Course Assignments for COM2009</title>
+        <title>Working with your ROS Package (in the Lab) - ROS2 Course Assignments for COM2009</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
       
         
-        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -45,16 +45,16 @@
         
         
         
-        <link rel="stylesheet" href="../../../../assets/external/fonts.googleapis.com/css.c3479dc1.css">
+        <link rel="stylesheet" href="../../../assets/external/fonts.googleapis.com/css.c3479dc1.css">
         <style>:root{--md-text-font:"Source Sans Pro";--md-code-font:"Source Code Pro"}</style>
       
     
     
-      <link rel="stylesheet" href="../../../../css/timeago.css">
+      <link rel="stylesheet" href="../../../css/timeago.css">
     
-      <link rel="stylesheet" href="../../../../stylesheets/extra.css">
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
     
-    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -63,11 +63,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Part 4 Move Service-Server - ROS2 Course Assignments for COM2009" >
+        <meta  property="og:title"  content="Working with your ROS Package (in the Lab) - ROS2 Course Assignments for COM2009" >
       
         <meta  property="og:description"  content="Practical Robotics Course Assignments for the COM2009 Robotics Module at The University of Sheffield (with ROS2 and the TurtleBot3 Waffle)." >
       
-        <meta  property="og:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part4/move_server.png" >
+        <meta  property="og:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment2/ros-pkg-tips.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -75,15 +75,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://tom-howard.github.io/com2009/course/assignment1/part4/move_server/" >
+        <meta  property="og:url"  content="https://tom-howard.github.io/com2009/course/assignment2/ros-pkg-tips/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Part 4 Move Service-Server - ROS2 Course Assignments for COM2009" >
+        <meta  name="twitter:title"  content="Working with your ROS Package (in the Lab) - ROS2 Course Assignments for COM2009" >
       
         <meta  name="twitter:description"  content="Practical Robotics Course Assignments for the COM2009 Robotics Module at The University of Sheffield (with ROS2 and the TurtleBot3 Waffle)." >
       
-        <meta  name="twitter:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part4/move_server.png" >
+        <meta  name="twitter:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment2/ros-pkg-tips.png" >
       
     
     
@@ -106,7 +106,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#part-4-move-service-server" class="md-skip">
+        <a href="#working-with-git-and-github" class="md-skip">
           Skip to content
         </a>
       
@@ -130,9 +130,9 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../.." title="ROS2 Course Assignments for COM2009" class="md-header__button md-logo" aria-label="ROS2 Course Assignments for COM2009" data-md-component="logo">
+    <a href="../../.." title="ROS2 Course Assignments for COM2009" class="md-header__button md-logo" aria-label="ROS2 Course Assignments for COM2009" data-md-component="logo">
       
-  <img src="../../../../assets/tuos.png" alt="logo">
+  <img src="../../../assets/tuos.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -149,7 +149,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Part 4 Move Service-Server
+              Working with your ROS Package (in the Lab)
             
           </span>
         </div>
@@ -256,7 +256,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../about/" class="md-tabs__link">
+      <a href="../../../about/" class="md-tabs__link">
         
   
     
@@ -275,7 +275,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../ros/" class="md-tabs__link">
+        <a href="../../../ros/" class="md-tabs__link">
           
   
     
@@ -297,7 +297,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../" class="md-tabs__link">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -317,7 +317,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../waffles/" class="md-tabs__link">
+        <a href="../../../waffles/" class="md-tabs__link">
           
   
     
@@ -352,9 +352,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../.." title="ROS2 Course Assignments for COM2009" class="md-nav__button md-logo" aria-label="ROS2 Course Assignments for COM2009" data-md-component="logo">
+    <a href="../../.." title="ROS2 Course Assignments for COM2009" class="md-nav__button md-logo" aria-label="ROS2 Course Assignments for COM2009" data-md-component="logo">
       
-  <img src="../../../../assets/tuos.png" alt="logo">
+  <img src="../../../assets/tuos.png" alt="logo">
 
     </a>
     ROS2 Course Assignments for COM2009
@@ -381,7 +381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../about/" class="md-nav__link">
+      <a href="../../../about/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -424,7 +424,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../ros/" class="md-nav__link ">
+            <a href="../../../ros/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -491,7 +491,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -521,8 +521,6 @@
                 
   
   
-    
-  
   
   
     
@@ -550,16 +548,18 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_2" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../assignment1/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -576,7 +576,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Assignment #1: An Introduction to ROS
@@ -592,7 +592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part1/" class="md-nav__link">
+      <a href="../../assignment1/part1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -613,7 +613,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part2/" class="md-nav__link">
+      <a href="../../assignment1/part2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -634,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part3/" class="md-nav__link">
+      <a href="../../assignment1/part3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -655,7 +655,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
+      <a href="../../assignment1/part4/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -676,7 +676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part5/" class="md-nav__link">
+      <a href="../../assignment1/part5/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -697,7 +697,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../part6/" class="md-nav__link">
+      <a href="../../assignment1/part6/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -723,6 +723,8 @@
                 
   
   
+    
+  
   
   
     
@@ -744,18 +746,16 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../assignment2/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -772,7 +772,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
             Assignment #2: Team Robotics Project
@@ -788,7 +788,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment2/getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -806,10 +806,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../assignment2/ros-pkg-tips/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Working with your ROS Package (in the Lab)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -818,6 +836,102 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-git-and-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with Git and GitHub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-ssh-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up SSH Keys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up SSH Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-0-check-if-you-already-have-an-ssh-key-on-the-laptop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 0: Check if you already have an SSH Key on the Laptop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-keygen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Generating an SSH key (on the Laptop)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-adding-an-ssh-key-to-your-github-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Adding an SSH key to your GitHub account
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloning your ROS package onto the Laptop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-your-ros-package-after-a-lab-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deleting your ROS package after a lab session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-in-a-subsequent-lab-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning in a Subsequent Lab Session
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -859,7 +973,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../assignment2/part-a/" class="md-nav__link ">
+            <a href="../part-a/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -892,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment2/part-a/task1/" class="md-nav__link">
+      <a href="../part-a/task1/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -913,7 +1027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment2/part-a/task2/" class="md-nav__link">
+      <a href="../part-a/task2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../assignment2/part-a/deadline/" class="md-nav__link">
+      <a href="../part-a/deadline/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -998,7 +1112,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../extras/" class="md-nav__link ">
+            <a href="../../extras/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1031,7 +1145,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../extras/launch-files/" class="md-nav__link">
+      <a href="../../extras/launch-files/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1052,7 +1166,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../extras/course-repo/" class="md-nav__link">
+      <a href="../../extras/course-repo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1121,7 +1235,7 @@
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../waffles/" class="md-nav__link ">
+            <a href="../../../waffles/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -1154,7 +1268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/intro/" class="md-nav__link">
+      <a href="../../../waffles/intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1175,7 +1289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/launching-ros/" class="md-nav__link">
+      <a href="../../../waffles/launching-ros/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1196,7 +1310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/basics/" class="md-nav__link">
+      <a href="../../../waffles/basics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1217,7 +1331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/essentials/" class="md-nav__link">
+      <a href="../../../waffles/essentials/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1238,7 +1352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../waffles/shutdown/" class="md-nav__link">
+      <a href="../../../waffles/shutdown/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1276,8 +1390,92 @@
   
   
   
-    
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#working-with-git-and-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      Working with Git and GitHub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-ssh-keys" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up SSH Keys
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setting Up SSH Keys">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-0-check-if-you-already-have-an-ssh-key-on-the-laptop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 0: Check if you already have an SSH Key on the Laptop
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ssh-keygen" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Generating an SSH key (on the Laptop)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-adding-an-ssh-key-to-your-github-account" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Adding an SSH key to your GitHub account
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ssh-clone" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloning your ROS package onto the Laptop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#deleting-your-ros-package-after-a-lab-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deleting your ROS package after a lab session
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-in-a-subsequent-lab-session" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning in a Subsequent Lab Session
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1292,7 +1490,7 @@
                   
 
   
-    <a href="https://github.com/tom-howard/com2009/edit/main/docs/course/assignment1/part4/move_server.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/com2009/edit/main/docs/course/assignment2/ros-pkg-tips.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1301,23 +1499,217 @@
     
       
     
-    <a href="https://github.com/tom-howard/com2009/raw/main/docs/course/assignment1/part4/move_server.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/com2009/raw/main/docs/course/assignment2/ros-pkg-tips.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="part-4-move-service-server">Part 4 Move Service-Server<a class="headerlink" href="#part-4-move-service-server" title="Permanent link">&para;</a></h1>
-<p>Copy <strong>all</strong> the code below into your <code>move_server.py</code> file and review the annotations to understand how it all works.</p>
-<div class="admonition note">
-<p class="admonition-title">Remember</p>
-<p><strong>Don't forget the shebang</strong>!</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/usr/bin/env python3</span>
+  <h1>Working with your ROS Package (in the Lab)</h1>
+
+<p>Having followed <a href="../getting-started/">the instructions on the Getting Started page</a> in Week 1, your team's ROS package will be hosted on GitHub, which makes it much easier to collaborate, and transfer between simulation (e.g. WSL-ROS2, for example) and the real hardware in the lab. </p>
+<p>You'll need to transfer your ROS package to a robot laptop whenever you want to work on a real robot during the labs. </p>
+<h2 id="working-with-git-and-github">Working with Git and GitHub<a class="headerlink" href="#working-with-git-and-github" title="Permanent link">&para;</a></h2>
+<p>You'll be working with Git and GitHub quite extensively throughout Assignment #2. Hopefully a lot of you will already be quite familiar with these tools, but if not, we would strongly recommend that you have a look at <a href="https://srse-git-github-zero2hero.netlify.app/">This Course by the University of Sheffield's Research Software Engineering (RSE) Team</a>.</p>
+<h2 id="setting-up-ssh-keys">Setting Up SSH Keys<a class="headerlink" href="#setting-up-ssh-keys" title="Permanent link">&para;</a></h2>
+<p>Using <em>SSH keys</em>, you can clone your team's ROS package to the robot laptops, make commits and push these back up to GitHub during the labs, without needing to provide your GitHub username and a personal access token every time. This makes life a lot easier! The following steps describe the process you should follow to achieve this (adapted from <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh">GitHub Docs</a>).</p>
+<h3 id="step-0-check-if-you-already-have-an-ssh-key-on-the-laptop">Step 0: Check if you already have an SSH Key on the Laptop<a class="headerlink" href="#step-0-check-if-you-already-have-an-ssh-key-on-the-laptop" title="Permanent link">&para;</a></h3>
+<p><em>These instructions are adapted from <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys?platform=linux">this GitHub Docs page</a>.</em></p>
+<p>If you're generating an SSH key for the first time, then you can skip this step and go straight to the next section: "<a href="#ssh-keygen">Step 1: Generating an SSH key (on the Laptop)</a>". If, however, you've already generated an SSH Key on the laptop previously then check it's still there before you go any further by following these steps...</p>
+<ol>
+<li>
+<p>Open a terminal on the laptop.</p>
+<details class="tip">
+<summary>Tip</summary>
+<p>You can use the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span> keyboard combination to open a terminal!</p>
+</details>
+</li>
+<li>
+<p>Use the <code>ls</code> command as follows, to see if your SSH key already exists on the laptop:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ls<span class="w"> </span>-al<span class="w"> </span>~/.ssh
 </code></pre></div>
+<p>This will provide you with a list of all the SSH keys on the laptop. Your team's key should have the same name as your ROS package (<a href="#ssh-key-name">if you followed the steps correctly when you created the key previously</a>), and so you should see your key in the list, i.e.: <code>com2009_teamXX_2025.pub</code>.</p>
+</li>
+<li>
+<p>If your key is there, then you're good to go... Either <a href="#ssh-clone">clone your ROS package onto the Laptop</a> if you deleted it the last time you were in the lab, or just navigate back to it and pull down any updates (<code>git pull</code>) if you left it there.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>We strongly recommend that you delete your team's package from the laptop at the end of each lab session.</p>
 </div>
-<div class="highlight"><span class="filename">move_server.py</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>
+</li>
+<li>
+<p>If you can't see your key in the list, then you'll need to follow all the steps on this page, starting with <a href="#ssh-keygen">Step 1: Generating an SSH key (on the Laptop)</a>.</p>
+</li>
+</ol>
+<h3 id="ssh-keygen">Step 1: Generating an SSH key (on the Laptop)<a class="headerlink" href="#ssh-keygen" title="Permanent link">&para;</a></h3>
+<ol>
+<li>
+<p>From a terminal instance on the laptop navigate to the <code>~/.ssh</code> folder:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/.ssh
 </code></pre></div>
+</li>
+<li>
+<p>Create a new SSH key on the laptop, using your GitHub email address:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ssh-keygen<span class="w"> </span>-t<span class="w"> </span>ed25519<span class="w"> </span>-C<span class="w"> </span><span class="s2">&quot;your.email@sheffield.ac.uk&quot;</span>
+</code></pre></div>
+<p>Replacing <code>your.email@sheffield.ac.uk</code> with <strong>your GitHub email address</strong>.</p>
+<p><a name="ssh-key-name"></a></p>
+</li>
+<li>
+<p>You'll then be asked to <strong>"Enter a file in which to save the key"</strong>. This needs to be unique, so enter the name of your ROS package. For the purposes of this example, let's assume yours is called <code>com2009_team99_2025</code>.</p>
+</li>
+<li>
+<p>You'll then be asked to <strong>enter a passphrase</strong>. This is how you make your SSH key secure, so that no other teams using the same laptop can access and make changes to your team's package/GitHub repo. You'll be asked to enter this whenever you try to commit/push new changes to your ROS package on GitHub. Decide on a passphrase and share this <strong>ONLY</strong> with your fellow team members. </p>
+</li>
+<li>
+<p>Next, start the laptop's ssh-agent:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Add your SSH private key to the laptop's ssh-agent. You'll need to enter the name of the SSH key file that you created in the earlier step (e.g.: <code>com2009_team99_2025</code>)</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ssh-add<span class="w"> </span>~/.ssh/com2009_team99_2025
+</code></pre></div>
+<p>Replacing <code>com2009_team99_2025</code> with the name of your own SSH key file, of course!</p>
+</li>
+<li>
+<p>Then, you'll need to add the SSH key to your account on GitHub...</p>
+</li>
+</ol>
+<h3 id="step-2-adding-an-ssh-key-to-your-github-account">Step 2: Adding an SSH key to your GitHub account<a class="headerlink" href="#step-2-adding-an-ssh-key-to-your-github-account" title="Permanent link">&para;</a></h3>
+<p><em>These instructions are replicated from <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux">this GitHub Docs page</a></em>.</p>
+<ol>
+<li>
+<p>On the laptop, copy the SSH public key that you created in the previous steps to your clipboard.</p>
+<p>Do this from a terminal on the laptop, using <code>cat</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cat<span class="w"> </span>~/.ssh/com2009_team99_2025.pub
+</code></pre></div>
+<p>...replacing <code>com2009_team99_2025</code> with the name of your SSH key file.</p>
+<p>The content of the file will then be displayed in the terminal... copy it from here.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tips</p>
+<ol>
+<li>To copy text from inside a terminal window use <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-c">C</kbd></span></li>
+<li>
+<p>You could also open the file in VS Code and copy it from there:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>code<span class="w"> </span>~/.ssh/com2009_team99_2025.pub
+</code></pre></div>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p>Go to your GitHub account in a web browser. In the upper-right corner of any page, click your profile photo, then click <strong>Settings</strong>.</p>
+</li>
+<li>
+<p>In the "Access" section of the sidebar, click <strong>SSH and GPG keys</strong>.</p>
+</li>
+<li>
+<p>Click <strong>New SSH key</strong>.</p>
+</li>
+<li>
+<p>Enter a descriptive name for the key in the "Title" field, e.g. <code>com2009_dia-laptop1</code>.</p>
+</li>
+<li>
+<p>Select <code>Authentication Key</code> as the "Key Type."</p>
+</li>
+<li>
+<p>Paste the text from your SSH Public Key file into the "Key" field.</p>
+</li>
+<li>
+<p>Finally, click the "Add SSH Key" button.</p>
+</li>
+</ol>
+<h2 id="ssh-clone">Cloning your ROS package onto the Laptop<a class="headerlink" href="#ssh-clone" title="Permanent link">&para;</a></h2>
+<p>With your SSH keys all set up, you can now clone your ROS package onto the laptop. </p>
+<p>There's a ROS Workspace on each of the robot laptops and (much the same as in your own local ROS environment) your package <strong>must</strong> reside within this workspace!</p>
+<ol>
+<li>
+<p>From a terminal on the laptop, navigate to the ROS Workspace <code>src</code> directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/
+</code></pre></div>
+</li>
+<li>
+<p>Go to your ROS package on GitHub. Click the Code button and then select the SSH option to reveal the SSH address of your repo. Copy this. </p>
+</li>
+<li>
+<p>Head back to the terminal instance on the laptop to then clone your package into the <code>ros2_ws/src/</code> directory using <code>git</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>git<span class="w"> </span>clone<span class="w"> </span>REMOTE_SSH_ADDRESS
+</code></pre></div>
+<p>Where <code>REMOTE_SSH_ADDRESS</code> is the SSH address that you have just copied from GitHub.</p>
+</li>
+<li>
+<p>Run Colcon to build your package, which is a <strong>three-step process</strong>:</p>
+<ol>
+<li>
+<p>Navigate into the <strong>root</strong> of the ROS Workspace:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+</code></pre></div>
+</li>
+<li>
+<p>Run the <code>colcon build</code> command, targetting your package only:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>com2009_team99_2025<span class="w"> </span>--symlink-install
+</code></pre></div>
+(...again, replacing <code>com2009_team99_2025</code> with <em>your</em> team's package name.)</p>
+</li>
+<li>
+<p>Then, re-source your environment:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+</li>
+</ol>
+</li>
+<li>
+<p>Navigate into your package and run the following commands to set your identity, to allow you to make commits to your package repo:</p>
+<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>com2009_team99_2025/
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>git<span class="w"> </span>config<span class="w"> </span>user.name<span class="w"> </span><span class="s2">&quot;your name&quot;</span>
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>git<span class="w"> </span>config<span class="w"> </span>user.email<span class="w"> </span><span class="s2">&quot;your email address&quot;</span>
+</code></pre></div></p>
+</li>
+</ol>
+<p>You should then be able to commit and push any updates that you make to your ROS package while working on the laptop, back to your remote repository using the secret passphrase that you defined earlier!</p>
+<h2 id="deleting-your-ros-package-after-a-lab-session">Deleting your ROS package after a lab session<a class="headerlink" href="#deleting-your-ros-package-after-a-lab-session" title="Permanent link">&para;</a></h2>
+<p>Remember that the Robotics Laptops use an account that everyone in the class has access to. You might therefore want to delete your package from the laptop at the end of each lab session. It's very easy to clone it back onto the laptop again by following <a href="#ssh-clone">the steps above</a> at the start of each lab session. Deleting your package (by following the instructions below) <strong>won't</strong> delete your SSH key from the laptop though, so you won't need to do all that again, and your SSH key will still be protected with the secret passphrase that you set up when generating the SSH Key to begin with (assuming that you are working on the same laptop, of course!) </p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Make sure you've pushed any changes to GitHub before deleting your package!</p>
+</div>
+<p>Delete your package by simply running the following command from any terminal on the laptop:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>rm<span class="w"> </span>-rf<span class="w"> </span>~/ros2_ws/src/com2009_teamXX_2025
+</code></pre></div>
+<p>... replacing <code>XX</code> with your own team's number!</p>
+<h2 id="returning-in-a-subsequent-lab-session">Returning in a Subsequent Lab Session<a class="headerlink" href="#returning-in-a-subsequent-lab-session" title="Permanent link">&para;</a></h2>
+<p>Your team will be provided with the same Robotics Laptop for each lab session. Having completed all the steps above in a previous lab session, you should be able to return to the laptop, re-clone your package and continue working with relative ease...</p>
+<ol>
+<li>
+<p>The private SSH key that you created in a previous lab session (and secured with a passphrase) should still be saved on the laptop. Check that this is the case by first running the following command:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ls<span class="w"> </span>-al<span class="w"> </span>~/.ssh
+</code></pre></div>
+If you can see your team's ssh key in the list then you're good to go. If not you'll need to <a href="#ssh-keygen">go back here and follow the steps to create it again</a>.</p>
+</li>
+<li>
+<p>Next, start the laptop's ssh-agent and re-add your team's private key:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nb">eval</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>ssh-agent<span class="w"> </span>-s<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ssh-add<span class="w"> </span>~/.ssh/com2009_teamXX_2025
+</code></pre></div>
+<p>Replacing <code>XX</code> with your team number.</p>
+</li>
+<li>
+<p>Then, navigate to the ROS Workspace <code>src</code> directory:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src
+</code></pre></div>
+</li>
+<li>
+<p>Clone your package into here, using the SSH address of your package on GitHub:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>git<span class="w"> </span>clone<span class="w"> </span>REMOTE_SSH_ADDRESS
+</code></pre></div>
+<p>You'll be asked for your secret passphrase, hopefully you remember it!</p>
+</li>
+</ol>
 
 
 
@@ -1340,7 +1732,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T17:55:20+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-27T16:41:33+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-27</span>
   </span>
 
     
@@ -1350,7 +1742,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T17:55:20+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-27T16:41:33+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-27</span>
   </span>
 
     
@@ -1385,7 +1777,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../move_client/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Part 4 Move Service-Client">
+          <a href="../getting-started/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Getting Started (Week 1)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1395,20 +1787,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Part 4 Move Service-Client
+                Getting Started (Week 1)
               </div>
             </div>
           </a>
         
         
           
-          <a href="../../part6/line_follower/" class="md-footer__link md-footer__link--next" aria-label="Next: Part 6 Line Following (Setup)">
+          <a href="../part-a/" class="md-footer__link md-footer__link--next" aria-label="Next: Assignment #2 Part A">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Part 6 Line Following (Setup)
+                Assignment #2 Part A
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1425,7 +1817,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../../assets/external/i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br />  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2025.
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../assets/external/i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br />  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2025.
 
     </div>
   
@@ -1447,20 +1839,20 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.expand", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.60a45f97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.60a45f97.min.js"></script>
       
-        <script src="../../../../js/timeago.min.js"></script>
+        <script src="../../../js/timeago.min.js"></script>
       
-        <script src="../../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
       
-        <script src="../../../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
-        <script src="../../../../https:/polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="../../../https:/polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
-        <script src="../../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+        <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
   </body>

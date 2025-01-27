@@ -902,7 +902,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#implementing-an-exploration-strategy-using-the-action-framework" class="md-nav__link">
+  <a href="#explore" class="md-nav__link">
     <span class="md-ellipsis">
       Implementing an "Exploration" strategy using the Action Framework
     </span>
@@ -1043,6 +1043,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -1107,6 +1111,160 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment2/ros-pkg-tips/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Working with your ROS Package (in the Lab)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3_4" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../assignment2/part-a/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Part A
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Part A
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment2/part-a/task1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 1: Velocity Control
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment2/part-a/task2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Task 2: Avoiding Obstacles
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment2/part-a/deadline/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Preparing Your ROS Package for the Week 6 Deadline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1126,6 +1284,8 @@
       
         
           
+        
+      
         
       
         
@@ -1185,6 +1345,27 @@
   
   <span class="md-ellipsis">
     Launch Files
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../extras/course-repo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    The TUoS ROS Course Repo
   </span>
   
 
@@ -1345,11 +1526,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../waffles/key-info/" class="md-nav__link">
+      <a href="../../../waffles/essentials/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Essential Information
+    Further (Essential) Exercises
   </span>
   
 
@@ -1596,7 +1777,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#implementing-an-exploration-strategy-using-the-action-framework" class="md-nav__link">
+  <a href="#explore" class="md-nav__link">
     <span class="md-ellipsis">
       Implementing an "Exploration" strategy using the Action Framework
     </span>
@@ -2370,7 +2551,7 @@ set -g mouse
 <p>Finally, consider the shutdown operations.</p>
 </li>
 </ol>
-<h3 id="implementing-an-exploration-strategy-using-the-action-framework">Implementing an "Exploration" strategy using the Action Framework<a class="headerlink" href="#implementing-an-exploration-strategy-using-the-action-framework" title="Permanent link">&para;</a></h3>
+<h3 id="explore">Implementing an "Exploration" strategy using the Action Framework<a class="headerlink" href="#explore" title="Permanent link">&para;</a></h3>
 <p>An exploration strategy allows a robot to autonomously navigate an unknown environment while simultaneously avoiding crashing into things! One way to achieve this is to utilise two distinct motion states: moving forwards and turning on the spot, and repeatedly switching between them. <em>Brownian Motion</em> and <em>Levy Flight</em> are examples of this kind of approach. Randomising the time spent in either, or both, of these two states will result in a navigation strategy that allows a robot to slowly and randomly explore an environment. Forward motion could be performed until - say - a certain distance has been travelled, a set time has elapsed or something gets in the way. Likewise, the direction, speed and/or duration of turning could also be randomised to achieve this.</p>
 <p>Over the next few exercises we'll construct our own Action Interface, Server and Client nodes with the aim of creating the <em>basis</em> for a basic exploration behaviour. Having completed these exercises you'll have something that - with further development - could be turned into an exploration type behaviour such as the above.</p>
 <h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 3: Creating an Action Interface<a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
@@ -2710,7 +2891,7 @@ In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./par
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-26T16:39:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-27T16:41:33+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-27</span>
   </span>
 
     
