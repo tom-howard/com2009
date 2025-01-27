@@ -131,7 +131,7 @@ We'll learn a lot about image cropping and other image processing techniques thr
 
 ## Tip 5: Object Detection
 
-In general, image detection gets a little more challenging in the real-world, where the same object might appear (to a robot's camera) to have slightly different colour tones under different light conditions, from different angles, in different levels of shade, etc. In simulation (again in Part 6 of the Course), you may build an extremely effective `colour_search.py` node to detect each of the four coloured pillars in the `tuos_simulations/coloured_pillars` world, but htis might not perfom as well in the real world without some fine-tuning
+In general, image detection gets a little more challenging in the real-world, where the same object might appear (to a robot's camera) to have slightly different colour tones under different light conditions, from different angles, in different levels of shade, etc. In simulation (again in Part 6 of the Course), you may build an extremely effective `colour_search.py` node to detect each of the four coloured pillars in the `tuos_simulations/coloured_pillars` world, but this might not perform as well in the real world without some fine-tuning
 
 ### Why Does This Matter?
 
