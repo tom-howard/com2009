@@ -45,27 +45,25 @@ By the end of this session you will be able to:
 
 **Step 1: Accessing a ROS2 Environment for this Course**
 
-If you haven't done so already, see here for all the details on [how to install or access a ROS environment for this course (TODO)]().
+If you haven't done so already, see here for all the details on [how to install or access a ROS environment for this course](../../ros/README.md).
 
 **Step 2: Launch ROS**
 
 Launch your ROS environment.
 
-1. OPTION 1
-1. OPTION 2
-1. etc...
+1. If you're using WSL-ROS2 on a university managed desktop machine then follow [the instructions here to launch it](../../ros/using-wsl-ros/man-win.md).
+1. If you're [running WSL-ROS2 on your own machine](../../ros/wsl-ros/install.md), then you'll need to launch the Windows Terminal to access a WSL-ROS2 terminal instance.
+1. If you're using another installation option, then follow the instructions on [the relevant page here](../../ros/other-options/README.md). 
 
-Either way, you should now have access to ROS via a Linux terminal instance, and we'll refer to this terminal instance as **TERMINAL 1**.
+Either way, you should now have access to ROS2 via a Linux terminal instance, and we'll refer to this terminal instance as **TERMINAL 1**.
 
 **Step 3: Download The Course Repo**
 
 <a name="course-repo"></a>
 
-We've put together a few ROS packages specifically for this course. These all live within [this GitHub repo](https://github.com/tom-howard/tuos_ros), and you'll need to download and install this into your ROS environment now, before going any further.
+We've put together a few ROS packages specifically for this course. These all live within [this GitHub repo](https://github.com/tom-howard/tuos_ros/tree/humble), and you'll need to download and install this into your ROS environment now, before going any further.
 
-[TODO: Create a ROS2 Workspace first??]
-
-1. In **TERMINAL 1**, Navigate into the *"ROS2 Workspace"* using the `cd` command[^ros2_ws]:
+1. In **TERMINAL 1**, Navigate into the *"ROS Workspace"* using the `cd` command[^ros2_ws]:
 
     [^ros2_ws]: What is a ROS2 Workspace? [You can find out more here](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#background). 
 
@@ -108,17 +106,23 @@ Now that you're all up and running, let's launch ROS and fire up a simulation of
     ```    
     ***
 
-1. A *Gazebo simulation* window should open and within this you should see a basic representation of [the robot's that you'll work with in the lab (TODO)]():
+1. A *Gazebo simulation* window should open:
 
-[FIGURE]
-    <!-- <figure markdown>
-      ![](../../images/gazebo/tb3_empty_world.png){width=800}
-    </figure> -->
+    <figure markdown>
+      ![](../../images/gz/tb3_empty_world_top.png){width=800}
+    </figure>
+
+    1. **Zoom in and out** using the scroll wheel on your mouse.  
+    1. **Rotate the camera view** by simultaneously pressing and holding the left mouse button and the ++shift++ key on your keyboard, and then moving your mouse around.
+    
+    Using both of these methods you should be able to get a better view of the robot, which will be sat under a lot of blue LiDAR rays (more about this in Part 3), and will appear as a simplified representation of [the real thing](../../about.md#our-waffles).
+
+    <figure markdown>
+      ![](../../images/gz/tb3_empty_world_close.jpg){width=700px}
+    </figure> 
 
 1. With the Gazebo simulation up and running, return to your terminal and open up a *second* terminal instance (**TERMINAL 2**)
-
-    [TODO: use tmux??]
-    
+   
 1. In this new terminal instance enter the following command:<a name="teleop"></a>
 
     ***
@@ -321,7 +325,8 @@ We can find out more about the `/cmd_vel` topic by using the `ros2 topic` comman
     From this, we obtain the following:
 
     ``` { .txt .no-copy }
-    # This expresses velocity in free space broken into its linear and angular parts.
+    # This expresses velocity in free space 
+      broken into its linear and angular parts.
 
     Vector3  linear
             float64 x
@@ -337,8 +342,8 @@ We can find out more about the `/cmd_vel` topic by using the `ros2 topic` comman
 
 1. To finish, enter ++ctrl+c++ in each of the three terminals that should currently have ROS processes running (Terminals **1**, **2** and **3**). The associated Gazebo and RQT Node Graph windows should close as a result of this too.
 
-!!! tip
-    Whenever you need to stop any ROS process use ++ctrl+c++ in the terminal it's running in.
+    !!! tip
+        Whenever you need to stop any ROS process use ++ctrl+c++ in the terminal it's running in.
 
 ## Creating Your First ROS Applications
 
@@ -438,6 +443,14 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 #### :material-pen: Exercise 5: Creating a publisher node {#ex5}
 
 1. From the root of your `part1_pubsub` package, navigate to the `scripts` folder using the `cd` command.
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    cd scripts
+    ```
+    ***
+
 1. `touch` is a **Linux command** that we can use to create an empty file. Use this to create an empty file called `publisher.py`, which we will add content to shortly:
 
     ***
@@ -475,8 +488,6 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     code ~
     ```
     ***
-
-    [TODO: does this work for Docker??]
 
 1. Using the VS Code File Explorer, locate the `publisher.py` file that you have just created (`ros2_ws/src/part1_pubsub/scripts/`) and click on the file to open it in the main editor. 
 
@@ -599,24 +610,38 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 
 ### Interrogating ROS Topics {#rostopic}
 
-So far we have used the `ros2 topic` ROS command with two additional arguments: [TODO: check this!]
+So far we have used the `ros2 topic` ROS command with two additional arguments:
 
 * `list`: to provide us with a *list* of all the topics that are active on our ROS system, and
 * `info`: to provide us with *information* on a particular topic of interest.
 
-We can use the *autocomplete functionality* of the Linux terminal to provide us with a list of *all* the available options that we can use with the `ros2 topic` command.  To do this type `ros2 topic` followed by a ++space++ and then press the ++tab++ key twice:
+We can find out what other *sub-commands* are available for us to use with `ros2 topic` by calling for *help*! 
 
-``` { .bash .no-copy }
-rostopic[SPACE][TAB][TAB]
+***
+**TERMINAL 2:**
+```bash
+ros2 topic --help
+```
+***
+
+Which should provide us with a list of all the options:
+
+``` { .txt .no-copy }
+Commands:
+  bw     Display bandwidth used by topic
+  delay  Display delay of topic from timestamp in header
+  echo   Output messages from a topic
+  find   Output a list of available topics of a given type
+  hz     Print the average publishing rate to screen
+  info   Print information about a topic
+  list   Output a list of available topics
+  pub    Publish a message to a topic
+  type   Print a topic's type
+
+  Call `ros2 topic <command> -h` for more detailed usage.
 ```
 
-You should then be presented with a list of all options:
-
-[TODO: a gif]
-
-<!-- <figure markdown>
-  ![](../../images/ros-cli/rostopic_autocomplete.gif)
-</figure> -->
+Let's talk about a few of these:
 
 * `ros2 topic hz {topic name}` provides information on the frequency (in Hz) at which messages are being published to a topic:
 
@@ -640,7 +665,7 @@ You should then be presented with a list of all options:
     ros2 topic echo --help
     ```
 
-    From here, for instance, we can learn that if we just wanted to print the first message that was received we could use the `-once` option, for example:
+    From here, for instance, we can learn that if we just wanted to print the first message that was received we could use the `--once` option, for example:
 
     ```bash
     ros2 topic echo /my_topic --once
@@ -693,7 +718,7 @@ To illustrate how information can be passed from one node to another (via topics
 
 1. Use `ros2 run` to execute your newly created `subscriber.py` node (remember: `ros2 run {package name} {script name}`). If your publisher and subscriber nodes are working correctly you should see an output like this:
     
-    [TODO: another gif]
+    TODO
 
     <!-- <figure markdown>
       ![](part1/subscriber_output.gif)
@@ -851,8 +876,8 @@ ROS messages will generally be more complex than this, typically containing seve
     install(PROGRAMS
       scripts/publisher.py
       scripts/subscriber.py
-      scripts/custom_msg_publisher.py   # ADD THIS 
-      scripts/custom_msg_subscriber.py  # AND THIS
+      scripts/custom_msg_publisher.py  # ADD THIS 
+      scripts/custom_msg_subscriber.py # AND THIS
     DESTINATION lib/${PROJECT_NAME}
     )
     ```
