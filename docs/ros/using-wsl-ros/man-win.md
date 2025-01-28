@@ -4,7 +4,7 @@ title: University Managed Desktops
 
 ## Prerequisites
 
-* [Accessing WSL-ROS on a University Managed Desktop Computer](../wsl-ros/man-win.md)
+* [Accessing WSL-ROS2 on a University Managed Desktop Computer](../wsl-ros/man-win.md)
 
 ## Launching WSL-ROS
 

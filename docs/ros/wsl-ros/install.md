@@ -59,8 +59,7 @@ You can install WSL-ROS2 (our purpose-built ROS image for this course) via the U
 9. You should now be able to launch the WSL-ROS2 environment by launching the Windows Terminal App:
 
     <figure markdown>
-      ![](../figures/launch-win-term.svg)
-      TODO
+      ![](../figures/launch-win-term.png){width=700px}
     </figure>
 
 
@@ -108,7 +107,6 @@ If you are unable to run GUI apps (having completed the steps in the section abo
 
     <figure markdown>
       ![](../figures/wsl-ros-config.png)
-      TODO
     </figure>
 
 1. Double click this to launch VcXsrv with the appropriate settings. An icon should then appear in your notification tray to indicate that the X Server is running:
@@ -157,7 +155,5 @@ If you are unable to run GUI apps (having completed the steps in the section abo
 
 ## See Also
 
-TODO
-<!-- 
-* [Setting up VS Code for WSL](../man-win/vscode.md)
-* [A Quick Introduction to the Linux Terminal](../man-win/linux-term.md) -->
+* [Setting up VS Code for WSL](../using-wsl-ros/vscode.md)
+* [A Quick Introduction to the Linux Terminal](../using-wsl-ros/linux-term.md)

@@ -27,7 +27,5 @@ In addition to this, WSL-ROS2 can also be *installed* on all machines in the fol
 
 ## See Also
 
-TODO
-<!-- 
-* [Getting Started with WSL-ROS on the University Managed Desktops](../on-campus/getting-started.md) 
-* [A Quick Introduction to the Linux Terminal](../on-campus/linux-term.md) -->
+* [Getting Started with WSL-ROS on the University Managed Desktops](../using-wsl-ros/man-win.md) 
+* [A Quick Introduction to the Linux Terminal](../using-wsl-ros/linux-term.md)
