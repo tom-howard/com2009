@@ -1,2 +1,5 @@
 nav:
-  - "Installing or Accessing ROS": README.md
+  - README.md
+  - "WSL-ROS2": wsl-ros
+  - "Other Installation Options": other-options
+  - "Using WSL-ROS2": using-wsl-ros
