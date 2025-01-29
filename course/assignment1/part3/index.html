@@ -1185,17 +1185,41 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ex5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 5: Enhancing the LaserScan Callback
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simultaneous Localisation and Mapping (SLAM)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simultaneous Localisation and Mapping (SLAM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Building a map of an environment with SLAM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of SLAM
+    </span>
+  </a>
   
 </li>
         
@@ -2055,17 +2079,41 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ex5" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 5: Enhancing the LaserScan Callback
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simultaneous Localisation and Mapping (SLAM)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simultaneous Localisation and Mapping (SLAM)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ex5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Building a map of an environment with SLAM
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-slam" class="md-nav__link">
+    <span class="md-ellipsis">
+      Summary of SLAM
+    </span>
+  </a>
   
 </li>
         
@@ -2605,7 +2653,7 @@
 <hr />
 </li>
 <li>
-<p>Open another terminal (so you can still see the outputs from your <code>lidar_subscriber.py</code> node). Launch the <code>teleop_keyboard</code> node, and drive the robot around, noting how the output from your <code>lidar_subscriber.py</code> node changes as you do so.</p>
+<p>Open another terminal (so you can still see the outputs from your <code>lidar_subscriber.py</code> node). Launch the <code>teleop_keyboard</code> node, and drive the robot around, noting how the outputs from your <code>lidar_subscriber.py</code> node change as you do so.</p>
 </li>
 <li>
 <p>Close everything down now (including the simulation running in <strong>TERMINAL 1</strong>). Then launch the "empty world" simulation again:</p>
@@ -2623,36 +2671,156 @@
 </code></pre></div></p>
 <hr />
 <p>What output do you see from this now?</p>
+<p>You should notice that your <code>lidar_subscriber.py</code> node reports <code>nan meters</code> now. That's because there's nothing in the environment for the LiDAR sensor to detect, so <em>all</em> readings are out of range and hence our analysis of the 40&deg; arc of LiDAR readings at the front of the robot has filtered out <em>everything</em> and therefore returned <code>nan</code> (not a number).</p>
+</li>
+<li>
+<p>Use the <strong>Box</strong> tool in Gazebo to place a box in the environment. </p>
+<p><figure markdown>
+  <img alt="" src="../../../images/gz/toolbars_antd.png" width="800px" />
+</figure></p>
+</li>
+<li>
+<p>Click the <strong>Translate</strong> tool to move the box around until the <code>lidar_subscriber.py</code> node returns some reading that <em>aren't</em> <code>nan</code> again.</p>
+</li>
+<li>
+<p>Move the box around some more to observe what our analysis of the <code>LaserScan</code> data <em>can</em> detect, and where the box falls out of the detectable range.</p>
+</li>
+<li>
+<p>Think about how you could adapt the callback function of the <code>lidar_subscriber.py</code> node so that it picks up on more than one <code>LaserScan</code> subset, so that it could detect situations such as this (for example):</p>
+<p><figure markdown>
+  <img alt="" src="lidar_subscriber_adv.png" width="800px" />
+</figure></p>
 </li>
 </ol>
-<h4 id="ex5"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 5: Enhancing the LaserScan Callback<a class="headerlink" href="#ex5" title="Permanent link">&para;</a></h4>
-<p>In the previous exercise we performed some processing on the LiDAR <code>ranges</code> array, specifically:</p>
+<h2 id="slam">Simultaneous Localisation and Mapping (SLAM)<a class="headerlink" href="#slam" title="Permanent link">&para;</a></h2>
+<p>In combination, the data from the LiDAR sensor and the robot's odometry (the robot <em>pose</em> specifically) are really powerful, and allow some very useful conclusions to be made about the environment a robot is operating within.  One of the key applications of this data is <em>"Simultaneous Localisation and Mapping"</em>, or <em>SLAM</em>.  This is a tool that's built into ROS, and allows a robot to build up a map of its environment and locate itself within that map at the same time!  We'll now look at how easy it is to leverage this in ROS.</p>
+<h4 id="ex5"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 5: Building a map of an environment with SLAM<a class="headerlink" href="#ex5" title="Permanent link">&para;</a></h4>
 <ol>
-<li>Grab 40 data points to represent all distance readings from a 40&deg; arc ahead of the robot</li>
-<li>Discard any "out-of-range" values (<code>inf</code>)</li>
-<li>Return the <em>average distance value</em> from the data points that remain.</li>
+<li>
+<p>Close down all ROS processes that are running now by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in each terminal. </p>
+</li>
+<li>
+<p>We're going to launch our robot into <em>another</em> new simulated environment now, which we'll be creating a map of using SLAM! To launch the simulation enter the following command in <strong>TERMINAL 1</strong>:</p>
+<hr />
+<p><strong>TERMINAL 1:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>nav_world.launch.py
+</code></pre></div></p>
+<hr />
+<p>The environment that launches should look like this:</p>
+<p><figure markdown>
+  <img alt="" src="nav_world.jpg" width="800px" />
+</figure></p>
+</li>
+<li>
+<p>Now launch SLAM to start building a map of this environment. In <strong>TERMINAL 2</strong>, launch SLAM as follows:</p>
+<hr />
+<p><strong>TERMINAL 2:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py
+</code></pre></div></p>
+<hr />
+<p>This will launch RViz again, and you should be able to see a top-down view of an environment with some green dots representing the real-time LiDAR data and a green and red pointer to denote the current location of the robot. </p>
+<p><figure markdown>
+  <img alt="" src="cartographer_rviz.png" width="600px" />
+</figure></p>
+<p>SLAM has already started building a map of the boundaries that are currently visible to the robot, based on its starting position in the environment.</p>
+</li>
+<li>
+<p>In <strong>TERMINAL 3</strong> launch the <code>teleop_keyboard</code> node (<a href="../part2/#teleop">you should know how to do this by now</a>).  Re-arrange and re-size your windows so that you can see Gazebo, RViz <em>and</em> the <code>turtlebot3_teleop_key</code> terminal instances all at the same time:</p>
+<p><figure markdown>
+  <img alt="" src="../../images/wsl/window_arrangement.png" />
+  TODO
+</figure></p>
+</li>
+<li>
+<p>Drive the robot around the arena slowly, using the <code>teleop_keyboard</code> node, and observe the map being updated in the RViz window as you do so. Drive the robot around until a full map of the environment has been generated.</p>
+<p><figure markdown>
+  <img alt="" src="../../images/rviz/slam.png" />
+  TODO
+</figure></p>
+</li>
 </ol>
-<p>As such, we've condensed a LiDAR array subset of 40 data points into a <em>single</em> point to represent (approximately) how far away an object is ahead of our robot. </p>
-<p>We could take this approach with other subsets of the <code>ranges</code> array too, to observe what's happening in different points around the robot, while still maintaining a manageable number of data points to monitor overall.</p>
-<p>Consider the following ...</p>
-<p>We can modify this "Empty World" environment with some basic objects, and we can move these around to further investigate how the <code>lidar_subscriber.py</code> outputs change under different conditions. </p>
-<p>In the Gazebo simulation window, use the "Box" tool in the top toolbar to place a box in front of the robot:</p>
-<!-- 
-<figure markdown>
-  ![](../../images/gz/box.png){width=700px}
-</figure> -->
+<!-- 1. As you're doing this you need to *also* determine the centre coordinates of the four circles (A, B, C & D) that are printed on the arena floor. Drive your robot into each of these circular zones and stop the robot inside them. As you should remember from Part 2, we can determine the position (and orientation) of a robot in its environment from its *odometery*, as published to the `/odom` topic. In [Part 2 Exercise 2](./part2.md#ex2) you built an odometry subscriber node, so you could launch this now (in a new terminal: **TERMINAL 4**), and use this to inform you of your robot's `x` and `y` position in the environment when located within each of the zone markers:
 
-<p>Use the "Scale Mode" button to resize the box and use the "Translation Mode" button to reposition it.</p>
-<!-- 
-<figure markdown>
-  ![](../../images/gz/toolbar_buttons.png)
-</figure> -->
+    ***
+    **TERMINAL 4:**
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>rosrun<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
+</code></pre></div>
+    ***
 
-<p>Once you are happy with this, right-click on the object and select "Delete" to remove it from the world. </p>
-<!-- 
-<figure markdown>
-  ![](../../images/gz/delete.png)
-</figure> -->
+    <a name="goal_coords"></a>Record the zone marker coordinates in a table such as the one below (you'll need this information for the next exercise).
+
+    <center>
+
+    | Zone | X Position (m) | Y Position (m) |
+    | :---: | :---: | :---: |
+    | START | 0.5   | -0.04 |
+    | A     |       |       |
+    | B     |       |       |
+    | C     |       |       |
+    | D     |       |       |
+
+    </center> -->
+
+<ol>
+<li>
+<p>Once you're happy that your robot has built a complete map of the environment, you can then save it for later use. We do this using a ROS <code>map_server</code> package.  First, stop the robot by pressing <span class="keys"><kbd class="key-s">S</kbd></span> in <strong>TERMINAL 3</strong> and then enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to shut down the <code>teleop_keyboard</code> node.</p>
+</li>
+<li>
+<p>Then, remaining in <strong>TERMINAL 3</strong>, navigate to the root of your <code>part3_beyond_basics</code> package directory and create a new folder in it called <code>maps</code>:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part3_beyond_basics/
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>mkdir<span class="w"> </span>maps
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Navigate into this new directory:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="nb">cd</span><span class="w"> </span>maps/
+</code></pre></div></p>
+<hr />
+</li>
+<li>
+<p>Then, run the <code>map_saver</code> node from the <code>map_server</code> package to save a copy of your map:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>MAP_NAME
+</code></pre></div>
+Replacing <code>MAP_NAME</code> with a name of your choosing. </p>
+<hr />
+<p>This will create two files: a <code>MAP_NAME.pgm</code> and a <code>MAP_NAME.yaml</code> file, both of which contain data related to the map that you have just created.  The <code>.pgm</code> file contains an <em>Occupancy Grid Map (OGM)</em>, which is used for <em>autonomous navigation</em> in ROS.  Have a look at the map by launching it in an Image Viewer Application called <code>eog</code>:</p>
+<hr />
+<p><strong>TERMINAL 3:</strong>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>eog<span class="w"> </span>MAP_NAME.pgm
+</code></pre></div></p>
+<hr />
+<p>A new window should launch containing the map you have just created with SLAM and the <code>map_saver_cli</code> node: </p>
+<p><figure markdown>
+  <img alt="" src="part3/slam_map.png" />
+  TODO
+</figure></p>
+<p>White regions represent the area that your robot has determined is open space and that it can freely move within.  Black regions, on the other hand, represent boundaries or objects that have been detected.  Any grey area on the map represents regions that remain unexplored, or that were inaccessible to the robot.</p>
+</li>
+<li>
+<p>Compare the map generated by SLAM to the real simulated environment. In a simulated environment this process should be pretty accurate, and the map should represent the simulated environment very well (unless you didn't allow your robot to travel around and see the whole thing!)  In a real environment this is often not the case.  </p>
+<div class="admonition question">
+<p class="admonition-title">Questions</p>
+<ul>
+<li>How accurately did your robot map the environment?</li>
+<li>What might impact this when working in a real-world environment?</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Close the image using the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2c5.53 0 10 4.47 10 10s-4.47 10-10 10S2 17.53 2 12 6.47 2 12 2m3.59 5L12 10.59 8.41 7 7 8.41 10.59 12 7 15.59 8.41 17 12 13.41 15.59 17 17 15.59 13.41 12 17 8.41z"/></svg></span> button on the right-hand-side of the <em>eog</em> window.</p>
+</li>
+</ol>
+<h4 id="summary-of-slam">Summary of SLAM<a class="headerlink" href="#summary-of-slam" title="Permanent link">&para;</a></h4>
+<p>See how easy it was to map an environment in the previous exercise? This works just as well on a real robot in a real environment too (as you will observe in <a href="../../../waffles/basics/#exSlam">one of the Real Waffle "Getting Started Exercises" for Assignment #2</a>). </p>
+<p>This illustrates the power of ROS: having access to tools such as SLAM, which are built into the ROS framework, makes it really quick and easy for a robotics engineer to start developing robotic applications on top of this. Our job was made even easier here since we used some packages that had been pre-made by the manufacturers of our TurtleBot3 Robots to help us launch SLAM with the right configurations for our exact robot.  If you were developing a robot yourself, or working with a different type of robot, then you might need to do a bit more work in setting up and tuning the SLAM tools to make them work for your own application.</p>
 
 
 
@@ -2675,7 +2843,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-26T16:39:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-29T16:05:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-29</span>
   </span>
 
     
