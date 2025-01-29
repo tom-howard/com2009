@@ -612,7 +612,7 @@ LaserScan data presents us with a new challenge: processing large datasets. In t
     ```
     ***
 
-1. Open another terminal (so you can still see the outputs from your `lidar_subscriber.py` node). Launch the `teleop_keyboard` node, and drive the robot around, noting how the output from your `lidar_subscriber.py` node changes as you do so.
+1. Open another terminal (so you can still see the outputs from your `lidar_subscriber.py` node). Launch the `teleop_keyboard` node, and drive the robot around, noting how the outputs from your `lidar_subscriber.py` node change as you do so.
 
 1. Close everything down now (including the simulation running in **TERMINAL 1**). Then launch the "empty world" simulation again:
 
@@ -634,39 +634,164 @@ LaserScan data presents us with a new challenge: processing large datasets. In t
 
     What output do you see from this now?
 
-#### :material-pen: Exercise 5: Enhancing the LaserScan Callback {#ex5}
+    You should notice that your `lidar_subscriber.py` node reports `nan meters` now. That's because there's nothing in the environment for the LiDAR sensor to detect, so *all* readings are out of range and hence our analysis of the 40&deg; arc of LiDAR readings at the front of the robot has filtered out *everything* and therefore returned `nan` (not a number).
 
-In the previous exercise we performed some processing on the LiDAR `ranges` array, specifically:
+1. Use the **Box** tool in Gazebo to place a box in the environment. 
 
-1. Grab 40 data points to represent all distance readings from a 40&deg; arc ahead of the robot
-1. Discard any "out-of-range" values (`inf`)
-1. Return the *average distance value* from the data points that remain.
+    <figure markdown>
+      ![](../../images/gz/toolbars_antd.png){width=800px}
+    </figure>
 
-As such, we've condensed a LiDAR array subset of 40 data points into a *single* point to represent (approximately) how far away an object is ahead of our robot. 
+1. Click the **Translate** tool to move the box around until the `lidar_subscriber.py` node returns some reading that *aren't* `nan` again.
 
-We could take this approach with other subsets of the `ranges` array too, to observe what's happening in different points around the robot, while still maintaining a manageable number of data points to monitor overall.
+1. Move the box around some more to observe what our analysis of the `LaserScan` data *can* detect, and where the box falls out of the detectable range.
 
-Consider the following ...
+1. Think about how you could adapt the callback function of the `lidar_subscriber.py` node so that it picks up on more than one `LaserScan` subset, so that it could detect situations such as this (for example):
 
-We can modify this "Empty World" environment with some basic objects, and we can move these around to further investigate how the `lidar_subscriber.py` outputs change under different conditions. 
+    <figure markdown>
+      ![](./part3/lidar_subscriber_adv.png){width=800px}
+    </figure>
 
-In the Gazebo simulation window, use the "Box" tool in the top toolbar to place a box in front of the robot:
 
-<!-- 
-<figure markdown>
-  ![](../../images/gz/box.png){width=700px}
-</figure> -->
+## Simultaneous Localisation and Mapping (SLAM) {#slam}
 
-Use the "Scale Mode" button to resize the box and use the "Translation Mode" button to reposition it.
+In combination, the data from the LiDAR sensor and the robot's odometry (the robot *pose* specifically) are really powerful, and allow some very useful conclusions to be made about the environment a robot is operating within.  One of the key applications of this data is *"Simultaneous Localisation and Mapping"*, or *SLAM*.  This is a tool that's built into ROS, and allows a robot to build up a map of its environment and locate itself within that map at the same time!  We'll now look at how easy it is to leverage this in ROS.
 
-<!-- 
-<figure markdown>
-  ![](../../images/gz/toolbar_buttons.png)
-</figure> -->
+#### :material-pen: Exercise 5: Building a map of an environment with SLAM {#ex5}
 
-Once you are happy with this, right-click on the object and select "Delete" to remove it from the world. 
+1. Close down all ROS processes that are running now by entering ++ctrl+c++ in each terminal. 
 
-<!-- 
-<figure markdown>
-  ![](../../images/gz/delete.png)
-</figure> -->
+1. We're going to launch our robot into *another* new simulated environment now, which we'll be creating a map of using SLAM! To launch the simulation enter the following command in **TERMINAL 1**:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    ros2 launch tuos_simulations nav_world.launch.py
+    ```
+    ***
+
+    The environment that launches should look like this:
+
+    <figure markdown>
+      ![](./part3/nav_world.jpg){width=800px}
+    </figure>
+
+1. Now launch SLAM to start building a map of this environment. In **TERMINAL 2**, launch SLAM as follows:
+        
+    ***
+    **TERMINAL 2:**
+    ```bash
+    ros2 launch turtlebot3_cartographer cartographer.launch.py
+    ```
+    ***
+
+    This will launch RViz again, and you should be able to see a top-down view of an environment with some green dots representing the real-time LiDAR data and a green and red pointer to denote the current location of the robot. 
+    
+    <figure markdown>
+      ![](./part3/cartographer_rviz.png){width=600px}
+    </figure>
+
+    SLAM has already started building a map of the boundaries that are currently visible to the robot, based on its starting position in the environment.
+
+1. In **TERMINAL 3** launch the `teleop_keyboard` node ([you should know how to do this by now](./part2.md#teleop)).  Re-arrange and re-size your windows so that you can see Gazebo, RViz *and* the `turtlebot3_teleop_key` terminal instances all at the same time:
+    
+    <figure markdown>
+      ![](../../images/wsl/window_arrangement.png)
+      TODO
+    </figure>
+
+1. Drive the robot around the arena slowly, using the `teleop_keyboard` node, and observe the map being updated in the RViz window as you do so. Drive the robot around until a full map of the environment has been generated.
+    
+    <figure markdown>
+      ![](../../images/rviz/slam.png)
+      TODO
+    </figure>
+
+<!-- 1. As you're doing this you need to *also* determine the centre coordinates of the four circles (A, B, C & D) that are printed on the arena floor. Drive your robot into each of these circular zones and stop the robot inside them. As you should remember from Part 2, we can determine the position (and orientation) of a robot in its environment from its *odometery*, as published to the `/odom` topic. In [Part 2 Exercise 2](./part2.md#ex2) you built an odometry subscriber node, so you could launch this now (in a new terminal: **TERMINAL 4**), and use this to inform you of your robot's `x` and `y` position in the environment when located within each of the zone markers:
+
+    ***
+    **TERMINAL 4:**
+    ```bash
+    rosrun part2_navigation odom_subscriber.py
+    ```
+    ***
+
+    <a name="goal_coords"></a>Record the zone marker coordinates in a table such as the one below (you'll need this information for the next exercise).
+
+    <center>
+
+    | Zone | X Position (m) | Y Position (m) |
+    | :---: | :---: | :---: |
+    | START | 0.5   | -0.04 |
+    | A     |       |       |
+    | B     |       |       |
+    | C     |       |       |
+    | D     |       |       |
+
+    </center> -->
+
+1. Once you're happy that your robot has built a complete map of the environment, you can then save it for later use. We do this using a ROS `map_server` package.  First, stop the robot by pressing ++s++ in **TERMINAL 3** and then enter ++ctrl+c++ to shut down the `teleop_keyboard` node.
+
+1. Then, remaining in **TERMINAL 3**, navigate to the root of your `part3_beyond_basics` package directory and create a new folder in it called `maps`:
+
+    ***
+    **TERMINAL 3:**
+    ```bash
+    cd ~/ros2_ws/src/part3_beyond_basics/
+    ```
+    ```bash
+    mkdir maps
+    ```
+    ***
+
+1. Navigate into this new directory:
+
+    ***
+    **TERMINAL 3:**
+    ```bash
+    cd maps/
+    ```
+    ***
+    
+1. Then, run the `map_saver` node from the `map_server` package to save a copy of your map:
+
+    ***
+    **TERMINAL 3:**
+    ```{ .bash .no-copy }
+    ros2 run nav2_map_server map_saver_cli -f MAP_NAME
+    ```
+    Replacing `MAP_NAME` with a name of your choosing. 
+    ***
+
+    This will create two files: a `MAP_NAME.pgm` and a `MAP_NAME.yaml` file, both of which contain data related to the map that you have just created.  The `.pgm` file contains an *Occupancy Grid Map (OGM)*, which is used for *autonomous navigation* in ROS.  Have a look at the map by launching it in an Image Viewer Application called `eog`:
+    
+    ***
+    **TERMINAL 3:**
+    ```{ .bash .no-copy }
+    eog MAP_NAME.pgm
+    ```
+    ***
+
+    A new window should launch containing the map you have just created with SLAM and the `map_saver_cli` node: 
+    
+    <figure markdown>
+      ![](part3/slam_map.png)
+      TODO
+    </figure>
+
+    White regions represent the area that your robot has determined is open space and that it can freely move within.  Black regions, on the other hand, represent boundaries or objects that have been detected.  Any grey area on the map represents regions that remain unexplored, or that were inaccessible to the robot.
+    
+1. Compare the map generated by SLAM to the real simulated environment. In a simulated environment this process should be pretty accurate, and the map should represent the simulated environment very well (unless you didn't allow your robot to travel around and see the whole thing!)  In a real environment this is often not the case.  
+
+    !!! question "Questions"
+        * How accurately did your robot map the environment?
+        * What might impact this when working in a real-world environment?
+    
+1. Close the image using the :material-close-circle: button on the right-hand-side of the *eog* window.
+
+#### Summary of SLAM
+
+See how easy it was to map an environment in the previous exercise? This works just as well on a real robot in a real environment too (as you will observe in [one of the Real Waffle "Getting Started Exercises" for Assignment #2](../../waffles/basics.md#exSlam)). 
+
+This illustrates the power of ROS: having access to tools such as SLAM, which are built into the ROS framework, makes it really quick and easy for a robotics engineer to start developing robotic applications on top of this. Our job was made even easier here since we used some packages that had been pre-made by the manufacturers of our TurtleBot3 Robots to help us launch SLAM with the right configurations for our exact robot.  If you were developing a robot yourself, or working with a different type of robot, then you might need to do a bit more work in setting up and tuning the SLAM tools to make them work for your own application.
+

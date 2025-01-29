@@ -23,9 +23,9 @@ class LidarSubscriber(Node):
         self.get_logger().info(f"The '{self.get_name()}' node is initialised.")
 
     def lidar_callback(self, scan_data: LaserScan): 
-        left = scan_data.ranges[0:21] 
-        right = scan_data.ranges[-20:] # (5)!
-        front = np.array(right + left) # (6)!
+        left_20_deg = scan_data.ranges[0:21]
+        right_20_deg = scan_data.ranges[-20:] # (5)!
+        front = np.array(left_20_deg + right_20_deg) # (6)!
         
         valid_data = front[front != float("inf")] # (7)!
         if np.shape(valid_data)[0] > 0: # (8)!

@@ -14,7 +14,7 @@ Copy **all** the code below into your `lidar_subscriber.py` file and then **revi
 4. We construct a subscriber in much the same way as we have done in Parts 1 and 2, this time targetting the `/scan` topic though.
 5. From the front of the robot, we obtain a 20&deg; arc of scan data either side of the x-axis (see the figure below).
 
-6. Then, we combine the `left` and `right` data arrays, and convert this from a Python list to a `numpy` array (see the figure below).
+6. Then, we combine the `left_20_deg` and `right_20_deg` data arrays, and convert this from a Python list to a `numpy` array (see the figure below).
 
 7. This illustrates one of the great features of `numpy` arrays: we can filter them.
 
