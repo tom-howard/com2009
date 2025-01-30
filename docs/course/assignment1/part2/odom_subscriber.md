@@ -84,9 +84,9 @@ The structure of this remains largely the same, we just need to modify a few thi
 This is where the changes are a bit more significant:
 
 ```py
-def msg_subscriber(self, topic_message: Odometry): # (1)!
+def msg_callback(self, topic_message: Odometry): # (1)!
 
-    pose = topic_data.pose.pose # (2)!
+    pose = topic_message.pose.pose # (2)!
     
     # (3)!
     pos_x = pose.position.x
