@@ -422,7 +422,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     │   └── part1_pubsub
     │       └── minimal_header.hpp
     ├── package.xml
-    ├── part1_pubsub
+    ├── part1_pubsub_modules
     │   ├── __init__.py
     │   └── tb3_tools.py
     ├── scripts
@@ -434,9 +434,9 @@ We'll be using Python throughout this course, but we'll actually take a slightly
     ```
 
     * `scripts`: is a *directory* that will contain all the Python Nodes that we'll create (you'll notice a `minimal_node.py` already exists in there).
-    * `part1_pubsub`: is a *directory* that we can use to store Python *modules*, that we can then import into our main Python nodes
+    * `part1_pubsub_modules`: is a *directory* that we can use to store Python *modules*, that we can then import into our main Python nodes
         
-        (`#!py from part1_pubsub.tb3_tools import ...`, for example)
+        (`#!py from part1_pubsub_modules.tb3_tools import ...`, for example)
     
     * `package.xml` and `CMakeLists.txt`: are both *files* that define our package, and how it must be built (using `colcon build`). We'll explore these more shortly... 
 
