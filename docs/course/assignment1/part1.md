@@ -718,11 +718,9 @@ To illustrate how information can be passed from one node to another (via topics
 
 1. Use `ros2 run` to execute your newly created `subscriber.py` node (remember: `ros2 run {package name} {script name}`). If your publisher and subscriber nodes are working correctly you should see an output like this:
     
-    TODO
-
-    <!-- <figure markdown>
-      ![](part1/subscriber_output.gif)
-    </figure> -->
+    <figure markdown>
+      ![](part1/subscriber_output.gif){width=700px}
+    </figure>
 
 1. Interrogate your ROS network:
 
