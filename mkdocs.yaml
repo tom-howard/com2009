@@ -61,6 +61,7 @@ plugins:
       enabled: !ENV [CI, false]
       cards_layout_options:
         font_family: Noto Sans
+  - glightbox
 
 markdown_extensions:
   - admonition

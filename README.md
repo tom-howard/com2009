@@ -27,6 +27,7 @@ pip install \
     mkdocs-material \
     mkdocs-awesome-pages-plugin \
     mkdocs-git-revision-date-localized-plugin \
+    mkdocs-glightbox \
     "mkdocs-material[imaging]"
 ```
 
