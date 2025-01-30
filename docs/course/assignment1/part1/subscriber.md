@@ -25,7 +25,7 @@ Copy **all** the code below into your `subscriber.py` file and (again) *make sur
     1. `topic`: The **name of the topic** that we want to listen (or subscribe) to.
         
         !!! warning "Fill in the Blank!"
-            Replace the `{BLANK}` in the code above with the name of the topic that our [`publisher.py` node](./publisher.md) was set up to publish to!
+            Replace the `??` in the code above with the name of the topic that our [`publisher.py` node](./publisher.md) was set up to publish to!
     
     1. `callback`: When building a subscriber, we need a *callback function*, which is a function that will execute every time a new message is received from the topic.
 

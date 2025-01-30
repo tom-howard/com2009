@@ -13,7 +13,7 @@ class SimpleSubscriber(Node): # (2)!
 
         self.my_subscriber = self.create_subscription(
             msg_type=String,
-            topic="{BLANK}",
+            topic="??",
             callback=self.msg_callback,
             qos_profile=10,
         ) # (4)!
@@ -24,8 +24,10 @@ class SimpleSubscriber(Node): # (2)!
 
     def msg_callback(self, topic_message: String): # (6)!
         # (7)!
-        self.get_logger().info(f"The '{self.get_name()}' node heard:") 
-        self.get_logger().info(f"'{topic_message.data}'")
+        self.get_logger().info(
+            f"\nThe '{self.get_name()}' node heard:\n"
+            f"  '{topic_message.data}'"
+        )
     
 def main(args=None): # (8)!
     rclpy.init(args=args)
