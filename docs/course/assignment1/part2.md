@@ -457,10 +457,16 @@ In Part 1 we learnt how to create a package and build simple Python nodes to pub
     )
     ```
 
-1. Finally, head back to the terminal and use Colcon to build the package, and the `odom_subscriber.py` node:
+1. Head back to the terminal and use Colcon to build the package again (which now contains the new `odom_subscriber.py` node):
 
     ```bash
     cd ~/ros2_ws/ && colcon build --packages-select part2_navigation --symlink-install
+    ```
+
+1. And then, finally, don't forget to re-source:
+
+    ```bash
+    source ~/.bashrc
     ```
 
 1. Now we're ready to run this! Do so using `ros2 run` and see what it does:
