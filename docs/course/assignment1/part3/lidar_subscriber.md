@@ -1,5 +1,5 @@
 ---  
-title: "Building a Basic LaserScan Subscriber Node"
+title: Building a Basic LaserScan Subscriber Node
 ---
 
 Copy **all** the code below into your `lidar_subscriber.py` file and then **review the annotations** to understand how it all works.

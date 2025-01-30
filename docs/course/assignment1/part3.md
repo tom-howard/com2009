@@ -1,26 +1,38 @@
 ---  
 title: "Part 3: Beyond the Basics"  
+description: Building on the core ROS knowledge that we've gained so far on this course, in Part 3 we will learn how to execute ROS applications more efficiently using launch files. We'll also explore the LiDAR sensor, the data that it generates, and how this can be of huge benefit for robotics applications. You'll see this in practice by leveraging mapping tools within ROS (aka "SLAM").
 ---
-
-> This page isn't finished yet, sorry. 
 
 ## Introduction
 
-
+:material-pen: **Exercises**: 5  
+:material-timer: **Estimated Completion Time**: 2 hours
 
 ### Aims
 
+In this part of the course we'll look at some more advanced ROS concepts, and explore another of our robot's on-board sensors: the LiDAR sensor. From the work you did in Part 2 you may have started to appreciate the limitations associated with using odometry data alone as a feedback signal when trying to control a robot's position in its environment. The LiDAR sensor can provide further information about an environment, thus enhancing a robot's knowledge and capabilities. To begin with however, we'll look at how to launch ROS applications more efficiently by creating our own *launch files* and executing these with the `ros2 launch` command. 
 
 ### Intended Learning Outcomes
 
+By the end of this session you will be able to:
+
+1. Create launch files to allow the execution of multiple ROS Nodes simultaneously with `ros2 launch`.
+1. Learn about the robot's LiDAR sensor and the measurements obtained from this.
+1. Interpret the `LaserScan` data that is published to the `/scan` topic and use existing ROS tools to visualise this.
+1. Perform numeric analysis on data arrays (using the `numpy` Python library) to process `LaserScan` data for use in ROS applications.
+1. Use existing ROS tools to implement SLAM and build a map of an environment. 
 
 ### Quick Links
 
-
+* [Exercise 1: Creating a Launch File](#ex1)
+* [Exercise 2: Launching Another Launch File](#ex2)
+* [Exercise 3: Using RViz to Visualise LaserScan Data](#ex3)
+* [Exercise 4: Building a LaserScan Callback Function](#ex4)
+* [Exercise 5: Building a map of an environment with SLAM](#ex5)
 
 ### Additional Resources
 
-
+* [A Basic LaserScan Subscriber Node (for Exercise 4)](./part3/lidar_subscriber.md)
 
 ## Getting Started
 
@@ -28,21 +40,23 @@ title: "Part 3: Beyond the Basics"
 
 If you haven't done so already, launch your ROS environment now:
 
-1. **Using WSL-ROS on a university managed desktop machine**: follow [the instructions here to launch it (TODO)]().
-1. **[Running WSL-ROS on your own machine (TODO)]()**: launch the Windows Terminal to access a WSL-ROS terminal instance.
-1. **Other Users**: Launch a terminal instance with access to your local ROS installation.
+1. **Using WSL-ROS2 on a university managed desktop machine**: follow [the instructions here to launch it](../../ros/using-wsl-ros/man-win.md).
+1. **[Running WSL-ROS2 on your own machine](../../ros/wsl-ros/install.md)**: launch the Windows Terminal to access a WSL-ROS2 terminal instance.
+1. **Other Users**: Follow [the relevant steps](../../ros/other-options/README.md) to launch a terminal instance into your local ROS installation.
 
 You should now have access to a Linux terminal instance, and we'll refer to this terminal instance as **TERMINAL 1**.
 
-**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
+**Step 2: Restore your work (WSL-ROS2 Managed Desktop Users ONLY)**
 
-Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers. At [the end of Part 2](./part2.md#backup) you should have run the `wsl_ros` tool to back up your home directory to your University `U:\` Drive. Once WSL-ROS is up and running, you should be prompted to restore this:
+Remember that any work that you do within the WSL-ROS2 Environment will not be preserved between sessions or across different University computers. At [the end of Part 2](./part2.md#backup) you should have run the `wsl_ros` tool to back up your home directory to your University `U:\` Drive. Once WSL-ROS2 is up and running, you should be prompted to restore this:
 
-<figure markdown>
-  TODO
-</figure>
+``` { .txt .no-copy }
+It looks like you already have a backup from a previous session:
+  U:\wsl-ros\ros2-backup-XXX.tar.gz
+Do you want to restore this now? [y/n]
+```
 
-Enter `Y` to restore your work from last time. You can also restore your work at any time using the following command:
+Enter ++y+enter++ to restore your work from last time. You can also restore your work at any time using the following command:
 
 ```bash
 wsl_ros restore
@@ -54,7 +68,11 @@ It's also worth launching VS Code now, so that it's ready to go for when you nee
 
 !!! warning "WSL Users..."
         
-    It's important to launch VS Code within your ROS environment using the "WSL" extension. Always remember to check for this: FIG TODO
+    It's important to launch VS Code within your ROS environment using the "WSL" extension. Always remember to check for this: 
+    
+    <figure markdown>
+      ![](../../ros/figures/code-wsl-ext-on.png){width=400px}
+    </figure>
 
 **Step 4: Make Sure The Course Repo is Up-To-Date**
 
@@ -80,7 +98,7 @@ source ~/.bashrc
 ***
 
 !!! warning "Remember"
-    If you have any other terminal instances open, then you'll need run `source ~/.bashrc` in these too, in order for the changes to propagate through to these as well!
+    If you have any other terminal instances open, then you'll need run `#!bash source ~/.bashrc` in these too, in order for the changes to propagate through to these as well!
 
 ## Launch Files
 
@@ -225,7 +243,7 @@ To start with, let's create another new package, this time called `part3_beyond_
                 name='my_publisher'
             ),
             Node(
-                # TODO: describe the subscriber.py node...
+                # TODO: define the subscriber.py node...
             )
         ])
     ```
@@ -540,7 +558,7 @@ What you may also notice is several `inf` values scattered around the array.  Th
 
 Stop the `ros2 topic echo` command from running in the terminal window by entering ++ctrl+c++ in **TERMINAL 3**. Also close down the RViz process running in **TERMINAL 2** now as well, but leave the simulation (in **TERMINAL 1** running). 
 
-#### :material-pen: Exercise 4: Building a Basic LaserScan Callback Function {#ex4}
+#### :material-pen: Exercise 4: Building a LaserScan Callback Function {#ex4}
 
 LaserScan data presents us with a new challenge: processing large datasets. In this exercise we'll look at some basic approaches that can be taken to deal with this data, and get something meaningful out of it that can be used in your robot applications.
 
@@ -795,3 +813,20 @@ See how easy it was to map an environment in the previous exercise? This works j
 
 This illustrates the power of ROS: having access to tools such as SLAM, which are built into the ROS framework, makes it really quick and easy for a robotics engineer to start developing robotic applications on top of this. Our job was made even easier here since we used some packages that had been pre-made by the manufacturers of our TurtleBot3 Robots to help us launch SLAM with the right configurations for our exact robot.  If you were developing a robot yourself, or working with a different type of robot, then you might need to do a bit more work in setting up and tuning the SLAM tools to make them work for your own application.
 
+## Wrapping Up
+
+As we learnt in Part 2, a robot's odometry is determined by dead-reckoning and control algorithms based on this alone (like the `move_square.py` node) may be subject to drift and accumulated error. 
+
+Ultimately then, a robot needs additional information to pinpoint its precise location within an environment, and thus enhance its ability to navigate effectively and avoid crashing into things!
+
+This additional information can come from a LiDAR sensor, which you learnt about in this session. We explored where this data is published to, how we access it, and what it tells us about a robot's immediate environment.  We then looked at some ways odometry and laser displacement data can be combined to perform advanced robotic functions such as the mapping of an environment. This is all complicated stuff but, using ROS, we can leverage these tools with relative ease, which illustrates just how powerful ROS can be for developing robotic applications quickly and effectively without having to re-invent the wheel!
+    
+### WSL-ROS2 Managed Desktop Users: Save your work! {#backup}
+
+Remember, the work you have done in the WSL-ROS2 environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS2 Terminal Instance:
+
+```bash
+wsl_ros backup
+```
+
+This will export your home directory to your University `U:\` Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS2.  

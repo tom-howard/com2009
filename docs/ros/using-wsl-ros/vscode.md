@@ -61,7 +61,7 @@ title: "VS Code and WSL"
 Check that your blue "Remote Window" icon in the bottom-left of the VS Code screen always looks like this:
 
 <figure markdown>
-  ![](../figures/code-wsl-ext-on.png){width=400}
+  ![](../figures/code-wsl-ext-on.png){width=400px}
 </figure>
 
 If not, then go back to [the top of this page](#the-top) and try again!
