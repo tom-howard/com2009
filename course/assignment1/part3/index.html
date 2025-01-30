@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Practical Robotics Course Assignments for the COM2009 Robotics Module at The University of Sheffield (with ROS2 and the TurtleBot3 Waffle).">
+        <meta name="description" content="Building on the core ROS knowledge that we've gained so far on this course, in Part 3 we will learn how to execute ROS applications more efficiently using launch files. We'll also explore the LiDAR sensor, the data that it generates, and how this can be of huge benefit for robotics applications. You'll see this in practice by leveraging mapping tools within ROS (aka "SLAM").">
       
       
       
@@ -65,7 +65,7 @@
       
         <meta  property="og:title"  content="Part 3: Beyond the Basics - ROS2 Course Assignments for COM2009" >
       
-        <meta  property="og:description"  content="Practical Robotics Course Assignments for the COM2009 Robotics Module at The University of Sheffield (with ROS2 and the TurtleBot3 Waffle)." >
+        <meta  property="og:description"  content="Building on the core ROS knowledge that we've gained so far on this course, in Part 3 we will learn how to execute ROS applications more efficiently using launch files. We'll also explore the LiDAR sensor, the data that it generates, and how this can be of huge benefit for robotics applications. You'll see this in practice by leveraging mapping tools within ROS (aka "SLAM")." >
       
         <meta  property="og:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part3.png" >
       
@@ -81,7 +81,7 @@
       
         <meta  name="twitter:title"  content="Part 3: Beyond the Basics - ROS2 Course Assignments for COM2009" >
       
-        <meta  name="twitter:description"  content="Practical Robotics Course Assignments for the COM2009 Robotics Module at The University of Sheffield (with ROS2 and the TurtleBot3 Waffle)." >
+        <meta  name="twitter:description"  content="Building on the core ROS knowledge that we've gained so far on this course, in Part 3 we will learn how to execute ROS applications more efficiently using launch files. We'll also explore the LiDAR sensor, the data that it generates, and how this can be of huge benefit for robotics applications. You'll see this in practice by leveraging mapping tools within ROS (aka "SLAM")." >
       
         <meta  name="twitter:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part3.png" >
       
@@ -1188,7 +1188,7 @@
           <li class="md-nav__item">
   <a href="#ex4" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 4: Building a Basic LaserScan Callback Function
+      Exercise 4: Building a LaserScan Callback Function
     </span>
   </a>
   
@@ -1227,6 +1227,30 @@
   <a href="#summary-of-slam" class="md-nav__link">
     <span class="md-ellipsis">
       Summary of SLAM
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapping Up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSL-ROS2 Managed Desktop Users: Save your work!
     </span>
   </a>
   
@@ -2082,7 +2106,7 @@
           <li class="md-nav__item">
   <a href="#ex4" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 4: Building a Basic LaserScan Callback Function
+      Exercise 4: Building a LaserScan Callback Function
     </span>
   </a>
   
@@ -2131,6 +2155,30 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#wrapping-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wrapping Up
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wrapping Up">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#backup" class="md-nav__link">
+    <span class="md-ellipsis">
+      WSL-ROS2 Managed Desktop Users: Save your work!
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2164,53 +2212,75 @@
 
   <h1>Part 3: Beyond the Basics</h1>
 
-<blockquote>
-<p>This page isn't finished yet, sorry. </p>
-</blockquote>
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>Exercises</strong>: 5<br />
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19.03 7.39 1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0 0 18c5 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61M13 14h-2V7h2zm2-13H9v2h6z"/></svg></span> <strong>Estimated Completion Time</strong>: 2 hours</p>
 <h3 id="aims">Aims<a class="headerlink" href="#aims" title="Permanent link">&para;</a></h3>
+<p>In this part of the course we'll look at some more advanced ROS concepts, and explore another of our robot's on-board sensors: the LiDAR sensor. From the work you did in Part 2 you may have started to appreciate the limitations associated with using odometry data alone as a feedback signal when trying to control a robot's position in its environment. The LiDAR sensor can provide further information about an environment, thus enhancing a robot's knowledge and capabilities. To begin with however, we'll look at how to launch ROS applications more efficiently by creating our own <em>launch files</em> and executing these with the <code>ros2 launch</code> command. </p>
 <h3 id="intended-learning-outcomes">Intended Learning Outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permanent link">&para;</a></h3>
+<p>By the end of this session you will be able to:</p>
+<ol>
+<li>Create launch files to allow the execution of multiple ROS Nodes simultaneously with <code>ros2 launch</code>.</li>
+<li>Learn about the robot's LiDAR sensor and the measurements obtained from this.</li>
+<li>Interpret the <code>LaserScan</code> data that is published to the <code>/scan</code> topic and use existing ROS tools to visualise this.</li>
+<li>Perform numeric analysis on data arrays (using the <code>numpy</code> Python library) to process <code>LaserScan</code> data for use in ROS applications.</li>
+<li>Use existing ROS tools to implement SLAM and build a map of an environment. </li>
+</ol>
 <h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="#ex1">Exercise 1: Creating a Launch File</a></li>
+<li><a href="#ex2">Exercise 2: Launching Another Launch File</a></li>
+<li><a href="#ex3">Exercise 3: Using RViz to Visualise LaserScan Data</a></li>
+<li><a href="#ex4">Exercise 4: Building a LaserScan Callback Function</a></li>
+<li><a href="#ex5">Exercise 5: Building a map of an environment with SLAM</a></li>
+</ul>
 <h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="lidar_subscriber/">A Basic LaserScan Subscriber Node (for Exercise 4)</a></li>
+</ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p><strong>Step 1: Launch your ROS Environment</strong></p>
 <p>If you haven't done so already, launch your ROS environment now:</p>
 <ol>
-<li><strong>Using WSL-ROS on a university managed desktop machine</strong>: follow <a href="">the instructions here to launch it (TODO)</a>.</li>
-<li><strong><a href="">Running WSL-ROS on your own machine (TODO)</a></strong>: launch the Windows Terminal to access a WSL-ROS terminal instance.</li>
-<li><strong>Other Users</strong>: Launch a terminal instance with access to your local ROS installation.</li>
+<li><strong>Using WSL-ROS2 on a university managed desktop machine</strong>: follow <a href="../../../ros/using-wsl-ros/man-win/">the instructions here to launch it</a>.</li>
+<li><strong><a href="../../../ros/wsl-ros/install/">Running WSL-ROS2 on your own machine</a></strong>: launch the Windows Terminal to access a WSL-ROS2 terminal instance.</li>
+<li><strong>Other Users</strong>: Follow <a href="../../../ros/other-options/">the relevant steps</a> to launch a terminal instance into your local ROS installation.</li>
 </ol>
 <p>You should now have access to a Linux terminal instance, and we'll refer to this terminal instance as <strong>TERMINAL 1</strong>.</p>
-<p><strong>Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)</strong></p>
-<p>Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers. At <a href="../part2/#backup">the end of Part 2</a> you should have run the <code>wsl_ros</code> tool to back up your home directory to your University <code>U:\</code> Drive. Once WSL-ROS is up and running, you should be prompted to restore this:</p>
-<figure>
-<p>TODO</p>
-</figure>
-<p>Enter <code>Y</code> to restore your work from last time. You can also restore your work at any time using the following command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>wsl_ros<span class="w"> </span>restore
+<p><strong>Step 2: Restore your work (WSL-ROS2 Managed Desktop Users ONLY)</strong></p>
+<p>Remember that any work that you do within the WSL-ROS2 Environment will not be preserved between sessions or across different University computers. At <a href="../part2/#backup">the end of Part 2</a> you should have run the <code>wsl_ros</code> tool to back up your home directory to your University <code>U:\</code> Drive. Once WSL-ROS2 is up and running, you should be prompted to restore this:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>It looks like you already have a backup from a previous session:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  U:\wsl-ros\ros2-backup-XXX.tar.gz
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Do you want to restore this now? [y/n]
+</code></pre></div>
+<p>Enter <span class="keys"><kbd class="key-y">Y</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span> to restore your work from last time. You can also restore your work at any time using the following command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>wsl_ros<span class="w"> </span>restore
 </code></pre></div>
 <p><strong>Step 3: Launch VS Code</strong>  </p>
 <p>It's also worth launching VS Code now, so that it's ready to go for when you need it later on. </p>
 <div class="admonition warning">
 <p class="admonition-title">WSL Users...</p>
-<p>It's important to launch VS Code within your ROS environment using the "WSL" extension. Always remember to check for this: FIG TODO</p>
+<p>It's important to launch VS Code within your ROS environment using the "WSL" extension. Always remember to check for this: </p>
+<p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../ros/figures/code-wsl-ext-on.png" width="400px" /></a>
+</figure></p>
 </div>
 <p><strong>Step 4: Make Sure The Course Repo is Up-To-Date</strong></p>
 <p>In Part 1 you should have <a href="../part1/#course-repo">downloaded and installed The Course Repo</a> into your ROS environment. Hopefully you've done this by now, but if you haven't then go back and do it now (you'll need it for some exercises here). If you <em>have</em> already done it, then (once again) it's worth just making sure it's all up-to-date, so run the following command now to do so:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/tuos_ros/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/tuos_ros/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
 </code></pre></div></p>
 <p>Then run <code>colcon build</code> </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-up-to<span class="w"> </span>tuos_ros
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-up-to<span class="w"> </span>tuos_ros
 </code></pre></div>
 <p>And finally, re-source your environment:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
 <hr />
 <div class="admonition warning">
 <p class="admonition-title">Remember</p>
-<p>If you have any other terminal instances open, then you'll need run <code>source ~/.bashrc</code> in these too, in order for the changes to propagate through to these as well!</p>
+<p>If you have any other terminal instances open, then you'll need run <code class="highlight"><span class="nb">source</span><span class="w"> </span>~/.bashrc</code> in these too, in order for the changes to propagate through to these as well!</p>
 </div>
 <h2 id="launch-files">Launch Files<a class="headerlink" href="#launch-files" title="Permanent link">&para;</a></h2>
 <p>So far (in Parts 1 &amp; 2) we've used the <code>ros2 run</code> command to execute a variety of ROS nodes, such as <code>teleop_keyboard</code>, as well as a number of nodes that we've created of our own. You may also have noticed that we've used a <code>ros2 launch</code> command now and again too, mainly to launch Gazebo Simulations of our robot, but why do we have these two commands, and what's the difference between them?</p>
@@ -2227,17 +2297,17 @@
 <p>Head to the <code>src</code> folder of your ROS workspace, and into the <code>tuos_ros</code> Course Repo from there:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/tuos_ros/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/tuos_ros/
 </code></pre></div></p>
 </li>
 <li>
 <p>Use the <code>create_pkg.sh</code> helper script to create a new package once again:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>./create_pkg.sh<span class="w"> </span>part3_beyond_basics
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>./create_pkg.sh<span class="w"> </span>part3_beyond_basics
 </code></pre></div>
 </li>
 <li>
 <p>And navigate into the <em>root</em> of this new package, using <code>cd</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>../part3_beyond_basics/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>../part3_beyond_basics/
 </code></pre></div>
 <hr />
 </li>
@@ -2247,7 +2317,7 @@
 <p>Launch files should be located in a <code>launch</code> directory at the root of the package directory, so use <code>mkdir</code> to do this:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>mkdir<span class="w"> </span>launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mkdir<span class="w"> </span>launch
 </code></pre></div></p>
 <hr />
 </li>
@@ -2255,22 +2325,22 @@
 <p>Use the <code>cd</code> command to enter the <code>launch</code> folder that you just created, then use the <code>touch</code> command to create a new empty file called <code>pubsub.launch.py</code>.</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>launch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>touch<span class="w"> </span>pubsub.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">cd</span><span class="w"> </span>launch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>touch<span class="w"> </span>pubsub.launch.py
 </code></pre></div></p>
 </li>
 <li>
 <p>Open this launch file in VS Code and enter the following:</p>
-<div class="highlight"><span class="filename">pubsub.launch.py</span><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span> <span class="c1"># (2)!</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span> <span class="c1"># (3)!</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span> <span class="c1"># (4)!</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>        <span class="n">Node</span><span class="p">(</span> <span class="c1"># (5)!</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;part1_pubsub&#39;</span><span class="p">,</span> <span class="c1"># (6)!</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;publisher.py&#39;</span><span class="p">,</span> <span class="c1"># (7)!</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_publisher&#39;</span> <span class="c1"># (8)!</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a>        <span class="p">)</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a>    <span class="p">])</span>
+<div class="highlight"><span class="filename">pubsub.launch.py</span><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span> <span class="c1"># (1)!</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span> <span class="c1"># (3)!</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span> <span class="c1"># (4)!</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>        <span class="n">Node</span><span class="p">(</span> <span class="c1"># (5)!</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;part1_pubsub&#39;</span><span class="p">,</span> <span class="c1"># (6)!</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;publisher.py&#39;</span><span class="p">,</span> <span class="c1"># (7)!</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_publisher&#39;</span> <span class="c1"># (8)!</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>        <span class="p">)</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>    <span class="p">])</span>
 </code></pre></div>
 <ol>
 <li>Everything that we want to execute with a launch file must be encapsulated within a <code>LaunchDescription</code>, which is imported here from the <code>launch</code> module.</li>
@@ -2282,7 +2352,7 @@
 <li>The name of the actual node that we want to launch from the above package.</li>
 <li>
 <p>A name to register this node as on the ROS network. While this is also defined in the node itself: </p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;simple_publisher&quot;</span><span class="p">)</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">&quot;simple_publisher&quot;</span><span class="p">)</span>
 </code></pre></div>
 <p>...we can override this here with something else. </p>
 </li>
@@ -2291,10 +2361,10 @@
 <li>
 <p>We need to make sure we tell <code>colcon</code> about our new <code>launch</code> directory, so that it can build the launch files within it when we run <code>colcon build</code>. To do this, we need to add a <em>directory</em> install instruction to our package's <code>CMakeLists.txt</code>:</p>
 <p>Open up the <code>CMakeLists.txt</code> file and add the following text <strong>just above</strong> the <code>ament_package()</code> line at the very bottom:</p>
-<div class="highlight"><span class="filename">part3_beyond_basics/CMakeLists.txt</span><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>install(DIRECTORY
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>  launch
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>  DESTINATION share/${PROJECT_NAME}
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>)
+<div class="highlight"><span class="filename">part3_beyond_basics/CMakeLists.txt</span><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>install(DIRECTORY
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>  launch
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>  DESTINATION share/${PROJECT_NAME}
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>)
 </code></pre></div>
 </li>
 <li>
@@ -2304,17 +2374,17 @@
 <p>Navigate back to the root of the ROS workspace:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/
 </code></pre></div></p>
 </li>
 <li>
 <p>Run <code>colcon build</code> on your new package <em>only</em>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part3_beyond_basics<span class="w"> </span>--symlink-install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part3_beyond_basics<span class="w"> </span>--symlink-install
 </code></pre></div>
 </li>
 <li>
 <p>And finally, re-source the <code>.bashrc</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
 <hr />
 </li>
@@ -2324,26 +2394,26 @@
 <p>Use <code>ros2 launch</code> to launch this file and test it out as it is:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>part3_beyond_basics<span class="w"> </span>pubsub.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>part3_beyond_basics<span class="w"> </span>pubsub.launch.py
 </code></pre></div></p>
 <hr />
 </li>
 <li>
 <p>The code that we've given you above will launch the <code>publisher.py</code> node from the <code>part1_pubsub</code> package, but not the <code>subscriber.py</code> node.  We therefore need to add another <code>Node()</code> object to our <code>LaunchDescription</code>:</p>
-<div class="highlight"><span class="filename">pubsub.launch.py</span><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span> 
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>        <span class="n">Node</span><span class="p">(</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;part1_pubsub&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;publisher.py&#39;</span><span class="p">,</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_publisher&#39;</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a>        <span class="p">),</span>
-<a id="__codelineno-16-11" name="__codelineno-16-11" href="#__codelineno-16-11"></a>        <span class="n">Node</span><span class="p">(</span>
-<a id="__codelineno-16-12" name="__codelineno-16-12" href="#__codelineno-16-12"></a>            <span class="c1"># TODO: describe the subscriber.py node...</span>
-<a id="__codelineno-16-13" name="__codelineno-16-13" href="#__codelineno-16-13"></a>        <span class="p">)</span>
-<a id="__codelineno-16-14" name="__codelineno-16-14" href="#__codelineno-16-14"></a>    <span class="p">])</span>
+<div class="highlight"><span class="filename">pubsub.launch.py</span><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span> 
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>        <span class="n">Node</span><span class="p">(</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>            <span class="n">package</span><span class="o">=</span><span class="s1">&#39;part1_pubsub&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>            <span class="n">executable</span><span class="o">=</span><span class="s1">&#39;publisher.py&#39;</span><span class="p">,</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a>            <span class="n">name</span><span class="o">=</span><span class="s1">&#39;my_publisher&#39;</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>        <span class="p">),</span>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>        <span class="n">Node</span><span class="p">(</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>            <span class="c1"># TODO: define the subscriber.py node...</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>        <span class="p">)</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>    <span class="p">])</span>
 </code></pre></div>
 <p>Using the same methods as above, add the necessary definitions for the <code>subscriber.py</code> node into your launch file.</p>
 </li>
@@ -2356,22 +2426,22 @@
 </li>
 <li>
 <p>Once you've completed this, it should be possible to launch both the publisher and subscriber nodes with <code>ros2 launch</code> and the <code>pubsub.launch.py</code> file. Verify this in <strong>TERMINAL 1</strong> by executing the launch file. Soon after launching this, you should see the following messages to indicate that both nodes are alive:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>[subscriber.py-2] [INFO] [###] [my_subscriber]: The &#39;my_subscriber&#39; node is initialised.
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>[publisher.py-1] [INFO] [###] [my_publisher]: The &#39;my_publisher&#39; node is initialised.
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>[subscriber.py-2] [INFO] [###] [my_subscriber]: The &#39;my_subscriber&#39; node is initialised.
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>[publisher.py-1] [INFO] [###] [my_publisher]: The &#39;my_publisher&#39; node is initialised.
 </code></pre></div>
 <p>... and following this, the outputs of both nodes should be printed to the screen continually:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>[publisher.py-1] [INFO] [###] [my_publisher]: Publishing: &#39;The ROS time is 1737545960 (seconds).&#39;
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>[subscriber.py-2] [INFO] [###] [my_subscriber]: The &#39;my_subscriber&#39; node heard:
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>[subscriber.py-2] [INFO] [###] [my_subscriber]: &#39;The ROS time is 1737545960 (seconds).&#39; 
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>[publisher.py-1] [INFO] [###] [my_publisher]: Publishing: &#39;The ROS time is 1737545960 (seconds).&#39;
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>[subscriber.py-2] [INFO] [###] [my_subscriber]: The &#39;my_subscriber&#39; node heard:
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>[subscriber.py-2] [INFO] [###] [my_subscriber]: &#39;The ROS time is 1737545960 (seconds).&#39; 
 </code></pre></div>
 </li>
 <li>
 <p>We can further verify this in a new terminal (<strong>TERMINAL 2</strong>), using commands that we've use in Parts 1 &amp; 2 to <em>list</em> all nodes and topics that are active on our ROS network:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong></p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ros2<span class="w"> </span>node<span class="w"> </span>list
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ros2<span class="w"> </span>node<span class="w"> </span>list
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list
 </code></pre></div></p>
 <p>Do you see what you'd expect to see in the output of these two commands?</p>
 <hr />
@@ -2380,7 +2450,7 @@
 <h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 2: Launching Another Launch File<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
 <p>Using the processes above, we can develop launch files to execute as many nodes as we want on a ROS network simultaneously. <em>Another</em> thing we can do with launch files is launch <em>other</em> launch files! </p>
 <p>To illustrate this, think back to the <code>move_circle.py</code> node that we developed in Part 2, as part of our <code>part2_navigation</code> package. In order to launch this node we must first launch a robot simulation, e.g.: </p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>empty_world.launch.py
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>empty_world.launch.py
 </code></pre></div>
 <p>In this exercise we'll look at how we can launch the above launch file <em>and</em> our <code>move_circle.py</code> node simultaneously from a single <code>ros2 launch</code> command...</p>
 <ol>
@@ -2388,10 +2458,10 @@
 <p>Make sure you're in the <code>launch</code> directory of your <code>part3_beyond_basics</code> package, we can actually use a <code>colcon</code> command to get us to the root of the package directory:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>colcon_cd<span class="w"> </span>part3_beyond_basics
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>colcon_cd<span class="w"> </span>part3_beyond_basics
 </code></pre></div></p>
 <p>... and <code>cd</code> to get us into the <code>launch</code> directory from there:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>launch/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">cd</span><span class="w"> </span>launch/
 </code></pre></div>
 <hr />
 </li>
@@ -2399,36 +2469,36 @@
 <p>Make a new launch file in here, called <code>circle.launch.py</code>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>touch<span class="w"> </span>circle.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>touch<span class="w"> </span>circle.launch.py
 </code></pre></div></p>
 </li>
 <li>
 <p>Open this up in VS Code and enter the following:</p>
-<div class="highlight"><span class="filename">circle.launch.py</span><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IncludeLaunchDescription</span>
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch.launch_description_sources</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonLaunchDescriptionSource</span>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ament_index_python.packages</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_package_share_directory</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>        <span class="n">IncludeLaunchDescription</span><span class="p">(</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a>            <span class="n">PythonLaunchDescriptionSource</span><span class="p">(</span> <span class="c1"># (2)!</span>
-<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a>                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="c1"># (3)!</span>
-<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>                    <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s2">&quot;turtlebot3_gazebo&quot;</span><span class="p">),</span> 
-<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>                    <span class="s2">&quot;launch&quot;</span><span class="p">,</span> <span class="s2">&quot;empty_world.launch.py&quot;</span> <span class="c1"># (4)!</span>
-<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>                <span class="p">)</span>
-<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>            <span class="p">)</span>
-<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a>        <span class="p">)</span>
-<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>    <span class="p">])</span>
+<div class="highlight"><span class="filename">circle.launch.py</span><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch</span><span class="w"> </span><span class="kn">import</span> <span class="n">LaunchDescription</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch_ros.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">IncludeLaunchDescription</span>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">launch.launch_description_sources</span><span class="w"> </span><span class="kn">import</span> <span class="n">PythonLaunchDescriptionSource</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="kn">from</span><span class="w"> </span><span class="nn">ament_index_python.packages</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_package_share_directory</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a><span class="k">def</span><span class="w"> </span><span class="nf">generate_launch_description</span><span class="p">():</span>
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>    <span class="k">return</span> <span class="n">LaunchDescription</span><span class="p">([</span>
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>        <span class="n">IncludeLaunchDescription</span><span class="p">(</span> <span class="c1"># (1)!</span>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a>            <span class="n">PythonLaunchDescriptionSource</span><span class="p">(</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a>                <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span> <span class="c1"># (3)!</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>                    <span class="n">get_package_share_directory</span><span class="p">(</span><span class="s2">&quot;turtlebot3_gazebo&quot;</span><span class="p">),</span> 
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a>                    <span class="s2">&quot;launch&quot;</span><span class="p">,</span> <span class="s2">&quot;empty_world.launch.py&quot;</span> <span class="c1"># (4)!</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>                <span class="p">)</span>
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>            <span class="p">)</span>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a>        <span class="p">)</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>    <span class="p">])</span>
 </code></pre></div>
 <ol>
 <li>To include another launch file in a launch description, we use a <code>IncludeLaunchDescription()</code> class instance (imported from a module called <code>launch.actions</code>).</li>
 <li>
 <p>We want to launch the "Empty World" simulation from the <code>turtlebot3_gazebo</code> package, which (as we know) can be done <em>from a terminal</em> with the following command:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>empty_world.launch.py
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>empty_world.launch.py
 </code></pre></div>
 <p>Based on the above, we know that the launch file itself is a <em>Python</em> launch file, due to the <code>.py</code> file extension at the end.</p>
 <p>As such, the launch description that we want to include is a <em>Python</em> launch description, which must therefore be defined using a <code>PythonLaunchDescriptionSource()</code> instance (imported from a module called <code>launch.launch_description_sources</code>)</p>
@@ -2452,7 +2522,7 @@
 <p>When you're ready, remember to <a href="#colcon-build">run <code>colcon build</code> again</a> <em>before</em> attempting to execute your new <code>circle.launch.py</code> launch file:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>part3_beyond_basics<span class="w"> </span>circle.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>part3_beyond_basics<span class="w"> </span>circle.launch.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -2469,7 +2539,7 @@
 <p>In <strong>TERMINAL 1</strong> enter the following command to launch this:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_world.launch.py
 </code></pre></div></p>
 <hr />
 <p>A Gazebo simulation should now be launched with a TurtleBot3 Waffle in a new environment:</p>
@@ -2481,7 +2551,7 @@
 <p>Open a new terminal instance (<strong>TERMINAL 2</strong>) and enter the following:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>rviz.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>rviz.launch.py
 </code></pre></div></p>
 <hr />
 <p>On running the command a new window should open:</p>
@@ -2497,11 +2567,11 @@
 <p>Next, open up a new terminal instance (<strong>TERMINAL 3</strong>). Laser displacement data from the LiDAR sensor is published by the robot to the <code>/scan</code> topic. We can use the <code>ros2 topic info</code> command to find out more about the nodes that are publishing and subscribing to this topic, as well as the <em>type of interface</em> used to transmit this topic data:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/scan
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/scan
 </code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>Type: sensor_msgs/msg/LaserScan
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>Publisher count: 1
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>Subscription count: 0
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>Type: sensor_msgs/msg/LaserScan
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>Publisher count: 1
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>Subscription count: 0
 </code></pre></div></p>
 <hr />
 </li>
@@ -2509,38 +2579,38 @@
 <p>As we can see from above, <code>/scan</code> data is of the <code>sensor_msgs/msg/LaserScan</code> type, and we can find out more about this interface using the <code>ros2 interface show</code> command:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>sensor_msgs/msg/LaserScan
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>sensor_msgs/msg/LaserScan
 </code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a># Single scan from a planar laser range-finder
-<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>
-<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a>std_msgs/Header header # timestamp in the header is the acquisition time of
-<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>        builtin_interfaces/Time stamp
-<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>                int32 sec
-<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a>                uint32 nanosec
-<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a>        string frame_id
-<a id="__codelineno-33-8" name="__codelineno-33-8" href="#__codelineno-33-8"></a>                             # the first ray in the scan.
-<a id="__codelineno-33-9" name="__codelineno-33-9" href="#__codelineno-33-9"></a>                             #
-<a id="__codelineno-33-10" name="__codelineno-33-10" href="#__codelineno-33-10"></a>                             # in frame frame_id, angles are measured around
-<a id="__codelineno-33-11" name="__codelineno-33-11" href="#__codelineno-33-11"></a>                             # the positive Z axis (counterclockwise, if Z is up)
-<a id="__codelineno-33-12" name="__codelineno-33-12" href="#__codelineno-33-12"></a>                             # with zero angle being forward along the x axis
-<a id="__codelineno-33-13" name="__codelineno-33-13" href="#__codelineno-33-13"></a>
-<a id="__codelineno-33-14" name="__codelineno-33-14" href="#__codelineno-33-14"></a>float32 angle_min            # start angle of the scan [rad]
-<a id="__codelineno-33-15" name="__codelineno-33-15" href="#__codelineno-33-15"></a>float32 angle_max            # end angle of the scan [rad]
-<a id="__codelineno-33-16" name="__codelineno-33-16" href="#__codelineno-33-16"></a>float32 angle_increment      # angular distance between measurements [rad]
-<a id="__codelineno-33-17" name="__codelineno-33-17" href="#__codelineno-33-17"></a>
-<a id="__codelineno-33-18" name="__codelineno-33-18" href="#__codelineno-33-18"></a>float32 time_increment       # time between measurements [seconds] - if your scanner
-<a id="__codelineno-33-19" name="__codelineno-33-19" href="#__codelineno-33-19"></a>                             # is moving, this will be used in interpolating position
-<a id="__codelineno-33-20" name="__codelineno-33-20" href="#__codelineno-33-20"></a>                             # of 3d points
-<a id="__codelineno-33-21" name="__codelineno-33-21" href="#__codelineno-33-21"></a>float32 scan_time            # time between scans [seconds]
-<a id="__codelineno-33-22" name="__codelineno-33-22" href="#__codelineno-33-22"></a>
-<a id="__codelineno-33-23" name="__codelineno-33-23" href="#__codelineno-33-23"></a>float32 range_min            # minimum range value [m]
-<a id="__codelineno-33-24" name="__codelineno-33-24" href="#__codelineno-33-24"></a>float32 range_max            # maximum range value [m]
-<a id="__codelineno-33-25" name="__codelineno-33-25" href="#__codelineno-33-25"></a>
-<a id="__codelineno-33-26" name="__codelineno-33-26" href="#__codelineno-33-26"></a>float32[] ranges             # range data [m]
-<a id="__codelineno-33-27" name="__codelineno-33-27" href="#__codelineno-33-27"></a>                             # (Note: values &lt; range_min or &gt; range_max should be discarded)
-<a id="__codelineno-33-28" name="__codelineno-33-28" href="#__codelineno-33-28"></a>float32[] intensities        # intensity data [device-specific units].  If your
-<a id="__codelineno-33-29" name="__codelineno-33-29" href="#__codelineno-33-29"></a>                             # device does not provide intensities, please leave
-<a id="__codelineno-33-30" name="__codelineno-33-30" href="#__codelineno-33-30"></a>                             # the array empty.
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a># Single scan from a planar laser range-finder
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>std_msgs/Header header # timestamp in the header is the acquisition time of
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>        builtin_interfaces/Time stamp
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>                int32 sec
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>                uint32 nanosec
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>        string frame_id
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>                             # the first ray in the scan.
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>                             #
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>                             # in frame frame_id, angles are measured around
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>                             # the positive Z axis (counterclockwise, if Z is up)
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>                             # with zero angle being forward along the x axis
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>float32 angle_min            # start angle of the scan [rad]
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>float32 angle_max            # end angle of the scan [rad]
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>float32 angle_increment      # angular distance between measurements [rad]
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>float32 time_increment       # time between measurements [seconds] - if your scanner
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>                             # is moving, this will be used in interpolating position
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>                             # of 3d points
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>float32 scan_time            # time between scans [seconds]
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>
+<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a>float32 range_min            # minimum range value [m]
+<a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a>float32 range_max            # maximum range value [m]
+<a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a>
+<a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a>float32[] ranges             # range data [m]
+<a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a>                             # (Note: values &lt; range_min or &gt; range_max should be discarded)
+<a id="__codelineno-34-28" name="__codelineno-34-28" href="#__codelineno-34-28"></a>float32[] intensities        # intensity data [device-specific units].  If your
+<a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a>                             # device does not provide intensities, please leave
+<a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a>                             # the array empty.
 </code></pre></div></p>
 <hr />
 </li>
@@ -2553,17 +2623,17 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rviz/lidar_illustrated.png" /></a></p>
 </figure>
 <p><a name="echo_scan_variables"></a>As illustrated in the figure, we can associate each data-point of the <code>ranges</code> array to an <em>angular position</em> by using the <code>angle_min</code>, <code>angle_max</code> and <code>angle_increment</code> values that are also provided within the <code>LaserScan</code> message.  We can use the <code>ros2 topic echo</code> command to find out what their values are:</p>
-<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>$ ros2 topic echo /scan --field angle_min --once
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>0.0
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>---
-</code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>$ ros2 topic echo /scan --field angle_max --once
-<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>6.28000020980835
+<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>$ ros2 topic echo /scan --field angle_min --once
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>0.0
 <a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>---
 </code></pre></div>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>$ ros2 topic echo /scan --field angle_increment --once
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>0.01749303564429283
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>$ ros2 topic echo /scan --field angle_max --once
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>6.28000020980835
 <a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>---
+</code></pre></div>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>$ ros2 topic echo /scan --field angle_increment --once
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>0.01749303564429283
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>---
 </code></pre></div></p>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
@@ -2581,34 +2651,34 @@
 <li>What <em>is</em> the maximum and minimum range of the LiDAR sensor? Use <a href="#echo_scan_variables">the same technique as we used above</a> to find out.</li>
 <li>
 <p>Consider the note against <code>ranges</code> in the <code>ros2 interface show</code> output earlier:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>float32[] ranges    # range data [m]
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>                    # (Note: values &lt; range_min or &gt; range_max should be discarded)
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>float32[] ranges    # range data [m]
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>                    # (Note: values &lt; range_min or &gt; range_max should be discarded)
 </code></pre></div>
 <p>(this might be worth thinking about).</p>
 </li>
 </ol>
 </div>
 <p>Finally, use the <code>ros2 topic echo</code> command again to display the <code>ranges</code> portion of the <code>LaserScan</code> data. There's a lot of data here (360 data points per message in fact, as you know from above!):</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>ros2 topic echo /scan --field ranges
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>ros2 topic echo /scan --field ranges
 </code></pre></div>
 <p>We're dropping the <code>--once</code> option now, so that we can see the data as it comes in, in <em>real-time</em>.  You might need to expand the terminal window so that you can see all the data points; data will be bound by square brackets <code>[]</code>, and there should be a <code>---</code> at the end of each message too, to help you confirm that you are viewing the whole thing.</p>
 <p>The main thing you'll notice here is that there's lots of information, and it changes rapidly! As you have already seen though, it is the numbers that are flying by here that are represented by red dots in RViz.  Head back to the RViz screen to have another look at this now. As you'll no doubt agree, this is a much more useful way to visualise the <code>ranges</code> data, and illustrates how useful RViz can be for interpreting what your robot can <em>see</em> in real-time.</p>
 <p>What you may also notice is several <code>inf</code> values scattered around the array.  These represent sensor readings that are outside the sensor's measurement range (i.e. <em>greater than</em> <code>range_max</code> or <em>less than</em> <code>range_min</code>), so the sensor can't report a distance measurement in such cases. Remember from above: </p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>(Note: values &lt; range_min or &gt; range_max should be discarded)
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>(Note: values &lt; range_min or &gt; range_max should be discarded)
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This behaviour is different on the real robots! <strong>Be aware of this when developing code for real robots</strong>!!</p>
 </div>
 <p>Stop the <code>ros2 topic echo</code> command from running in the terminal window by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 3</strong>. Also close down the RViz process running in <strong>TERMINAL 2</strong> now as well, but leave the simulation (in <strong>TERMINAL 1</strong> running). </p>
-<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 4: Building a Basic LaserScan Callback Function<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
+<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 4: Building a LaserScan Callback Function<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
 <p>LaserScan data presents us with a new challenge: processing large datasets. In this exercise we'll look at some basic approaches that can be taken to deal with this data, and get something meaningful out of it that can be used in your robot applications.</p>
 <ol>
 <li>
 <p>Navigate into the <code>scripts</code> folder of your <code>part3_beyond_basics</code> package:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>colcon_cd<span class="w"> </span>part3_beyond_basics<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>scripts/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>colcon_cd<span class="w"> </span>part3_beyond_basics<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>scripts/
 </code></pre></div></p>
 <hr />
 </li>
@@ -2616,37 +2686,37 @@
 <p>Create a new node called <code>lidar_subscriber.py</code>:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>touch<span class="w"> </span>lidar_subscriber.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>touch<span class="w"> </span>lidar_subscriber.py
 </code></pre></div></p>
 <p>and give this <em>execute</em> permissions:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>lidar_subscriber.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>lidar_subscriber.py
 </code></pre></div>
 <hr />
 </li>
 <li>
 <p>Declare this as a package executable by opening up your package's <code>CMakeLists.txt</code> in VS Code, and replacing <code>minimal_node.py</code> with <code>lidar_subscriber.py</code> as shown below:</p>
-<div class="highlight"><span class="filename">CMakeLists.txt</span><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a># Install Python executables
-<a id="__codelineno-43-2" name="__codelineno-43-2" href="#__codelineno-43-2"></a>install(PROGRAMS
-<a id="__codelineno-43-3" name="__codelineno-43-3" href="#__codelineno-43-3"></a>  scripts/lidar_subscriber.py
-<a id="__codelineno-43-4" name="__codelineno-43-4" href="#__codelineno-43-4"></a>  DESTINATION lib/${PROJECT_NAME}
-<a id="__codelineno-43-5" name="__codelineno-43-5" href="#__codelineno-43-5"></a>)
+<div class="highlight"><span class="filename">CMakeLists.txt</span><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a># Install Python executables
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a>install(PROGRAMS
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a>  scripts/lidar_subscriber.py
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="#__codelineno-44-4"></a>  DESTINATION lib/${PROJECT_NAME}
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="#__codelineno-44-5"></a>)
 </code></pre></div>
 </li>
 <li>
 <p>Then, add some new dependencies to your package's <code>package.xml</code> file, so open this up in VS Code too. Below the <code class="highlight"><span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span></code> line, add the following:</p>
-<div class="highlight"><span class="filename">package.xml</span><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a><span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span>
-<a id="__codelineno-44-2" name="__codelineno-44-2" href="#__codelineno-44-2"></a><span class="nt">&lt;exec_depend&gt;</span>sensor_msgs<span class="nt">&lt;/exec_depend&gt;</span>
-<a id="__codelineno-44-3" name="__codelineno-44-3" href="#__codelineno-44-3"></a><span class="nt">&lt;exec_depend&gt;</span>python3-numpy<span class="nt">&lt;/exec_depend&gt;</span>
+<div class="highlight"><span class="filename">package.xml</span><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="#__codelineno-45-2"></a><span class="nt">&lt;exec_depend&gt;</span>sensor_msgs<span class="nt">&lt;/exec_depend&gt;</span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="#__codelineno-45-3"></a><span class="nt">&lt;exec_depend&gt;</span>python3-numpy<span class="nt">&lt;/exec_depend&gt;</span>
 </code></pre></div>
 </li>
 <li>
 <p>Head back to the terminal and use Colcon to build this (even though <code>lidar_subscriber.py</code> is still just an empty file at this stage):</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part3_beyond_basics<span class="w"> </span>--symlink-install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part3_beyond_basics<span class="w"> </span>--symlink-install
 </code></pre></div></p>
 <p>And after that, re-source your <code>.bashrc</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a><span class="nb">source</span><span class="w"> </span>/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a><span class="nb">source</span><span class="w"> </span>/.bashrc
 </code></pre></div>
 <hr />
 </li>
@@ -2657,7 +2727,7 @@
 <p>Once you're happy with what's going on with this, run the node using <code>ros2 run</code>:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="#__codelineno-47-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part3_beyond_basics<span class="w"> </span>lidar_subscriber.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part3_beyond_basics<span class="w"> </span>lidar_subscriber.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -2668,7 +2738,7 @@
 <p>Close everything down now (including the simulation running in <strong>TERMINAL 1</strong>). Then launch the "empty world" simulation again:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="#__codelineno-48-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>empty_world.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>empty_world.launch.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -2676,7 +2746,7 @@
 <p>Go back to <strong>TERMINAL 2</strong> and launch your <code>lidar_subscriber.py</code> node again:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="#__codelineno-49-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part3_beyond_basics<span class="w"> </span>lidar_subscriber.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part3_beyond_basics<span class="w"> </span>lidar_subscriber.py
 </code></pre></div></p>
 <hr />
 <p>What output do you see from this now?</p>
@@ -2712,7 +2782,7 @@
 <p>We're going to launch our robot into <em>another</em> new simulated environment now, which we'll be creating a map of using SLAM! To launch the simulation enter the following command in <strong>TERMINAL 1</strong>:</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>nav_world.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>nav_world.launch.py
 </code></pre></div></p>
 <hr />
 <p>The environment that launches should look like this:</p>
@@ -2724,7 +2794,7 @@
 <p>Now launch SLAM to start building a map of this environment. In <strong>TERMINAL 2</strong>, launch SLAM as follows:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py
 </code></pre></div></p>
 <hr />
 <p>This will launch RViz again, and you should be able to see a top-down view of an environment with some green dots representing the real-time LiDAR data and a green and red pointer to denote the current location of the robot. </p>
@@ -2752,7 +2822,7 @@
 
     ***
     **TERMINAL 4:**
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>rosrun<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>rosrun<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
 </code></pre></div>
     ***
 
@@ -2778,9 +2848,9 @@
 <p>Then, remaining in <strong>TERMINAL 3</strong>, navigate to the root of your <code>part3_beyond_basics</code> package directory and create a new folder in it called <code>maps</code>:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part3_beyond_basics/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part3_beyond_basics/
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-54-1" name="__codelineno-54-1" href="#__codelineno-54-1"></a>mkdir<span class="w"> </span>maps
+<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a>mkdir<span class="w"> </span>maps
 </code></pre></div></p>
 <hr />
 </li>
@@ -2788,7 +2858,7 @@
 <p>Navigate into this new directory:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="nb">cd</span><span class="w"> </span>maps/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="nb">cd</span><span class="w"> </span>maps/
 </code></pre></div></p>
 <hr />
 </li>
@@ -2796,14 +2866,14 @@
 <p>Then, run the <code>map_saver</code> node from the <code>map_server</code> package to save a copy of your map:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>MAP_NAME
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>MAP_NAME
 </code></pre></div>
 Replacing <code>MAP_NAME</code> with a name of your choosing. </p>
 <hr />
 <p>This will create two files: a <code>MAP_NAME.pgm</code> and a <code>MAP_NAME.yaml</code> file, both of which contain data related to the map that you have just created.  The <code>.pgm</code> file contains an <em>Occupancy Grid Map (OGM)</em>, which is used for <em>autonomous navigation</em> in ROS.  Have a look at the map by launching it in an Image Viewer Application called <code>eog</code>:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>eog<span class="w"> </span>MAP_NAME.pgm
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a>eog<span class="w"> </span>MAP_NAME.pgm
 </code></pre></div></p>
 <hr />
 <p>A new window should launch containing the map you have just created with SLAM and the <code>map_saver_cli</code> node: </p>
@@ -2830,6 +2900,15 @@ Replacing <code>MAP_NAME</code> with a name of your choosing. </p>
 <h4 id="summary-of-slam">Summary of SLAM<a class="headerlink" href="#summary-of-slam" title="Permanent link">&para;</a></h4>
 <p>See how easy it was to map an environment in the previous exercise? This works just as well on a real robot in a real environment too (as you will observe in <a href="../../../waffles/basics/#exSlam">one of the Real Waffle "Getting Started Exercises" for Assignment #2</a>). </p>
 <p>This illustrates the power of ROS: having access to tools such as SLAM, which are built into the ROS framework, makes it really quick and easy for a robotics engineer to start developing robotic applications on top of this. Our job was made even easier here since we used some packages that had been pre-made by the manufacturers of our TurtleBot3 Robots to help us launch SLAM with the right configurations for our exact robot.  If you were developing a robot yourself, or working with a different type of robot, then you might need to do a bit more work in setting up and tuning the SLAM tools to make them work for your own application.</p>
+<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<p>As we learnt in Part 2, a robot's odometry is determined by dead-reckoning and control algorithms based on this alone (like the <code>move_square.py</code> node) may be subject to drift and accumulated error. </p>
+<p>Ultimately then, a robot needs additional information to pinpoint its precise location within an environment, and thus enhance its ability to navigate effectively and avoid crashing into things!</p>
+<p>This additional information can come from a LiDAR sensor, which you learnt about in this session. We explored where this data is published to, how we access it, and what it tells us about a robot's immediate environment.  We then looked at some ways odometry and laser displacement data can be combined to perform advanced robotic functions such as the mapping of an environment. This is all complicated stuff but, using ROS, we can leverage these tools with relative ease, which illustrates just how powerful ROS can be for developing robotic applications quickly and effectively without having to re-invent the wheel!</p>
+<h3 id="backup">WSL-ROS2 Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<p>Remember, the work you have done in the WSL-ROS2 environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS2 Terminal Instance:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a>wsl_ros<span class="w"> </span>backup
+</code></pre></div>
+<p>This will export your home directory to your University <code>U:\</code> Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS2.  </p>
 
 
 
@@ -2852,7 +2931,7 @@ Replacing <code>MAP_NAME</code> with a name of your choosing. </p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-29T16:05:00+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-29</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-30T09:45:23+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
   </span>
 
     
