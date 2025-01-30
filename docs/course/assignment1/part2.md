@@ -614,6 +614,12 @@ In Part 1 we built [a simple publisher node](./part1/publisher.md), and this one
     cd ~/ros2_ws/ && colcon build --packages-select part2_navigation --symlink-install
     ```
 
+    ... and re-source again:
+
+    ```bash
+    source ~/.bashrc
+    ```
+
 1. Run this node now, using `ros2 run` and see what happens:
 
     ```bash
@@ -757,10 +763,14 @@ We can therefore build on the techniques that we used in the `move_circle.py` ex
 
 1. Fill in the blank as required and then adapt the code to make your robot follow a **square** motion path of **1 x 1 meter** dimensions.
 
-After following a square motion path a few times, your robot *should* return to the same location that it started from.
+1. Perform the necessary steps to re-build your package once more (with `colcon`), as you have done each time you've created a new node in the previous exercises. 
 
-!!! tip "Advanced feature"
-    Adapt the node to make the robot automatically stop once it has performed two complete loops.
+1. Having built your package again (and re-sourced) you should now be able to run the `move_square.py` node with `ros2 run`
+    
+    After following a square motion path a few times, your robot *should* return to the same location that it started from.
+
+    !!! tip "Advanced feature"
+        Adapt the node to make the robot automatically stop once it has performed two complete loops.
 
 ## Wrapping Up
 
