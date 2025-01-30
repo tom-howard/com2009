@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1932,7 +1941,7 @@
 <li>
 <p>Click on the green <code>Use this template</code> button, and then select <code>Create a new repository</code> from the dropdown menu. </p>
 <p><figure markdown>
-  <img alt="" src="ros2_pkg_template.png" width="700px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ros2_pkg_template.png" width="700px" /></a>
 </figure></p>
 <p>You should then be presented with a <strong>Create a new repository</strong> screen.</p>
 </li>
@@ -1951,20 +1960,20 @@
 <li>
 <p>Select <code>Private</code> to <strong>make the repository private</strong>, then click the green <code>Create repository</code> button. </p>
 <p><figure markdown>
-  <img alt="" src="create_repo.png" width="500px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="create_repo.png" width="500px" /></a>
 </figure></p>
 </li>
 <li>
 <p>You'll then be directed to your main repository page. From here, click on <code>Settings</code>, then under <code>Access</code> click <code>Collaborators</code>:</p>
 <p><figure markdown>
-  <img alt="" src="repo_collaborators.png" width="700px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="repo_collaborators.png" width="700px" /></a>
 </figure></p>
 <p>(You may be prompted for 2FA.)</p>
 </li>
 <li>
 <p>In the <code>Manage access</code> area, click the green <code>Add people</code> button and add <code>tom-howard</code>: </p>
 <p><figure markdown>
-  <img alt="" src="tph-gh-profile.png" width="150px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="tph-gh-profile.png" width="150px" /></a>
 </figure></p>
 </li>
 <li>
@@ -1990,7 +1999,7 @@
 <li>
 <p>Click the green <code>Code</code> button and then, from the dropdown menu, click the <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 3h-4.18C14.4 1.84 13.3 1 12 1s-2.4.84-2.82 2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2m-7 0a1 1 0 0 1 1 1 1 1 0 0 1-1 1 1 1 0 0 1-1-1 1 1 0 0 1 1-1M7 7h10V5h2v14H5V5h2z"/></svg></span> button to copy the remote <strong>HTTPS</strong> URL of your repo. </p>
 <p><figure markdown>
-  <img alt="" src="code-copy-url.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="code-copy-url.png" width="600px" /></a>
 </figure></p>
 </li>
 <li>
@@ -2247,5 +2256,19 @@
         <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

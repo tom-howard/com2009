@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -2451,7 +2460,7 @@
 <hr />
 <p>A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle in empty space:</p>
 <figure>
-<p><img alt="" src="../../../images/gz/waffle_empty_world.svg" width="800" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/waffle_empty_world.svg" width="800" /></a></p>
 </figure>
 <p align="center"><strong><em>You're all set up and ready to go!</em></strong></p>
 
@@ -2536,12 +2545,12 @@
 <p>The three "axes" in the table above are termed the <em>"Principal Axes."</em> In the context of our TurtleBot3 Waffle, these axes and the motion about them are defined as follows:</p>
 <p><a name="principal-axes"></a></p>
 <figure>
-<p><img alt="" src="../../../images/waffle/principal_axes.svg" width="800" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/waffle/principal_axes.svg" width="800" /></a></p>
 </figure>
 <p>As discussed above, a mobile robot can have up to six degrees of freedom <em>in total</em>, but this depends upon the robot's design and the actuators it is equipped with. </p>
 <p>Our TurtleBot3 Waffles only have two motors. These two motors can be controlled independently (in what is known as a <em>"differential drive"</em> configuration), which ultimately provides it with a total of <strong>two degrees of freedom</strong> overall, as illustrated below.</p>
 <figure>
-<p><img alt="" src="../../../images/waffle/velocities.svg" width="800" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/waffle/velocities.svg" width="800" /></a></p>
 </figure>
 <p>When issuing Velocity Commands therefore, only two (of the six) velocity command fields are applicable: <strong>linear</strong> velocity in the <strong>x</strong>-axis (<em>Forwards/Backwards</em>) and <strong>angular</strong> velocity about the <strong>z</strong>-axis (<em>Yaw</em>).</p>
 <p><center></p>
@@ -2630,7 +2639,7 @@
 <li>
 <p>Also expand the <code>twist</code> &gt; <code>twist</code>, <strong><code>linear</code></strong> and <strong><code>angular</code></strong> fields to reveal the <em>six</em> values being published here too.</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/rqt/topic_monitor.png" width="600" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/topic_monitor.png" width="600" /></a>
 </figure></p>
 </li>
 <li>
@@ -3327,5 +3336,19 @@
         <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

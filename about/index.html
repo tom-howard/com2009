@@ -85,7 +85,16 @@
       
     
     
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1999,7 +2008,7 @@
 <p>The materials here are developed by <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Dr Tom Howard</a>, a University Teacher in the <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/about-us">Multidisciplinary Engineering Education Team</a> in <strong>The Diamond</strong>.</p>
 <p>These resources are <em>also</em> used to teach masters-level Mechatronic and Robotic Engineering students in <a href="https://www.sheffield.ac.uk/eee">The School of Electrical and Electronic Engineering</a> (<strong>ACS6121</strong>). </p>
 <h2 id="license">License<a class="headerlink" href="#license" title="Permanent link">&para;</a></h2>
-<p><img align="left" alt="Creative Commons License CC BY-SA" src="../assets/external/i.creativecommons.org/l/by-sa/4.0/88x31.png"></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="left" alt="Creative Commons License CC BY-SA" src="../assets/external/i.creativecommons.org/l/by-sa/4.0/88x31.png"></a></p>
 <p>This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
 <h2 id="robots">The TurtleBot3 Waffle<a class="headerlink" href="#robots" title="Permanent link">&para;</a></h2>
 <h3 id="turtlebot-what">Turtlebot what?!<a class="headerlink" href="#turtlebot-what" title="Permanent link">&para;</a></h3>
@@ -2010,11 +2019,11 @@
 <h3 id="our-waffles">Our Waffles<a class="headerlink" href="#our-waffles" title="Permanent link">&para;</a></h3>
 <p>Here in the Diamond we have a total of 50 <em>customised</em> TurtleBot3 Waffles (aka <em>"The Waffles"</em>) specifically for teaching the courses here:</p>
 <figure>
-<p><img alt="" src="../images/waffle/cabinet.jpg" width="500px" /> </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/waffle/cabinet.jpg" width="500px" /></a> </p>
 </figure>
 <p>Our robots are an enhanced version of the <em>TurtleBot3 WafflePi</em> that you can buy from Robotis. We've made a few adjustments, as shown below:</p>
 <figure>
-<p><img alt="" src="../images/waffle/features.png" width="800px" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../images/waffle/features.png" width="800px" /></a></p>
 </figure>
 <p>The Waffles have the following core hardware elements:</p>
 <ul>
@@ -2198,5 +2207,19 @@
         <script src="../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

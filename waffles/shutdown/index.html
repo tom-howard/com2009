@@ -85,7 +85,16 @@
       
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1830,14 +1839,14 @@
 <li>
 <p>Once the blue light on the corner of the SBC goes out, it's then safe to slide the power button to the <strong>left</strong> to completely turn off the device. </p>
 <p><figure markdown>
-  <img alt="" src="../../images/waffle/sbc.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/sbc.png" width="600px" /></a>
 </figure></p>
 </li>
 </ol>
 <h2 id="laptops">Laptops<a class="headerlink" href="#laptops" title="Permanent link">&para;</a></h2>
 <p>Once you've turned off the robot, <strong>remember to shut down the laptop too</strong>! Do this by clicking the battery icon in the top right of the desktop and selecting the "Power Off / Log Out" option in the drop-down menu.</p>
 <figure>
-<p><img alt="" src="../../images/laptops/ubuntu_poweroff.svg" width="300px" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/laptops/ubuntu_poweroff.svg" width="300px" /></a></p>
 </figure>
 <p><center></p>
 <p><strong>Hand your robot and laptop back to a member of the teaching team who will put it away for you!</strong></p>
@@ -1971,5 +1980,19 @@
         <script src="../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

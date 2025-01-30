@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -2149,7 +2158,7 @@ You should now have two terminals active: </p>
 <li>
 <p>Follow the instructions provided in the terminal to drive the robot around using specific buttons on the keyboard:</p>
 <p><figure markdown>
-  <img alt="" src="../../images/cli/teleop_keymap.svg" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/cli/teleop_keymap.svg" /></a>
 </figure></p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -2189,7 +2198,7 @@ You should now have two terminals active: </p>
 <hr />
 <p>This will launch an application called <em>RViz</em>, which is a handy tool that allows us to <em>visualise</em> the data from all the sensors on-board our robots. When RViz opens, you should see something similar to the following:</p>
 <p><figure markdown>
-  <img alt="" src="../../images/waffle/rviz.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/rviz.png" width="600px" /></a>
 </figure></p>
 <p>In the bottom left-hand corner of the RViz screen there should be a Camera panel, displaying a live image feed from the robot's camera.</p>
 <details class="bug">
@@ -2200,7 +2209,7 @@ You should now have two terminals active: </p>
 <li>From the Drop-down box, change this from "Best Effort" to "Reliable".</li>
 </ol>
 <p><figure markdown>
-  <img alt="" src="../../images/waffle/rviz_cam_relpol.svg" width="400px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/rviz_cam_relpol.svg" width="400px" /></a>
 </figure> </p>
 </details>
 <p>In the main RViz panel you should see a digital render of the robot, surrounded by lots of green dots. This is a representation of the <em>laser displacement data</em> coming from the LiDAR sensor (the black device on the top of the robot). The LiDAR sensor spins continuously, sending out laser pulses into the environment as it does so. When a pulse hits an object it is reflected back to the sensor, and the time it takes for this to happen is used to calculate how far away the object is.</p>
@@ -2237,7 +2246,7 @@ You should now have two terminals active: </p>
 <hr />
 <p>A window should then open:</p>
 <p><figure markdown>
-  <img alt="" src="../../images/rqt/main.png" width="600" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/rqt/main.png" width="600" /></a>
 </figure></p>
 </li>
 <li>
@@ -2311,7 +2320,7 @@ You should now have two terminals active: </p>
 <h2 id="velocity-control">Velocity Control<a class="headerlink" href="#velocity-control" title="Permanent link">&para;</a></h2>
 <p>The motion of any mobile robot can be defined in terms of its three <em>principal axes</em>: <code>X</code>, <code>Y</code> and <code>Z</code>. In the context of our TurtleBot3 Waffle, these axes (and the motion about them) are defined as follows:</p>
 <figure>
-<p><img alt="" src="../../images/waffle/principal_axes.svg" width="600" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/principal_axes.svg" width="600" /></a></p>
 </figure>
 <p>In theory then, a robot can move <em>linearly</em> or <em>angularly</em> about any of these three axes, as shown by the arrows in the figure. That's six <em>Degrees of Freedom</em> (DOFs) in total, achieved based on a robot's design and the actuators it is equipped with. Take a look back at the <code>ros2 interface show</code> output above. Hopefully it's a bit clearer now that these topic messages are formatted to give a ROS Programmer the ability to <em>ask</em> a robot to move in any one of its six DOFs. </p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Vector3  linear
@@ -2325,7 +2334,7 @@ You should now have two terminals active: </p>
 </code></pre></div>
 <p>Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! The two motors can be controlled independently, which gives it what is called a <em>"differential drive"</em> configuration, but this still only allows it to move with <strong>two degrees of freedom</strong> in total, as illustrated below.</p>
 <figure>
-<p><img alt="" src="../../images/waffle/velocities.svg" width="600" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/velocities.svg" width="600" /></a></p>
 </figure>
 <p>It can therefore only move <strong>linearly</strong> in the <strong>x-axis</strong> (<em>Forwards/Backwards</em>) and <strong>angularly</strong> in the <strong>z-axis</strong> (<em>Yaw</em>). </p>
 <h4 id="exSimpleVelCtrl"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 5: Creating A Velocity Control Node (with Python)<a class="headerlink" href="#exSimpleVelCtrl" title="Permanent link">&para;</a></h4>
@@ -2614,7 +2623,7 @@ You should now have two terminals active: </p>
 <hr />
 <p>This will launch a new RViz instance, showing a top-down view of the environment, and dots of various colours representing the real-time LiDAR data. Rather than a robot <em>model</em>, the robot is now represented in the environment as a series of links denoted by 3-dimensional red/green/blue crosses (you can turn these off by unchecking the <code>TF</code> option in the left-hand "Displays" menu, if you want to). </p>
 <p><figure markdown>
-    <img alt="" src="../../images/waffle/slam_step0.png" width="600px" />
+    <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/slam_step0.png" width="600px" /></a>
 </figure></p>
 <p>SLAM will already have begun processing this data to start building a map of the boundaries that are currently visible to the Waffle based on its location in the environment.</p>
 </li>
@@ -2625,9 +2634,9 @@ You should now have two terminals active: </p>
 <p>It's best to do this slowly and perform multiple circuits of the area to build up a more accurate map.</p>
 </div>
 <p><figure markdown>
-  <img alt="" src="../../images/waffle/slam_step1.png" width="500px" />
-  <img alt="" src="../../images/waffle/slam_step2.png" width="500px" />
-  <img alt="" src="../../images/waffle/slam_step3.png" width="500px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/slam_step1.png" width="500px" /></a>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/slam_step2.png" width="500px" /></a>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/waffle/slam_step3.png" width="500px" /></a>
 </figure></p>
 </li>
 <li>
@@ -2847,5 +2856,19 @@ You should now have two terminals active: </p>
         <script src="../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

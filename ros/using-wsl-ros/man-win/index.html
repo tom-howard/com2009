@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1874,21 +1883,21 @@
 <h2 id="launching-wsl-ros">Launching WSL-ROS<a class="headerlink" href="#launching-wsl-ros" title="Permanent link">&para;</a></h2>
 <ol>
 <li>
-<p>Click the Windows Start Menu button: <img alt="" src="../../figures/win-logo.png" /></p>
+<p>Click the Windows Start Menu button: <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/win-logo.png" /></a></p>
 </li>
 <li>
 <p>Then, start typing <code>wsl-ros</code> and click on the application shortcut that should appear in the list:</p>
 <p><figure markdown>
-  <img alt="" src="../../figures/win-menu.png" width="700px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/win-menu.png" width="700px" /></a>
 </figure></p>
 <p>Make sure you select <strong>WSL-ROS2</strong>! </p>
 <p>You'll then be presented with the following screen:</p>
 <p><figure markdown>
-  <img alt="" src="../../figures/wsl-ros-first-install.png" width="700px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/wsl-ros-first-install.png" width="700px" /></a>
 </figure></p>
 <p>WSL-ROS2 is now being installed from our custom OS image, which may take a couple of minutes to complete.  Once it's done, the <em>Windows Terminal</em> should automatically launch:</p>
 <p><figure markdown>
-  <img alt="" src="../../figures/welcome.png" width="700px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/welcome.png" width="700px" /></a>
 </figure></p>
 </li>
 </ol>
@@ -1915,7 +1924,7 @@
 <h2 id="re-launching-the-environment">Re-Launching the Environment<a class="headerlink" href="#re-launching-the-environment" title="Permanent link">&para;</a></h2>
 <p>As discussed above, the WSL-ROS2 environment is not preserved on the university managed desktops indefinitely. If you log back in to the same machine within a few hours however, then it may still be there, and you'll be presented with the following message when you launch it:</p>
 <figure>
-<p><img alt="" src="../../figures/resume.png" width="700px" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/resume.png" width="700px" /></a></p>
 </figure>
 <p>Enter <span class="keys"><kbd class="key-y">Y</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span> to continue where you left things previously, or <span class="keys"><kbd class="key-n">N</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span> to start from a fresh installation.</p>
 <div class="admonition warning">
@@ -2067,5 +2076,19 @@
         <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

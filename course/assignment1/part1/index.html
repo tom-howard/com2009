@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -2401,7 +2410,7 @@
 <li>
 <p>A <em>Gazebo simulation</em> window should open:</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/gz/tb3_empty_world_top.png" width="800" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/tb3_empty_world_top.png" width="800" /></a>
 </figure></p>
 <ol>
 <li><strong>Zoom in and out</strong> using the scroll wheel on your mouse.  </li>
@@ -2409,7 +2418,7 @@
 </ol>
 <p>Using both of these methods you should be able to get a better view of the robot, which will be sat under a lot of blue LiDAR rays (more about this in Part 3), and will appear as a simplified representation of <a href="../../../about/#our-waffles">the real thing</a>.</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/gz/tb3_empty_world_close.jpg" width="700px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/tb3_empty_world_close.jpg" width="700px" /></a>
 </figure> </p>
 </li>
 <li>
@@ -2426,7 +2435,7 @@
 <li>
 <p>Follow the instructions provided in the terminal to drive the robot around using specific buttons on your keyboard:</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/waffle/teleop_keymap.svg" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/waffle/teleop_keymap.svg" /></a>
 </figure></p>
 </li>
 </ol>
@@ -2492,7 +2501,7 @@
 <hr />
 <p>A window should then open:</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/rqt/main.png" width="600" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/main.png" width="600" /></a>
 </figure></p>
 </li>
 <li>
@@ -2501,7 +2510,7 @@
 <li>
 <p>Select <code>Nodes/Topics (all)</code> from the top-left most dropdown, and in the <strong><code>Hide</code></strong> section uncheck everything except <code>Debug</code> and <code>Params</code> (you may then need to hit the refresh button):</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/rqt/node_graph.png" width="600" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/node_graph.png" width="600" /></a>
 </figure></p>
 <p>Here, <em>nodes</em> are represented by rectangles and <em>topics</em> by ellipses (hover over a region of the graph to enable colour highlighting).</p>
 <p>This tool shows us that (amongst other things) the <code>/teleop_keyboard</code> and <code>/turtlebot3_diff_drive</code> nodes are communicating with one another. The direction of the arrow tells us that <code>/teleop_keyboard</code> is a <em>Publisher</em> and <code>/turtlebot3_diff_drive</code> is a <em>Subscriber</em>. The two nodes communicate via a <strong>ROS Topic</strong> called <code>/cmd_vel</code>. </p>
@@ -2928,7 +2937,7 @@
 <p>Use <code>ros2 run</code> to execute your newly created <code>subscriber.py</code> node (remember: <code>ros2 run {package name} {script name}</code>). If your publisher and subscriber nodes are working correctly you should see an output like this:</p>
 <p>TODO</p>
 <!-- <figure markdown>
-  <img alt="" src="part1/subscriber_output.gif" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="part1/subscriber_output.gif" /></a>
 </figure> -->
 </li>
 <li>
@@ -3365,5 +3374,19 @@
         <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

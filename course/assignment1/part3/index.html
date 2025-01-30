@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -2465,7 +2474,7 @@
 <hr />
 <p>A Gazebo simulation should now be launched with a TurtleBot3 Waffle in a new environment:</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/gz/tb3_world.jpg" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/tb3_world.jpg" width="600px" /></a>
 </figure></p>
 </li>
 <li>
@@ -2477,7 +2486,7 @@
 <hr />
 <p>On running the command a new window should open:</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/rviz/tb3.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rviz/tb3.png" width="600px" /></a>
 </figure></p>
 <p>This is <em>RViz</em>, which is a ROS tool that allows us to <em>visualise</em> the data being measured by a robot in real-time. </p>
 <p>The green dots scattered around the robot represent <em>laser displacement data</em> which is measured by the LiDAR sensor located on the top of the robot, allowing it to measure the <em>distance</em> to any obstacles in its surroundings. </p>
@@ -2541,7 +2550,7 @@
 <p><code>ranges</code> is an array of <code>float32</code> values (array data-types are suffixed with <code>[]</code>). This is the part of the message containing all the <em>actual distance measurements</em> that are being obtained by the LiDAR sensor (in meters).</p>
 <p><a name="fig_lidar"></a>Consider a simplified example here, taken from a TurtleBot3 robot in a different environment:</p>
 <figure>
-<p><img alt="" src="../../../images/rviz/lidar_illustrated.png" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rviz/lidar_illustrated.png" /></a></p>
 </figure>
 <p><a name="echo_scan_variables"></a>As illustrated in the figure, we can associate each data-point of the <code>ranges</code> array to an <em>angular position</em> by using the <code>angle_min</code>, <code>angle_max</code> and <code>angle_increment</code> values that are also provided within the <code>LaserScan</code> message.  We can use the <code>ros2 topic echo</code> command to find out what their values are:</p>
 <p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>$ ros2 topic echo /scan --field angle_min --once
@@ -2676,7 +2685,7 @@
 <li>
 <p>Use the <strong>Box</strong> tool in Gazebo to place a box in the environment. </p>
 <p><figure markdown>
-  <img alt="" src="../../../images/gz/toolbars_antd.png" width="800px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/toolbars_antd.png" width="800px" /></a>
 </figure></p>
 </li>
 <li>
@@ -2688,7 +2697,7 @@
 <li>
 <p>Think about how you could adapt the callback function of the <code>lidar_subscriber.py</code> node so that it picks up on more than one <code>LaserScan</code> subset, so that it could detect situations such as this (for example):</p>
 <p><figure markdown>
-  <img alt="" src="lidar_subscriber_adv.png" width="800px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="lidar_subscriber_adv.png" width="800px" /></a>
 </figure></p>
 </li>
 </ol>
@@ -2708,7 +2717,7 @@
 <hr />
 <p>The environment that launches should look like this:</p>
 <p><figure markdown>
-  <img alt="" src="nav_world.jpg" width="800px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="nav_world.jpg" width="800px" /></a>
 </figure></p>
 </li>
 <li>
@@ -2720,21 +2729,21 @@
 <hr />
 <p>This will launch RViz again, and you should be able to see a top-down view of an environment with some green dots representing the real-time LiDAR data and a green and red pointer to denote the current location of the robot. </p>
 <p><figure markdown>
-  <img alt="" src="cartographer_rviz.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="cartographer_rviz.png" width="600px" /></a>
 </figure></p>
 <p>SLAM has already started building a map of the boundaries that are currently visible to the robot, based on its starting position in the environment.</p>
 </li>
 <li>
 <p>In <strong>TERMINAL 3</strong> launch the <code>teleop_keyboard</code> node (<a href="../part2/#teleop">you should know how to do this by now</a>).  Re-arrange and re-size your windows so that you can see Gazebo, RViz <em>and</em> the <code>turtlebot3_teleop_key</code> terminal instances all at the same time:</p>
 <p><figure markdown>
-  <img alt="" src="../../images/wsl/window_arrangement.png" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/wsl/window_arrangement.png" /></a>
   TODO
 </figure></p>
 </li>
 <li>
 <p>Drive the robot around the arena slowly, using the <code>teleop_keyboard</code> node, and observe the map being updated in the RViz window as you do so. Drive the robot around until a full map of the environment has been generated.</p>
 <p><figure markdown>
-  <img alt="" src="../../images/rviz/slam.png" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/rviz/slam.png" /></a>
   TODO
 </figure></p>
 </li>
@@ -2799,7 +2808,7 @@ Replacing <code>MAP_NAME</code> with a name of your choosing. </p>
 <hr />
 <p>A new window should launch containing the map you have just created with SLAM and the <code>map_saver_cli</code> node: </p>
 <p><figure markdown>
-  <img alt="" src="part3/slam_map.png" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="part3/slam_map.png" /></a>
   TODO
 </figure></p>
 <p>White regions represent the area that your robot has determined is open space and that it can freely move within.  Black regions, on the other hand, represent boundaries or objects that have been detected.  Any grey area on the map represents regions that remain unexplored, or that were inaccessible to the robot.</p>
@@ -2966,5 +2975,19 @@ Replacing <code>MAP_NAME</code> with a name of your choosing. </p>
         <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

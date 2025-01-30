@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1870,7 +1879,7 @@
 <li>
 <p>Open up a terminal instance on the laptop, either by using the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span> keyboard shortcut, or by clicking the Terminal App icon in the favourites bar on the left-hand side of the desktop:</p>
 <p><figure markdown>
-  <img alt="" src="../../images/laptops/terminal_icon.svg" width="60px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/laptops/terminal_icon.svg" width="60px" /></a>
 </figure></p>
 </li>
 <li>
@@ -1884,7 +1893,7 @@ Replacing <code>X</code> with the number of the robot that you are working with.
 <li>
 <p>You may see a message like this early on in the pairing process:</p>
 <p><figure markdown>
-  <img alt="" src="../../images/laptops/ssh_auth.svg" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/laptops/ssh_auth.svg" width="600px" /></a>
 </figure></p>
 <p>If so, just type <code>yes</code> and then hit <span class="keys"><kbd class="key-enter">Enter</kbd></span> to confirm that you want to continue.</p>
 </li>
@@ -1907,7 +1916,7 @@ Replacing <code>X</code> with the number of the robot that you are working with.
 <hr />
 <p>A green banner should appear across the bottom of the terminal window:</p>
 <p><figure markdown>
-  <img alt="" src="../../images/laptops/tmux.svg" width="500px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/laptops/tmux.svg" width="500px" /></a>
 </figure></p>
 <p>This is a terminal instance running <strong>on the robot</strong>, and any commands that you enter here will be executed <em>on the robot</em> (not the laptop!)</p>
 </li>
@@ -2076,5 +2085,19 @@ Replacing <code>X</code> with the number of the robot that you are working with.
         <script src="../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

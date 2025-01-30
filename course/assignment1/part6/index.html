@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -2413,7 +2422,7 @@
 </code></pre></div>
 ...and then wait for the Gazebo window to open:</p>
 <figure>
-<p><img alt="" src="../../../images/gz/colloured_pillars.png" width="700px" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/colloured_pillars.png" width="700px" /></a></p>
 </figure>
 <h2 id="working-with-cameras-and-images-in-ros">Working with Cameras and Images in ROS<a class="headerlink" href="#working-with-cameras-and-images-in-ros" title="Permanent link">&para;</a></h2>
 <h3 id="camera-topics-and-data">Camera Topics and Data<a class="headerlink" href="#camera-topics-and-data" title="Permanent link">&para;</a></h3>
@@ -2474,7 +2483,7 @@
 <hr />
 <p>Once RViz launches, you should see a camera panel in the bottom-left corner with a live stream of the images being obtained from the robot's camera.</p>
 <figure>
-<p><img alt="" src="../../../images/rviz/waffle_antd.png" width="800px" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rviz/waffle_antd.png" width="800px" /></a></p>
 </figure>
 <p>Close down RViz by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 2</strong>.  </p>
 <h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 1: Using RQT whilst changing the robot's viewpoint<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
@@ -2487,13 +2496,13 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rqt
 </code></pre></div>
 <figure markdown>
-  <img alt="" src="../../../images/rqt/main.png" width="600" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/main.png" width="600" /></a>
 </figure></p>
 </li>
 <li>
 <p>From the top menu select <code>Plugins</code> &gt; <code>Vizualisation</code> &gt; <code>Image View</code>.</p>
 <p><figure markdown>
-  <img alt="" src="../../../images/rqt/image_view_antd.png" width="600" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/image_view_antd.png" width="600" /></a>
 </figure></p>
 <p>This allows us to easily view images that are being published to any camera topic on the ROS network. Another useful feature is the ability to save these images (as <code>.jpg</code> files) to the filesystem: See the "Save as image" button highlighted in the figure above. This might be useful later on...</p>
 <hr />
@@ -2609,7 +2618,7 @@
 </div>
 <p>The code that you have just added here has created a new image object called <code>cropped_img</code>, from a subset of the original by specifying a desired <code>crop_height</code> and <code>crop_width</code> relative to the original image dimensions.  Additionally, we have also specified <em>where</em> in the original image (in terms of pixel coordinates) we want this subset to start, using <code>crop_y0</code> and <code>crop_z0</code>. This process is illustrated in the figure below:</p>
 <p><figure markdown>
-  <img alt="" src="ex2/od1_cropping.png" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od1_cropping.png" /></a>
 </figure></p>
 <p><a name="img_cropping" ></a>The original image (<code>cv_img</code>) is cropped using a process called <em>"slicing"</em>:</p>
 <p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">cropped_img</span> <span class="o">=</span> <span class="n">cv_img</span><span class="p">[</span>
@@ -2619,7 +2628,7 @@
 </code></pre></div>
 This may seem quite confusing, but hopefully the figure below illustrates what's going on here:</p>
 <p><figure markdown>
-  <img alt="" src="ex2/img_slicing.png" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/img_slicing.png" /></a>
 </figure></p>
 </li>
 </ol>
@@ -2641,13 +2650,13 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <li>
 <p>The node should produce a scatter plot, illustrating the Hue and Saturation values of each of the pixels in the image. Each data point in the plot represents a single image pixel and each is coloured to match its RGB value:</p>
 <p><figure markdown>
-  <img alt="" src="ex2/od2_hs_scatter.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od2_hs_scatter.png" width="600px" /></a>
 </figure></p>
 </li>
 <li>
 <p>You should see from the image that all the pixels related to the coloured pillar that we want to detect are clustered together.  We can use this information to specify a range of Hue and Saturation values that can be used to mask our image: filtering out any colours that sit outside this range and thus allowing us to isolate the pillar itself. The pixels also have a <em>Value</em> (or <em>"Brightness"</em>), which isn't shown in this plot. As a rule of thumb, a range of brightness values between 100 and 255 generally works quite well.</p>
 <p><figure markdown>
-  <img alt="" src="ex2/od3_hs_thresholds.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od3_hs_thresholds.png" width="600px" /></a>
 </figure></p>
 <p>In this case then, we select upper and lower HSV thresholds as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">lower_threshold</span> <span class="o">=</span> <span class="p">(</span><span class="mi">115</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -2676,7 +2685,7 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <p>As shown in the figure below, the third image should simply be a black and white representation of the cropped image, where the white regions should indicate the areas of the image where pixel values fall within the HSV range specified earlier. </p>
 <p>Notice (from the text printed to the terminal) that the cropped image and the image mask have the same dimensions, but the image mask file has a significantly smaller file size.  While the mask contains the same <em>number</em> of pixels, these pixels only have a value of <code>1</code> or <code>0</code>, whereas - in the cropped image of the same pixel size - each pixel has a Red, Green and Blue value: each ranging between <code>0</code> and <code>255</code>, which represents significantly more data.</p>
 <p><figure markdown>
-  <img alt="" src="ex2/od4_masking.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od4_masking.png" width="600px" /></a>
 </figure></p>
 </li>
 </ol>
@@ -2698,7 +2707,7 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <li>
 <p>Run this node again, and a fourth image should also be generated now, this time showing the cropped image taken from the robot's camera, but only containing data related to coloured pillar, with all other background image data removed (and rendered black):</p>
 <p><figure markdown>
-  <img alt="" src="ex2/od5_filtering.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od5_filtering.png" width="600px" /></a>
 </figure></p>
 </li>
 </ol>
@@ -2726,7 +2735,7 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <p>We're adding a very small number to the <span class="arithmatex">\(M_{00}\)</span> moment here to make sure that the divisor in the above equations is never zero and thus ensuring that we never get caught out by any "divide-by-zero" errors. Why might this be necessary?</p>
 </div>
 <figure>
-<p><img alt="" src="ex2/od6_centroid.png" width="600px" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od6_centroid.png" width="600px" /></a></p>
 </figure>
 <p>Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: <code>cv2.circle()</code>.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in <a href="object_detection_complete/">a complete worked example of the <code>object_detection.py</code> node</a> from the previous exercise. <a name="ex2b_ret"></a></p>
 <p>In our case, we can't actually change the position of our robot in the z axis, so the <code>cz</code> centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate <code>cy</code> to understand where a feature is located <em>horizontally</em> in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We can then use this as the basis for some real <strong>closed-loop</strong> control.</p>
@@ -2780,7 +2789,7 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <p>At the heart of this is the principle of <em>Negative-Feedback</em> control, which considers a <strong>Reference Input</strong>, a <strong>Feedback Signal</strong> and the <strong>Error</strong> between these.</p>
 <p><a name="neg_fdbck_ctrl"></a></p>
 <figure>
-<p><img alt="" src="pid/negative_feedback_control.png" width="500" />
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="pid/negative_feedback_control.png" width="500" /></a>
   </p>
 <figcaption>
     Negative-Feedback Control<br />
@@ -2813,7 +2822,7 @@ u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{d}{dt}e(t)
 <hr />
 <p>Your robot should be launched onto a long thin track with a straight pink line painted down the middle of the floor:</p>
 <p><figure markdown>
-  <img alt="" src="line_following/setup.jpg" width="800px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/setup.jpg" width="800px" /></a>
 </figure></p>
 </li>
 <li>
@@ -2835,7 +2844,7 @@ u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{d}{dt}e(t)
 <p>Start with <a href="line_follower/">the code template provided here</a>. This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in <a href="#ex2">Exercise 2</a>, so go back here if you need a reminder on how any of this works. </p>
 <p>Your aim here is to get the code to generate a cropped image, with the coloured line isolated and located within it, like this:</p>
 <p><figure markdown>
-  <img alt="" src="line_following/setup_complete.jpg" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/setup_complete.jpg" /></a>
 </figure> </p>
 </li>
 </ol>
@@ -2919,7 +2928,7 @@ u(t)=K_{P} e(t)
 <p>The code <em>should</em> now make the robot move with a constant linear velocity of 0.1 m/s at all times, while its angular velocity will be determined by our proportional controller, based on the controller error and the proportional gain parameter <code>kp</code>.</p>
 <p>The figure below illustrates the effects different values of proportional gain can have on a system.</p>
 <p><figure markdown>
-  <img alt="" src="pid/kp.png" width="600" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="pid/kp.png" width="600" /></a>
   <figcaption>
     Courtesy of <a href="https://www.sheffield.ac.uk/dcs/people/academic/roger-k-moore">Prof. Roger Moore</a><br />
     Taken from COM2009 Lecture 6: PID Control
@@ -2949,7 +2958,7 @@ u(t)=K_{P} e(t)
 </code></pre></div></p>
 <p>Your robot should be launched into an environment with a more interesting line to follow:</p>
 <p><figure markdown>
-  <img alt="" src="line_following/advanced.jpg" width="800px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/advanced.jpg" width="800px" /></a>
 </figure></p>
 </li>
 <li>
@@ -3128,5 +3137,19 @@ u(t)=K_{P} e(t)
         <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

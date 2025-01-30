@@ -87,7 +87,16 @@
       
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1841,14 +1850,14 @@
 <li>
 <p>A warning message may then pop up:</p>
 <p><figure markdown>
-  <img alt="" src="../../figures/code-allow-host.png" width="500px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/code-allow-host.png" width="500px" /></a>
 </figure></p>
 <p>Check the box to "Permanently allow ..." and then click the <code>Allow</code> button.</p>
 </li>
 <li>
 <p>VS Code should then launch, and you'll be presented with another trust dialogue:</p>
 <p><figure markdown>
-  <img alt="" src="../../figures/code-trust-home.png" width="500px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/code-trust-home.png" width="500px" /></a>
 </figure></p>
 <p>Click the blue <code>Yes, I trust the authors</code> button.</p>
 </li>
@@ -1858,7 +1867,7 @@
 <li>
 <p>The first time you launch VS Code (as above) you should be presented with a pop-up in the bottom-right of the screen, asking if you would like to "install the recommended 'WSL' extension from Microsoft..."</p>
 <p><figure markdown>
-  <img alt="" src="../../figures/code-install-wsl-ext-prompt.png" width="500px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/code-install-wsl-ext-prompt.png" width="500px" /></a>
 </figure></p>
 <p>Click on the blue "Install" button.</p>
 <details class="bug">
@@ -1866,7 +1875,7 @@
 <p>You can also install the 'WSL' extension manually.</p>
 <p>Click on the "Extensions" icon in the left-hand toolbar (or hit <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-shift">Shift</kbd><span>+</span><kbd class="key-x">X</kbd></span> ), type "wsl" in the search box and hit the install button on the right extension, as show below:</p>
 <p><figure markdown>
-  <img alt="" src="../../figures/wsl-ext-manual-install-annt.png" width="600px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/wsl-ext-manual-install-annt.png" width="600px" /></a>
 </figure></p>
 </details>
 </li>
@@ -1877,14 +1886,14 @@
 <li>
 <p>You can now navigate the WSL-ROS2 filesystem in the explorer window on the left-hand side of the VS Code screen. You'll need to use this to locate the packages and scripts that you create throughout this course!</p>
 <p><figure markdown>
-  <img alt="" src="../../figures/code-wsl-explorer-annt.png" width="800px" />
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/code-wsl-explorer-annt.png" width="800px" /></a>
 </figure></p>
 </li>
 </ol>
 <h2 id="verify">Always make sure that the "WSL" extension is enabled!!<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h2>
 <p>Check that your blue "Remote Window" icon in the bottom-left of the VS Code screen always looks like this:</p>
 <figure>
-<p><img alt="" src="../../figures/code-wsl-ext-on.png" width="400" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../figures/code-wsl-ext-on.png" width="400" /></a></p>
 </figure>
 <p>If not, then go back to <a href="#the-top">the top of this page</a> and try again!</p>
 
@@ -2032,5 +2041,19 @@
         <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+    try {
+        var img = element.querySelector('img');
+        if (img && img.src) {
+            element.setAttribute('href', img.src);
+        } else {
+            console.log('No img element with src attribute found');
+        }
+    } catch (error) {
+        console.log('Error:', error);
+    }
+});
+const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
