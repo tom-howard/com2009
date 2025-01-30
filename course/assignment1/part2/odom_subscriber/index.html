@@ -1876,9 +1876,9 @@
 </ol>
 <h3 id="modifying-the-message-callback">Modifying the Message Callback<a class="headerlink" href="#modifying-the-message-callback" title="Permanent link">&para;</a></h3>
 <p>This is where the changes are a bit more significant:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">msg_subscriber</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_message</span><span class="p">:</span> <span class="n">Odometry</span><span class="p">):</span> <span class="c1"># (1)!</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">msg_callback</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">topic_message</span><span class="p">:</span> <span class="n">Odometry</span><span class="p">):</span> <span class="c1"># (1)!</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">pose</span> <span class="o">=</span> <span class="n">topic_data</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    <span class="n">pose</span> <span class="o">=</span> <span class="n">topic_message</span><span class="o">.</span><span class="n">pose</span><span class="o">.</span><span class="n">pose</span> <span class="c1"># (2)!</span>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>    <span class="c1"># (3)!</span>
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>    <span class="n">pos_x</span> <span class="o">=</span> <span class="n">pose</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">x</span>
@@ -1958,7 +1958,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-30T11:29:31+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-30T11:45:57+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
   </span>
 
     
