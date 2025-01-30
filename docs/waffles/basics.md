@@ -498,6 +498,8 @@ Simultaneous Localisation and Mapping (SLAM) is a sophisticated tool that is bui
     !!! tip
         It's best to do this slowly and perform multiple circuits of the area to build up a more accurate map.
 
+    <a name="slam-steps"></a>
+
     <figure markdown>
       ![](../images/waffle/slam_step1.png){width=500px}
       ![](../images/waffle/slam_step2.png){width=500px}
