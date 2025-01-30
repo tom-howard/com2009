@@ -2867,13 +2867,18 @@
 </code></pre></div>
 </li>
 <li>
-<p>Finally, head back to the terminal and use Colcon to build the package, and the <code>odom_subscriber.py</code> node:</p>
+<p>Head back to the terminal and use Colcon to build the package again (which now contains the new <code>odom_subscriber.py</code> node):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part2_navigation<span class="w"> </span>--symlink-install
 </code></pre></div>
 </li>
 <li>
+<p>And then, finally, don't forget to re-source:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+</code></pre></div>
+</li>
+<li>
 <p>Now we're ready to run this! Do so using <code>ros2 run</code> and see what it does:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
 </code></pre></div>
 </li>
 <li>
@@ -2892,7 +2897,7 @@
 <p>Make sure that you've stopped the <code>teleop_keyboard</code> node before starting this exercise!</p>
 </div>
 <p><a name="rostopic_pub"></a>We can use the <code>ros2 topic pub</code> command to <em>publish</em> data to a topic from a terminal by using the command in the following way:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span><span class="o">{</span>topic_name<span class="o">}</span><span class="w"> </span><span class="o">{</span>message_type<span class="o">}</span><span class="w"> </span><span class="o">{</span>message_data<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>pub<span class="w"> </span><span class="o">{</span>topic_name<span class="o">}</span><span class="w"> </span><span class="o">{</span>message_type<span class="o">}</span><span class="w"> </span><span class="o">{</span>message_data<span class="o">}</span>
 </code></pre></div>
 <p><a href="#velocity-commands">As we discovered earlier</a>, the <code>/cmd_vel</code> topic is expecting messages containing <em>linear</em> and <em>angular</em> velocity data, each with an <code>x</code>, <code>y</code> and <code>z</code> component. When publishing topic messages in a terminal the commands can get quite long and complicated, but we can use <em>autocomplete</em> functionality to help us format the full command correctly.</p>
 <ol>
@@ -2901,27 +2906,27 @@
 <ol>
 <li>
 <p>First, type the text as shown below and then press the <span class="keys"><kbd class="key-tab">Tab</kbd></span> key where indicated to complete the <em>topic name</em> for you:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>ros2 topic pub /cmd_[TAB]
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ros2 topic pub /cmd_[TAB]
 </code></pre></div>
 </li>
 <li>
 <p>Then, type <strong><code>g</code></strong> and then press <span class="keys"><kbd class="key-tab">Tab</kbd></span> again to format the rest of the <em>message type</em> for you: </p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ros2 topic pub /cmd_vel g[TAB]
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ros2 topic pub /cmd_vel g[TAB]
 </code></pre></div>
 </li>
 <li>
 <p>The message data then needs to be entered inside quotation marks, type <strong><code>"l</code></strong> and then press <span class="keys"><kbd class="key-tab">Tab</kbd></span> again to obtain the format of the <em>message data</em>:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ros2 topic pub /cmd_vel geometry_msgs/msg/Twist &quot;l[TAB]
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ros2 topic pub /cmd_vel geometry_msgs/msg/Twist &quot;l[TAB]
 </code></pre></div>
 <p>The full command will then be presented:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>ros2 topic pub /cmd_vel geometry_msgs/msg/Twist &quot;linear:
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>  x: 0.0
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>  y: 0.0
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>  z: 0.0
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>angular:
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>  x: 0.0
-<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a>  y: 0.0
-<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a>  z: 0.0&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>ros2 topic pub /cmd_vel geometry_msgs/msg/Twist &quot;linear:
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>  x: 0.0
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>  y: 0.0
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>  z: 0.0
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>angular:
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>  x: 0.0
+<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a>  y: 0.0
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>  z: 0.0&quot;
 </code></pre></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -2966,7 +2971,7 @@
 <p>Create a new file called <code>move_circle.py</code>:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>touch<span class="w"> </span>move_circle.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>touch<span class="w"> </span>move_circle.py
 </code></pre></div>
 ... and make this file executable using the <code>chmod</code> command (<a href="../part1/#chmod">as we did in Part 1</a>).</p>
 <hr />
@@ -2977,13 +2982,13 @@
 </li>
 <li>
 <p>Our <code>move_circle.py</code> node has a new dependency:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">geometry_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Twist</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">geometry_msgs.msg</span><span class="w"> </span><span class="kn">import</span> <span class="n">Twist</span>
 </code></pre></div>
 <p>We therefore need to add this dependency to our package's <code>package.xml</code> file.</p>
 <p>Earlier on we added <code>nav_msgs</code> to this. Below this, add a new <code class="highlight"><span class="nt">&lt;exec_depend&gt;</span></code> for <code>geometry_msgs</code>:</p>
-<div class="highlight"><span class="filename">package.xml</span><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span>
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="nt">&lt;exec_depend&gt;</span>nav_msgs<span class="nt">&lt;/exec_depend&gt;</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="nt">&lt;exec_depend&gt;</span>geometry_msgs<span class="nt">&lt;/exec_depend&gt;</span><span class="w">  </span><span class="cm">&lt;!-- (1)! --&gt;</span>
+<div class="highlight"><span class="filename">package.xml</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a><span class="nt">&lt;exec_depend&gt;</span>nav_msgs<span class="nt">&lt;/exec_depend&gt;</span>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nt">&lt;exec_depend&gt;</span>geometry_msgs<span class="nt">&lt;/exec_depend&gt;</span><span class="w">  </span><span class="cm">&lt;!-- (1)! --&gt;</span>
 </code></pre></div>
 <ol>
 <li>ADD THIS LINE!</li>
@@ -2991,22 +2996,22 @@
 </li>
 <li>
 <p>Next (hopefully you're getting the idea by now!), declare the <code>move_circle.py</code> node as an executable in the <code>CMakeLists.txt</code>:</p>
-<div class="highlight"><span class="filename">CMakeLists.txt</span><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a># Install Python executables
-<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>install(PROGRAMS
-<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>  scripts/odom_subscriber.py
-<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>  scripts/move_circle.py
-<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>  DESTINATION lib/${PROJECT_NAME}
-<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a>)
+<div class="highlight"><span class="filename">CMakeLists.txt</span><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a># Install Python executables
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>install(PROGRAMS
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>  scripts/odom_subscriber.py
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>  scripts/move_circle.py
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>  DESTINATION lib/${PROJECT_NAME}
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>)
 </code></pre></div>
 </li>
 <li>
 <p>Finally, head back to the terminal and use Colcon to build the new node alongside everything else in the package:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part2_navigation<span class="w"> </span>--symlink-install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part2_navigation<span class="w"> </span>--symlink-install
 </code></pre></div>
 </li>
 <li>
 <p>Run this node now, using <code>ros2 run</code> and see what happens:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part2_navigation<span class="w"> </span>move_circle.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part2_navigation<span class="w"> </span>move_circle.py
 </code></pre></div>
 <p>Head back to the Gazebo simulation and watch as the robot moves around in a circle of 0.5 meter radius!</p>
 </li>
@@ -3029,25 +3034,25 @@
 </li>
 <li>
 <p>First, we need to add an import to our Node:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">SignalHandlerOptions</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.signals</span><span class="w"> </span><span class="kn">import</span> <span class="n">SignalHandlerOptions</span>
 </code></pre></div>
 <p>You'll see what this is for shortly...</p>
 </li>
 <li>
 <p>Then move on to the <code>__init__()</code> method of your <code>Circle()</code> class.</p>
 <p>Add in a boolean flag here called <code>shutdown</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">shutdown</span> <span class="o">=</span> <span class="kc">False</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">shutdown</span> <span class="o">=</span> <span class="kc">False</span>
 </code></pre></div>
 <p>... to begin with, we want this to be set to <code>False</code>.</p>
 </li>
 <li>
 <p>Next, add a new method to your <code>Circle()</code> class, called <code>on_shutdown()</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>        <span class="s2">&quot;Stopping the robot...&quot;</span>
-<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>    <span class="p">)</span>
-<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">my_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Twist</span><span class="p">())</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">shutdown</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># (2)!</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">on_shutdown</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>        <span class="s2">&quot;Stopping the robot...&quot;</span>
+<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>    <span class="p">)</span>
+<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">my_publisher</span><span class="o">.</span><span class="n">publish</span><span class="p">(</span><span class="n">Twist</span><span class="p">())</span> <span class="c1"># (1)!</span>
+<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>    <span class="bp">self</span><span class="o">.</span><span class="n">shutdown</span> <span class="o">=</span> <span class="kc">True</span> <span class="c1"># (2)!</span>
 </code></pre></div>
 <ol>
 <li>All velocities within the <code>Twist()</code> message class are set to zero by default, so we can just publish this as-is, in order to ask the robot to stop.</li>
@@ -3056,24 +3061,24 @@
 </li>
 <li>
 <p>Finally, head to the <code class="highlight"><span class="n">main</span><span class="p">()</span></code> function of the script. This is where most of the changes need to be made...</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
-<a id="__codelineno-37-3" name="__codelineno-37-3" href="#__codelineno-37-3"></a>        <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
-<a id="__codelineno-37-4" name="__codelineno-37-4" href="#__codelineno-37-4"></a>        <span class="n">signal_handler_options</span><span class="o">=</span><span class="n">SignalHandlerOptions</span><span class="o">.</span><span class="n">NO</span>
-<a id="__codelineno-37-5" name="__codelineno-37-5" href="#__codelineno-37-5"></a>    <span class="p">)</span> <span class="c1"># (1)!</span>
-<a id="__codelineno-37-6" name="__codelineno-37-6" href="#__codelineno-37-6"></a>    <span class="n">move_circle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
-<a id="__codelineno-37-7" name="__codelineno-37-7" href="#__codelineno-37-7"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-37-8" name="__codelineno-37-8" href="#__codelineno-37-8"></a>        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">move_circle</span><span class="p">)</span> <span class="c1"># (2)!</span>
-<a id="__codelineno-37-9" name="__codelineno-37-9" href="#__codelineno-37-9"></a>    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span> <span class="c1"># (3)!</span>
-<a id="__codelineno-37-10" name="__codelineno-37-10" href="#__codelineno-37-10"></a>        <span class="nb">print</span><span class="p">(</span>
-<a id="__codelineno-37-11" name="__codelineno-37-11" href="#__codelineno-37-11"></a>            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">move_circle</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> received a shutdown request (Ctrl+C).&quot;</span>
-<a id="__codelineno-37-12" name="__codelineno-37-12" href="#__codelineno-37-12"></a>        <span class="p">)</span>
-<a id="__codelineno-37-13" name="__codelineno-37-13" href="#__codelineno-37-13"></a>    <span class="k">finally</span><span class="p">:</span> 
-<a id="__codelineno-37-14" name="__codelineno-37-14" href="#__codelineno-37-14"></a>        <span class="n">move_circle</span><span class="o">.</span><span class="n">on_shutdown</span><span class="p">()</span> <span class="c1"># (4)!</span>
-<a id="__codelineno-37-15" name="__codelineno-37-15" href="#__codelineno-37-15"></a>        <span class="k">while</span> <span class="ow">not</span> <span class="n">move_circle</span><span class="o">.</span><span class="n">shutdown</span><span class="p">:</span> <span class="c1"># (5)!</span>
-<a id="__codelineno-37-16" name="__codelineno-37-16" href="#__codelineno-37-16"></a>            <span class="k">continue</span>
-<a id="__codelineno-37-17" name="__codelineno-37-17" href="#__codelineno-37-17"></a>        <span class="n">move_circle</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span> <span class="c1"># (6)!</span>
-<a id="__codelineno-37-18" name="__codelineno-37-18" href="#__codelineno-37-18"></a>        <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="#__codelineno-38-3"></a>        <span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">,</span>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="#__codelineno-38-4"></a>        <span class="n">signal_handler_options</span><span class="o">=</span><span class="n">SignalHandlerOptions</span><span class="o">.</span><span class="n">NO</span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="#__codelineno-38-5"></a>    <span class="p">)</span> <span class="c1"># (1)!</span>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="#__codelineno-38-6"></a>    <span class="n">move_circle</span> <span class="o">=</span> <span class="n">Circle</span><span class="p">()</span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="#__codelineno-38-7"></a>    <span class="k">try</span><span class="p">:</span>
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="#__codelineno-38-8"></a>        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin</span><span class="p">(</span><span class="n">move_circle</span><span class="p">)</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="#__codelineno-38-9"></a>    <span class="k">except</span> <span class="ne">KeyboardInterrupt</span><span class="p">:</span> <span class="c1"># (3)!</span>
+<a id="__codelineno-38-10" name="__codelineno-38-10" href="#__codelineno-38-10"></a>        <span class="nb">print</span><span class="p">(</span>
+<a id="__codelineno-38-11" name="__codelineno-38-11" href="#__codelineno-38-11"></a>            <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">move_circle</span><span class="o">.</span><span class="n">get_name</span><span class="p">()</span><span class="si">}</span><span class="s2"> received a shutdown request (Ctrl+C).&quot;</span>
+<a id="__codelineno-38-12" name="__codelineno-38-12" href="#__codelineno-38-12"></a>        <span class="p">)</span>
+<a id="__codelineno-38-13" name="__codelineno-38-13" href="#__codelineno-38-13"></a>    <span class="k">finally</span><span class="p">:</span> 
+<a id="__codelineno-38-14" name="__codelineno-38-14" href="#__codelineno-38-14"></a>        <span class="n">move_circle</span><span class="o">.</span><span class="n">on_shutdown</span><span class="p">()</span> <span class="c1"># (4)!</span>
+<a id="__codelineno-38-15" name="__codelineno-38-15" href="#__codelineno-38-15"></a>        <span class="k">while</span> <span class="ow">not</span> <span class="n">move_circle</span><span class="o">.</span><span class="n">shutdown</span><span class="p">:</span> <span class="c1"># (5)!</span>
+<a id="__codelineno-38-16" name="__codelineno-38-16" href="#__codelineno-38-16"></a>            <span class="k">continue</span>
+<a id="__codelineno-38-17" name="__codelineno-38-17" href="#__codelineno-38-17"></a>        <span class="n">move_circle</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span> <span class="c1"># (6)!</span>
+<a id="__codelineno-38-18" name="__codelineno-38-18" href="#__codelineno-38-18"></a>        <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
 </code></pre></div>
 <ol>
 <li>
@@ -3125,7 +3130,7 @@
 <p>Navigate to the package <code>scripts</code> directory and use the Linux <code>touch</code> command to create a new file called <code>move_square.py</code>:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>touch<span class="w"> </span>move_square.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>touch<span class="w"> </span>move_square.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -3133,7 +3138,7 @@
 <p>Then make this file executable using <code>chmod</code>:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>move_square.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>chmod<span class="w"> </span>+x<span class="w"> </span>move_square.py
 </code></pre></div></p>
 <hr />
 </li>
@@ -3180,7 +3185,7 @@
 <p>Ultimately then, we've seen a requirement here for additional information to provide more confidence of a robot's location in its environment, in order to enhance its ability to navigate effectively and avoid crashing into things! We'll explore this further later in this course.</p>
 <h3 id="backup">WSL-ROS Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>Remember, the work you have done in the WSL-ROS environment during this session <strong>will not be preserved</strong> for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS Terminal Instance:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 <p>This will export your home directory to your University <code>U:\</code> Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS.  </p>
 <div class="footnote">
@@ -3213,7 +3218,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-30T11:30:49+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-30T11:39:20+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
   </span>
 
     
