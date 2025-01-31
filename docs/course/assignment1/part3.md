@@ -699,42 +699,46 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     ***
     **TERMINAL 2:**
     ```bash
-    ros2 launch turtlebot3_cartographer cartographer.launch.py
+    ros2 launch tuos_simulations cartographer.launch.py
     ```
     ***
 
-    This will launch RViz again, and you should be able to see a top-down view of an environment with some green dots representing the real-time LiDAR data and a green and red pointer to denote the current location of the robot. 
+    This will launch RViz again, where you should see a top-down view of an environment with a model of the robot, surrounded by some red/green dots representing the real-time LiDAR data. 
     
     <figure markdown>
       ![](./part3/cartographer_rviz.png){width=600px}
     </figure>
 
-    SLAM has already started building a map of the boundaries that are currently visible to the robot, based on its starting position in the environment.
+    SLAM has already started building a map of the boundaries that are currently visible to the robot, based on its starting position in the environment. 
 
-1. In **TERMINAL 3** launch the `teleop_keyboard` node ([you should know how to do this by now](./part2.md#teleop)).  Re-arrange and re-size your windows so that you can see Gazebo, RViz *and* the `turtlebot3_teleop_key` terminal instances all at the same time:
-    
+    If you leave this for a minute the walls of the arena will start to become visible in RViz, and the floor will start to turn a lighter grey. As time passes the SLAM algorithms are becoming more certain of what is being observed in the environment, and are starting to determine what is free space, and where the boundaries are.
+
     <figure markdown>
-      ![](../../images/wsl/window_arrangement.png)
-      TODO
+      ![](./part3/cartographer_rviz_progressed.png){width=600px}
     </figure>
 
-1. Drive the robot around the arena slowly, using the `teleop_keyboard` node, and observe the map being updated in the RViz window as you do so. Drive the robot around until a full map of the environment has been generated.
+1. In **TERMINAL 3** launch the `teleop_keyboard` node ([you should know how to do this by now](./part2.md#teleop)). Re-arrange and re-size your windows so that you can see Gazebo, RViz *and* the `teleop_keybaord` terminal instances all at the same time:
     
     <figure markdown>
-      ![](../../images/rviz/slam.png)
-      TODO
+      ![](./part3/slam_windows.png){width=800px}
     </figure>
 
-<!-- 1. As you're doing this you need to *also* determine the centre coordinates of the four circles (A, B, C & D) that are printed on the arena floor. Drive your robot into each of these circular zones and stop the robot inside them. As you should remember from Part 2, we can determine the position (and orientation) of a robot in its environment from its *odometery*, as published to the `/odom` topic. In [Part 2 Exercise 2](./part2.md#ex2) you built an odometry subscriber node, so you could launch this now (in a new terminal: **TERMINAL 4**), and use this to inform you of your robot's `x` and `y` position in the environment when located within each of the zone markers:
+1. Drive the robot around the arena slowly, using the `teleop_keyboard` node, and observe the map being updated in the RViz window as you do so. 
 
+1. As you're doing this open up *another* terminal instance (**TERMINAL 4**) and run the `odom_subscriber.py` node that you created back in Part 2:
+    
     ***
     **TERMINAL 4:**
     ```bash
-    rosrun part2_navigation odom_subscriber.py
+    ros2 run part2_navigation odom_subscriber.py
     ```
     ***
+    
+    This will provide you with the robot's `X` and `Y` coordinates (in meters) within the environment, as you are driving it around, and you can use this to determine the centre coordinates of the four circles (A, B, C & D) that are printed on the arena floor. 
+    
+    Drive your robot into each of these circular zones and stop the robot inside them.    
 
-    <a name="goal_coords"></a>Record the zone marker coordinates in a table such as the one below (you'll need this information for the next exercise).
+    <a name="goal_coords"></a>Record the zone marker coordinates in a table such as the one below.
 
     <center>
 
@@ -746,9 +750,15 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     | C     |       |       |
     | D     |       |       |
 
-    </center> -->
+    </center>
 
-1. Once you're happy that your robot has built a complete map of the environment, you can then save it for later use. We do this using a ROS `map_server` package.  First, stop the robot by pressing ++s++ in **TERMINAL 3** and then enter ++ctrl+c++ to shut down the `teleop_keyboard` node.
+1. Drive the robot around until a full map of the environment has been generated.
+    
+    <figure markdown>
+      ![](./part3/slam_steps.png){width=800px}
+    </figure>
+
+1. Once you're happy that your robot has built a complete map of the environment (and you've got the coordinates of all the circles), you can then save your map for later use. We do this using a ROS `map_server` package.  First, stop the robot by pressing ++s++ in **TERMINAL 3** and then enter ++ctrl+c++ to shut down the `teleop_keyboard` node.
 
 1. Then, remaining in **TERMINAL 3**, navigate to the root of your `part3_beyond_basics` package directory and create a new folder in it called `maps`:
 
@@ -771,7 +781,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     ```
     ***
     
-1. Then, run the `map_saver` node from the `map_server` package to save a copy of your map:
+1. Then, run the `map_saver_cli` node from the `map_server` package to save a copy of your map:
 
     ***
     **TERMINAL 3:**
@@ -793,8 +803,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     A new window should launch containing the map you have just created with SLAM and the `map_saver_cli` node: 
     
     <figure markdown>
-      ![](part3/slam_map.png)
-      TODO
+      ![](part3/slam_map.png){width=300px}
     </figure>
 
     White regions represent the area that your robot has determined is open space and that it can freely move within.  Black regions, on the other hand, represent boundaries or objects that have been detected.  Any grey area on the map represents regions that remain unexplored, or that were inaccessible to the robot.
