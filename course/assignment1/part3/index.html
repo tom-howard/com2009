@@ -2833,55 +2833,85 @@
 <p>Now launch SLAM to start building a map of this environment. In <strong>TERMINAL 2</strong>, launch SLAM as follows:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_cartographer<span class="w"> </span>cartographer.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="#__codelineno-52-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>cartographer.launch.py
 </code></pre></div></p>
 <hr />
-<p>This will launch RViz again, and you should be able to see a top-down view of an environment with some green dots representing the real-time LiDAR data and a green and red pointer to denote the current location of the robot. </p>
+<p>This will launch RViz again, where you should see a top-down view of an environment with a model of the robot, surrounded by some red/green dots representing the real-time LiDAR data. </p>
 <p><figure markdown>
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="cartographer_rviz.png" width="600px" /></a>
 </figure></p>
-<p>SLAM has already started building a map of the boundaries that are currently visible to the robot, based on its starting position in the environment.</p>
-</li>
-<li>
-<p>In <strong>TERMINAL 3</strong> launch the <code>teleop_keyboard</code> node (<a href="../part2/#teleop">you should know how to do this by now</a>).  Re-arrange and re-size your windows so that you can see Gazebo, RViz <em>and</em> the <code>turtlebot3_teleop_key</code> terminal instances all at the same time:</p>
+<p>SLAM has already started building a map of the boundaries that are currently visible to the robot, based on its starting position in the environment. </p>
+<p>If you leave this for a minute the walls of the arena will start to become visible in RViz, and the floor will start to turn a lighter grey. As time passes the SLAM algorithms are becoming more certain of what is being observed in the environment, and are starting to determine what is free space, and where the boundaries are.</p>
 <p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/wsl/window_arrangement.png" /></a>
-  TODO
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="cartographer_rviz_progressed.png" width="600px" /></a>
 </figure></p>
 </li>
 <li>
-<p>Drive the robot around the arena slowly, using the <code>teleop_keyboard</code> node, and observe the map being updated in the RViz window as you do so. Drive the robot around until a full map of the environment has been generated.</p>
+<p>In <strong>TERMINAL 3</strong> launch the <code>teleop_keyboard</code> node (<a href="../part2/#teleop">you should know how to do this by now</a>). Re-arrange and re-size your windows so that you can see Gazebo, RViz <em>and</em> the <code>teleop_keybaord</code> terminal instances all at the same time:</p>
 <p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../images/rviz/slam.png" /></a>
-  TODO
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="slam_windows.png" width="800px" /></a>
 </figure></p>
 </li>
-</ol>
-<!-- 1. As you're doing this you need to *also* determine the centre coordinates of the four circles (A, B, C & D) that are printed on the arena floor. Drive your robot into each of these circular zones and stop the robot inside them. As you should remember from Part 2, we can determine the position (and orientation) of a robot in its environment from its *odometery*, as published to the `/odom` topic. In [Part 2 Exercise 2](./part2.md#ex2) you built an odometry subscriber node, so you could launch this now (in a new terminal: **TERMINAL 4**), and use this to inform you of your robot's `x` and `y` position in the environment when located within each of the zone markers:
-
-    ***
-    **TERMINAL 4:**
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>rosrun<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
-</code></pre></div>
-    ***
-
-    <a name="goal_coords"></a>Record the zone marker coordinates in a table such as the one below (you'll need this information for the next exercise).
-
-    <center>
-
-    | Zone | X Position (m) | Y Position (m) |
-    | :---: | :---: | :---: |
-    | START | 0.5   | -0.04 |
-    | A     |       |       |
-    | B     |       |       |
-    | C     |       |       |
-    | D     |       |       |
-
-    </center> -->
-
-<ol>
 <li>
-<p>Once you're happy that your robot has built a complete map of the environment, you can then save it for later use. We do this using a ROS <code>map_server</code> package.  First, stop the robot by pressing <span class="keys"><kbd class="key-s">S</kbd></span> in <strong>TERMINAL 3</strong> and then enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to shut down the <code>teleop_keyboard</code> node.</p>
+<p>Drive the robot around the arena slowly, using the <code>teleop_keyboard</code> node, and observe the map being updated in the RViz window as you do so. </p>
+</li>
+<li>
+<p>As you're doing this open up <em>another</em> terminal instance (<strong>TERMINAL 4</strong>) and run the <code>odom_subscriber.py</code> node that you created back in Part 2:</p>
+<hr />
+<p><strong>TERMINAL 4:</strong>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part2_navigation<span class="w"> </span>odom_subscriber.py
+</code></pre></div></p>
+<hr />
+<p>This will provide you with the robot's <code>X</code> and <code>Y</code> coordinates (in meters) within the environment, as you are driving it around, and you can use this to determine the centre coordinates of the four circles (A, B, C &amp; D) that are printed on the arena floor. </p>
+<p>Drive your robot into each of these circular zones and stop the robot inside them.    </p>
+<p><a name="goal_coords"></a>Record the zone marker coordinates in a table such as the one below.</p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Zone</th>
+<th style="text-align: center;">X Position (m)</th>
+<th style="text-align: center;">Y Position (m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">START</td>
+<td style="text-align: center;">0.5</td>
+<td style="text-align: center;">-0.04</td>
+</tr>
+<tr>
+<td style="text-align: center;">A</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">B</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">C</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;">D</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+</li>
+<li>
+<p>Drive the robot around until a full map of the environment has been generated.</p>
+<p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="slam_steps.png" width="800px" /></a>
+</figure></p>
+</li>
+<li>
+<p>Once you're happy that your robot has built a complete map of the environment (and you've got the coordinates of all the circles), you can then save your map for later use. We do this using a ROS <code>map_server</code> package.  First, stop the robot by pressing <span class="keys"><kbd class="key-s">S</kbd></span> in <strong>TERMINAL 3</strong> and then enter <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> to shut down the <code>teleop_keyboard</code> node.</p>
 </li>
 <li>
 <p>Then, remaining in <strong>TERMINAL 3</strong>, navigate to the root of your <code>part3_beyond_basics</code> package directory and create a new folder in it called <code>maps</code>:</p>
@@ -2902,7 +2932,7 @@
 <hr />
 </li>
 <li>
-<p>Then, run the <code>map_saver</code> node from the <code>map_server</code> package to save a copy of your map:</p>
+<p>Then, run the <code>map_saver_cli</code> node from the <code>map_server</code> package to save a copy of your map:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>MAP_NAME
@@ -2917,8 +2947,7 @@ Replacing <code>MAP_NAME</code> with a name of your choosing. </p>
 <hr />
 <p>A new window should launch containing the map you have just created with SLAM and the <code>map_saver_cli</code> node: </p>
 <p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="part3/slam_map.png" /></a>
-  TODO
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="slam_map.png" width="300px" /></a>
 </figure></p>
 <p>White regions represent the area that your robot has determined is open space and that it can freely move within.  Black regions, on the other hand, represent boundaries or objects that have been detected.  Any grey area on the map represents regions that remain unexplored, or that were inaccessible to the robot.</p>
 </li>
@@ -2970,7 +2999,7 @@ Replacing <code>MAP_NAME</code> with a name of your choosing. </p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-30T09:45:23+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-30</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-31T16:11:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-31</span>
   </span>
 
     
