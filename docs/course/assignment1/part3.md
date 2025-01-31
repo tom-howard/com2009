@@ -66,7 +66,7 @@ wsl_ros restore
 
 It's also worth launching VS Code now, so that it's ready to go for when you need it later on. 
 
-!!! warning "WSL Users..."
+??? warning "WSL Users..."
         
     It's important to launch VS Code within your ROS environment using the "WSL" extension. Always remember to check for this: 
     

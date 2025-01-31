@@ -42,19 +42,45 @@ By the end of this session you will be able to:
 
 ## Getting Started
 
-TODO:
-
 **Step 1: Launch your ROS Environment**
 
 If you haven't done so already, launch your ROS environment now:
 
-1. OPTION 1
-1. OPTION 2
-1. etc...
+1. **WSL-ROS2 on a university managed desktop**: follow [the instructions here to launch it](../../ros/using-wsl-ros/man-win.md).
+1. **[Running WSL-ROS2 on your own machine](../../ros/wsl-ros/install.md)**: launch the Windows Terminal to access a WSL-ROS2 terminal instance.
+1. **Other Users**: follow [the relevant instructions](../../ros/other-options/README.md).
 
 You should now have access to ROS via a Linux terminal instance. We'll refer to this terminal instance as **TERMINAL 1**.
 
-**Step 2: Make Sure The Course Repo is Up-To-Date**
+**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
+
+Remember that [any work that you do within the WSL-ROS2 Environment will not be preserved between sessions or across different University computers](../../ros/using-wsl-ros/man-win.md#backing-up-and-restoring-your-data). At [the end of Part 1](./part1.md#backup) you should have run the `wsl_ros` tool to back up your home directory to your University `U:\` Drive. Once WSL-ROS2 is up and running, you should be prompted to restore this:
+
+``` { .txt .no-copy }
+It looks like you already have a backup from a previous session:
+  U:\wsl-ros\ros2-backup-XXX.tar.gz
+Do you want to restore this now? [y/n]
+```
+
+Enter ++y+enter++ to restore your work from last time. You can also restore your work at any time using the following command:
+
+```bash
+wsl_ros restore
+```
+
+**Step 3: Launch VS Code** 
+
+It's also worth launching VS Code now, so that it's ready to go for when you need it later on. 
+
+??? warning "WSL Users..."
+        
+    It's important to launch VS Code within your WSL environment using the "WSL" extension. Always remember to check for this:
+
+    <figure markdown>
+      ![](../../ros/figures/code-wsl-ext-on.png){width=400px}
+    </figure>
+
+**Step 4: Make Sure The Course Repo is Up-To-Date**
 
 <a name="course-repo"></a>
 
@@ -82,7 +108,7 @@ source ~/.bashrc
 !!! warning
     If you have any other terminal instances open, then you'll need run `source ~/.bashrc` in these too, in order for any changes made by the Colcon build process to propagate through to these as well.
 
-**Step 3: Launch a Waffle Simulation**
+**Step 5: Launch a Waffle Simulation**
 
 In **TERMINAL 1** enter the following command to launch a simulation of a TurtleBot3 Waffle in an empty world:  
         
@@ -96,10 +122,8 @@ ros2 launch turtlebot3_gazebo empty_world.launch.py
 A Gazebo simulation window should open and within this you should see a TurtleBot3 Waffle in empty space:
 
 <figure markdown>
-  ![](../../images/gz/waffle_empty_world.svg){width=800}
+  ![](../../images/gz/tb3_empty_world_top.png){width=700px}
 </figure>
-
-<p align="center"><strong><em>You're all set up and ready to go!</em></strong></p>
 
 ## Velocity (Motion) {#velocity}
 
@@ -372,16 +396,16 @@ Quaternion orientation
 
 For us, it's easier to think about the orientation of our robot in a *"Euler Angle"* representation, which tell us the degree of rotation about the *three principal axes* ([as discussed above](#principal-axes)):
 
-* <code>&theta;<sub>x</sub></code>, aka: **"Roll"**
-* <code>&theta;<sub>y</sub></code>, aka: **"Pitch"**
-* <code>&theta;<sub>z</sub></code>, aka: **"Yaw"**
+* $\theta_{x}$, aka: **"Roll"**
+* $\theta_{y}$, aka: **"Pitch"**
+* $\theta_{z}$, aka: **"Yaw"**
 
 Fortunately, the maths involved in converting between these two orientation formats is fairly straight forward ([see here](https://automaticaddison.com/how-to-convert-a-quaternion-into-euler-angles-in-python/)).
 
 Recall from above however, that our TurtleBot3 can only move in a 2D plane (unfortunately, it can't fly!) and so, actually, its pose can be fully represented by just 3 terms: 
 
-* `x` & `y`: the 2D coordinates of the robot in the `X-Y` plane
-* <code>&theta;<sub>z</sub></code>: the angle of the robot about the `z` (*yaw*) axis
+* $x$ & $y$: the 2D coordinates of the robot in the `X-Y` plane
+* $\theta_{z}$: the angle of the robot about the `z` (*yaw*) axis
 
 #### Twist
 
@@ -477,7 +501,9 @@ In Part 1 we learnt how to create a package and build simple Python nodes to pub
 
 1. Having followed all the steps, the output from your node should be similar to that shown below:
     
-    [TODO: a gif]
+    <figure markdown>
+      ![](./part2/odom_subscriber.gif){width=700px}
+    </figure>
 
 1. Observe how the output (the formatted odometry data) changes whilst you move the robot around using the `teleop_keyboard` node in a new terminal instance (**TERMINAL 3**).
 1. Stop your `odom_subscriber.py` node in **TERMINAL 2** and the `teleop_keyboard` node in **TERMINAL 3** by entering ++ctrl+c++ in each of the terminals.
