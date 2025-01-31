@@ -4,7 +4,7 @@ title: Installing WSL-ROS2 on your Own (Windows) Machine
 
 **Applicable to**: Windows 10 or 11 personal (unmanaged) computers
 
-You can install WSL-ROS2 (our purpose-built ROS image for this course) via the University of Sheffield [Software Download Service (TODO)]() (University login required).
+You can install WSL-ROS2 (our purpose-built ROS image for this course) via the University of Sheffield [Software Download Service](https://www.sheffield.ac.uk/software/) (University login required).
 
 !!! note
     When you download WSL-ROS2 from the Software Download Service you will receive an email with installation instructions. We recommend that you follow the instructions provided on *this page* instead, as this page will be kept more up-to-date throughout the semester.
@@ -18,23 +18,24 @@ You can install WSL-ROS2 (our purpose-built ROS image for this course) via the U
     2. If you *do* already have WSL installed on your machine, then follow [these instructions to update it](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#existing-wsl-install).
 4. [Install the Windows Terminal](https://learn.microsoft.com/en-us/windows/terminal/install).
 5. [Install Visual Studio Code](https://code.visualstudio.com/) and [the WSL VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl).
-6. Install the [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/).
 
 ## Installing
 
 1. Go to the [IT Services Software Downloads](https://www.sheffield.ac.uk/software/) page (you'll need to log in with your university MUSE credentials).
-2. Scroll down to the bottom, where you should see WSL-ROS2 listed (**not** WSL-ROS, this is from last year).
+2. Scroll down to the bottom, where you should see WSL-ROS listed.
     
-    Click on the blue "Request WSL-ROS2" button and then wait to receive an email to your university email address.
+    Click on the blue "Request WSL-ROS" button and then wait to receive an email to your university email address.
 
-3. The email will contain a link to the download location. Click this link to download the software to your machine as a `.zip` file (~2 GB).
+3. The email will contain a link to two different download locations. 
+
+    !!! warning 
+        Make sure you click on the link for ^^WSL-ROS2^^, **NOT** WSL-ROS (this is based on an older ROS version).
     
-    !!! note "Remember"
-        The email will include some installation instructions, but we'd recommend that you follow the instructions provided below instead, just in case anything has changed recently.
-
+    Click the *correct* link to download **WSL-ROS2** to your machine as a `.zip` file (~2 GB).
+    
 4. On your computer, create a new folder in the root of your `C:\` drive called `WSL-ROS2`.
 5. Extract the content of the downloaded `.zip` file into to the `C:\WSL-ROS2\` folder.
-6. Launch PowerShell and enter the follow command to install WSL-ROS as a WSL distro on your machine:
+6. Launch PowerShell and enter the follow command to install WSL-ROS2 as a WSL distro on your machine:
 
     ```powershell
     wsl --import WSL-ROS2 $env:localappdata\WSL-ROS2 `
@@ -54,7 +55,14 @@ You can install WSL-ROS2 (our purpose-built ROS image for this course) via the U
     1. Go to Settings (++ctrl+comma++)
     1. In `Startup` > `Default profile` select **WSL-ROS2** from the drop-down list.
 
-        This will ensure that each time you open the Windows Terminal App *or* you press the New Tab (:material-plus:) button a WSL-ROS2 Terminal Instance will be launched by default.
+    *Alternatively*, you could always use our own Windows Terminal Settings file (but note that this will overwrite any of your own custom Windows Terminal App settings, if you have any):
+
+    ```powershell
+    Copy-Item -Path C:\WSL-ROS2\settings.json -Destination `
+    $env:localappdata\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState
+    ```
+
+    Either way, this will ensure that each time you open the Windows Terminal App *or* you press the New Tab (:material-plus:) button a WSL-ROS2 Terminal Instance will be launched by default.
    
 9. You should now be able to launch the WSL-ROS2 environment by launching the Windows Terminal App:
 
@@ -65,7 +73,7 @@ You can install WSL-ROS2 (our purpose-built ROS image for this course) via the U
 
 ## Initial Setup
 
-With your WSL-ROS2 terminal instance open in the Windows Terminal, you'll need to enter some initial commands to get things set up.
+With your WSL-ROS2 terminal instance, you'll need to run some initial commands to get things set up.
 
 1. First, update the distro:
 
@@ -94,15 +102,18 @@ With your WSL-ROS2 terminal instance open in the Windows Terminal, you'll need t
     This should hopefully present you with something like this:
 
     <figure markdown>
-      TODO
+      ![](../../images/gz/tb3_empty_world_top.png){width=600px}
     </figure>
 
-    If this doesn't work, then you may need to try using a dedicated X Server (VcXsrv) instead ([see below](#using-a-dedicated-x-server)). 
+    If this doesn't work, then you may need to try using a dedicated X Server (VcXsrv) instead... 
 
 ## Using a Dedicated X Server
 
+Only try this if you were **unable** to launch the robot simulation in the previous section.
+
 If you are unable to run GUI apps (having completed the steps in the section above), then you may need to try using a dedicated X Server instead. In [the prerequisites](#prerequisites), you should have already installed VcXsrv. 
 
+1. First, install the [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/).
 1. Download this [config file for VcXsrv](https://drive.google.com/file/d/1CMJZ6xVXJ2cKZ0NmdYaxUw9RfPsIGLX9/view?usp=sharing) and save it to your desktop as `wsl_ros_config.xlaunch`.
 
     <figure markdown>
