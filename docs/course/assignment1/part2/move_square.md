@@ -45,7 +45,7 @@ Moving in a square can be achieved by switching between two different movement s
 
 6. Here, we define some variables that we can use to store relevant bits of odometry data while our node is running (and read it back to implement feedback control):
     * `self.x`, `self.y` and `self.theta_z` will be used by the `odom_callback()` to store the robot's **current** pose
-    * `self.x0`, `self.y0` and `self.theta_z0` can be used in the `timer_callback()` method to keep a record of where the robot **was** at a given moment in time (and determine how far it has moved since that point)
+    * `self.xref`, `self.yref` and `self.theta_zref` can be used in the `timer_callback()` method to keep a record of where the robot **was** at a given moment in time (and determine how far it has moved since that point)
 
 7. We'll also need to keep track of how far the robot has travelled (or turned) in order to determine when sufficient movement has taken place to trigger a switch to the alternative state, i.e.:
     

@@ -780,8 +780,23 @@ We can therefore build on the techniques that we used in the `move_circle.py` ex
     ```
     ***
 
+1. Define `move_square.py` as a package executable in your `CMakeLists.txt` file (you should know how to do this by now?!) 
+
 1. Use the VS Code File Explorer to navigate to this `move_square.py` file and open it up, ready for editing.
 1. [There's a template here to help you with this exercise](./part2/move_square.md). Copy and paste the template code into your new `move_square.py` file to get you started. <a name="move_square_ret"></a>
+
+1. Re-build your `part2_navigation` package, to include your new `move_square.py` node:
+
+    ```bash
+    cd ~/ros2_ws/ && colcon build --packages-select part2_navigation --symlink-install
+    ```
+
+    ... and don't forget to re-source again:
+
+    ```bash
+    source ~/.bashrc
+    ```
+
 1. Run the code as it is to see what happens... <a name="blank-2"></a>
 
     !!! warning "Fill in the Blank!"
