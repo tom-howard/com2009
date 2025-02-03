@@ -1,6 +1,6 @@
 ---
 title: "Part 1: Getting Started with ROS 2" 
-description: In the first part of this lab course you will learn the basics of ROS and become familiar with some key tools and principles of this framework, allowing you to program robots and work with ROS applications effectively. 
+description: Learn the basics of ROS2 and become familiar with some key tools and principles, allowing you to program robots and work with ROS2 applications effectively. 
 ---
 
 ## Introduction

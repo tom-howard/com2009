@@ -1,6 +1,6 @@
 ---  
 title: "Part 2: Odometry & Navigation"  
-description: In this session you'll learn about Odometry data, which informs us of a robot's position in an environment. You'll also learn how to control a ROS robot's velocity (and thus its position) using both open and closed-loop control methods.  
+description: Learn about Odometry, which informs us of a robot's position and orientation in an environment. Apply both open and closed-loop velocity control methods to a Waffle. 
 ---
 
 ## Introduction

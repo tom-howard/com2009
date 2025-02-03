@@ -1,6 +1,6 @@
 ---
 title: "Part 6: Cameras, Machine Vision & OpenCV"  
-description: Here you'll learn how to work with images from an on-board camera. You will look at techniques to detect features within these images, and use this to inform robot decision-making.
+description: Learn how to work with images from an on-board camera. Learn techniques to detect features within these images, and use this to inform robot decision-making.
 ---
 
 ## Introduction

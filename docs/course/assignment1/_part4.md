@@ -1,6 +1,6 @@
 ---  
 title: "Part 4: Services"  
-description: Learn how ROS Services can be combined with standard publisher/subscriber principles to enhance robot control for specific operations and gain the ability to create custom msgs and srv for tailored communication
+description: Learn about an alternative way that ROS nodes can communicate across a ROS network, and the situations where this might be useful.  
 ---
 
 ## Introduction 
