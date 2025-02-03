@@ -2421,12 +2421,12 @@ set -g mouse
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p><strong>Step 1: Launch your ROS Environment</strong></p>
 <p>Launch your ROS environment now so that you have access to a Linux terminal instance (aka <strong>TERMINAL 1</strong>).</p>
-<p><strong>Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)</strong></p>
-<p>Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers, and so you should be backing up your work to your <code>U:\</code> drive regularly. When prompted (on first launch of WSL-ROS in <strong>TERMINAL 1</strong>) enter <code>Y</code> to restore this<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p><strong>Step 2: Restore your work (WSL-ROS2 Managed Desktop Users ONLY)</strong></p>
+<p>Remember that any work that you do within the WSL-ROS2 Environment will not be preserved between sessions or across different University computers, and so you should be backing up your work to your <code>U:\</code> drive regularly. When prompted (on first launch of WSL-ROS2 in <strong>TERMINAL 1</strong>) enter <code>Y</code> to restore this<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <p><strong>Step 3: Launch VS Code</strong>  </p>
-<p><em>WSL users</em> <a href="">remember to check for this (TODO)</a>. <!-- (../../software/on-campus/vscode.md#verify) --></p>
+<p><em>WSL users</em> <a href="../../../ros/using-wsl-ros/vscode/#verify">remember to check for this</a>.</p>
 <p><strong>Step 4: Make Sure The Course Repo is Up-To-Date</strong></p>
-<p>Check that the Course Repo is up-to-date before you start on these exercises. <a href="">See here for how to install and/or update (TODO)</a>. <!-- (../../extras/tuos-ros.md).--></p>
+<p>Check that the Course Repo is up-to-date before you start on these exercises. <a href="../../extras/course-repo/">See here for how to install and/or update</a>.</p>
 <h2 id="calling-an-action-server">Calling an Action Server<a class="headerlink" href="#calling-an-action-server" title="Permanent link">&para;</a></h2>
 <p>Before we talk about what actions actually are, we're going to dive straight in and see one in <em>action</em> (excuse the pun). </p>
 <!-- As you may remember from Part 3, you actually used a ROS Action to make your robot navigate autonomously in [Exercise 3](./part3.md#ex3), by calling an action server from the command-line. We will do a similar thing now, in a different context, and this time we'll also look at what's going on in a bit more detail. -->
@@ -3161,7 +3161,7 @@ set -g mouse
 <li>The speed (in m/s) at which the robot should move forwards when the action server is called. </li>
 <li>
 <p>The distance (in meters) at which the robot should stop ahead of any objects or boundary walls that are in front of it.</p>
-<p>To do this you'll need to subscribe to the <code>/scan</code> topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of <code>LaserScan</code> data points (within the <code>ranges</code> array) to make the collision avoidance effective (recall the <a href="">LaserScan callback example from Part 3 (TODO)</a>).</p>
+<p>To do this you'll need to subscribe to the <code>/scan</code> topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of <code>LaserScan</code> data points (within the <code>ranges</code> array) to make the collision avoidance effective (recall the <a href="../part3/lidar_subscriber/">LaserScan callback example from Part 3</a>).</p>
 </li>
 </ol>
 </li>
@@ -3169,7 +3169,7 @@ set -g mouse
 <p>Be sure to do some error checking on the goal parameters to ensure that a valid request is made. This is done by attaching a <code>goal_callback</code> to the Action Server. </p>
 <ul>
 <li><code>fwd_velocity</code>: Should be a velocity that is moderate, and within <a href="../part2/#velocity_limits">the robot's velocity limits</a>.</li>
-<li><code>stopping_distance</code>: Should be greater than the <a href="">minimum detectable limit of the LiDAR Sensor (TODO)</a>, large enough to safely avoid collisions. </li>
+<li><code>stopping_distance</code>: Should be greater than the <a href="../part3/#range_max_min">minimum detectable limit of the LiDAR Sensor</a>, large enough to safely avoid collisions. </li>
 </ul>
 </li>
 <li>
@@ -3364,7 +3364,7 @@ In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./par
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-03T16:04:39+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-03T16:55:44+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-03</span>
   </span>
 
     
