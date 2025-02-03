@@ -37,9 +37,9 @@ In this part of the course we'll learn about a third method of communication ava
 By the end of this session you will be able to:
 
 1. Recognise how ROS Actions differ from ROS Services and explain where this method might be useful in robot applications.
-1. Explain the structure of Action messages and identify the relevant information within them, enabling you to build Action Servers and Clients.
-1. Implement Python Action *Client* nodes that utilise *concurrency* and *preemption*.
-1. Develop Action Server & Client nodes that could be used as the basis for a robotic search strategy.
+1. Explain the structure of Action interfaces and identify the relevant information within them, enabling you to build Action Servers and Clients.
+1. Implement Python Action *Client* nodes that can handle *feedback* and *results* and can also *cancel* an action part-way through.
+1. Develop Action Server & Client nodes that could be used as the basis for a robotic exploration strategy.
 
 ### Quick Links
 
