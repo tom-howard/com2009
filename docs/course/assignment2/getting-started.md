@@ -108,6 +108,11 @@ You should do this from within your own ROS installation (or WSL-ROS2), rather t
     git clone REMOTE_HTTPS_URL
     ```
 
+    You'll then be asked to enter your GitHub username, followed by a password. **This password is not your GitHub account password**!  
+
+    !!! warning
+        **Your GitHub account password won't work here!** You'll need to [generate a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) and use this instead!
+
 1. Navigate into the package directory using the `cd` command:
 
     ```bash
@@ -178,10 +183,10 @@ Having initialised your team's ROS package, it's now ready for you to start popu
     git push origin main
     ```
 
-    You'll then be asked to enter your GitHub username, followed by a password. **This password is not your GitHub account password**!  
-
-    !!! warning
-        **Your GitHub account password won't work here!** You'll need to [generate a personal access token (classic)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) and use this instead!
+    You'll then be asked to enter your GitHub username and password again. 
+    
+    !!! warning "Remember" 
+        This is **not** your GitHub account password... Use the personal access token that you created earlier.  
 
 1. All team members should then be able to pull the remote repo into their own ROS Workspaces (`#!bash cd ~/ros2_ws/src/ && git clone REMOTE_HTTPS_URL`), make contributions and push these back to the remote repo as required (using their own GitHub account credentials and personal access tokens).
 
