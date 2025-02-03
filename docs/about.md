@@ -74,13 +74,13 @@ In addition to this, the robots are equipped with the following sensors:
 
 Our robots currently run [ROS 2 Humble Hawksbill](https://docs.ros.org/en/humble/index.html) (or *"Humble"* for short). The courses here are therefore based around this version of ROS. The easiest way to install Humble is via Deb packages for Ubuntu Jammy (22.04). This is the setup we recommend and - as such - all out robotics hardware runs with this OS/Software setup.
 
-To deliver the simulation-based parts of this course, we've created a custom simulation environment using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). This has been developed primarily to run on University of Sheffield Managed Desktop Computers, which run Windows 10, but it's also possible to run this on other machines too. We call this simulation environment *"WSL-ROS"*. [See here for more details (TODO)]().
+To deliver the simulation-based parts of this course, we've created a custom simulation environment using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). This has been developed primarily to run on University of Sheffield Managed Desktop Computers, which run Windows 10, but it's also possible to run this on other machines too. We call this simulation environment *"WSL-ROS2"*. [See here for more details](./ros/wsl-ros/README.md).
 
-[You can find out more about installing ROS on your own system here (TODO)]().
+[You can find out more about installing ROS on your own system here](./ros/README.md).
 
 #### Laptops
 
-In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above. We use these when working with the robots in the lab. [See here for more details (TODO)](). 
+In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above. We use these when working with the robots in the lab. [See here for more details](./waffles/intro.md#laptops). 
 
 ## Version History
 

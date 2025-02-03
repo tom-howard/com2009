@@ -41,23 +41,19 @@ By the end of this session you will be able to:
 
 Launch your ROS environment now so that you have access to a Linux terminal instance (aka **TERMINAL 1**).
 
-**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
+**Step 2: Restore your work (WSL-ROS2 Managed Desktop Users ONLY)**
 
-Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers, and so you should be backing up your work to your `U:\` drive regularly. When prompted (on first launch of WSL-ROS in **TERMINAL 1**) enter `Y` to restore this[^1].
+Remember that any work that you do within the WSL-ROS2 Environment will not be preserved between sessions or across different University computers, and so you should be backing up your work to your `U:\` drive regularly. When prompted (on first launch of WSL-ROS2 in **TERMINAL 1**) enter `Y` to restore this[^1].
 
 [^1]: Remember: you can also use the `wsl_ros restore` command at any time.
 
 **Step 3: Launch VS Code** 
 
-*WSL users* [remember to check for this (TODO)]().
-
-<!-- *WSL users* [remember to check for this](../../software/on-campus/vscode.md#verify). -->
+*WSL users* [remember to check for this](../../ros/using-wsl-ros/vscode.md#verify).
 
 **Step 4: Make Sure The Course Repo is Up-To-Date**
 
-Check that the Course Repo is up-to-date before you start on these exercises. [See here for how to install and/or update (TODO)](). 
-
-<!-- [See here for how to install and/or update](../../extras/tuos-ros.md). -->
+Check that the Course Repo is up-to-date before you start on these exercises. [See here for how to update](../extras/course-repo.md#updating). 
 
 **Step 5: Launch the Robot Simulation**
 

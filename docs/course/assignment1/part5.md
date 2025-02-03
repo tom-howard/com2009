@@ -61,19 +61,19 @@ By the end of this session you will be able to:
 
 Launch your ROS environment now so that you have access to a Linux terminal instance (aka **TERMINAL 1**).
 
-**Step 2: Restore your work (WSL-ROS Managed Desktop Users ONLY)**
+**Step 2: Restore your work (WSL-ROS2 Managed Desktop Users ONLY)**
 
-Remember that any work that you do within the WSL-ROS Environment will not be preserved between sessions or across different University computers, and so you should be backing up your work to your `U:\` drive regularly. When prompted (on first launch of WSL-ROS in **TERMINAL 1**) enter `Y` to restore this[^1].
+Remember that any work that you do within the WSL-ROS2 Environment will not be preserved between sessions or across different University computers, and so you should be backing up your work to your `U:\` drive regularly. When prompted (on first launch of WSL-ROS2 in **TERMINAL 1**) enter `Y` to restore this[^1].
 
 [^1]: Remember: you can also use the `wsl_ros restore` command at any time.
 
 **Step 3: Launch VS Code**  
 
-*WSL users* [remember to check for this (TODO)](). <!-- (../../software/on-campus/vscode.md#verify) -->
+*WSL users* [remember to check for this](../../ros/using-wsl-ros/vscode.md#verify).
 
 **Step 4: Make Sure The Course Repo is Up-To-Date**
 
-Check that the Course Repo is up-to-date before you start on these exercises. [See here for how to install and/or update (TODO)](). <!-- (../../extras/tuos-ros.md).-->
+Check that the Course Repo is up-to-date before you start on these exercises. [See here for how to install and/or update](../extras/course-repo.md).
 
 ## Calling an Action Server
 
@@ -853,12 +853,12 @@ In Exercise 2 we created the `part5_actions` package. Inside this package we wil
         1. The speed (in m/s) at which the robot should move forwards when the action server is called. 
         1. The distance (in meters) at which the robot should stop ahead of any objects or boundary walls that are in front of it.
         
-            To do this you'll need to subscribe to the `/scan` topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of `LaserScan` data points (within the `ranges` array) to make the collision avoidance effective (recall the [LaserScan callback example from Part 3 (TODO)]()).
+            To do this you'll need to subscribe to the `/scan` topic. Be aware that an object won't necessarily be directly in front of the robot, so you may need to monitor a range of `LaserScan` data points (within the `ranges` array) to make the collision avoidance effective (recall the [LaserScan callback example from Part 3](./part3/lidar_subscriber.md)).
     
     * Be sure to do some error checking on the goal parameters to ensure that a valid request is made. This is done by attaching a `goal_callback` to the Action Server. 
 
         * `fwd_velocity`: Should be a velocity that is moderate, and within [the robot's velocity limits](./part2.md#velocity_limits).
-        * `stopping_distance`: Should be greater than the [minimum detectable limit of the LiDAR Sensor (TODO)](), large enough to safely avoid collisions. 
+        * `stopping_distance`: Should be greater than the [minimum detectable limit of the LiDAR Sensor](./part3.md#range_max_min), large enough to safely avoid collisions. 
 
     * Whilst your server performs its task it should provide the following **feedback** to a Client:
 
