@@ -10,16 +10,20 @@ On this page are a series of exercises for you to work through **in your teams**
 
 ### Quick Links
 
-* [Exercise 1: Making the Robot Move](#exMove)
-* [Exercise 2: Seeing the Sensors in Action](#exViz)
-* [Exercise 3: Visualising the ROS Network](#exNet)
-* [Exercise 4: Exploring ROS Topics and Interfaces](#exTopicMsg)
-* [Exercise 5: Creating A Velocity Control Node (with Python)](#exSimpleVelCtrl)
-* [Exercise 6: Using SLAM to create a map of the environment](#exSlam)
+* [Exercise 1: Robot-Laptop 'Bridging'](#exBridge)
+* [Exercise 2: Making the Robot Move](#exMove)
+* [Exercise 3: Seeing the Sensors in Action](#exViz)
+* [Exercise 4: Visualising the ROS Network](#exNet)
+* [Exercise 5: Exploring ROS Topics and Interfaces](#exTopicMsg)
+* [Exercise 6: Creating A Velocity Control Node (with Python)](#exSimpleVelCtrl)
+* [Exercise 7: Using SLAM to create a map of the environment](#exSlam)
 
-## Prerequisite: Robot-Laptop 'Bridging'
+#### :material-pen: Exercise 1: Robot-Laptop 'Bridging' {#exBridge}
 
 The robot and laptop both communicate over the University network via [a Zenoh Bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds). The bridge should already be running on the robot after having run the `tb3_bringup` command on the robot earlier. The next step is to establish a connection to this bridge from the laptop, so that all ROS nodes, topics etc. can communicate as necessary. 
+
+!!! warning
+    **This is essential**: you always have to have the bridge running on the laptop in order to be able to communicate with your robot!
 
 Open up a new terminal instance on the laptop (either by using the ++ctrl+alt+t++ keyboard shortcut, or by clicking the Terminal App icon) and enter the following command:
 
@@ -37,7 +41,7 @@ Leave both of these terminals alone, but **keep them running in the background a
 
 ## Manual Control
 
-#### :material-pen: Exercise 1: Making the Robot Move {#exMove}
+#### :material-pen: Exercise 2: Making the Robot Move {#exMove}
 
 There's a very useful ready-made ROS application called `teleop_keyboard` (from the `turtlebot3_teleop` package) that we will use to drive a Waffle around. This node works in exactly the same way in both simulation and in the real-world!
 
@@ -92,7 +96,7 @@ Here, **Part [1]** is the same as the `ros2 run` command, but **Part [2]** is sl
 
 Our Waffles have some pretty sophisticated sensors on them, allowing them to "see" the world around them. Let's now see what our robot sees, using some handy ROS tools.
 
-#### :material-pen: Exercise 2: Seeing the Sensors in Action {#exViz}
+#### :material-pen: Exercise 3: Seeing the Sensors in Action {#exViz}
 
 1. There shouldn't be anything running in **TERMINAL 1** now, after you closed down the `teleop_keyboard` node (using ++ctrl+c++) at the end of the previous exercise. Return to this terminal and enter the following command:
 
@@ -131,7 +135,7 @@ Our Waffles have some pretty sophisticated sensors on them, allowing them to "se
 
 1. Open up a new terminal instance (**TERMINAL 2**) and launch the `teleop_keyboard` node as you did in Exercise 1. Watch how the data in the RViz screen changes as you drive the robot around a bit.
 
-#### :material-pen: Exercise 3: Visualising the ROS Network {#exNet}
+#### :material-pen: Exercise 4: Visualising the ROS Network {#exNet}
 
 Using `ros2 run` and `ros2 launch`, as we have done so far, it's easy to end up with a lot of different processes or *ROS Nodes* running on the network, some of which we will interact with, but others may just be running in the background. It is often useful to know exactly what *is* running on the ROS network, and there are a few ways to do this.
 
@@ -179,7 +183,7 @@ ROS Topics are key to making things happen on a robot. Nodes can publish (*write
 
 Let's have a look at this in a bit more detail...
 
-#### :material-pen: Exercise 4: Exploring ROS Topics and Interfaces {#exTopicMsg}
+#### :material-pen: Exercise 5: Exploring ROS Topics and Interfaces {#exTopicMsg}
 
 Much like the `ros2 node list` command, we can use `ros2 topic list` to list all the *topics* that are currently active on the ROS network.
 
@@ -276,7 +280,7 @@ Our TurtleBot3 robot only has two motors, so it doesn't actually have six DOFs! 
 
 It can therefore only move **linearly** in the **x-axis** (*Forwards/Backwards*) and **angularly** in the **z-axis** (*Yaw*). 
 
-#### :material-pen: Exercise 5: Creating A Velocity Control Node (with Python) {#exSimpleVelCtrl}
+#### :material-pen: Exercise 6: Creating A Velocity Control Node (with Python) {#exSimpleVelCtrl}
 
 !!! important
     Before you start this, close down RViz (click the "Close without saving" button, if asked) and stop the `teleop_keyboard` node by entering ++ctrl+c++ in **TERMINAL 2**.
@@ -470,7 +474,7 @@ Simultaneous Localisation and Mapping (SLAM) is a sophisticated tool that is bui
 
 [^odom]: You'll learn much more about "Robot Odometry" in the lab course.
 
-#### :material-pen: Exercise 6: Using SLAM to create a map of the environment {#exSlam}
+#### :material-pen: Exercise 7: Using SLAM to create a map of the environment {#exSlam}
 
 1. In **TERMINAL 1** enter the following command to launch all the necessary SLAM nodes on the laptop:
 
