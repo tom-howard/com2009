@@ -1,5 +1,6 @@
 ---
 title: COM2009 Course Assignments
+description: "Course Material for Assignments #1 and #2"
 ---
 
 # COM2009 Course Assignments
