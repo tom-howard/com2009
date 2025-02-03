@@ -29,7 +29,7 @@ Each part of the course comprises a series of step-by-step instructions and exer
 
 * [Part 5: Actions](./part5.md)
 
-    *Learn about another ROS communication method which is similar to a ROS Service, but with a few key benefits and therefore some alternative use-cases.*
+    *Learn about another ROS communication method which is similar to a ROS Service, but with a few key benefits and which has some alternative use-cases.*
 
 * [Part 6: Cameras, Machine Vision & OpenCV](./part6.md)
 

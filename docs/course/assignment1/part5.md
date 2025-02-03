@@ -1,6 +1,6 @@
 ---  
 title: "Part 5: Actions"  
-description: Learn about another ROS communication method which is similar to a ROS Service, but with a few key benefits and therefore some alternative use-cases.
+description: Learn about another ROS communication method which is similar to a ROS Service, but with a few key benefits and which has some alternative use-cases.
 ---
 
 <!-- 
