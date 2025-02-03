@@ -2,9 +2,9 @@
 title: Preparing Your ROS Package for the Week 6 Deadline
 ---
 
-> This page TODO
+> This page will be available soon
 
-* make sure the code is on `main` branch
+<!-- * make sure the code is on `main` branch
 * code will be pulled at on the deadline
 * no extensions
 * we'll push a file to your main branch called XX.txt to indicate when your work has been pulled
@@ -18,4 +18,4 @@ title: Preparing Your ROS Package for the Week 6 Deadline
 * package name is correct
 * colcon build fails
 * authors in package.xml
-* description
+* description -->
