@@ -936,3 +936,13 @@ We have also learnt how to work in the Linux Terminal and navigate a Linux files
 In addition to this we've also learnt how to create a ROS2 package, and how to create simple Python nodes that can *publish* and *subscribe* to topics on a ROS network. 
 
 We've worked with pre-made ROS messages to do this and also created our own custom message interface to offer more advanced functionality.
+
+### WSL-ROS2 Managed Desktop Users: Save your work! {#backup}
+
+Remember, the work you have done in the WSL-ROS2 environment during this session **will not be preserved** for future sessions or across different University machines automatically! To save the work you have done here today you should now run the following script in any idle WSL-ROS2 Terminal Instance:
+
+```bash
+wsl_ros backup
+```
+
+This will export your home directory to your University `U:\` Drive, allowing you to restore it on another managed desktop machine the next time you fire up WSL-ROS2.  
