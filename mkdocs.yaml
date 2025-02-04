@@ -1,6 +1,6 @@
 site_name: "ROS2 Course Assignments for COM2009"
 site_url: https://tom-howard.github.io/com2009/
-site_description: Practical Robotics Course Assignments for the COM2009 Robotics Module at The University of Sheffield (with ROS2 and the TurtleBot3 Waffle).  
+site_description: Practical Robotics Course Assignments for COM2009/3009, with ROS2 and the TurtleBot3 Waffle.  
 theme:
   name: material
   icon:
