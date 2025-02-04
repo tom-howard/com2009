@@ -1,5 +1,6 @@
 ---
 title: "Assignment #2: Team Robotics Project"
+description: Apply your ROS2 knowledge to real TurtleBot3 Waffles in the lab.
 --- 
 
 ## Overview
