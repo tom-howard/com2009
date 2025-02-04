@@ -1,5 +1,6 @@
 ---
 title: "Introducing the Robots"
+description: Learn more about the TurtleBot3 Waffle Robots that you'll work with in the lab.
 ---
 
 ## The TurtleBot3 Waffle {#robots}
