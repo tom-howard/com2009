@@ -48,7 +48,7 @@ If we don't issue a stop command to a robot that is moving, then it will continu
 
 The same applies to ROS nodes when we shut them down: if a stop command is not sent to `cmd_vel` before the node stops running (i.e. via ++ctrl+c++) the robot will continue to move, which clearly isn't very good!
 
-***You must ensure*** that your nodes are programmed with correct shutdown procedures, to ensure that the robot actually stops moving when a node is terminated. This is covered in [Part 2 of the ROS Course](../course/assignment1/part2.md#ex5), but you can also see this in action in [the Velocity Control Node that we created in the previous section](./basics.md#timedSquareCode). 
+***You must ensure*** that your nodes are programmed with correct shutdown procedures, to ensure that the robot actually stops moving when a node is terminated. This is covered in [Part 2 of Assignment #1](../course/assignment1/part2.md#ex5), but you can also see this in action in [the Velocity Control Node that we created in the previous section](./basics.md#timedSquareCode). 
 
 ## :material-pen: Essential Exercise 2: Out of Range LiDAR Data {#ex2}
 
@@ -78,7 +78,7 @@ See if you can position the robot in the environment so that some LiDAR measurem
 
 ### Why Does This Matter?
 
-In Part 3 of the ROS Course we illustrate how the LiDAR `ranges` array can be *filtered* to remove any out-of-range values: 
+In Part 3 of Course Assignment #1 we illustrate how the LiDAR `ranges` array can be *filtered* to remove any out-of-range values: 
 
 ```py
 valid_data = front[front != float("inf")] # (1)!
@@ -92,7 +92,7 @@ If you apply the same technique to a real-world application, then this filtering
 
 ## :material-pen: Essential Exercise 3: The Camera Image Topic {#ex3}
 
-In Part 6 of the ROS Course we work extensively with the robot's camera and the processing of the images that are captured by it. This is done in simulation (of course), where the image data is published to a topic called `/camera/image_raw`. The name of the camera image topic is **not the same** on the real robots!
+In Part 6 of Assignment #1 we work extensively with the robot's camera and the processing of the images that are captured by it. This is done in simulation (of course), where the image data is published to a topic called `/camera/image_raw`. The name of the camera image topic is **not the same** on the real robots!
 
 With the real robot to hand now, use ROS command-line tools such as `ros2 topic list` and `ros2 topic info` to interrogate the real robot ROS Network and identify the name of the camera image topic used by the real robot.
 
@@ -104,7 +104,7 @@ You'll likely do a lot of development work for your real-robot applications in s
 
 ## :material-pen: Essential Exercise 4: Camera Image Resolution {#ex4}
 
-In Part 6 of the ROS Course we also explore how images can be reduced in size by *cropping* them, to make the data processing a bit quicker and easier. We need to be aware of the original image size (i.e. *resolution*) however, in order to apply cropping techniques appropriately. 
+In Part 6 of Assignment #1 we also explore how images can be reduced in size by *cropping* them, to make the data processing a bit quicker and easier. We need to be aware of the original image size (i.e. *resolution*) however, in order to apply cropping techniques appropriately. 
 
 As we learn in Part 6, it's possible to discover the resolution of each image that is published to the camera image topic by echoing the `height` and `width` parameters that are published as part of the image message interface (alongside the image data itself). We can of course do this now with `ros2 topic echo`, to determine the resolution of the camera images obtained on the real robot:
 
