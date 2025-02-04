@@ -1,6 +1,7 @@
 nav:
   - README.md
   - getting-started.md
+  - "Part A (Weeks 1-6)": part-a
+  - "Part B (Weeks 7-12)": part-b
   - ros-pkg-tips.md
-  - "Part A": part-a
-  - "Part B": part-b
+  - assessment.md

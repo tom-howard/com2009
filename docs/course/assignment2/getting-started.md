@@ -1,5 +1,5 @@
 ---  
-title: Getting Started (Week 1)
+title: "Week 1: Getting Started"
 ---  
 
 Before you get started on Assignment #2 (as detailed in the pages that follow), you should work through the following tasks in your teams during the first lab in Week 1. 

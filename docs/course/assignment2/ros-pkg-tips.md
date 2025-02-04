@@ -1,5 +1,5 @@
 ---  
-title: "Working with your ROS Package (in the Lab)"
+title: Working with your ROS Package (in the Lab)
 ---  
 
 Having followed [the instructions on the Getting Started page](./getting-started.md) in Week 1, your team's ROS package will be hosted on GitHub, which makes it much easier to collaborate, and transfer between simulation (e.g. WSL-ROS2, for example) and the real hardware in the lab. 
