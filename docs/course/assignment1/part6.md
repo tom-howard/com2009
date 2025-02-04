@@ -608,7 +608,7 @@ The next task then is to adapt our `line_follower.py` node to implement this con
 1. Run the code as it is, and consider the following:
 
     1. What proportional gain ($K_{P}$) are we applying?
-    1. What is [the maximum angular velocity that can be applied to our robot](../../about.md#max_vels)? Is the angular velocity that has been calculated actually appropriate?
+    1. What is [the maximum angular velocity that can be applied to our robot](../../about/robots.md#max_vels)? Is the angular velocity that has been calculated actually appropriate?
     1. Is the angular velocity that has been calculated positive or negative? Will this make the robot turn in the right direction and move towards the line?  
 
 1. Let's address the third question (**c**) first...

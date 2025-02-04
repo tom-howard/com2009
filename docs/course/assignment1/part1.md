@@ -115,7 +115,7 @@ Now that you're all up and running, let's launch ROS and fire up a simulation of
     1. **Zoom in and out** using the scroll wheel on your mouse.  
     1. **Rotate the camera view** by simultaneously pressing and holding the left mouse button and the ++shift++ key on your keyboard, and then moving your mouse around.
     
-    Using both of these methods you should be able to get a better view of the robot, which will be sat under a lot of blue LiDAR rays (more about this in Part 3), and will appear as a simplified representation of [the real thing](../../about.md#our-waffles).
+    Using both of these methods you should be able to get a better view of the robot, which will be sat under a lot of blue LiDAR rays (more about this in Part 3), and will appear as a simplified representation of [the real thing](../../about/robots.md#our-waffles).
 
     <figure markdown>
       ![](../../images/gz/tb3_empty_world_close.jpg){width=700px}

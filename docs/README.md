@@ -16,6 +16,6 @@ Robotics Labs for the COM2009 Robotics Module at The University of Sheffield, wi
   <small>Image courtesy of <a href="https://www.andybrownphoto.co.uk/">Andy Brown</a></small></figcaption> 
 </figure>
 
-[Find out more...](about.md)
+[Find out more...](./about/README.md)
 
 </center>

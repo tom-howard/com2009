@@ -4,7 +4,7 @@ title: Shutdown Procedures
 
 ## Robots
 
-The Waffles are powered by [a Single Board Computer (SBC)](../about.md#robots), which runs a full-blown operating system. As with any operating system, it's important to **shut it down properly**, rather than simply disconnecting the power, to avoid any data loss or other issues. 
+The Waffles are powered by [a Single Board Computer (SBC)](../about/robots.md#our-waffles), which runs a full-blown operating system. As with any operating system, it's important to **shut it down properly**, rather than simply disconnecting the power, to avoid any data loss or other issues. 
 
 Therefore, once you've finished working with a robot during a lab session, follow the steps below to shut it down.
 

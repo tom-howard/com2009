@@ -823,7 +823,7 @@ We've also learnt about *Odometry*, which is published by our robot to the `/odo
     1. What information (sensor/actuator data) is used to do this?
     1. Do you see any potential limitations of this?
     
-Consider reading Chapter 11.1.3 ("Pose of Robot") in [the ROS Robot Programming eBook that we mentioned here](../../about.md#ebook).
+Consider reading Chapter 11.1.3 ("Pose of Robot") in [the ROS Robot Programming eBook that we mentioned here](../../about/robots.md#ebook).
 
 In the final exercise we explored the development of odometry-based control to make a robot follow a *square* motion path. You will likely have observed some degree of error in this which could be due to the fact that Odometry data is determined by dead-reckoning and is therefore subject to drift and accumulated error. Consider how other factors may impact the accuracy of control too.
 

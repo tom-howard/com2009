@@ -1,5 +1,5 @@
 nav:
-  - "About": about.md
+  - "About": about
   - "ROS": ros
   - "Assignments": course
   - "The Waffles": waffles

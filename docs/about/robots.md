@@ -1,24 +1,6 @@
 ---
-title: "About this Site"
+title: "Introducing the Robots"
 ---
-
-# About this Site
-
-## Welcome
-
-This is the home of The ROS2 Course Assignments for **COM2009**: a second-year undergraduate module for [The School of Computer Science](https://www.sheffield.ac.uk/cs). 
-
-This course is designed to teach students how to use ROS2 (The Robot Operating System, Version 2) with TurtleBot3 Waffle robots, using a mix of simulation-based learning and real robot hardware. Most of the initial learning is done in simulation, after which students are able to apply their new-found ROS knowledge to our [real TurtleBot3 Waffle Robots](#robots).
-
-The materials here are developed by [Dr Tom Howard](https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard), a University Teacher in the [Multidisciplinary Engineering Education Team](https://www.sheffield.ac.uk/engineering/diamond-engineering/about-us) in **The Diamond**.
-
-These resources are *also* used to teach masters-level Mechatronic and Robotic Engineering students in [The School of Electrical and Electronic Engineering](https://www.sheffield.ac.uk/eee) (**ACS6121**). 
-
-## License
-
-![Creative Commons License CC BY-SA](https://i.creativecommons.org/l/by-sa/4.0/88x31.png){ align=left }
-
-This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
 
 ## The TurtleBot3 Waffle {#robots}
 
@@ -37,13 +19,13 @@ We recommend that you have a look at this book to learn more about the concepts 
 Here in the Diamond we have a total of 50 *customised* TurtleBot3 Waffles (aka *"The Waffles"*) specifically for teaching the courses here:
 
 <figure markdown>
-  ![](./images/waffle/cabinet.jpg){width=500px} 
+  ![](../images/waffle/cabinet.jpg){width=500px} 
 </figure>
 
 Our robots are an enhanced version of the *TurtleBot3 WafflePi* that you can buy from Robotis. We've made a few adjustments, as shown below:
 
 <figure markdown>
-  ![](./images/waffle/features.png){width=800px}
+  ![](../images/waffle/features.png){width=800px}
 </figure>
 
 The Waffles have the following core hardware elements:
@@ -74,20 +56,10 @@ In addition to this, the robots are equipped with the following sensors:
 
 Our robots currently run [ROS 2 Humble Hawksbill](https://docs.ros.org/en/humble/index.html) (or *"Humble"* for short). The courses here are therefore based around this version of ROS. The easiest way to install Humble is via Deb packages for Ubuntu Jammy (22.04). This is the setup we recommend and - as such - all out robotics hardware runs with this OS/Software setup.
 
-To deliver the simulation-based parts of this course, we've created a custom simulation environment using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). This has been developed primarily to run on University of Sheffield Managed Desktop Computers, which run Windows 10, but it's also possible to run this on other machines too. We call this simulation environment *"WSL-ROS2"*. [See here for more details](./ros/wsl-ros/README.md).
+To deliver the simulation-based parts of this course, we've created a custom simulation environment using the [Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/). This has been developed primarily to run on University of Sheffield Managed Desktop Computers, which run Windows 10, but it's also possible to run this on other machines too. We call this simulation environment *"WSL-ROS2"*. [See here for more details](../ros/wsl-ros/README.md).
 
-[You can find out more about installing ROS on your own system here](./ros/README.md).
+[You can find out more about installing ROS on your own system here](../ros/README.md).
 
-#### Laptops
+## Laptops
 
-In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above. We use these when working with the robots in the lab. [See here for more details](./waffles/intro.md#laptops). 
-
-## Version History
-
-### Iteration 1
-
-**Academic Year**: 2024-25 
-
-* This course [used to live here](https://tom-howard.github.io/ros/), and was based on ROS 1 Noetic. This year, we've upgraded everything to ROS 2, re-written the courses and moved everything over to this new site. [See the previous version history here](https://tom-howard.github.io/ros/about/changelog/).
-* Other notable changes:
-    * COM2009 Assignment #2 now only involves three programming tasks (where previously it was four), with an additional assessment on documentation now included instead.
+In the Diamond, we have dedicated Robot Laptops running the same OS & ROS version as above. We use these when working with the robots in the lab. [See here for more details](../waffles/intro.md#laptops).
