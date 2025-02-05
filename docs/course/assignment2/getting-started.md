@@ -90,7 +90,7 @@ You should do this from within your own ROS installation (or WSL-ROS2), rather t
 
 1. On GitHub, go back to your repository's main page by clicking the `<> Code` tab at the top-left.
 
-1. Click the green `Code` button and then, from the dropdown menu, click the :material-clipboard-outline: button to copy the remote **HTTPS** URL of your repo. 
+1. Click the green `Code` button and then, from the dropdown menu, click the :octicons-copy-16: button to copy the remote **HTTPS** URL of your repo. 
 
     <figure markdown>
       ![](./getting-started/code-copy-url.png){width=600px}
