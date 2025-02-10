@@ -1888,33 +1888,15 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    <span class="md-ellipsis">
-      Prerequisites
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    <span class="md-ellipsis">
-      Getting Started
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-launch-the-robot-simulation" class="md-nav__link">
+  <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 5: Launch the Robot Simulation
+      Getting Started
     </span>
   </a>
   
@@ -1931,46 +1913,43 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
+  <a href="#interrogating-a-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interrogating a Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interrogating a Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ex1" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 1: Creating a Service Server in Python and calling it from the command-line
+      Exercise 1: Using Command-line Tools to Interrogate a Service and its Interface
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#understanding-key-features-of-ros2-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Understanding key features of ros2 service
-    </span>
-  </a>
+      </ul>
+    </nav>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#the-format-of-setbool-service" class="md-nav__link">
+  <a href="#the-format-of-a-service-message" class="md-nav__link">
     <span class="md-ellipsis">
-      The Format of SetBool Service
+      The Format of a Service Message
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="The Format of SetBool Service">
+    <nav class="md-nav" aria-label="The Format of a Service Message">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#ex2" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 2: Creating a Python Service Client Node
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ex3" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exercise 3: Learn to create custom services
+      Exercise 2: Playing the Number Game (from the Command-line)
     </span>
   </a>
   
@@ -1987,19 +1966,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#a-recap-on-everything-youve-learnt-so-far" class="md-nav__link">
+  <a href="#wrapping-up" class="md-nav__link">
     <span class="md-ellipsis">
-      A recap on everything you've learnt so far...
+      Wrapping Up
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="A recap on everything you've learnt so far...">
+    <nav class="md-nav" aria-label="Wrapping Up">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#ex4" class="md-nav__link">
+  <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 4: Creating your own Service
+      WSL-ROS2 Managed Desktop Users: Save your work!
     </span>
   </a>
   
@@ -2045,397 +2024,251 @@
   <h1>Part 4: Services</h1>
 
 <h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>Exercises</strong>: X</p>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19.03 7.39 1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0 0 18c5 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61M13 14h-2V7h2zm2-13H9v2h6z"/></svg></span> <strong>Estimated Completion Time</strong>: Y hours</p>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>Exercises</strong>: X<br />
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19.03 7.39 1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0 0 18c5 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61M13 14h-2V7h2zm2-13H9v2h6z"/></svg></span> <strong>Estimated Completion Time</strong>: Y hours</p>
 <h3 id="aims">Aims<a class="headerlink" href="#aims" title="Permanent link">&para;</a></h3>
-<p>In this part you will learn about ROS Services, a communication method that facilitates request-response interactions between nodes. You will understand how to use ROS services in combination with standard publisher/subscriber principles to enhance control for specific operations. Additionally, you'll create custom messages and services for tailored communication.</p>
+<p>In this part you'll learn about <em>Services</em>: an alternative communication method that can be used to transmit data/information or invoke actions on a ROS Network. You'll learn how this works, and why it might be useful. You'll also look at some practical applications of this.</p>
 <h3 id="intended-learning-outcomes">Intended Learning Outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permanent link">&para;</a></h3>
 <p>By the end of this session you will be able to:</p>
 <ol>
 <li>Recognise how ROS Services differ from the standard topic-based publisher-subscriber approach, and identify appropriate use-cases for this type of messaging system.</li>
-<li>Implement Python node pairs to observe services in action, and understand how they work.</li>
-<li>Invoke different services using a range of service message types.</li>
-<li>Develop Python Service nodes of your own to perform specific robotic tasks.</li>
-<li>Harness Services, in combination with LiDAR data, to implement a basic obstacle avoidance behaviour </li>
-<li>Develop custom ROS messages and services (still need to think about the task for this) </li>
-<li>Demonstrate your understanding of ROS2 so far by developing a Python node which incorporates elements from this and previous parts of this course.</li>
+<li>Identify the services that are available on a ROS network, and use ROS command-line tools to interrogate and <em>call</em> them.</li>
+<li>Develop Python Service Client Nodes.</li>
+<li>Invoke different services using multiple service-type interfaces.</li>
 </ol>
 <h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="#ex1">Exercise 1: </a></li>
+<li><a href="#ex1">Exercise 1: Calling a Service from the Command-line</a></li>
+<li><a href="#ex2">Exercise 2: </a></li>
+<li><a href="#ex3">Exercise 3: </a></li>
+<li><a href="#ex4">Exercise 4: </a></li>
 </ul>
 <h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
-<h3 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h3>
-<p>Before we begin, ensure that you have the following:</p>
-<ol>
-<li>ROS2 Humble installed on your system</li>
-<li>Cloned the tuos package from github</li>
-<li>Basic understanding of ROS2 concepts like nodes and topics</li>
-</ol>
-<h3 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h3>
-<p><strong>Step 1: Launch your ROS Environment</strong></p>
-<p>If you haven't done so already, launch your ROS environment now:</p>
-<p><strong>Step 2: Restore your work (todo)</strong></p>
-<p><strong>Step 3: Launch VS Code (todo)</strong>  </p>
-<p><strong>Step 4: Make Sure The Course Repo is Up-To-Date</strong></p>
-<p>Once again, it's worth quickly checking that the Course Repo is up-to-date before you start on the Part 4 exercises. Go back to <a href="../part1/#course-repo">Part 1</a> if you haven't installed it yet (really?!). For the rest, run the following commands:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/tuos_ros/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
-</code></pre></div></p>
-<p>Now build with colcon:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>
+<ul>
+<li><a href="">TODO</a></li>
+</ul>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<p><strong>Step 1: Launch your ROS2 Environment</strong></p>
+<p>If you haven't done so already, launch your ROS environment now. Having done this, you should now have access to a Linux terminal instance (aka <strong>TERMINAL 1</strong>).</p>
+<p><strong>Step 2: Restore your work (WSL-ROS2 Managed Desktop Users ONLY)</strong></p>
+<p>Remember that any work you do within the WSL-ROS2 Environment will not be preserved between sessions or across different University computers, so you should be backing up your work to your <code>U:\</code> drive regularly. When prompted (on first launch of WSL-ROS2 in <strong>TERMINAL 1</strong>) enter <span class="keys"><kbd class="key-y">Y</kbd><span>+</span><kbd class="key-enter">Enter</kbd></span> to restore your data<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>It looks like you already have a backup from a previous session:
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>  U:\wsl-ros\ros2-backup-XXX.tar.gz
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Do you want to restore this now? [y/n]
 </code></pre></div>
-Finally, re-source the environment 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</code></pre></div></p>
-<h2 id="step-5-launch-the-robot-simulation">Step 5: Launch the Robot Simulation<a class="headerlink" href="#step-5-launch-the-robot-simulation" title="Permanent link">&para;</a></h2>
-<p>From <strong>TERMINAL 1</strong>, launch the TurtleBot3 Waffle <em>"Empty World"</em> 
-simulation:</p>
+<p><strong>Step 3: Launch VS Code</strong>  </p>
+<p>It's also worth launching VS Code now. <em>WSL users</em> remember to check for this:</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../ros/figures/code-wsl-ext-on.png" width="400px" /></a></p>
+</figure>
+<p><strong>Step 4: Make Sure The Course Repo is Up-To-Date</strong></p>
+<p>Once again, it's worth quickly checking that the Course Repo is up-to-date before you start on the Part 4 exercises. Go back to <a href="../part1/#course-repo">Part 1</a> if you haven't installed it yet (really?!) or - alternatively - <a href="../../extras/course-repo/#updating">see here for how to update</a>.</p>
+<h2 id="an-introduction-to-services">An Introduction to Services<a class="headerlink" href="#an-introduction-to-services" title="Permanent link">&para;</a></h2>
+<p>So far, we've learnt about ROS <em>topics</em> and the <em>message</em>-type interfaces that we use to transmit data on them. We've also learnt how individual nodes can access data on a robot by simply <em>subscribing</em> to topics that are being published by any other node on the system. In addition to this, we also know that any node can <em>publish</em> messages to any topic: this essentially broadcasts the data across the ROS Network, making it available to any other node on the network that may wish to access it.</p>
+<p>Another way to pass data between ROS Nodes is by using <em>Services</em>. These are based on a <em>call and response</em> type of communication:</p>
+<ul>
+<li>A Service <strong>Client</strong> sends a <strong>Request</strong> to a Service <strong>Server</strong>.</li>
+<li>The Service <strong>Server</strong> processes that request and sends back a <strong>Response</strong>.</li>
+</ul>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The difference between topic-based messaging and the ROS Service protocol" src="../part4/topic_vs_service.png" /></a></p>
+</figure>
+<p>This is a bit like a transaction: one node requests something, and another node fulfils that request and responds, and this is good for <strong>quick, short duration tasks</strong>, e.g.:</p>
+<ol>
+<li>Turning a device on or off.</li>
+<li>Grabbing some data and saving it to a file.</li>
+<li>Performing a calculation and returning a result.</li>
+<li>Making a sound<sup id="fnref:tb3_sound"><a class="footnote-ref" href="#fn:tb3_sound">2</a></sup>.</li>
+</ol>
+<p>A single service can have many clients, but you can only have a <em>single</em> Server providing that particular service at any one time.</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../part4/service_clients.png" /></a>
+  </p>
+<figcaption>Multiple Clients to a single Service Server</figcaption>
+</figure>
+<p>Let's see how this all works in practice now, by playing a number game! We don't need a simulation up and running for this one, so in <strong>TERMINAL 1</strong> use the following command to launch the <em>Guess the Number</em> Service: </p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>turtlebot3_empty_world.launch
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>tuos_examples<span class="w"> </span>number_game.py
+</code></pre></div></p>
+<p>Having launched the service successfully, you should be presented with the following:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>[INFO] [#####] [number_game_service]: The &#39;/guess_the_number&#39; service is active.
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>[INFO] [#####] [number_game_service]: A magic number has been set... Game on!
 </code></pre></div>
-...and then wait for the Gazebo window to open:</p>
-<figure></figure>
-<h2 id="an-introduction-to-services">An Introduction to Services<a class="headerlink" href="#an-introduction-to-services" title="Permanent link">&para;</a></h2>
-<p>So far, we've learnt about ROS <em>topics</em> and <em>messages</em>, and how individual nodes can access data on a robot by simply <em>subscribing</em> to topics that are being published by any other node on the system.  In addition to this, we also learnt how any node can <em>publish</em> messages to any topic: this essentially broadcasts the data contained in the message across the ROS Network, making it available to any other node on the network that may wish to access it.</p>
-<p>ROS2 uses interface as a communication structure that allow different nodes to exchange data. These interfaces are broadly categorized into three types:</p>
-<ol>
-<li>Messages</li>
-<li>Services</li>
-<li>Actions</li>
-</ol>
-<!-- We have already learned how to use `Messages` in [part 2](./part2.md#ros-velocity-commands) and now we will learn in detail about `ROS2 Services`.    -->
-
-<p>These are different to messages in that <em>"Service calls"</em> (that is, the process of requesting a service) occur <em>only</em> between one node and another:</p>
-<ul>
-<li>One node (a Service <strong>Client</strong>) sends a <strong>Request</strong> to another node.</li>
-<li>Another node (a Service <strong>Server</strong>) processes that request, performs an action and then sends back a <strong>Response</strong>.</li>
-</ul>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The ROS Service protocol with a Single Service Client" src="../../../assets/external/docs.ros.org/en/humble/_images/Service-SingleServiceClient.gif" width="600px"></a>
-  </p>
-<figcaption>"<a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html#background">Understanding services: Single Service Client</a>".<br />Taken from the ROS 2 Documentation (Humble)<br />&copy; Copyright 2025, Open Robotics licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></figcaption>
-</figure>
-<p>Services are <em>Synchronous</em> (or <em>sequential</em>): When a ROS node sends a request to a service (as a Service <em>Client</em>) it can't do anything else until the service has been completed and the Service <em>Server</em> has sent a response back. This can be useful for a few reasons:</p>
-<ul>
-<li>
-<p>There can be multiple service clients using the same service but only one service server for a service. </p>
-</li>
-<li>
-<p><strong>Discrete, short-duration actions</strong>: A robot might need to do something before it can move on to something else, e.g.:</p>
-<ul>
-<li>A robot needs to see something before it can move towards it.</li>
-<li>High definition cameras generate large amounts of data and consume battery power, so you may wish to turn a camera on for a specific amount of time (e.g. until an image has been captured) and then turn it off again.</li>
-</ul>
-</li>
-<li>
-<p><strong>Computations</strong>: Remember that ROS is <em>network-based</em>, so you might want to offload some computations to a remote computer or a different device on a robot, e.g.:</p>
-<ul>
-<li>A client might send some data and then wait for another process (the server) to process it and send back the result.</li>
-</ul>
-</li>
-</ul>
-<p>It's also worth noting that any number of ROS Client nodes can call a service, but you can only have a <em>single</em> Server providing that particular service at any one time.</p>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The ROS Service protocol with Multiple Service Clients" src="../../../assets/external/docs.ros.org/en/humble/_images/Service-MultipleServiceClient.gif" width="600px"></a>
-  </p>
-<figcaption>"<a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html#background">Understanding services: Multiple Service Clients</a>".<br />Taken from the ROS 2 Documentation (Humble)<br />&copy; Copyright 2025, Open Robotics licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></figcaption>
-</figure>
-<div class="admonition question">
-<p class="admonition-title">Question</p>
-<p>Can you think of any other scenarios where this type of communication protocol might be useful?</p>
-</div>
-<h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 1: Creating a Service <em>Server</em> in Python and calling it from the command-line<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
-<p>To start with, let's set up a service and learn how to make a call to it from the command-line to give you an idea of how this all works and why it might be useful.</p>
+<hr />
+<p>We need to interrogate this now, in order to work out how to play the game...</p>
+<h3 id="interrogating-a-service">Interrogating a Service<a class="headerlink" href="#interrogating-a-service" title="Permanent link">&para;</a></h3>
+<h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 1: Using Command-line Tools to Interrogate a Service and its Interface<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
-<p>First open up a new terminal instance (<strong>TERMINAL 2</strong>) and source your ROS2 environment as you did in <a href="../part1/#first-steps">part 1</a>: </p>
-<ol>
-<li>Now navigate into the Course Repo <code>ros2_ws/src/tuos_ros</code> and run the helper script agian as you did in <a href="../part1/#first-steps">part 1</a> to create a new package called <code>part4_services</code>:</li>
-</ol>
+<p>Open up a new terminal instance (<strong>TERMINAL 2</strong>) and use the <code>ros2 service</code> command to list all active ROS services:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>./create_pkg.sh<span class="w"> </span>part4_services<span class="w">        </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>list
 </code></pre></div></p>
 <hr />
-<p>Your terminal will return a message verifying the creation of your package.</p>
+<p>There'll be a few items in this list, most of them with the prefix: <code>/number_game_service</code>. This is the name of the <em>node</em> that is providing the service (i.e. the <strong>Server</strong>) and these items are all automatically generated by ROS. What we're really interested in is the service itself, which should be listed as: <code>/guess_the_number</code>. </p>
 </li>
 <li>
-<p>Navigate into the new package directory using cd:</p>
+<p>Next, we need to find the interface type used by this service, which we can do a couple of ways:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>../part4_services/
-</code></pre></div>
-<hr />
-</li>
-<li>
-<p>Then navigate into the <code>scripts</code> folder in the package directory (using cd) and create an empty file called <code>move_server.py</code> using <code>touch</code> command.
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>touch<span class="w"> </span>move_server.py
-</code></pre></div></p>
-</li>
-<li>
-<p>Open the file in VS Code, copy and paste <a href="../part4/move_server/">this code</a> and then save it. <a name="ex1_ret"></a> (todo: need to add the template)</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It's really important that you understand how the code above works, so that you know how to build your own service <em>Servers</em> in Python. Also, make sure that the <code>move_server</code> file is executable using <code>chmod +x</code> command. </p>
-</div>
-</li>
-<li>
-<p>Next, we need to add our <code>move_server.py</code> file as an executable to our package's <code>CMakeLists.txt</code>. This will ensure that it then gets built when we run <code>colcon build</code> (in the next step):</p>
-<p>In VS Code, open the <code>CMakeLists.txt</code> file that is at the root of your <code>part4_services</code> package directory (<code>ros2_ws/src/part4_services/CMakeLists.txt</code>). Locate the lines (near the bottom of the file) that read:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a># Install Python executables
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>install(PROGRAMS
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>  scripts/minimal_node.py
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>  DESTINATION lib/${PROJECT_NAME}
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>)
-</code></pre></div>
-<p>Replace <code>minimal_node.py</code> with <code>move_server.py</code> to define this as a Python executable in your package:</p>
-<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a># Install Python executables
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>install(PROGRAMS
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>  scripts/publisher.py
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>  DESTINATION lib/${PROJECT_NAME}
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>)
-</code></pre></div>
-i.  It's a good practice to run <code>rosdep</code> in the root of your workspace (<code>ros2_ws</code>) to check for missing dependencies before building:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>rosdep<span class="w"> </span>install<span class="w"> </span>-i<span class="w"> </span>--from-path<span class="w"> </span>src<span class="w"> </span>--rosdistro<span class="w"> </span>humble<span class="w"> </span>-y
-</code></pre></div>
-</li>
-<li>
-<p>Then, use Colcon to build your new package and its contents :</p>
-<hr />
-<p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part4_services<span class="w"> </span>--symlink-install
-</code></pre></div>
-i. Finally re-source your <code>bashrc</code>: 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</code></pre></div></p>
-<hr />
-</li>
-<li>
-<p>Now, we are ready to run the node. Use <code>ros2 run</code> and observe what is displayed on the terminal </p>
-<hr />
-<p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part4_services<span class="w"> </span>move_server.py
-</code></pre></div>
-You should see this message: 
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>The &#39;move_service&#39; server is ready to be called...
-</code></pre></div></p>
-<hr />
-</li>
-<li>
-<p>Open a new terminal window (<strong>TERMINAL 3</strong>) </p>
-</li>
-<li>
-<p>While the node is running, use <code>ros2 service</code> command to view all the currently active services on the system:</p>
-<hr />
-<p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>list
-</code></pre></div>
-You should see the <code>/move_service</code> service that we defined in the Python code:
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>service_name = &quot;move_service&quot;
-</code></pre></div></p>
-<hr />
-</li>
-<li>
-<p>We can find out more about this using the <code>ros2 service type</code> command:</p>
-<hr />
-<p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>ros2<span class="w"> </span>service<span class="w"> </span><span class="nb">type</span><span class="w"> </span>/move_service<span class="w"> </span>
-</code></pre></div>
-Which should provide the following output:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>std_srvs/srv/SetBool 
-</code></pre></div>
-<p>This shows that the <code>move_service_server</code> node is using <code>SetBool</code> service (or interface) type defined in the <code>std_srv</code> package</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>You can also view the type of all services at the same time by adding <code>-t</code> to the <code>ros2 service list</code> command.</p>
-</div>
-</li>
-<li>
-<p>We can also call this service from the command line using <code>ros2 service call</code>.<a name="cl_call"></a> 
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>&lt;service_name&gt;<span class="w"> </span>&lt;service_type&gt;<span class="w"> </span>&lt;arguments&gt;<span class="w"> </span>
-</code></pre></div></p>
-<p>In this case, 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/move_service<span class="w"> </span>std_srvs/srv/SetBool<span class="w"> </span><span class="s2">&quot;data: false&quot;</span>
-</code></pre></div></p>
-</li>
-<li>
-<p>Press <span class="keys"><kbd class="key-enter">Enter</kbd></span> to issue the command and make a call to the service. 
-    You should see the following response:
-    <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>requester: making request: std_srvs.srv.SetBool_Request(data=False)
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>response:
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>std_srvs.srv.SetBool_Response(success = False, message=&quot;Nothing happened, set request_signal to &#39;true&#39; next time.&quot;)
-</code></pre></div></p>
-</li>
-<li>
-<p>Arrange the terminals 1 and 3 so that you can see both the Gazebo simulation and the terminal that you just issued the <code>ros2 service call</code> command in.</p>
-</li>
-<li>
-<p>In <strong>TERMINAL 3</strong> enter the <code>ros2 service call</code> command again, but this time set the <code>data</code> input to <code>true</code>. You should be able to see the response of the robot in Gazebo simulation. Switch back to <strong>TERMINAL 2</strong> and observe the terminal output there as well. </p>
-</li>
-</ol>
-<p><strong>Summary</strong></p>
-<p>In the section above, you learned how to create a Service Server node. This node sits idle and keeps waiting for its service to be called. Then you called the service through command line which prompted the Server to carry out the following tasks defined in the Python code,
-    1. Start a timer
-    1. Issue a velocity commnad to the robot to move it forward
-    1. Wait for 5 seconds
-    1. Issue a velocity command to stop the robot
-    1. Get the service <strong>Response</strong> and issue it as an output to the terminal in which the service is called</p>
-<hr />
-<h3 id="understanding-key-features-of-ros2-service">Understanding key features of <strong>ros2 service</strong><a class="headerlink" href="#understanding-key-features-of-ros2-service" title="Permanent link">&para;</a></h3>
-<p>In Part 2, you learned how to find out more about a particular message type, using the <code>ros2 interface show</code> command. You can do the same to find out the details of service type as follow: </p>
-<hr />
-<p><strong>Terminal 3</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>std_srvs/srv/SetBool
-</code></pre></div>
-which will give the following output: </p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>bool data   # e.g. for hardware enabling / disabling 
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>---
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>bool success     # indicate successful run of triggered service
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>string message   # informational, e.g. for error messages
-</code></pre></div>
-<h3 id="the-format-of-setbool-service">The Format of SetBool Service<a class="headerlink" href="#the-format-of-setbool-service" title="Permanent link">&para;</a></h3>
-<p>The service above is structured in two parts separated by three hyphens (<code>---</code>). The part above the hyphens is called the Service <strong>Request</strong> while the part below is Service <strong>Response</strong>:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>bool data        &lt;-- Request 
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>---
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>bool success     &lt;-- Response (Parameter 1 of 2)
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>string message   &lt;-- Response (Parameter 2 of 2)
-</code></pre></div>
-<hr />
-<p>In order to <em>Call</em> a service, we need to provide data to it in the format specified in the <strong>Request</strong> section. A service <em>Server</em> (like the <a href="../part4/move_server/">Python node we created above</a>) will then send data back to the caller in the format specified in the <strong>Response</strong> section.</p>
-<p>The <code>std_srvs/srv/SetBool</code> service that we're working with here has <strong>one</strong> request parameter:</p>
-<ol>
-<li>A <em>boolean</em> input called <code>data</code><br />
-    ...which is the only thing we need to send to the Service Server in 
-order to call the service.</li>
-</ol>
-<p>There are then <strong>two</strong> response parameters:</p>
-<ol>
-<li>A <em>boolean</em> flag called <code>success</code></li>
-<li>A text <em>string</em> called <code>message</code><br />
-    ...both of these will be returned to the client, by the server, once 
-the Service has completed.</li>
-</ol>
-<h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 2: Creating a Python Service <em>Client</em> Node<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
-<p>Instead of calling a service from command-line we can also build Python Service <em>Client</em> Nodes to do the same. In this exercise you will learn how this is done.</p>
 <ol>
 <li>
-<p><strong>TERMINAL 3</strong> should be idle, so from here navigate to the <code>scripts</code> folder within the <code>part4_services</code> package that we created earlier:</p>
-<hr />
-<p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part4_services/scripts
-</code></pre></div></p>
-<hr />
-</li>
-<li>
-<p>Create a new file called <code>move_client.py</code></p>
-</li>
-<li>
-<p>Now as you did in the previous exercise, open the VS Code, copy and paste <a href="../part4/move_client/">this code</a> and then save it. <a name="ex2_ret"></a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Once again, be sure to read the code and understand how this Python Service Client Node works too!</p>
-</div>
-</li>
-<li>
-<p>Return to <strong>TERMINAL 3</strong> and launch the node using <code>ros2 run</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part4_services<span class="w"> </span>move_client.py<span class="w"> </span>
+<p>Use the <code>type</code> sub-command:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ros2<span class="w"> </span>service<span class="w"> </span><span class="nb">type</span><span class="w"> </span>/guess_the_number
 </code></pre></div>
+</li>
+<li>
+<p>Use the <code>list</code> sub-command again, but with the <code>-t</code> flag:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>list<span class="w"> </span>-t
+</code></pre></div>
+<p>The latter will provide the same list of services as before, but each one will now have its interface type provided too.</p>
 </li>
 </ol>
 <hr />
-<p>The response should be exactly the same when we called the service from the command line. </p>
-<h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 3: Learn to create custom services<a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
-<p>In previous exercises you learned about messages, topics and services by using the predefined definitions of them. While using predefined interfaces is considered a good practice, it is also important to know how you can custom define these interfaces based on your own need. This exercise will teach you, step-by-step, how to create custom service definition and use it to move the robot to the requested position (providing x and y coordinates).</p>
-<p><strong>Procedure</strong>  </p>
+</li>
+<li>
+<p>Regardless of the method that you used, you should have identified that the interface type used by the <code>/guess_the_number</code> service is:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>tuos_interfaces/srv/NumberGame
+</code></pre></div>
+<p>Notice how (<a href="../part1/#msg-interface-struct">much like with the interface types used by <em>topics</em></a>), there are three fields to this again:</p>
 <ol>
-<li>Close down the Service Server that is currently running in <strong>TERMINAL 2</strong></li>
+<li><code>tuos_interfaces</code>: the name of the ROS package that this interface belongs to.</li>
+<li><code>srv</code>: that this is a <em>service</em> message (the second interface type we've covered now, and we'll learn about the third and final in Part 5).</li>
+<li><code>NumberGame</code>: the message data structure.</li>
+</ol>
+<p>We need to know the data structure in order to make a call to this service, so let's identify this next.</p>
+</li>
 <li>
-<p>Navigate to your <code>part4_services</code> package </p>
+<p>We can use the <code>ros2 interface list</code> command to list <em>all</em> interface types available to us on our ROS system, but this will provide us with a long list!</p>
 <hr />
-<p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">cd</span><span class="w"> </span>~ros2_ws/src/part4_services
-</code></pre></div>
-and make a new directory <code>srv</code> by running the following command:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>mkdir<span class="w"> </span>srv
-</code></pre></div></p>
-<hr />
-</li>
-<li>
-<p>Now navigate into the newly created directory <code>srv</code> and create new file called <code>MoveToPosition.srv</code></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>It is important that your file name should end with <code>.srv</code> extension as this identifies the file as a ROS service.</p>
-</div>
-</li>
-<li>
-<p>As we learned earlier, a service file consists of two parts: <code>Request</code> and <code>Response</code>. Here we will provide our own definition for each one of these parts as follow:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>float32<span class="w"> </span>goal_x<span class="w">      </span>&lt;--<span class="w"> </span>request<span class="w"> </span>parameter<span class="w"> </span><span class="m">1</span><span class="w"> </span>of<span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>float32<span class="w"> </span>goal_y<span class="w">      </span>&lt;--<span class="w"> </span>request<span class="w"> </span>parameter<span class="w"> </span><span class="m">2</span><span class="w"> </span>of<span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>---
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>bool<span class="w"> </span>success<span class="w">        </span>&lt;--<span class="w"> </span>response<span class="w"> </span>
-</code></pre></div>
- The service takes in two user inputs <code>goal_x</code> and <code>goal_y</code> of type <code>float</code> for the <code>x</code> and <code>y</code> coordinates to where the robot needs to move.</p>
-<hr />
-</li>
-<li>
-<p>Open the VS Code, copy and paste the above lines and save the file. </p>
-</li>
-<li>
-<p>We need to add a few lines in the <code>CMakeList.txt</code> to convert the defined service into language-specific code (C++ and Python) and make it usable:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>find_package<span class="o">(</span>rosidl_default_generators<span class="w"> </span>REQUIRED<span class="o">)</span>
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>rosidl_generate_interfaces<span class="o">(</span><span class="si">${</span><span class="nv">PROJECT_NAME</span><span class="si">}</span>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="s2">&quot;srv/MoveToPosition.srv&quot;</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="o">)</span>
-</code></pre></div>
-</li>
-<li>
-<p>Now open the <code>Package.xml</code> file and add the following lines:
-    <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>&lt;build_depend&gt;rosidl_default_generators&gt;&lt;/build_depend&gt;
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>&lt;exec_depend&gt;rosidl_default_runtime&gt;&lt;/exec_depend&gt;
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>&lt;member_of_group&gt;rosidl_interface_packages&gt;&lt;/member_of_group&gt;
-</code></pre></div>
-    These lines specify the dependencies required to run the custom service. </p>
-<hr />
-</li>
-<li>
-<p>Next, navigate to the <code>scripts</code> folder of the <code>part4_services</code> package and create an empty file called <code>MoveToPosition.py</code>. </p>
-</li>
-<li>
-<p>Open the newly created file in VS Code. Copy and paste the code provided <a href="">here</a>. </p>
-</li>
-<li>
-<p>Now modify the code as follow:</p>
+<p><strong>TERMINAL 2:</strong></p>
 <ol>
-<li>Change the imports to utilise the service we just created </li>
-<li>Develop the callback_function() to: <ol>
-<li>Process the <strong>two</strong> parameters that will be provided to the server via the `service request</li>
-<li>Retrieve the current position and calculate the difference to goal</li>
-<li>Generate movement command to the specific coordinates</li>
-<li>Return a correctly formatted service response message to the service caller</li>
-</ol>
+<li>
+<p>We can use the <code>-m</code> flag to filter for <em>message</em> interfaces, or the <code>-s</code> flag to filter for <em>service</em> interfaces. Try the latter:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>list<span class="w"> </span>-s
+</code></pre></div>
 </li>
-<li>Launch the server node using <code>ros2 run</code> command from <strong>TERMINAL 2</strong> and <code>call</code> the service from the command-line using <code>ros2 service call</code> in <strong>TERMINAL 3</strong> <a href="#cl_call">as you did earlier</a></li>
+<li>
+<p>Still quite a lot there, right!? Let's filter this further with <code>grep</code> to identify <em>only</em> interfaces from the <code>tuos_interfaces</code> package:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>list<span class="w"> </span>-s<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>tuos_interfaces
+</code></pre></div>
+<p>Hopefully, the <code>srv/NumberGame</code> interface is now listed.</p>
+</li>
+<li>
+<p>Use <code>ros2 interface show</code> sub-command to <em>show</em> the message structure:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>tuos_interfaces/srv/NumberGame
+</code></pre></div>
+</li>
+</ol>
+<hr />
+<p>The service message structure should be shown as follows:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>int32 guess
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>---
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>int32 guesses
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>string hint
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>bool success
+</code></pre></div>
+</li>
+</ol>
+<h3 id="the-format-of-a-service-message">The Format of a Service Message<a class="headerlink" href="#the-format-of-a-service-message" title="Permanent link">&para;</a></h3>
+<p>Service interfaces have two parts to them, separated by three hyphens (<code>---</code>). Above the separator is the Service <strong>Request</strong>, and below it is the Service <strong>Response</strong>:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>int32 guess      &lt;-- Request
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>---
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>int32 guesses    &lt;-- Response (1 of 3)
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>string hint      &lt;-- Response (2 of 3)
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>bool success     &lt;-- Response (3 of 3)
+</code></pre></div>
+<p>In order to <em>Call</em> a service, we need to provide data to it in the format specified in the <strong>Request</strong> section of the interface. A service <em>Server</em> will then send data back to the caller in the format specified in the <strong>Response</strong> section of the interface.</p>
+<p>The <code>tuos_interfaces/srv/NumberGame</code> service interface has only <strong>one</strong> request parameter:</p>
+<ol>
+<li>An <code>int32</code> (32-bit integer) called <code>guess</code><br />
+    ...which is the only thing we need to send to the <code>/number_game_service</code> Service Server in order to call it.</li>
+</ol>
+<p>There are then <strong>three</strong> response parameters:</p>
+<ol>
+<li>A <em>32-bit integer</em> called <code>guesses</code></li>
+<li>A text <em>string</em> called <code>hint</code>  </li>
+<li>
+<p>A <em>boolean</em> flag called <code>success</code></p>
+<p>...all of which will be returned by the server, once it has processed our request.</p>
+</li>
+</ol>
+<h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 2: Playing the Number Game (from the Command-line)<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
+<p>We're now ready to make a call to the service, and we can do this using the <code>ros2 service</code> sub-command (from <strong>TERMINAL 2</strong>):</p>
+<ol>
+<li>
+<p>To start, let's send an initial guess of <code>0</code> and see what happens:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/guess_the_number<span class="w"> </span>tuos_interfaces/srv/NumberGame<span class="w"> </span><span class="s2">&quot;guess: 0&quot;</span>
+</code></pre></div>
+<p>The request will be echoed back to us, followed by a response, which will likely look something like this and which shows us the valuer of the three response parameters that we identified above:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>response:
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>tuos_interfaces.srv.NumberGame_Response(guesses=1, hint=&#39;Higher&#39;, success=False)
+</code></pre></div>
+<ol>
+<li><code>guesses</code>: tells us how many times we've tried to guess the number, in total (just once so far)</li>
+<li><code>hint</code>: tells us if our next guess should be "higher" or "lower" in order to get us to the magic number</li>
+<li><code>success</code>: indicates if we guessed the right number or not (unlikely on the first attempt!)</li>
 </ol>
 </li>
 <li>
-<p>Make sure you build the package in the root directory of ros2 workspace using <code>colcon</code> and source the environment: </p>
+<p>Make another service call, this time changing the value of your <code>guess</code>, e.g.:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ros2<span class="w"> </span>service<span class="w"> </span>call<span class="w"> </span>/guess_the_number<span class="w"> </span>tuos_interfaces/srv/NumberGame<span class="w"> </span><span class="s2">&quot;guess: 10&quot;</span>
+</code></pre></div>
+</li>
+<li>
+<p>Try making a guess of 500 next.</p>
+<p>The service should respond with the hint <code>'Error'</code>. Have a look back in <strong>TERMINAL 1</strong> (where the Server is running) to get more information on this.</p>
+</li>
+<li>
+<p>Keep going until you guess the magic number, how many guesses does it take you?!</p>
 <details class="tip">
-<summary>Tip</summary>
-<p>For convenience, you can use a handy alias <code>src</code> instead of writing the whole <code>source ~/.bashrc</code></p>
+<summary>Hint</summary>
+<p>There are also a couple of <em>cheat codes</em> that you can send as guesses, that will make the server to tell you what the magic number actually is...<sup id="fnref:cheat-codes"><a class="footnote-ref" href="#fn:cheat-codes">3</a></sup> </p>
 </details>
 </li>
 </ol>
+<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<p>In Part 4 you have learnt about ROS Services and why they might be useful for robot applications:</p>
+<ul>
+<li>Services differ from standard topic-based communication methods in ROS in that they are a direct form of communication between one node and another.  </li>
+<li>The communication between the two nodes is sequential or <em>synchronous</em>: once a service <em>Caller</em> has <em>called</em> a service, it must wait until it has received a <em>response</em>.</li>
+<li>This is useful for controlling <em>quick</em>, <em>short-duration</em> tasks or for <em>offloading computations</em> (which could perhaps also be considered <em>decision-making</em>).</li>
+</ul>
+<p>Having completed all the exercises above, you should now be able to:</p>
+<ul>
+<li>Create and execute Python Service <em>Servers</em>.</li>
+<li>Create and execute Python Service <em>Callers</em>, as well as call services from the command-line.</li>
+<li>Implement these principles with a range of different service message types to perform a number of different robot tasks.</li>
+<li>Use LiDAR data effectively for basic closed-loop robot control.</li>
+<li>Develop Python nodes which <em>also</em> incorporate principles from Parts 1, 2 &amp; 3 of this course:<ul>
+<li>Publishing and subscribing to topics.</li>
+<li>Controlling the velocity and position of a robot.</li>
+<li>Using the Python Class architecture.</li>
+<li>Harnessing ROS and Linux command-line tools.</li>
+</ul>
+</li>
+</ul>
+<h3 id="backup">WSL-ROS2 Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<p>Remember, to save the work you have done in WSL-ROS2 during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS2 Terminal Instance now:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>wsl_ros<span class="w"> </span>backup
+</code></pre></div>
+<p>You'll then be able to restore it to a fresh WSL-ROS2 environment next time you fire one up (<code>wsl_ros restore</code>).  </p>
+<div class="footnote">
 <hr />
-<h2 id="a-recap-on-everything-youve-learnt-so-far">A recap on everything you've learnt so far...<a class="headerlink" href="#a-recap-on-everything-youve-learnt-so-far" title="Permanent link">&para;</a></h2>
-<p>You should now hopefully understand how to use the ROS2 Service architecture and understand why, and in what context, it might be useful to use this type of communication method in a robot application.</p>
-<div class="admonition tip">
-<p class="admonition-title">Remember</p>
-<p>Services are <strong>synchronous</strong> and are useful for one-off, quick actions or for offloading jobs or computations that might need to be done before something else can happen. (Think of it as a transaction that you might make in a shop: You hand over some money, and in return you get a chocolate bar, for example!)</p>
+<ol>
+<li id="fn:1">
+<p>Remember: you can also use the <code>wsl_ros restore</code> command at any time.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+<li id="fn:tb3_sound">
+<p>On the real Waffles, there's a service called <code>/sound</code>. Have a look at this next time you're in the lab... Once you've worked through the whole of Part 4 you'll know exactly how to interrogate this service and leverage the functionality that it provides!&#160;<a class="footnote-backref" href="#fnref:tb3_sound" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+</li>
+<li id="fn:cheat-codes">
+<p>Check the <code>tuos_examples/number_game.py</code> Python code to find out what the cheat codes are!!&#160;<a class="footnote-backref" href="#fnref:cheat-codes" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+</li>
+</ol>
 </div>
-<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 4: Creating your own Service<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
-<p>In this exercise you will create your own service Server to make the Waffle perform a specific movement for a given amount of time and then stop.</p>
 
 
 
@@ -2458,7 +2291,7 @@ and make a new directory <code>srv</code> by running the following command:
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-03T10:41:27+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-03</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-10T22:56:36+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-10</span>
   </span>
 
     
