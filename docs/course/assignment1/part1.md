@@ -297,7 +297,7 @@ We can find out more about the `/cmd_vel` topic by using the `ros2 topic` comman
     Subscription count: 1
     ```
 
-    We've now established the following information about `/cmd_vel`:
+    We've now established the following information about `/cmd_vel`: <a name="msg-interface-struct"></a>
     
     1. The topic has 1 publisher *writing* data to it
     1. The topic also has 1 subscriber *reading* this data

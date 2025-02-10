@@ -3,433 +3,290 @@ title: "Part 4: Services"
 description: Learn about an alternative way that ROS nodes can communicate across a ROS network, and the situations where this might be useful.  
 ---
 
-## Introduction 
+## Introduction
 
-:material-pen: **Exercises**: X
-
+:material-pen: **Exercises**: X  
 :material-timer: **Estimated Completion Time**: Y hours
 
 ### Aims
-In this part you will learn about ROS Services, a communication method that facilitates request-response interactions between nodes. You will understand how to use ROS services in combination with standard publisher/subscriber principles to enhance control for specific operations. Additionally, you'll create custom messages and services for tailored communication.
 
-### Intended Learning Outcomes 
+In this part you'll learn about *Services*: an alternative communication method that can be used to transmit data/information or invoke actions on a ROS Network. You'll learn how this works, and why it might be useful. You'll also look at some practical applications of this.
+
+### Intended Learning Outcomes
+
 By the end of this session you will be able to:
 
 1. Recognise how ROS Services differ from the standard topic-based publisher-subscriber approach, and identify appropriate use-cases for this type of messaging system.
-1. Implement Python node pairs to observe services in action, and understand how they work.
-1. Invoke different services using a range of service message types.
-1. Develop Python Service nodes of your own to perform specific robotic tasks.
-1. Harness Services, in combination with LiDAR data, to implement a basic obstacle avoidance behaviour 
-1. Develop custom ROS messages and services (still need to think about the task for this) 
-1. Demonstrate your understanding of ROS2 so far by developing a Python node which incorporates elements from this and previous parts of this course.
-
+1. Identify the services that are available on a ROS network, and use ROS command-line tools to interrogate and *call* them.
+1. Develop Python Service Client Nodes.
+1. Invoke different services using multiple service-type interfaces.
 
 ### Quick Links
-* [Exercise 1: ](#ex1)
+
+* [Exercise 1: Calling a Service from the Command-line](#ex1)
+* [Exercise 2: ](#ex2)
+* [Exercise 3: ](#ex3)
+* [Exercise 4: ](#ex4)
 
 ### Additional Resources
-### Prerequisites
-Before we begin, ensure that you have the following:
 
-1. ROS2 Humble installed on your system
-1. Cloned the tuos package from github
-1. Basic understanding of ROS2 concepts like nodes and topics
+* [TODO]()
 
-### Getting Started
-**Step 1: Launch your ROS Environment**
+## Getting Started
 
-If you haven't done so already, launch your ROS environment now:
+**Step 1: Launch your ROS2 Environment**
 
-**Step 2: Restore your work (todo)**
+If you haven't done so already, launch your ROS environment now. Having done this, you should now have access to a Linux terminal instance (aka **TERMINAL 1**).
 
-**Step 3: Launch VS Code (todo)**  
+**Step 2: Restore your work (WSL-ROS2 Managed Desktop Users ONLY)**
+
+Remember that any work you do within the WSL-ROS2 Environment will not be preserved between sessions or across different University computers, so you should be backing up your work to your `U:\` drive regularly. When prompted (on first launch of WSL-ROS2 in **TERMINAL 1**) enter ++y+enter++ to restore your data[^1].
+
+``` { .txt .no-copy }
+It looks like you already have a backup from a previous session:
+  U:\wsl-ros\ros2-backup-XXX.tar.gz
+Do you want to restore this now? [y/n]
+```
+
+[^1]: Remember: you can also use the `wsl_ros restore` command at any time.
+
+**Step 3: Launch VS Code**  
+
+It's also worth launching VS Code now. *WSL users* remember to check for this:
+
+<figure markdown>
+  ![](../../ros/figures/code-wsl-ext-on.png){width=400px}
+</figure>
 
 **Step 4: Make Sure The Course Repo is Up-To-Date**
 
-Once again, it's worth quickly checking that the Course Repo is up-to-date before you start on the Part 4 exercises. Go back to [Part 1](./part1.md#course-repo) if you haven't installed it yet (really?!). For the rest, run the following commands:
-```bash
-cd ~/ros2_ws/src/tuos_ros/ && git pull
-```
+Once again, it's worth quickly checking that the Course Repo is up-to-date before you start on the Part 4 exercises. Go back to [Part 1](./part1.md#course-repo) if you haven't installed it yet (really?!) or - alternatively - [see here for how to update](../extras/course-repo.md#updating).
 
-Now build with colcon:
-```bash
-cd ~/ros2_ws/ && colcon build 
-```
-Finally, re-source the environment 
-```bash
-source ~/.bashrc
-```
+## An Introduction to Services
 
-## Step 5: Launch the Robot Simulation 
-From **TERMINAL 1**, launch the TurtleBot3 Waffle *"Empty World"* 
-simulation:
+So far, we've learnt about ROS *topics* and the *message*-type interfaces that we use to transmit data on them. We've also learnt how individual nodes can access data on a robot by simply *subscribing* to topics that are being published by any other node on the system. In addition to this, we also know that any node can *publish* messages to any topic: this essentially broadcasts the data across the ROS Network, making it available to any other node on the network that may wish to access it.
+
+Another way to pass data between ROS Nodes is by using *Services*. These are based on a *call and response* type of communication:
+
+* A Service **Client** sends a **Request** to a Service **Server**.
+* The Service **Server** processes that request and sends back a **Response**.
+
+<figure markdown>
+  ![The difference between topic-based messaging and the ROS Service protocol](part4/topic_vs_service.png)
+</figure>
+
+This is a bit like a transaction: one node requests something, and another node fulfils that request and responds, and this is good for **quick, short duration tasks**, e.g.:
+
+1. Turning a device on or off.
+1. Grabbing some data and saving it to a file.
+1. Performing a calculation and returning a result.
+1. Making a sound[^tb3_sound].
+
+[^tb3_sound]: On the real Waffles, there's a service called `/sound`. Have a look at this next time you're in the lab... Once you've worked through the whole of Part 4 you'll know exactly how to interrogate this service and leverage the functionality that it provides!
+
+A single service can have many clients, but you can only have a *single* Server providing that particular service at any one time.
+
+<figure markdown>
+  ![](part4/service_clients.png)
+  <figcaption>Multiple Clients to a single Service Server</figcaption>
+</figure>
+
+Let's see how this all works in practice now, by playing a number game! We don't need a simulation up and running for this one, so in **TERMINAL 1** use the following command to launch the *Guess the Number* Service: 
 
 ***
 **TERMINAL 1:**
 ```bash
-ros2 launch turtlebot3_gazebo turtlebot3_empty_world.launch
+ros2 run tuos_examples number_game.py
 ```
-...and then wait for the Gazebo window to open:
 
-<figure markdown>
-</figure>
+Having launched the service successfully, you should be presented with the following:
 
-## An Introduction to Services
+``` { .txt .no-copy }
+[INFO] [#####] [number_game_service]: The '/guess_the_number' service is active.
+[INFO] [#####] [number_game_service]: A magic number has been set... Game on!
+```
+***
 
-So far, we've learnt about ROS *topics* and *messages*, and how individual nodes can access data on a robot by simply *subscribing* to topics that are being published by any other node on the system.  In addition to this, we also learnt how any node can *publish* messages to any topic: this essentially broadcasts the data contained in the message across the ROS Network, making it available to any other node on the network that may wish to access it.
+We need to interrogate this now, in order to work out how to play the game...
 
-ROS2 uses interface as a communication structure that allow different nodes to exchange data. These interfaces are broadly categorized into three types:
+### Interrogating a Service
 
-1. Messages
-2. Services
-3. Actions
+#### :material-pen: Exercise 1: Using Command-line Tools to Interrogate a Service and its Interface {#ex1}
 
-<!-- We have already learned how to use `Messages` in [part 2](./part2.md#ros-velocity-commands) and now we will learn in detail about `ROS2 Services`.    -->
-
-These are different to messages in that *"Service calls"* (that is, the process of requesting a service) occur *only* between one node and another:
-
-* One node (a Service **Client**) sends a **Request** to another node.
-* Another node (a Service **Server**) processes that request, performs an action and then sends back a **Response**.
-
-<figure markdown>
-  ![The ROS Service protocol with a Single Service Client](https://docs.ros.org/en/humble/_images/Service-SingleServiceClient.gif){ width=600px }
-  <figcaption>"<a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html#background">Understanding services: Single Service Client</a>".<br />Taken from the ROS 2 Documentation (Humble)<br />&copy; Copyright 2025, Open Robotics licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></figcaption>
-</figure>
-
-Services are *Synchronous* (or *sequential*): When a ROS node sends a request to a service (as a Service *Client*) it can't do anything else until the service has been completed and the Service *Server* has sent a response back. This can be useful for a few reasons:
-
-* There can be multiple service clients using the same service but only one service server for a service. 
-
-1. **Discrete, short-duration actions**: A robot might need to do something before it can move on to something else, e.g.:
-    
-    * A robot needs to see something before it can move towards it.
-    * High definition cameras generate large amounts of data and consume battery power, so you may wish to turn a camera on for a specific amount of time (e.g. until an image has been captured) and then turn it off again.
-
-2. **Computations**: Remember that ROS is *network-based*, so you might want to offload some computations to a remote computer or a different device on a robot, e.g.:
-    
-    * A client might send some data and then wait for another process (the server) to process it and send back the result.
-
-It's also worth noting that any number of ROS Client nodes can call a service, but you can only have a *single* Server providing that particular service at any one time.
-
-<figure markdown>
-  ![The ROS Service protocol with Multiple Service Clients](https://docs.ros.org/en/humble/_images/Service-MultipleServiceClient.gif){ width=600px }
-  <figcaption>"<a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Services/Understanding-ROS2-Services.html#background">Understanding services: Multiple Service Clients</a>".<br />Taken from the ROS 2 Documentation (Humble)<br />&copy; Copyright 2025, Open Robotics licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a></figcaption>
-</figure>
-
-!!! question
-    Can you think of any other scenarios where this type of communication protocol might be useful?
-
-#### :material-pen: Exercise 1: Creating a Service *Server* in Python and calling it from the command-line {#ex1}
-
-To start with, let's set up a service and learn how to make a call to it from the command-line to give you an idea of how this all works and why it might be useful.
-
-1. First open up a new terminal instance (**TERMINAL 2**) and source your ROS2 environment as you did in [part 1](./part1.md#first-steps): 
-
-    1. Now navigate into the Course Repo `ros2_ws/src/tuos_ros` and run the helper script agian as you did in [part 1](./part1.md#first-steps) to create a new package called `part4_services`:
-    ***    
-    **TERMINAL 2:**
-        ```bash
-        ./create_pkg.sh part4_services        
-        ```
-    ***
-
-    Your terminal will return a message verifying the creation of your package.
-
-1. Navigate into the new package directory using cd:
+1.  Open up a new terminal instance (**TERMINAL 2**) and use the `ros2 service` command to list all active ROS services:
 
     ***
     **TERMINAL 2:**
-
-    ```bash
-    cd ../part4_services/
-    ```
-    ***
-
-1. Then navigate into the `scripts` folder in the package directory (using cd) and create an empty file called `move_server.py` using `touch` command.
-    ```bash
-    touch move_server.py
-    ```
-    
-1.  Open the file in VS Code, copy and paste [this code](./part4/move_server.md) and then save it. <a name="ex1_ret"></a> (todo: need to add the template)
-
-    !!! note
-        It's really important that you understand how the code above works, so that you know how to build your own service *Servers* in Python. Also, make sure that the `move_server` file is executable using `chmod +x` command. 
-
-1. Next, we need to add our `move_server.py` file as an executable to our package's `CMakeLists.txt`. This will ensure that it then gets built when we run `colcon build` (in the next step):
-
-    In VS Code, open the `CMakeLists.txt` file that is at the root of your `part4_services` package directory (`ros2_ws/src/part4_services/CMakeLists.txt`). Locate the lines (near the bottom of the file) that read:
-
-    ``` { .txt .no-copy}
-    # Install Python executables
-    install(PROGRAMS
-      scripts/minimal_node.py
-      DESTINATION lib/${PROJECT_NAME}
-    )
-    ```
-
-    Replace `minimal_node.py` with `move_server.py` to define this as a Python executable in your package:
-
-    ``` { .txt .no-copy }
-    # Install Python executables
-    install(PROGRAMS
-      scripts/publisher.py
-      DESTINATION lib/${PROJECT_NAME}
-    )
-    ```
-    i.  It's a good practice to run `rosdep` in the root of your workspace (`ros2_ws`) to check for missing dependencies before building:
-
-    ```bash
-    rosdep install -i --from-path src --rosdistro humble -y
-    ```
-
-1. Then, use Colcon to build your new package and its contents :
-
-    ***
-    **TERMINAL 2:**
-    ```bash
-    cd ~/ros2_ws/ && colcon build --packages-select part4_services --symlink-install
-    ```
-    i. Finally re-source your `bashrc`: 
-    ```bash
-    source ~/.bashrc
-    ```
-    ***
-    
-1. Now, we are ready to run the node. Use `ros2 run` and observe what is displayed on the terminal 
-   
-    ***
-   **TERMINAL 2:**
-    ```bash
-    ros2 run part4_services move_server.py
-    ```
-    You should see this message: 
-    ```{ .txt .no-copy}
-    The 'move_service' server is ready to be called...
-    ```
-   ***
-
-1. Open a new terminal window (**TERMINAL 3**) 
-
-1. While the node is running, use `ros2 service` command to view all the currently active services on the system:
-
-    ***
-    **TERMINAL 3:**
     ```bash
     ros2 service list
     ```
-    You should see the `/move_service` service that we defined in the Python code:
-    ``` { .txt .no-copy}
-    service_name = "move_service"
-    ```
     ***
 
-1. We can find out more about this using the `ros2 service type` command:
-    
-    ***
-    **TERMINAL 3:**
-    ```bash
-    ros2 service type /move_service 
-    ```
-    Which should provide the following output:
-    
-    ``` { .txt .no-copy}
-    std_srvs/srv/SetBool 
-    ```
+    There'll be a few items in this list, most of them with the prefix: `/number_game_service`. This is the name of the *node* that is providing the service (i.e. the **Server**) and these items are all automatically generated by ROS. What we're really interested in is the service itself, which should be listed as: `/guess_the_number`. 
 
-    This shows that the `move_service_server` node is using `SetBool` service (or interface) type defined in the `std_srv` package
+1. Next, we need to find the interface type used by this service, which we can do a couple of ways:
 
-    !!! tip 
-        You can also view the type of all services at the same time by adding `-t` to the `ros2 service list` command.
-
-1. We can also call this service from the command line using `ros2 service call`.<a name="cl_call"></a> 
-    ```bash
-    ros2 service call <service_name> <service_type> <arguments> 
-    ```
-    
-    In this case, 
-    ```bash
-    ros2 service call /move_service std_srvs/srv/SetBool "data: false"
-    ```
-    
-1. Press ++enter++ to issue the command and make a call to the service. 
-    You should see the following response:
-    ``` { .txt .no-copy }
-    requester: making request: std_srvs.srv.SetBool_Request(data=False)
-
-    response:
-    std_srvs.srv.SetBool_Response(success = False, message="Nothing happened, set request_signal to 'true' next time.")
-    ```
-
-1. Arrange the terminals 1 and 3 so that you can see both the Gazebo simulation and the terminal that you just issued the `ros2 service call` command in.
-
-1. In **TERMINAL 3** enter the `ros2 service call` command again, but this time set the `data` input to `true`. You should be able to see the response of the robot in Gazebo simulation. Switch back to **TERMINAL 2** and observe the terminal output there as well. 
-
-**Summary**
-
-In the section above, you learned how to create a Service Server node. This node sits idle and keeps waiting for its service to be called. Then you called the service through command line which prompted the Server to carry out the following tasks defined in the Python code,
-    1. Start a timer
-    1. Issue a velocity commnad to the robot to move it forward
-    1. Wait for 5 seconds
-    1. Issue a velocity command to stop the robot
-    1. Get the service **Response** and issue it as an output to the terminal in which the service is called
-
-***
-###Understanding key features of **ros2 service** 
-
-In Part 2, you learned how to find out more about a particular message type, using the `ros2 interface show` command. You can do the same to find out the details of service type as follow: 
-
-***
-**Terminal 3**
-```bash
-ros2 interface show std_srvs/srv/SetBool
-```
-which will give the following output: 
-
-``` { .txt .no-copy }
-bool data   # e.g. for hardware enabling / disabling 
----
-bool success     # indicate successful run of triggered service
-string message   # informational, e.g. for error messages
-```
-### The Format of SetBool Service 
-The service above is structured in two parts separated by three hyphens (`---`). The part above the hyphens is called the Service **Request** while the part below is Service **Response**:
-
-``` { .txt .no-copy }
-bool data        <-- Request 
----
-bool success     <-- Response (Parameter 1 of 2)
-string message   <-- Response (Parameter 2 of 2)
-```
-***
-
-In order to *Call* a service, we need to provide data to it in the format specified in the **Request** section. A service *Server* (like the [Python node we created above](./part4/move_server.md)) will then send data back to the caller in the format specified in the **Response** section.
-
-The `std_srvs/srv/SetBool` service that we're working with here has **one** request parameter:
-
-1. A *boolean* input called `data`  
-    ...which is the only thing we need to send to the Service Server in 
-order to call the service.
-
-There are then **two** response parameters:
-
-1. A *boolean* flag called `success`
-1. A text *string* called `message`  
-    ...both of these will be returned to the client, by the server, once 
-the Service has completed.
-
-
-
-#### :material-pen: Exercise 2: Creating a Python Service *Client* Node {#ex2}
-
-Instead of calling a service from command-line we can also build Python Service *Client* Nodes to do the same. In this exercise you will learn how this is done.
-
-1. **TERMINAL 3** should be idle, so from here navigate to the `scripts` folder within the `part4_services` package that we created earlier:
-
-    ***
-    **TERMINAL 3:**
-    ```bash
-    cd ~/ros2_ws/src/part4_services/scripts
-    ```
-    ***
-
-1. Create a new file called `move_client.py`
-1. Now as you did in the previous exercise, open the VS Code, copy and paste [this code](./part4/move_client.md) and then save it. <a name="ex2_ret"></a>
-
-    !!! note
-        Once again, be sure to read the code and understand how this Python Service Client Node works too!
-
-1.  Return to **TERMINAL 3** and launch the node using `ros2 run`:
-
-    ```bash
-    ros2 run part4_services move_client.py 
-    ```
-
-***
-The response should be exactly the same when we called the service from the command line. 
-
-#### :material-pen: Exercise 3: Learn to create custom services {#ex3}
-In previous exercises you learned about messages, topics and services by using the predefined definitions of them. While using predefined interfaces is considered a good practice, it is also important to know how you can custom define these interfaces based on your own need. This exercise will teach you, step-by-step, how to create custom service definition and use it to move the robot to the requested position (providing x and y coordinates).
-
-**Procedure**  
-
-1. Close down the Service Server that is currently running in **TERMINAL 2**
-1. Navigate to your `part4_services` package 
-    
     ***
     **TERMINAL 2:**
-    ```bash
-    cd ~ros2_ws/src/part4_services
-    ```
-and make a new directory `srv` by running the following command:
-    ```bash
-    mkdir srv
-    ```
-    ***
-
-1. Now navigate into the newly created directory `srv` and create new file called `MoveToPosition.srv`
-
-    !!!note 
-        It is important that your file name should end with `.srv` extension as this identifies the file as a ROS service.
-
-1. As we learned earlier, a service file consists of two parts: `Request` and `Response`. Here we will provide our own definition for each one of these parts as follow:
-
-    ```bash
-    float32 goal_x      <-- request parameter 1 of 2
-    float32 goal_y      <-- request parameter 2 of 2
-    ---
-    bool success        <-- response 
-    ```
- The service takes in two user inputs `goal_x` and `goal_y` of type `float` for the `x` and `y` coordinates to where the robot needs to move.
-***
-
-1. Open the VS Code, copy and paste the above lines and save the file. 
-1. We need to add a few lines in the `CMakeList.txt` to convert the defined service into language-specific code (C++ and Python) and make it usable:
-
-    ```bash 
-    find_package(rosidl_default_generators REQUIRED)
-    rosidl_generate_interfaces(${PROJECT_NAME}
-    "srv/MoveToPosition.srv"
-    )
-    ```
-
-1. Now open the `Package.xml` file and add the following lines:
-    ```bash 
-    <build_depend>rosidl_default_generators></build_depend>
-    <exec_depend>rosidl_default_runtime></exec_depend>
-    <member_of_group>rosidl_interface_packages></member_of_group>
-    ```
-    These lines specify the dependencies required to run the custom service. 
     
+    1. Use the `type` sub-command:
+
+        ```bash
+        ros2 service type /guess_the_number
+        ```
+
+    1. Use the `list` sub-command again, but with the `-t` flag:
+
+        ```bash
+        ros2 service list -t
+        ```
+
+        The latter will provide the same list of services as before, but each one will now have its interface type provided too.
+
     ***
 
-1. Next, navigate to the `scripts` folder of the `part4_services` package and create an empty file called `MoveToPosition.py`. 
+1. Regardless of the method that you used, you should have identified that the interface type used by the `/guess_the_number` service is:
+    
+    ``` { .txt .no-copy }
+    tuos_interfaces/srv/NumberGame
+    ```
 
-1. Open the newly created file in VS Code. Copy and paste the code provided [here](). 
-1. Now modify the code as follow:
+    Notice how ([much like with the interface types used by *topics*](./part1.md#msg-interface-struct)), there are three fields to this again:
+        
+    1. `tuos_interfaces`: the name of the ROS package that this interface belongs to.
+    1. `srv`: that this is a *service* message (the second interface type we've covered now, and we'll learn about the third and final in Part 5).
+    1. `NumberGame`: the message data structure.
 
-    1. Change the imports to utilise the service we just created 
-    1. Develop the callback_function() to: 
-        1. Process the **two** parameters that will be provided to the server via the `service request
-        1. Retrieve the current position and calculate the difference to goal
-        1. Generate movement command to the specific coordinates
-        1. Return a correctly formatted service response message to the service caller
-    1. Launch the server node using `ros2 run` command from **TERMINAL 2** and `call` the service from the command-line using `ros2 service call` in **TERMINAL 3** [as you did earlier](#cl_call)
+    We need to know the data structure in order to make a call to this service, so let's identify this next.
 
-1. Make sure you build the package in the root directory of ros2 workspace using `colcon` and source the environment: 
+1. We can use the `ros2 interface list` command to list *all* interface types available to us on our ROS system, but this will provide us with a long list!
 
-    ??? tip 
-        For convenience, you can use a handy alias `src` instead of writing the whole `source ~/.bashrc`
+    ***
+    **TERMINAL 2:**
 
-***
+    1. We can use the `-m` flag to filter for *message* interfaces, or the `-s` flag to filter for *service* interfaces. Try the latter:
 
-## A recap on everything you've learnt so far...
+        ```bash
+        ros2 interface list -s
+        ```
+    
+    1. Still quite a lot there, right!? Let's filter this further with `grep` to identify *only* interfaces from the `tuos_interfaces` package:
 
-You should now hopefully understand how to use the ROS2 Service architecture and understand why, and in what context, it might be useful to use this type of communication method in a robot application.
+        ```bash
+        ros2 interface list -s | grep tuos_interfaces
+        ```
 
-!!! tip "Remember"
-    Services are **synchronous** and are useful for one-off, quick actions or for offloading jobs or computations that might need to be done before something else can happen. (Think of it as a transaction that you might make in a shop: You hand over some money, and in return you get a chocolate bar, for example!)
+        Hopefully, the `srv/NumberGame` interface is now listed.
 
-#### :material-pen: Exercise 4: Creating your own Service {#ex4}
+    1. Use `ros2 interface show` sub-command to *show* the message structure:
 
-In this exercise you will create your own service Server to make the Waffle perform a specific movement for a given amount of time and then stop.
+        ```bash
+        ros2 interface show tuos_interfaces/srv/NumberGame
+        ``` 
+        
+    ***
 
+    The service message structure should be shown as follows:
+
+    ``` { .txt .no-copy }
+    int32 guess
+    ---
+    int32 guesses
+    string hint
+    bool success
+    ```
+
+### The Format of a Service Message
+
+Service interfaces have two parts to them, separated by three hyphens (`---`). Above the separator is the Service **Request**, and below it is the Service **Response**:
+
+``` { .txt .no-copy }
+int32 guess      <-- Request
+---
+int32 guesses    <-- Response (1 of 3)
+string hint      <-- Response (2 of 3)
+bool success     <-- Response (3 of 3)
+```
+
+In order to *Call* a service, we need to provide data to it in the format specified in the **Request** section of the interface. A service *Server* will then send data back to the caller in the format specified in the **Response** section of the interface.
+
+The `tuos_interfaces/srv/NumberGame` service interface has only **one** request parameter:
+
+1. An `int32` (32-bit integer) called `guess`  
+    ...which is the only thing we need to send to the `/number_game_service` Service Server in order to call it.
+
+There are then **three** response parameters:
+
+1. A *32-bit integer* called `guesses`
+1. A text *string* called `hint`  
+1. A *boolean* flag called `success`
+
+    ...all of which will be returned by the server, once it has processed our request.
+
+#### :material-pen: Exercise 2: Playing the Number Game (from the Command-line) {#ex2}
+
+We're now ready to make a call to the service, and we can do this using the `ros2 service` sub-command (from **TERMINAL 2**):
+
+1. To start, let's send an initial guess of `0` and see what happens:
+
+    ```bash
+    ros2 service call /guess_the_number tuos_interfaces/srv/NumberGame "guess: 0"
+    ```
+
+    The request will be echoed back to us, followed by a response, which will likely look something like this and which shows us the valuer of the three response parameters that we identified above:
+
+    ``` { .txt .no-copy }
+    response:
+    tuos_interfaces.srv.NumberGame_Response(guesses=1, hint='Higher', success=False)
+    ```
+
+    1. `guesses`: tells us how many times we've tried to guess the number, in total (just once so far)
+    1. `hint`: tells us if our next guess should be "higher" or "lower" in order to get us to the magic number
+    1. `success`: indicates if we guessed the right number or not (unlikely on the first attempt!)
+
+1. Make another service call, this time changing the value of your `guess`, e.g.:
+    
+    ```bash
+    ros2 service call /guess_the_number tuos_interfaces/srv/NumberGame "guess: 10"
+    ```
+
+1. Try making a guess of 500 next.
+
+    The service should respond with the hint `'Error'`. Have a look back in **TERMINAL 1** (where the Server is running) to get more information on this.
+
+1. Keep going until you guess the magic number, how many guesses does it take you?!
+
+    ??? tip "Hint"
+        There are also a couple of *cheat codes* that you can send as guesses, that will make the server to tell you what the magic number actually is...[^cheat-codes] 
+
+    [^cheat-codes]: Check the `tuos_examples/number_game.py` Python code to find out what the cheat codes are!! 
+    
+## Wrapping Up
+
+In Part 4 you have learnt about ROS Services and why they might be useful for robot applications:
+
+* Services differ from standard topic-based communication methods in ROS in that they are a direct form of communication between one node and another.  
+* The communication between the two nodes is sequential or *synchronous*: once a service *Caller* has *called* a service, it must wait until it has received a *response*.
+* This is useful for controlling *quick*, *short-duration* tasks or for *offloading computations* (which could perhaps also be considered *decision-making*).
+
+Having completed all the exercises above, you should now be able to:
+
+* Create and execute Python Service *Servers*.
+* Create and execute Python Service *Callers*, as well as call services from the command-line.
+* Implement these principles with a range of different service message types to perform a number of different robot tasks.
+* Use LiDAR data effectively for basic closed-loop robot control.
+* Develop Python nodes which *also* incorporate principles from Parts 1, 2 & 3 of this course:
+    * Publishing and subscribing to topics.
+    * Controlling the velocity and position of a robot.
+    * Using the Python Class architecture.
+    * Harnessing ROS and Linux command-line tools.
+    
+### WSL-ROS2 Managed Desktop Users: Save your work! {#backup}
+
+Remember, to save the work you have done in WSL-ROS2 during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS2 Terminal Instance now:
+
+```bash
+wsl_ros backup
+```
+
+You'll then be able to restore it to a fresh WSL-ROS2 environment next time you fire one up (`wsl_ros restore`).  
