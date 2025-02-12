@@ -10,25 +10,25 @@
       
       
       
-        <link rel="canonical" href="https://tom-howard.github.io/com2009/course/assignment1/part4/move_client/">
+        <link rel="canonical" href="https://tom-howard.github.io/com2009/course/assignment1/part4/number_game_client/">
       
       
         <link rel="prev" href="../../part3/lidar_subscriber/">
       
       
-        <link rel="next" href="../move_server/">
+        <link rel="next" href="../../part6/line_follower/">
       
       
       <link rel="icon" href="../../../../assets/tuos_logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
-        <title>Part 4 Move Service-Client - ROS2 Course Assignments for COM2009</title>
+        <title>Creating a Python Service Client - ROS2 Course Assignments for COM2009</title>
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -63,11 +63,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Part 4 Move Service-Client - ROS2 Course Assignments for COM2009" >
+        <meta  property="og:title"  content="Creating a Python Service Client - ROS2 Course Assignments for COM2009" >
       
         <meta  property="og:description"  content="Practical Robotics Course Assignments for COM2009/3009, with ROS2 and the TurtleBot3 Waffle." >
       
-        <meta  property="og:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part4/move_client.png" >
+        <meta  property="og:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part4/number_game_client.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -75,15 +75,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://tom-howard.github.io/com2009/course/assignment1/part4/move_client/" >
+        <meta  property="og:url"  content="https://tom-howard.github.io/com2009/course/assignment1/part4/number_game_client/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Part 4 Move Service-Client - ROS2 Course Assignments for COM2009" >
+        <meta  name="twitter:title"  content="Creating a Python Service Client - ROS2 Course Assignments for COM2009" >
       
         <meta  name="twitter:description"  content="Practical Robotics Course Assignments for COM2009/3009, with ROS2 and the TurtleBot3 Waffle." >
       
-        <meta  name="twitter:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part4/move_client.png" >
+        <meta  name="twitter:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part4/number_game_client.png" >
       
     
     
@@ -114,11 +114,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#part-4-move-service-client" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -148,7 +143,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Part 4 Move Service-Client
+              Creating a Python Service Client
             
           </span>
         </div>
@@ -1835,8 +1830,6 @@
   
   
   
-    
-  
   
 </nav>
                   </div>
@@ -1852,7 +1845,7 @@
 
 
   
-    <a href="https://github.com/tom-howard/com2009/edit/main/docs/course/assignment1/part4/move_client.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/com2009/edit/main/docs/course/assignment1/part4/number_game_client.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -1861,58 +1854,159 @@
     
       
     
-    <a href="https://github.com/tom-howard/com2009/raw/main/docs/course/assignment1/part4/move_client.md" title="View source of this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/com2009/raw/main/docs/course/assignment1/part4/number_game_client.md" title="View source of this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
     </a>
   
 
 
-<h1 id="part-4-move-service-client">Part 4 Move Service-Client<a class="headerlink" href="#part-4-move-service-client" title="Permanent link">&para;</a></h1>
-<p>Copy <strong>all</strong> the code below into your <code>move_client.py</code> file and review the annotations to understand how it all works.</p>
-<div class="admonition note">
-<p class="admonition-title">DFTS!!</p>
-<p>(Don't forget the shebang!)
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/usr/bin/env python3</span>
-</code></pre></div></p>
-</div>
-<div class="highlight"><span class="filename">move_client.py</span><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="ch">#!/usr/bin/env python3</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="kn">from</span><span class="w"> </span><span class="nn">std_srv.srv</span><span class="w"> </span><span class="kn">import</span> <span class="n">SetBool</span>  <span class="c1"># Import the standard SetBool service</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="k">class</span><span class="w"> </span><span class="nc">MoveServiceClient</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">_init_</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_init_</span><span class="p">(</span><span class="s1">&#39;move_service_client&#39;</span><span class="p">)</span>  <span class="c1"># Initialize the node with a name</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span><span class="n">SetBool</span><span class="p">,</span> <span class="s1">&#39;setbool&#39;</span><span class="p">)</span>  <span class="c1"># Create a service client</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Waiting for the move_service to be available...&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">request</span><span class="o">=</span> <span class="n">SetBool</span><span class="o">.</span><span class="n">Request</span><span class="p">()</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">send_request</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>        <span class="n">request</span> <span class="o">=</span> <span class="n">SetBool</span><span class="o">.</span><span class="n">Request</span><span class="p">()</span>  <span class="c1"># Create a request object</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>        <span class="n">request</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Set the request data</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>        <span class="n">future</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">call_async</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>  <span class="c1"># Call the service asynchronously</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>        <span class="n">rclpy</span><span class="o">.</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">future</span><span class="p">)</span>  <span class="c1"># Wait until the future completes</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>        <span class="k">if</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>            <span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Response: </span><span class="si">{</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">success</span><span class="si">}</span><span class="s1">, </span><span class="si">{</span><span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span><span class="o">.</span><span class="n">message</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>        <span class="k">else</span><span class="p">:</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>            <span class="nb">print</span> <span class="p">(</span><span class="s1">&#39;Service call failed&#39;</span><span class="p">)</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="n">args</span><span class="p">)</span>  <span class="c1"># Initialize the rclpy library</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">MoveServiceClient</span><span class="p">()</span>  <span class="c1"># Create a client node</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>    <span class="n">client</span><span class="o">.</span><span class="n">send_request</span><span class="p">()</span>  <span class="c1"># Send the request to the service</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>    <span class="n">client</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>  <span class="c1"># Clean up the node</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>  <span class="c1"># Shutdown rclpy</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="k">if</span> <span class="n">_name_</span> <span class="o">==</span> <span class="s1">&#39;_main_&#39;</span><span class="p">:</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>    <span class="n">main</span><span class="p">()</span>
+  <h1>Creating a Python Service Client</h1>
+
+<p>Copy <strong>all</strong> the code below into your <code>number_game_client.py</code> file and then <strong>review the annotations</strong> to understand how it all works.</p>
+<div class="highlight"><span class="filename">number_game_client.py</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/usr/bin/env python3</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">import</span><span class="w"> </span><span class="nn">rclpy</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">rclpy.node</span><span class="w"> </span><span class="kn">import</span> <span class="n">Node</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="kn">from</span><span class="w"> </span><span class="nn">part4_services.srv</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyNumberGame</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span> <span class="c1"># (1)!</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">class</span><span class="w"> </span><span class="nc">NumberGameClient</span><span class="p">(</span><span class="n">Node</span><span class="p">):</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s1">&#39;number_game_client&#39;</span><span class="p">)</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_client</span><span class="p">(</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>            <span class="n">srv_type</span><span class="o">=</span><span class="n">MyNumberGame</span><span class="p">,</span> 
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>            <span class="n">srv_name</span><span class="o">=</span><span class="s1">&#39;guess_the_number&#39;</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>        <span class="p">)</span> <span class="c1"># (2)!</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>        <span class="n">cli</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">()</span> <span class="c1"># (3)!</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>        <span class="n">cli</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>            <span class="s2">&quot;-g&quot;</span><span class="p">,</span> <span class="s2">&quot;--guess&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="nb">int</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>        <span class="p">)</span> <span class="c1"># (4)!</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>        <span class="n">cli</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>            <span class="s2">&quot;-c&quot;</span><span class="p">,</span> <span class="s2">&quot;--cheat&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>        <span class="p">)</span> <span class="c1"># (5)!</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>        <span class="bp">self</span><span class="o">.</span><span class="n">args</span> <span class="o">=</span> <span class="n">cli</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span> <span class="c1"># (6)!</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>        <span class="k">while</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">wait_for_service</span><span class="p">(</span><span class="n">timeout_sec</span><span class="o">=</span><span class="mf">1.0</span><span class="p">):</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>            <span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>                <span class="s2">&quot;Waiting for service...&quot;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>            <span class="p">)</span> <span class="c1"># (7)!</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>    <span class="k">def</span><span class="w"> </span><span class="nf">send_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">guess</span><span class="p">,</span> <span class="n">cheat</span><span class="p">):</span> <span class="c1"># (8)!</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a>        <span class="n">request</span> <span class="o">=</span> <span class="n">MyNumberGame</span><span class="o">.</span><span class="n">Request</span><span class="p">()</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>        <span class="n">request</span><span class="o">.</span><span class="n">guess</span> <span class="o">=</span> <span class="n">guess</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>        <span class="n">request</span><span class="o">.</span><span class="n">cheat</span> <span class="o">=</span> <span class="n">cheat</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">client</span><span class="o">.</span><span class="n">call_async</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>    <span class="n">client</span> <span class="o">=</span> <span class="n">NumberGameClient</span><span class="p">()</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a>    <span class="n">client</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a>        <span class="sa">f</span><span class="s2">&quot;Sending the request:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>        <span class="sa">f</span><span class="s2">&quot; - guess: </span><span class="si">{</span><span class="n">client</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">guess</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>        <span class="sa">f</span><span class="s2">&quot; - cheat: </span><span class="si">{</span><span class="n">client</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">cheat</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>        <span class="sa">f</span><span class="s2">&quot;   Awaiting response...&quot;</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>    <span class="p">)</span> <span class="c1"># (9)!</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>    <span class="n">future</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">send_request</span><span class="p">(</span><span class="n">client</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">guess</span><span class="p">,</span> <span class="n">client</span><span class="o">.</span><span class="n">args</span><span class="o">.</span><span class="n">cheat</span><span class="p">)</span> <span class="c1"># (10)!</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">spin_until_future_complete</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">future</span><span class="p">)</span> <span class="c1"># (11)!</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>    <span class="n">response</span> <span class="o">=</span> <span class="n">future</span><span class="o">.</span><span class="n">result</span><span class="p">()</span> <span class="c1"># (12)!</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>    <span class="n">client</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>        <span class="sa">f</span><span class="s2">&quot;The server has responded with:</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>        <span class="sa">f</span><span class="s2">&quot; - </span><span class="si">{</span><span class="s1">&#39;Correct :)&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">response</span><span class="o">.</span><span class="n">correct</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;Incorrect :(&#39;</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>        <span class="sa">f</span><span class="s2">&quot; - Number of attempts so far: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">num_guesses</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>        <span class="sa">f</span><span class="s2">&quot; - A hint for your next guess: &#39;</span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">hint</span><span class="si">}</span><span class="s2">&#39;.&quot;</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>    <span class="p">)</span> <span class="c1"># (13)!</span>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a>    <span class="n">client</span><span class="o">.</span><span class="n">destroy_node</span><span class="p">()</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a>    <span class="n">rclpy</span><span class="o">.</span><span class="n">shutdown</span><span class="p">()</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>    <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
+<ol>
+<li>
+<p>Nothing above this should be new to you. </p>
+<p>Here however, we're importing a standard Python module called <code>argparse</code>, which we'll use to build a <em>command-line interface</em> for our node.</p>
+</li>
+<li>
+<p>Creating a Service <em>Client</em> is done using the <code>create_client()</code> class method, providing the name of the service that we want to call (<code>srv_name</code>), and specifying the interface type used by it (<code>srv_type</code>). </p>
+<p><code>srv_type</code> and <code>srv_name</code> <strong>must</strong> match the definition in the server, in order to be able to communicate and send requests to it. </p>
+</li>
+<li>
+<p>Here we're building a simple Command-line Interface (CLI) for the node, using <code>argparse</code>.</p>
+</li>
+<li>
+<p>We add an argument here called "guess", which will be used to pass our guesses for the number game from the command line, into this node.</p>
+<p>The node itself can then access the value that we've passed to it (an <code>int</code>) and use this to construct a service request.</p>
+<p>We've assigned a default value of <code>0</code> here, for cases where we don't pass a guess from the CLI.</p>
+</li>
+<li>
+<p>Here we're adding a <em>second</em> Command-line Argument (CLA) called "cheat".</p>
+<p><code class="highlight"><span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span></code> ensures that if we don't specify this argument as a CLA then the value will be set to <code>False</code>. If we do pass in this argument then the value will be <code>True</code>. </p>
+<p>(You'll see how this all works shortly, when we actually run the node.)</p>
+</li>
+<li>
+<p>Here we "parse" the arguments that have been passed to the node from the CLI, so that we can access them from <code>self.args</code>.</p>
+</li>
+<li>
+<p>We use a <code>while</code> loop here to halt the execution of the code at this point and wait for the service to become available (if it isn't already). </p>
+<p>We can't send a request to a service that isn't actually running!</p>
+</li>
+<li>
+<p>In this class method we construct a service <strong>request</strong>, based on the values that have been passed via the CLI.</p>
+<p>(This method is called in the <code>main()</code> function below.)</p>
+<p>We know what the <strong>request</strong> attributes are called, because we defined them in the <code>MyNumberGame.srv</code> file, and we can also use <code>ros2 interface show</code> to recall them at any point:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>$ ros2 interface show part4_services/srv/MyNumberGame
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>int32 guess
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>bool cheat
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>---
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>int32 num_guesses
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>string hint
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>bool correct
+</code></pre></div>
+<p><code class="highlight"><span class="n">call_async</span><span class="p">(</span><span class="n">request</span><span class="p">)</span></code> then actually sends this request to the server.</p>
+</li>
+<li>
+<p>Here we're grabbing the values passed via the CLI and printing them as a log message to the terminal, in order to verify exactly what request will be sent.</p>
+</li>
+<li>
+<p>We then call our client's <code>send_request()</code> class method, supplying the <code>guess</code> and <code>cheat</code> values from the CLI to this too, in order for the request to be constructed accordingly, and sent to the server. </p>
+<p>The output of this function is the output of the <code>call_async(request)</code> call, which we assign to a variable called <code>future</code>.</p>
+</li>
+<li>
+<p>We use the <code>rclpy.spin_until_future_complete()</code> method here, which (as the name suggests) will allow our node (<code>client</code>) to spin <em>only</em> until our service request (<code>future</code>) has completed. </p>
+</li>
+<li>
+<p>Once we've reached this point then the service has completed and returned its <strong>Response</strong>. </p>
+<p>We obtain the response from our <code>future</code> object so that we can read its values...</p>
+</li>
+<li>
+<p>To finish off, we construct another log message to contain all the values returned by the Server (i.e. the <strong>Response</strong>). </p>
+<p>We know what these attributes are called, because we defined them in the <code>MyNumberGame.srv</code> file, which we can recall at any point using <code>ros2 interface show</code>:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$ ros2 interface show part4_services/srv/MyNumberGame
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>int32 guess
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>bool cheat
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>---
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>int32 num_guesses
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>string hint
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>bool correct
+</code></pre></div>
+</li>
+</ol>
+<p align="center">
+  <a href="../../part4#ex_srv_cli_ret">&#8592; Back to Part 4</a>
+</p>
 
 
 
@@ -1935,7 +2029,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T17:55:20+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-12T13:40:51+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-12</span>
   </span>
 
     
@@ -1945,7 +2039,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-10T17:55:20+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-12T13:40:51+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-12</span>
   </span>
 
     
@@ -1997,13 +2091,13 @@
         
         
           
-          <a href="../move_server/" class="md-footer__link md-footer__link--next" aria-label="Next: Part 4 Move Service-Server">
+          <a href="../../part6/line_follower/" class="md-footer__link md-footer__link--next" aria-label="Next: Part 6 Line Following (Setup)">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Part 4 Move Service-Server
+                Part 6 Line Following (Setup)
               </div>
             </div>
             <div class="md-footer__button md-icon">

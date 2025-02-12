@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/tuos_logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2082,7 +2082,7 @@
 </ul>
 <h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="">TODO</a></li>
+<li><a href="../part4/number_game_client/">The <code>number_game_client.py</code> Node (for Exercise 5)</a></li>
 </ul>
 <h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
 <p><strong>Step 1: Launch your ROS2 Environment</strong></p>
@@ -2108,7 +2108,7 @@
 <li>The Service <strong>Server</strong> processes that request and sends back a <strong>Response</strong>.</li>
 </ul>
 <figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The difference between topic-based messaging and the ROS Service protocol" src="../part4/topic_vs_service.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="The difference between topic-based messaging and the ROS Service protocol" src="../part4/topic_vs_service.png" width="600px" /></a></p>
 </figure>
 <p>This is a bit like a transaction: one node requests something, and another node fulfils that request and responds. This is good for <strong>quick, short duration tasks</strong>, e.g.:</p>
 <ol>
@@ -2186,6 +2186,7 @@
 <p>We can use the <code>-m</code> flag to filter for <em>message</em> interfaces, or the <code>-s</code> flag to filter for <em>service</em> interfaces. Try the latter:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>list<span class="w"> </span>-s
 </code></pre></div>
+<p><a name="grep"></a></p>
 </li>
 <li>
 <p>Still quite a lot there, right!? Let's filter this further with <a href="https://en.wikipedia.org/wiki/Grep">Grep</a> to identify <em>only</em> interfaces that belong to the <code>tuos_interfaces</code> package:</p>
@@ -2267,7 +2268,7 @@
 </ol>
 <h2 id="creating-our-own-services">Creating Our Own Services<a class="headerlink" href="#creating-our-own-services" title="Permanent link">&para;</a></h2>
 <p>Over the next three exercises, we'll learn how to create a service interface of our own, and build a Server and Client (in Python) that use this.</p>
-<p>First though, we need to create a new package, so follow the same procedure as you have in the previous parts of this course to create a new package called <code>part4_services</code>.</p>
+<p>First though, we need to create a new package, so follow the same procedure as you have in the previous parts of this course to create one called <code>part4_services</code>.</p>
 <hr />
 <p><strong>TERMINAL 1:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/tuos_ros/
@@ -2303,7 +2304,7 @@
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>string hint
 <a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>bool correct
 </code></pre></div>
-<p>The Request will therefore have two fields now:</p>
+<p>The <strong>Request</strong> will therefore have two fields now:</p>
 <p><center></p>
 <table>
 <thead>
@@ -2329,7 +2330,7 @@
 <p></center></p>
 </li>
 <li>
-<p>The rest of the process now is exactly the same as when we <a href="../part1/#ex7">created a <em>message</em> interface in Part 1</a>. </p>
+<p>The rest of the process now is very similar to creating a <em>message</em> interface, <a href="../part1/#ex7">like we did in Part 1</a>. </p>
 <p>First, we need to declare the interface in our <code>CMakeLists.txt</code> file, by adding the following above the <code>ament_package()</code> line:</p>
 <div class="highlight"><span class="filename">part4_services/CMakeLists.txt</span><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>find_package(rosidl_default_generators REQUIRED)
 <a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>rosidl_generate_interfaces(${PROJECT_NAME}
@@ -2371,7 +2372,7 @@
 <p>First, <em>list</em> all the ROS service interfaces that are available on the system (<code>-s</code> to filter for <em>service</em> interface types remember!):</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>list<span class="w"> </span>-s
 </code></pre></div>
-<p>Scroll through this list and see if you can find <code>part4_services/srv/MyNumberGame</code> (or, use <code>grep</code>).</p>
+<p>Scroll through this list and see if you can find <code>part4_services/srv/MyNumberGame</code> (or, <a href="#grep">use <code>grep</code> again</a>).</p>
 </li>
 <li>
 <p>If it's there, use the <code>show</code> sub-command to <em>show</em> the data structure:</p>
@@ -2387,7 +2388,7 @@
 <ol>
 <li>
 <p>In <strong>TERMINAL 1</strong> still, navigate into the <code>part4_services/scripts</code> directory:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part4_services/scripts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part4_services/scripts/
 </code></pre></div>
 </li>
 <li>
@@ -2406,7 +2407,7 @@
 </code></pre></div>
 </li>
 <li>
-<p>Build and re-source now:</p>
+<p>Build and re-source now: <a name="colcon-build-steps"></a></p>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part4_services<span class="w"> </span>--symlink-install
@@ -2421,10 +2422,10 @@
 <p>Open up the <code>my_number_game.py</code> node in VS Code and review it.</p>
 </li>
 <li>
-<p>As it stands, the node imports the <code>NumberGame</code> service interface from <code>tuos_interfaces</code>, so you'll need to change this so that we're now using the interface from our own package:</p>
+<p>As it stands, the node imports the <code>NumberGame</code> service interface from <code>tuos_interfaces</code>, so you'll need to change this to use the interface from our own package:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">part4_services.srv</span><span class="w"> </span><span class="kn">import</span> <span class="n">MyNumberGame</span>
 </code></pre></div>
-<p>You'll also need to change the <code>srv_type</code> definition, when the service is created in the <code class="highlight"><span class="fm">__init__</span><span class="p">()</span></code> method:</p>
+<p>You'll also need to change the <code>srv_type</code> definition, when the service is created in the <code class="highlight"><span class="fm">__init__</span><span class="p">()</span></code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">srv</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_service</span><span class="p">(</span>
 <a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>    <span class="n">srv_type</span><span class="o">=</span><span class="n">MyNumberGame</span><span class="p">,</span>
 <a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a>    <span class="n">srv_name</span><span class="o">=</span><span class="s1">&#39;guess_the_number&#39;</span><span class="p">,</span>
@@ -2434,7 +2435,7 @@
 </li>
 <li>
 <p>Everything that this service <em>does</em> (when a <strong>Request</strong> is sent to it), is contained within the <code>srv_callback()</code> method. </p>
-<p>In here, <code>request</code> parameters are processed, <code>response</code> parameters are defined and the overall <code>response</code> is returned at the very end of the callback.</p>
+<p>In here, <code>request</code> parameters are processed, <code>response</code> parameters are defined and the overall <code>response</code> is returned once the callback tasks have been completed.</p>
 </li>
 <li>
 <p>You may have noticed that when we created our <code>MyNumberGame</code> interface in the previous exercise, the <strong>Response</strong> parameters were the same as the originals from Exercise 1 &amp; 2, <em>except</em> that some of their names were changed slightly!</p>
@@ -2445,10 +2446,17 @@
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>bool cheat
 </code></pre></div>
 <p>... i.e. a <em>boolean</em> flag with the attribute name <code>cheat</code>.</p>
-<p>Adapt the <code>srv_callback()</code> method further now, to read this value as well. If (when a <strong>request</strong> is made to the server) the value of <code>cheat</code> is <code>True</code> the hint that the server returns should contain the actual secret number! E.g.:</p>
+<p>Adapt the <code>srv_callback()</code> method further now to read this value as well. </p>
+<ul>
+<li>
+<p>If (when a <strong>request</strong> is made to the server) the value of <code>cheat</code> is <code>True</code> the hint that the server returns should contain the actual secret number! E.g.:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>hint=&#39;The answer is 67!&#39;
 </code></pre></div>
+</li>
+<li>
 <p>In such situations, the value of <code>response.num_guesses</code> should still go up by one, and the <code>correct</code> flag should still return <code>False</code>.</p>
+</li>
+</ul>
 </li>
 </ol>
 </li>
@@ -2463,6 +2471,42 @@
 </li>
 </ol>
 <h4 id="ex5"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 5: Creating a Python Service Client<a class="headerlink" href="#ex5" title="Permanent link">&para;</a></h4>
+<p>So far we've been making service calls from the command-line, but we can also call services from within Python Nodes. When a node <em>calls</em> (i.e. <em>requests</em>) a service, it becomes a Service <em>"Client"</em>.</p>
+<ol>
+<li>
+<p>Make sure your <code>my_number_game.py</code> node is still active in <strong>TERMINAL 1</strong> for this exercise.</p>
+</li>
+<li>
+<p>In <strong>TERMINAL 2</strong>, create a new file in the <code>part4_services/scripts</code> directory called <code>number_game_client.py</code>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>touch<span class="w"> </span>~/ros2_ws/src/part4_services/scripts/number_game_client.py
+</code></pre></div>
+</li>
+<li>
+<p><a href="../part1/#chmod">Make this executable (with <code>chmod</code>)</a>.</p>
+</li>
+<li>
+<p>Add this to your package's <code>part4_services/CMakeLists.txt</code>:</p>
+<div class="highlight"><span class="filename">CMakeLists.txt</span><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a># Install Python executables
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>install(PROGRAMS
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>scripts/my_number_game.py
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="#__codelineno-40-4"></a>scripts/number_game_client.py
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="#__codelineno-40-5"></a>DESTINATION lib/${PROJECT_NAME}
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="#__codelineno-40-6"></a>)
+</code></pre></div>
+</li>
+<li>
+<p>Re-build your package (as before), remembering that there are <a href="#colcon-build-steps">three steps to this</a>:</p>
+<ol>
+<li>Navigate to the <strong>root</strong> of the ROS2 workspace,</li>
+<li>Run <code>colcon build</code> (with the necessary additional arguments), </li>
+<li>Re-source your <code>~/.bashrc</code>.</li>
+</ol>
+<p><a name="ex_srv_cli_ret"></a></p>
+</li>
+<li>
+<p>Now, open up the <code>number_game_client.py</code> file in VS Code. <a href="../part4/number_game_client/">Have a look at the code here</a>, review it (including all the annotations), then copy and paste it and save the file.</p>
+</li>
+</ol>
 <h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
 <p>In Part 4 you have learnt about ROS Services and why they might be useful for robot applications:</p>
 <ul>
@@ -2486,7 +2530,7 @@
 </ul>
 <h3 id="backup">WSL-ROS2 Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>Remember, to save the work you have done in WSL-ROS2 during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS2 Terminal Instance now:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 <p>You'll then be able to restore it to a fresh WSL-ROS2 environment next time you fire one up (<code>wsl_ros restore</code>).  </p>
 <div class="footnote">
@@ -2522,7 +2566,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-11T22:50:09+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-12T13:40:51+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-12</span>
   </span>
 
     
