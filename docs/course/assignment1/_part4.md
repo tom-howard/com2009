@@ -31,7 +31,7 @@ By the end of this session you will be able to:
 
 ### Additional Resources
 
-* [TODO]()
+* [The `number_game_client.py` Node (for Exercise 5)](./part4/number_game_client.md)
 
 ## Getting Started
 
@@ -73,7 +73,7 @@ Another way to pass data between ROS Nodes is by using *Services*. These are bas
 * The Service **Server** processes that request and sends back a **Response**.
 
 <figure markdown>
-  ![The difference between topic-based messaging and the ROS Service protocol](part4/topic_vs_service.png)
+  ![The difference between topic-based messaging and the ROS Service protocol](part4/topic_vs_service.png){width=600px}
 </figure>
 
 This is a bit like a transaction: one node requests something, and another node fulfils that request and responds. This is good for **quick, short duration tasks**, e.g.:
@@ -171,6 +171,8 @@ We need to interrogate this now, in order to work out how to play the game...
         ros2 interface list -s
         ```
     
+        <a name="grep"></a>
+
     1. Still quite a lot there, right!? Let's filter this further with [Grep](https://en.wikipedia.org/wiki/Grep) to identify *only* interfaces that belong to the `tuos_interfaces` package:
 
         ```bash
@@ -263,7 +265,7 @@ We're now ready to make a call to the service, and we can do this using the `ros
 
 Over the next three exercises, we'll learn how to create a service interface of our own, and build a Server and Client (in Python) that use this.
 
-First though, we need to create a new package, so follow the same procedure as you have in the previous parts of this course to create a new package called `part4_services`.
+First though, we need to create a new package, so follow the same procedure as you have in the previous parts of this course to create one called `part4_services`.
 
 ***
 **TERMINAL 1:**
@@ -311,7 +313,7 @@ Let's create a service interface now which has a *similar* structure to the one 
     bool correct
     ```
 
-    The Request will therefore have two fields now:
+    The **Request** will therefore have two fields now:
 
     <center>
 
@@ -322,7 +324,7 @@ Let's create a service interface now which has a *similar* structure to the one 
 
     </center>
 
-1. The rest of the process now is exactly the same as when we [created a *message* interface in Part 1](./part1.md#ex7). 
+1. The rest of the process now is very similar to creating a *message* interface, [like we did in Part 1](./part1.md#ex7). 
     
     First, we need to declare the interface in our `CMakeLists.txt` file, by adding the following above the `ament_package()` line:
 
@@ -369,7 +371,7 @@ Let's create a service interface now which has a *similar* structure to the one 
         ros2 interface list -s
         ```
 
-        Scroll through this list and see if you can find `part4_services/srv/MyNumberGame` (or, use `grep`).
+        Scroll through this list and see if you can find `part4_services/srv/MyNumberGame` (or, [use `grep` again](#grep)).
 
     1. If it's there, use the `show` sub-command to *show* the data structure:
 
@@ -386,7 +388,7 @@ We're going to take a copy of the `tuos_examples/number_game.py` server node now
 1. In **TERMINAL 1** still, navigate into the `part4_services/scripts` directory:
 
     ```bash
-    cd ~/ros2_ws/src/part4_services/scripts
+    cd ~/ros2_ws/src/part4_services/scripts/
     ```
 
 1. Copy the `number_game.py` script from the course repo into here, renaming it to `my_number_game.py` at the same time:
@@ -407,7 +409,7 @@ We're going to take a copy of the `tuos_examples/number_game.py` server node now
     )
     ```
 
-1. Build and re-source now:
+1. Build and re-source now: <a name="colcon-build-steps"></a>
 
     ```bash
     cd ~/ros2_ws/
@@ -423,13 +425,13 @@ We're going to take a copy of the `tuos_examples/number_game.py` server node now
 
     1. Open up the `my_number_game.py` node in VS Code and review it.
 
-    1. As it stands, the node imports the `NumberGame` service interface from `tuos_interfaces`, so you'll need to change this so that we're now using the interface from our own package:
+    1. As it stands, the node imports the `NumberGame` service interface from `tuos_interfaces`, so you'll need to change this to use the interface from our own package:
 
         ```py
         from part4_services.srv import MyNumberGame
         ```
 
-        You'll also need to change the `srv_type` definition, when the service is created in the `#!py __init__()` method:
+        You'll also need to change the `srv_type` definition, when the service is created in the `#!py __init__()`:
 
         ```py
         self.srv = self.create_service(
@@ -441,7 +443,7 @@ We're going to take a copy of the `tuos_examples/number_game.py` server node now
     
     1. Everything that this service *does* (when a **Request** is sent to it), is contained within the `srv_callback()` method. 
 
-        In here, `request` parameters are processed, `response` parameters are defined and the overall `response` is returned at the very end of the callback.
+        In here, `request` parameters are processed, `response` parameters are defined and the overall `response` is returned once the callback tasks have been completed.
     
     1. You may have noticed that when we created our `MyNumberGame` interface in the previous exercise, the **Response** parameters were the same as the originals from Exercise 1 & 2, *except* that some of their names were changed slightly!
 
@@ -455,13 +457,15 @@ We're going to take a copy of the `tuos_examples/number_game.py` server node now
 
         ... i.e. a *boolean* flag with the attribute name `cheat`.
 
-        Adapt the `srv_callback()` method further now, to read this value as well. If (when a **request** is made to the server) the value of `cheat` is `True` the hint that the server returns should contain the actual secret number! E.g.:
+        Adapt the `srv_callback()` method further now to read this value as well. 
+            
+        * If (when a **request** is made to the server) the value of `cheat` is `True` the hint that the server returns should contain the actual secret number! E.g.:
 
-        ``` { .txt .no-copy } 
-        hint='The answer is 67!'
-        ```
+            ``` { .txt .no-copy } 
+            hint='The answer is 67!'
+            ```
 
-        In such situations, the value of `response.num_guesses` should still go up by one, and the `correct` flag should still return `False`.
+        * In such situations, the value of `response.num_guesses` should still go up by one, and the `correct` flag should still return `False`.
     
 1. Once you've adapted the node, test it out by running it:
 
@@ -476,10 +480,38 @@ We're going to take a copy of the `tuos_examples/number_game.py` server node now
 
 #### :material-pen: Exercise 5: Creating a Python Service Client {#ex5}
 
+So far we've been making service calls from the command-line, but we can also call services from within Python Nodes. When a node *calls* (i.e. *requests*) a service, it becomes a Service *"Client"*.
 
+1. Make sure your `my_number_game.py` node is still active in **TERMINAL 1** for this exercise.
 
+1. In **TERMINAL 2**, create a new file in the `part4_services/scripts` directory called `number_game_client.py`.
 
+    ```bash
+    touch ~/ros2_ws/src/part4_services/scripts/number_game_client.py
+    ```
 
+1. [Make this executable (with `chmod`)](./part1.md#chmod).
+
+1. Add this to your package's `part4_services/CMakeLists.txt`:
+
+    ```txt title="CMakeLists.txt"
+    # Install Python executables
+    install(PROGRAMS
+    scripts/my_number_game.py
+    scripts/number_game_client.py
+    DESTINATION lib/${PROJECT_NAME}
+    )
+    ```
+
+1. Re-build your package (as before), remembering that there are [three steps to this](#colcon-build-steps):
+
+    1. Navigate to the **root** of the ROS2 workspace,
+    1. Run `colcon build` (with the necessary additional arguments), 
+    1. Re-source your `~/.bashrc`.
+
+    <a name="ex_srv_cli_ret"></a>
+
+1. Now, open up the `number_game_client.py` file in VS Code. [Have a look at the code here](./part4/number_game_client.md), review it (including all the annotations), then copy and paste it and save the file.
 
 
 ## Wrapping Up
