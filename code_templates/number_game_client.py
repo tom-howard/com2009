@@ -55,9 +55,9 @@ def main():
     
     client.get_logger().info(
         f"The server has responded with:\n"
-        f" - {'Correct :)' if response.correct else 'Incorrect :('}\n"
+        f" - {'You guessed correctly! :)' if response.correct else 'Incorrect guess :('}\n"
         f" - Number of attempts so far: {response.num_guesses}\n"
-        f" - A hint for your next guess: '{response.hint}'."
+        f" - A hint: '{response.hint}'."
     ) # (13)!
     
     client.destroy_node()

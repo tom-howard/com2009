@@ -492,14 +492,14 @@ So far we've been making service calls from the command-line, but we can also ca
 
 1. [Make this executable (with `chmod`)](./part1.md#chmod).
 
-1. Add this to your package's `part4_services/CMakeLists.txt`:
+1. Add this to your package's *Python executables* list in `CMakeLists.txt`:
 
     ```txt title="CMakeLists.txt"
     # Install Python executables
     install(PROGRAMS
-    scripts/my_number_game.py
-    scripts/number_game_client.py
-    DESTINATION lib/${PROJECT_NAME}
+      scripts/my_number_game.py
+      scripts/number_game_client.py
+      DESTINATION lib/${PROJECT_NAME}
     )
     ```
 
@@ -513,6 +513,136 @@ So far we've been making service calls from the command-line, but we can also ca
 
 1. Now, open up the `number_game_client.py` file in VS Code. [Have a look at the code here](./part4/number_game_client.md), review it (including all the annotations), then copy and paste it and save the file.
 
+1. You should now be able to run the code with `ros2 run`. To begin with, run it without supplying any additional command-line arguments:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    ros2 run part4_services number_game_client.py
+    ```
+    ***
+
+    You'll probably then get an output like this:
+
+    ``` { .txt .no-copy }
+    [INFO] [#####] [number_game_client]: Sending the request:
+     - guess: 0
+     - cheat: False
+       Awaiting response...
+    [INFO] [#####] [number_game_client]: The server has responded with:
+     - Incorrect guess :(
+     - Number of attempts so far: 1
+     - A hint: 'Higher'.
+    ```
+
+    Notice how the request parameters `guess` and `cheat` have defaulted to `0` and `False` respectively?
+
+1. Supply a guess now, using our node's CLI:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    ros2 run part4_services number_game_client.py --guess GUESS
+    ```
+    ***
+
+    ... replacing `GUESS` with an actual number!
+
+1. Have a go at cheating now too:
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    ros2 run part4_services number_game_client.py --cheat
+    ```
+    ***
+
+    ... notice how we only need to supply the `--cheat` flag, no actual value is required.
+
+## The Map Saver Service
+
+Clearly the examples that we've been working with here so far have been fairly trivial: it's unlikely that you'll *ever* need to program a robot to play the number game! The aim however has been to illustrate how ROS Services work, and how to develop your own. 
+
+One application that you *might* find useful however is *map saving*. In Part 3 we learnt about SLAM, where we drove a robot around in an environment while SLAM algorithms were working in the background to generate a map of the world using data from the robot's LiDAR sensor and its odometry system:
+
+<figure markdown>
+  ![](./part3/slam_steps.png){width=500px}
+</figure>
+
+Having mapped out the environment, we called up a node called `map_saver_cli` from the `nav2_map_server` package, to save a copy of that map to a file:
+
+``` { .bash .no-copy }
+ros2 run nav2_map_server map_saver_cli -f MAP_NAME
+```
+
+... wouldn't it be nice if there was a way to be able to do this *programmatically* (i.e. from within a Python node, for example) rather than having to run the above command manually? Well, there is a way, and guess what - it involves *Services*!
+
+#### :material-pen: Exercise 6: Developing A Map Saver Service Client
+
+1. Make sure everything in **TERMINALS 1** and **2** from the previous exercises are closed down now.
+
+1. In **TERMINAL 1**, let's fire up the *Nav World* again, like we did in Part 3:
+
+    ***
+    **TERMINAL 1:**
+    ```bash
+    ros2 launch tuos_simulations nav_world.launch.py
+    ```
+    ***
+
+    <figure markdown>
+      ![](./part3/nav_world.jpg){width=500px}
+    </figure>
+
+1. In **TERMINAL 2**, let's also fire up *Cartographer* again (the SLAM algorithms):
+
+    ***
+    **TERMINAL 2:**
+    ```bash
+    ros2 launch tuos_simulations cartographer.launch.py
+    ```
+    ***
+
+    <figure markdown>
+      ![](./part3/cartographer_rviz.png){width=500px}
+    </figure>
+
+1. Open up *another* terminal instance now (**TERMINAL 3**), and use this one to fire up the *Map Saver Service* (wouldn't it be nice if we could [launch all of these launch files at once](./part3.md#ex2)?!):
+
+    ***
+    **TERMINAL 3:**
+    ```bash
+    ros2 launch nav2_map_server map_saver_server.launch.py
+    ```
+    ***
+
+    This will add a number of `/map_saver` services to our ROS network.
+
+1. Use a `ros2 service` sub-command to identify all of these services (like we did in [Exercise 1](#ex1)).
+
+    Do you see any in this list that could be related to saving a map?[^save-map]
+
+    [^save-map]: There should be one in the list called `/map_saver/save_map`
+
+1. Use another `ros2 service` sub-command to determine the type of interface used by this service (again, like we did in Exercise 1).
+
+1. Next, use a `ros2 interface` command to discover the structure of this service interface.
+
+    !!! question "Questions"
+        1. How many **Request** parameters does this interface have?
+        1. How many **Response** parameters are there too?[^save-map-interface]
+        1. What are their data types?
+    
+    [^save-map-interface]: The `nav2_msgs/srv/SaveMap` Service Interface has **6** Requests (`map_topic`, `map_url`, `image_format`, `map_mode`, `free_thresh`, `occupied_thresh`) and **1** Response (`result`).
+
+1. **Develop a Python Service Client to make calls to this service**:
+
+    1. Call it `part4_services/scripts/map_saver_client.py`
+    1. Use ex5 as a guide
+    1. remove argparse elements (no CLI)
+    1. [see here for a usage example](https://github.com/ros-navigation/navigation2/blob/main/nav2_map_server/README.md#services)
+    1. map_topic = 'map'
+    1. `free_thresh` and `occupied_thresh` can be unset (defaults will be applied)
 
 ## Wrapping Up
 
