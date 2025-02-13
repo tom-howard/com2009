@@ -7,7 +7,9 @@ title: Introduction
 ## Handling the Robots
 
 !!! warning "Health and Safety"
-    You must have completed a health and safety quiz before working with the robots for the first time. This quiz is available on Blackboard.
+    Everyone needs to complete a health and safety quiz related to working with the real robots. This quiz (and the deadline for completing it) is available on Blackboard.
+
+    Make sure **at least one member of your team** has completed this before proceeding!
 
 <figure markdown>
   ![](../images/waffle/handling.png){width=600px}

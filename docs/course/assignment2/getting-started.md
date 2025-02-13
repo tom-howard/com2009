@@ -46,6 +46,12 @@ Nominate **only one member of your team** to do this bit.
     * `com2009_team08_2025` for **Team 8**
     * `com2009_team15_2025` for **Team 15**
 
+    !!! warning "Important"
+        Your repository name should match the above format **exactly**:
+            
+        * The name should be **19 characters long** in total.
+        * All characters should be **lower case** (e.g. `com2009`, **NOT** `COM2009`)
+
 
 1. Select `Private` to **make the repository private**, then click the green `Create repository` button. 
 
@@ -196,14 +202,12 @@ You'll need to copy your ROS package onto the Robot Laptops when working on the 
 
 Assignment #2 involves extensive work with our real robots, and you'll therefore have access to the robots for every lab session so that you can work on these tasks as you wish. All the details on how the robots work, how to get them up and running and start programming them can be found in the "Waffles" section of this course site. You should proceed now as follows (**in your teams**):
 
-1. Everyone **must** complete a health and safety quiz (on Blackboard) before you (or your team) work with the real robots for the first time. Head to Blackboard and do this now, if you haven't already.
 1. Each team has been assigned a specific robot (there's a list on Blackboard). When you're ready, speak to a member of the teaching team who will provide you with the robot that has been assigned to you.
 1. Work through each page of [the "Waffles" section of this site](../../waffles/README.md) (**in order**):
    
     * [ ] Read about [the hardware](../../waffles/intro.md).
     * [ ] Learn how to [launch ROS and get the robots up and running](../../waffles/launching-ros.md).
     * [ ] Work through the [Waffle (& ROS) Basics](../../waffles/basics.md), which will help to get you started and understand how ROS and the robots work.
-    * [ ] There is also some [Essential Information](../../waffles/essentials.md) that you must all be aware of when working with the real robots. Work through the further exercises on this page now.
-
-    * [ ] Finally, review the [Shutdown Procedures](../../waffles/shutdown.md) and follow the steps here to shut down the robot and power off the robotics laptop at the end of each lab session.
+    * [ ] There is also some further *Essential Information* that you must all be aware of when working with the real robots. Work through [the further exercises here](../../waffles/essentials.md) now.
+    * [ ] Finally, review the [Shutdown Procedures](../../waffles/shutdown.md). Follow these steps to shut down the robot and power off the robotics laptop at the end of each lab session.
     
