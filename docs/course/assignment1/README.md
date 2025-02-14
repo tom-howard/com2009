@@ -13,7 +13,7 @@ Each part of the course comprises a series of step-by-step instructions and exer
 
 * [Part 1: Getting Started with ROS 2](./part1.md)
 
-    *Learn the basics of ROS2 and become familiar with some key tools and principles, allowing you to program robots and work with ROS2 applications effectively.*
+    *Learn the basics of ROS 2 and become familiar with some key tools and principles, allowing you to program robots and work with ROS2 applications effectively.*
 
 * [Part 2: Odometry & Navigation](./part2.md)
 
