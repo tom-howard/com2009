@@ -1,5 +1,6 @@
 ---
 title: Accessing ROS for this Course
+description: "How to access ROS 2 on University Computers, or install it on your own."
 ---
 
 In order to engage with [the COM2009 Course Assignments](../course/README.md) you'll need access to a ROS environment. [As discussed here](../about/robots.md#software), the course is designed around the eighth version of ROS 2: **Humble Hawksbill**. 
