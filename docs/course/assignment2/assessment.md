@@ -14,7 +14,7 @@ All the above was covered in [the Getting Started section](./getting-started.md)
 Having completed all of this *successfully*, we'll be able to pull your package on each of the submission dates so that your team's Assignment #2 work can be assessed. If you *haven't* completed all this, then you could receive zero marks!
 
 !!! note
-    At some point within the first few weeks of the course, a `hello.txt` file will be pushed to your repo to confirm that we can access it, and it's been registered correctly.
+    At some point within the first few weeks of the course a `hello.md` file will be pushed to your repo (by Tom) to confirm that it has been registered correctly.
 
 ## Submission Points
 
