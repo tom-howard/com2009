@@ -2104,7 +2104,7 @@
 <li>Recognise how ROS Services differ from the standard topic-based publisher-subscriber approach, and identify appropriate use-cases for this type of messaging system.</li>
 <li>Identify the services that are available on a ROS network, and use ROS command-line tools to interrogate and <em>call</em> them.</li>
 <li>Develop Python Service Client Nodes.</li>
-<li>Invoke different services using multiple service-type interfaces.</li>
+<li>Invoke different services using various service-type interfaces.</li>
 </ol>
 <h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
 <ul>
@@ -2694,33 +2694,28 @@
 </li>
 </ol>
 <h3 id="summary-of-the-map-saver-service">Summary of the Map Saver Service<a class="headerlink" href="#summary-of-the-map-saver-service" title="Permanent link">&para;</a></h3>
-<p>In Part 3 we saved our SLAM map once via a command-line call, after we had fully explored and mapped out the environment. In real-world tasks however (i.e. tasks that you might need to complete in <a href="../../assignment2/">Assignment #2</a> for example), your robot might be exploring an environment <em>autonomously</em>, and you don't necessarily know when the full environment has been explored, so you might need to store this data <em>incrementally</em>! You might therefore want to program your robot with the ability to save a map <em>periodically</em> as more and more of the environment is explored.</p>
-<p>The process that we explored in the previous exercise allows you to do just that! In this example, our client node was programmed to make only one request to the server and then stop. It <em>could</em> however be programmed to make regular service requests (say, once every 5 or 10 seconds) in order to continuously update its map as it explores further and further.</p>
+<p><a href="../part3/#map-saver-cli">Back in Part 3</a> we saved our SLAM map once via a command-line call after we had <em>fully explored and mapped out the environment</em>:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>MAP_NAME
+</code></pre></div>
+<p>... which resulted in something like:</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../part3/slam_map.png" width="300px" /></a>
+  </p>
+<figcaption>The <code>MAP_NAME.pgm</code> file</figcaption>
+</figure>
+<p>In real-world tasks however (i.e. tasks that you might need to complete in <a href="../../assignment2/">Assignment #2</a> for example), your robot might be exploring an environment <em>autonomously</em>, and you don't necessarily know when the full environment has been explored, nor are you always going to be there to run the <code>map_saver_cli</code> node manually! You might therefore want to program your robot with the ability to save a map <em>incrementally</em> and <em>periodically</em> as more and more of the environment is explored.</p>
+<p>The process that we explored in the previous exercise allows you to do just that! In the example, our client node was programmed to make only one request to the server and then stop. It <em>could</em> however be programmed to make regular service requests (say, once every 5 or 10 seconds) in order to continuously update its map as the robot explores further and further.</p>
 <p>Think about how you might adapt the <code>map_saver_client.py</code> node to achieve this, drawing upon other exercises that you have worked through in previous parts of this course.  </p>
 <h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
-<p>In Part 4 you have learnt about ROS Services and why they might be useful for robot applications:</p>
+<p>In Part 4 we've learnt about ROS Services and why they might be useful for robot applications:</p>
 <ul>
-<li>Services differ from standard topic-based communication methods in ROS in that they are a direct form of communication between one node and another.  </li>
-<li>The communication between the two nodes is sequential or <em>synchronous</em>: once a service <em>Caller</em> has <em>called</em> a service, it must wait until it has received a <em>response</em>.</li>
-<li>This is useful for controlling <em>quick</em>, <em>short-duration</em> tasks or for <em>offloading computations</em> (which could perhaps also be considered <em>decision-making</em>).</li>
-</ul>
-<p>Having completed all the exercises above, you should now be able to:</p>
-<ul>
-<li>Create and execute Python Service <em>Servers</em>.</li>
-<li>Create and execute Python Service <em>Callers</em>, as well as call services from the command-line.</li>
-<li>Implement these principles with a range of different service message types to perform a number of different robot tasks.</li>
-<li>Use LiDAR data effectively for basic closed-loop robot control.</li>
-<li>Develop Python nodes which <em>also</em> incorporate principles from Parts 1, 2 &amp; 3 of this course:<ul>
-<li>Publishing and subscribing to topics.</li>
-<li>Controlling the velocity and position of a robot.</li>
-<li>Using the Python Class architecture.</li>
-<li>Harnessing ROS and Linux command-line tools.</li>
-</ul>
-</li>
+<li>Services differ from standard topic-based communication methods in ROS in that they are a <em>call and response</em> type of communication, taking place between one node and another.  </li>
+<li>Typically, a service <em>Caller</em> will <strong>request</strong> a service, and then wait for a <strong>response</strong> (although it is possible to do other things in the meantime).</li>
+<li>In general however, Services are useful for controlling <em>quick</em>, <em>short-duration</em> tasks or <em>calculations</em>.</li>
 </ul>
 <h3 id="backup">WSL-ROS2 Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>Remember, to save the work you have done in WSL-ROS2 during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS2 Terminal Instance now:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="#__codelineno-50-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="#__codelineno-51-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 <p>You'll then be able to restore it to a fresh WSL-ROS2 environment next time you fire one up (<code>wsl_ros restore</code>).  </p>
 <div class="footnote">
@@ -2762,7 +2757,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T12:22:26+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T12:38:48+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
   </span>
 
     
