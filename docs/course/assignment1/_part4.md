@@ -20,7 +20,7 @@ By the end of this session you will be able to:
 1. Recognise how ROS Services differ from the standard topic-based publisher-subscriber approach, and identify appropriate use-cases for this type of messaging system.
 1. Identify the services that are available on a ROS network, and use ROS command-line tools to interrogate and *call* them.
 1. Develop Python Service Client Nodes.
-1. Invoke different services using multiple service-type interfaces.
+1. Invoke different services using various service-type interfaces.
 
 ### Quick Links
 
@@ -677,32 +677,34 @@ ros2 run nav2_map_server map_saver_cli -f MAP_NAME
     
 ### Summary of the Map Saver Service
 
-In Part 3 we saved our SLAM map once via a command-line call, after we had fully explored and mapped out the environment. In real-world tasks however (i.e. tasks that you might need to complete in [Assignment #2](../assignment2/README.md) for example), your robot might be exploring an environment *autonomously*, and you don't necessarily know when the full environment has been explored, so you might need to store this data *incrementally*! You might therefore want to program your robot with the ability to save a map *periodically* as more and more of the environment is explored.
+[Back in Part 3](./part3.md#map-saver-cli) we saved our SLAM map once via a command-line call after we had *fully explored and mapped out the environment*:
 
-The process that we explored in the previous exercise allows you to do just that! In this example, our client node was programmed to make only one request to the server and then stop. It *could* however be programmed to make regular service requests (say, once every 5 or 10 seconds) in order to continuously update its map as it explores further and further.
+``` { .bash .no-copy }
+ros2 run nav2_map_server map_saver_cli -f MAP_NAME
+```
+
+... which resulted in something like:
+
+<figure markdown>
+  ![](part3/slam_map.png){width=300px}
+  <figcaption>The <code>MAP_NAME.pgm</code> file</figcaption>
+</figure>
+
+
+In real-world tasks however (i.e. tasks that you might need to complete in [Assignment #2](../assignment2/README.md) for example), your robot might be exploring an environment *autonomously*, and you don't necessarily know when the full environment has been explored, nor are you always going to be there to run the `map_saver_cli` node manually! You might therefore want to program your robot with the ability to save a map *incrementally* and *periodically* as more and more of the environment is explored.
+
+The process that we explored in the previous exercise allows you to do just that! In the example, our client node was programmed to make only one request to the server and then stop. It *could* however be programmed to make regular service requests (say, once every 5 or 10 seconds) in order to continuously update its map as the robot explores further and further.
 
 Think about how you might adapt the `map_saver_client.py` node to achieve this, drawing upon other exercises that you have worked through in previous parts of this course.  
 
 ## Wrapping Up
 
-In Part 4 you have learnt about ROS Services and why they might be useful for robot applications:
+In Part 4 we've learnt about ROS Services and why they might be useful for robot applications:
 
-* Services differ from standard topic-based communication methods in ROS in that they are a direct form of communication between one node and another.  
-* The communication between the two nodes is sequential or *synchronous*: once a service *Caller* has *called* a service, it must wait until it has received a *response*.
-* This is useful for controlling *quick*, *short-duration* tasks or for *offloading computations* (which could perhaps also be considered *decision-making*).
+* Services differ from standard topic-based communication methods in ROS in that they are a *call and response* type of communication, taking place between one node and another.  
+* Typically, a service *Caller* will **request** a service, and then wait for a **response** (although it is possible to do other things in the meantime).
+* In general however, Services are useful for controlling *quick*, *short-duration* tasks or *calculations*.
 
-Having completed all the exercises above, you should now be able to:
-
-* Create and execute Python Service *Servers*.
-* Create and execute Python Service *Callers*, as well as call services from the command-line.
-* Implement these principles with a range of different service message types to perform a number of different robot tasks.
-* Use LiDAR data effectively for basic closed-loop robot control.
-* Develop Python nodes which *also* incorporate principles from Parts 1, 2 & 3 of this course:
-    * Publishing and subscribing to topics.
-    * Controlling the velocity and position of a robot.
-    * Using the Python Class architecture.
-    * Harnessing ROS and Linux command-line tools.
-    
 ### WSL-ROS2 Managed Desktop Users: Save your work! {#backup}
 
 Remember, to save the work you have done in WSL-ROS2 during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS2 Terminal Instance now:

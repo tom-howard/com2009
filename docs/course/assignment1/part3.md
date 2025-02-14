@@ -782,7 +782,7 @@ In combination, the data from the LiDAR sensor and the robot's odometry (the rob
     ```
     ***
     
-1. Then, run the `map_saver_cli` node from the `map_server` package to save a copy of your map:
+1. Then, run the `map_saver_cli` node from the `map_server` package to save a copy of your map: <a name="map-saver-cli"></a>
 
     ***
     **TERMINAL 3:**
