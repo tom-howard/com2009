@@ -6,7 +6,8 @@ description: Learn about Odometry, which informs us of a robot's position and or
 ## Introduction
 
 :material-pen: **Exercises**: 6  
-:material-timer: **Estimated Completion Time**: 3 hours
+:material-timer: **Estimated Completion Time**: 3 hours  
+:material-gauge: **Difficulty Level**: Intermediate  
 
 ### Aims
 

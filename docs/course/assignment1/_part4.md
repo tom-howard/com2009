@@ -5,8 +5,9 @@ description: Learn about an alternative way that ROS nodes can communicate acros
 
 ## Introduction
 
-:material-pen: **Exercises**: X  
-:material-timer: **Estimated Completion Time**: Y hours
+:material-pen: **Exercises**: 6  
+:material-timer: **Estimated Completion Time**: 2 hours  
+:material-gauge: **Difficulty Level**: Intermediate  
 
 ### Aims
 

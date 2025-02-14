@@ -6,7 +6,8 @@ description: Execute ROS applications more efficiently using launch files. Learn
 ## Introduction
 
 :material-pen: **Exercises**: 5  
-:material-timer: **Estimated Completion Time**: 2 hours
+:material-timer: **Estimated Completion Time**: 2 hours  
+:material-gauge: **Difficulty Level**: Intermediate  
 
 ### Aims
 

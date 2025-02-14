@@ -6,7 +6,8 @@ description: Learn how to work with images from an on-board camera. Learn techni
 ## Introduction
 
 :material-pen: **Exercises**: 4  
-:material-timer: **Estimated Completion Time**: 2 hours
+:material-timer: **Estimated Completion Time**: 2 hours  
+:material-gauge-full: **Difficulty Level**: Advanced 
 
 ### Aims
 

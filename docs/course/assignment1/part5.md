@@ -26,7 +26,8 @@ set -g mouse
 ## Introduction
 
 :material-pen: **Exercises**: 6 (5 *core*, 1 *advanced*)  
-:material-timer: **Estimated Completion Time**: 3 hours (core exercises only)
+:material-timer: **Estimated Completion Time**: 3 hours (core exercises only)  
+:material-gauge-full: **Difficulty Level**: Advanced 
 
 ### Aims
 

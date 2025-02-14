@@ -6,7 +6,8 @@ description: Learn the basics of ROS2 and become familiar with some key tools an
 ## Introduction
 
 :material-pen: **Exercises**: 8  
-:material-timer: **Estimated Completion Time**: 2 hours
+:material-timer: **Estimated Completion Time**: 2 hours  
+:material-gauge-low: **Difficulty Level**: Beginner 
 
 ### Aims
 
