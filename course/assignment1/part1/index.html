@@ -2529,7 +2529,7 @@
 <p>Either way, you should now have access to ROS2 via a Linux terminal instance, and we'll refer to this terminal instance as <strong>TERMINAL 1</strong>.</p>
 <p><strong>Step 3: Download The Course Repo</strong></p>
 <p><a name="course-repo"></a></p>
-<p>We've put together a few ROS packages specifically for this course. These all live within <a href="https://github.com/tom-howard/tuos_ros/tree/humble">this GitHub repo</a>, and you'll need to download and install this into your ROS environment now, before going any further.</p>
+<p>We've put together a few ROS packages specifically for this course. These all live within <a href="https://github.com/tom-howard/tuos_ros/tree/humble" target="_blank">this GitHub repo</a>, and you'll need to download and install this into your ROS environment now, before going any further.</p>
 <ol>
 <li>
 <p>In <strong>TERMINAL 1</strong>, Navigate into the <em>"ROS Workspace"</em> using the <code>cd</code> command<sup id="fnref:ros2_ws"><a class="footnote-ref" href="#fn:ros2_ws">1</a></sup>:</p>
@@ -2724,7 +2724,7 @@
 <li>From RQT Node Graph we know that the <code>/teleop_keyboard</code> node is the publisher (i.e. the node writing data to the topic)</li>
 <li>The <code>/turtlebot3_diff_drive</code> node is receiving this data (and acting upon it). This node therefore monitors (i.e. <em>subscribes</em> to) the <code>/cmd_vel</code> topic and makes the robot move in the simulator whenever a velocity command is published.</li>
 <li>
-<p>Data is transmitted on the <code>/cmd_vel</code> topic using an <a href="https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html">Interface</a>. This particular interface <em>type</em> is: <code>geometry_msgs/msg/Twist</code>. </p>
+<p>Data is transmitted on the <code>/cmd_vel</code> topic using an <a href="https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html" target="_blank">Interface</a>. This particular interface <em>type</em> is: <code>geometry_msgs/msg/Twist</code>. </p>
 <p>The <em>type</em> field has three parts to it:</p>
 <ol>
 <li><code>geometry_msgs</code>: the name of the ROS package that this interface belongs to.</li>
@@ -2791,8 +2791,8 @@
 <p>Packages are structured slightly differently in each case.</p>
 </li>
 </ol>
-<p>You can learn more about all this from the <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">Official ROS2 Tutorials</a> (if you're interested).</p>
-<p>We'll be using Python throughout this course, but we'll actually take a slightly different approach to package creation that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2). We've therefore created a helper script (inside the <code>tuos_ros</code> Course Repo) to help you create packages without using <em>either</em> of the above two commands. The approach we'll take is based on <a href="https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/">this tutorial (courtesy of the Robotics Backend)</a>, so feel free to look at this if you'd like to find out more. Then, simply follow the steps below to create your first ROS package for this course, using the <code>create_pkg.sh</code> helper tool.</p>
+<p>You can learn more about all this from the <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-Your-First-ROS2-Package.html">Official ROS2 Tutorials</a> (if you're interested){target="_blank"}.</p>
+<p>We'll be using Python throughout this course, but we'll actually take a slightly different approach to package creation that will provide us with a little more flexibility and ease of use (particularly for things we'll do later on in the Assignment #1 course and in Assignment #2). We've therefore created a helper script (inside the <code>tuos_ros</code> Course Repo) to help you create packages without using <em>either</em> of the above two commands. The approach we'll take is based on <a href="https://roboticsbackend.com/ros2-package-for-both-python-and-cpp-nodes/" target="_blank">this tutorial (courtesy of the Robotics Backend)</a>, so feel free to look at this if you'd like to find out more. Then, simply follow the steps below to create your first ROS package for this course, using the <code>create_pkg.sh</code> helper tool.</p>
 <ol>
 <li>
 <p>Navigate into the <code>tuos_ros</code> Course Repo that you downloaded earlier by using the Linux <code>cd</code> command (<strong>c</strong>hange <strong>d</strong>irectory). In <strong>TERMINAL 1</strong> enter the following:</p>
@@ -3176,7 +3176,7 @@
 </tbody>
 </table>
 <p></center></p>
-<p>We can give our fields any name that we want, but the data types must be either <a href="https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html#field-types">built-in-types</a> or other pre-existing ROS interfaces.</p>
+<p>We can give our fields any name that we want, but the data types must be either <a href="https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html#field-types" target="_blank">built-in-types</a> or other pre-existing ROS interfaces.</p>
 </li>
 <li>
 <p>We now need to declare this message in our package's <code>CMakeLists.txt</code> file, so that the necessary Python code can be created (by <code>colcon build</code>) to allow us to import this message into our own Python files.</p>
@@ -3378,16 +3378,16 @@
 <hr />
 <ol>
 <li id="fn:ros2_ws">
-<p>What is a ROS2 Workspace? <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#background">You can find out more here</a>.&#160;<a class="footnote-backref" href="#fnref:ros2_ws" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>What is a ROS2 Workspace? <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#background" target="_blank">You can find out more here</a>.&#160;<a class="footnote-backref" href="#fnref:ros2_ws" title="Jump back to footnote 1 in the text">&#8617;</a></p>
 </li>
 <li id="fn:colcon">
-<p>What is <strong>Colcon</strong>? <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#background">Find out more here</a>.&#160;<a class="footnote-backref" href="#fnref:colcon" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<p>What is <strong>Colcon</strong>? <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Colcon-Tutorial.html#background" target="_blank">Find out more here</a>.&#160;<a class="footnote-backref" href="#fnref:colcon" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:workspaces">
-<p><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#background">You can learn more about ROS2 Workspaces here</a>.&#160;<a class="footnote-backref" href="#fnref:workspaces" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p><a href="https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Creating-A-Workspace/Creating-A-Workspace.html#background" target="_blank">You can learn more about ROS2 Workspaces here</a>.&#160;<a class="footnote-backref" href="#fnref:workspaces" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:source-bashrc">
-<p>What does <code>source ~/.bashrc</code> do? <a href="https://devconnected.com/source-command-on-linux-explained/#Source_to_update_your_current_shell_environment_bashrc">See here for an explanation</a>.&#160;<a class="footnote-backref" href="#fnref:source-bashrc" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p>What does <code>source ~/.bashrc</code> do? <a href="https://devconnected.com/source-command-on-linux-explained/#Source_to_update_your_current_shell_environment_bashrc" target="_blank">See here for an explanation</a>.&#160;<a class="footnote-backref" href="#fnref:source-bashrc" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
@@ -3413,7 +3413,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T12:22:26+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T13:21:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
   </span>
 
     

@@ -2695,7 +2695,7 @@ set -g mouse
 </ol>
 <h2 id="what-is-a-ros-action">What is a ROS Action?<a class="headerlink" href="#what-is-a-ros-action" title="Permanent link">&para;</a></h2>
 <p>In this Exercise we launched an action server and then called it from the command-line using the <code>ros2 action send_goal</code> sub-command. Using the <code>-f</code> flag we were able to ask the server to provide us with <em>real-time feedback</em> on how it was getting on (in <strong>TERMINAL 3</strong>). In the same way as a ROS Service, the action also provided us with a <strong>result</strong> once the task had been completed. <strong>Feedback</strong> is one of the key features that differentiates a ROS Action from a ROS Service: An Action Server provides <strong>feedback</strong> messages at regular intervals whilst performing an action and working towards its <strong>goal</strong>. Another feature of ROS Actions is that they can be <em>cancelled</em> part-way through (which we'll play around with shortly).</p>
-<p>Ultimately, Actions use a combination of both Topic- <em>and</em> Service-based communication, to create a more advanced messaging protocol. Due to the provision of <em>feedback</em> and the ability to <em>cancel</em> a process part-way through, Actions are designed to be used for <strong>longer running tasks</strong>. You can read more about Actions in <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html">the official ROS 2 documentation here</a> (which also includes a nice animation to explain how they work).</p>
+<p>Ultimately, Actions use a combination of both Topic- <em>and</em> Service-based communication, to create a more advanced messaging protocol. Due to the provision of <em>feedback</em> and the ability to <em>cancel</em> a process part-way through, Actions are designed to be used for <strong>longer running tasks</strong>. You can read more about Actions in <a href="https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html" target="_blank">the official ROS 2 documentation here</a> (which also includes a nice animation to explain how they work).</p>
 <h3 id="the-format-of-action-interfaces">The Format of Action Interfaces<a class="headerlink" href="#the-format-of-action-interfaces" title="Permanent link">&para;</a></h3>
 <p>Like Services, Action Interfaces have multiple parts to them, and we need to know what format these action messages take in order to be able to use them.</p>
 <p>We ran <code>ros2 interface show</code> in the previous exercise, to interrogate the action interface used by the <code>/camera_sweep</code> action server:</p>
@@ -3412,7 +3412,7 @@ In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./par
 <li>ROS Actions.</li>
 </ol>
 <p>Through this course you've gained some practical experience using all three of these, but you may still be wondering how to select the appropriate one for a certain robot task... </p>
-<p><a href="https://docs.ros.org/en/humble/How-To-Guides/Topics-Services-Actions.html">This ROS.org webpage</a> summarises all of this very nicely (and briefly), so you should have a read through this to make sure you know what's what. In summary though:</p>
+<p><a href="https://docs.ros.org/en/humble/How-To-Guides/Topics-Services-Actions.html" target="_blank">This ROS.org webpage</a> summarises all of this very nicely (and briefly), so you should have a read through this to make sure you know what's what. In summary though:</p>
 <ul>
 <li><strong>Topics</strong>: Are most appropriate for broadcasting continuous data-streams such as sensor data and robot state information, and for publishing data that is likely to be required by a range of Nodes across a ROS network.</li>
 <li><strong>Services</strong>: Are most appropriate for very short procedures like <em>quick</em> calculations (inverse kinematics etc.) and performing short discrete actions that are unlikely to go wrong or will not need intervention (e.g. turning on a warning LED when a battery is low).</li>
@@ -3453,7 +3453,7 @@ In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./par
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T12:22:26+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T13:21:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
   </span>
 
     
