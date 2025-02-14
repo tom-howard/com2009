@@ -4,7 +4,7 @@ title: Installing WSL-ROS2 on your Own (Windows) Machine
 
 **Applicable to**: Windows 10 or 11 personal (unmanaged) computers
 
-You can install WSL-ROS2 (our purpose-built ROS image for this course) via the University of Sheffield [Software Download Service](https://www.sheffield.ac.uk/software/) (University login required).
+You can install WSL-ROS2 (our purpose-built ROS image for this course) via the University of Sheffield [Software Download Service](https://www.sheffield.ac.uk/software/){target="_blank"} (University login required).
 
 !!! note
     When you download WSL-ROS2 from the Software Download Service you will receive an email with installation instructions. We recommend that you follow the instructions provided on *this page* instead, as this page will be kept more up-to-date throughout the semester.
@@ -12,16 +12,16 @@ You can install WSL-ROS2 (our purpose-built ROS image for this course) via the U
 ## Prerequisites
 
 1. Your computer must be running Windows 10 **Build 19044 or higher**, or Windows 11.
-2. [Update the GPU drivers for your machine](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#install-support-for-linux-gui-apps).
+2. [Update the GPU drivers for your machine](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#install-support-for-linux-gui-apps){target="_blank"}.
 3. Install or update WSL:
-    1. If you don't already have WSL installed on your machine then follow [these instructions to install it](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#fresh-install---no-prior-wsl-installation).
-    2. If you *do* already have WSL installed on your machine, then follow [these instructions to update it](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#existing-wsl-install).
-4. [Install the Windows Terminal](https://learn.microsoft.com/en-us/windows/terminal/install).
-5. [Install Visual Studio Code](https://code.visualstudio.com/) and [the WSL VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl).
+    1. If you don't already have WSL installed on your machine then follow [these instructions to install it](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#fresh-install---no-prior-wsl-installation){target="_blank"}.
+    2. If you *do* already have WSL installed on your machine, then follow [these instructions to update it](https://learn.microsoft.com/en-us/windows/wsl/tutorials/gui-apps#existing-wsl-install){target="_blank"}.
+4. [Install the Windows Terminal](https://learn.microsoft.com/en-us/windows/terminal/install){target="_blank"}.
+5. [Install Visual Studio Code](https://code.visualstudio.com/){target="_blank"} and [the WSL VS Code extension](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl){target="_blank"}.
 
 ## Installing
 
-1. Go to the [IT Services Software Downloads](https://www.sheffield.ac.uk/software/) page (you'll need to log in with your university MUSE credentials).
+1. Go to the [IT Services Software Downloads](https://www.sheffield.ac.uk/software/){target="_blank"} page (you'll need to log in with your university MUSE credentials).
 2. Scroll down to the bottom, where you should see WSL-ROS listed.
     
     Click on the blue "Request WSL-ROS" button and then wait to receive an email to your university email address.
@@ -113,8 +113,8 @@ Only try this if you were **unable** to launch the robot simulation in the previ
 
 If you are unable to run GUI apps (having completed the steps in the section above), then you may need to try using a dedicated X Server instead. In [the prerequisites](#prerequisites), you should have already installed VcXsrv. 
 
-1. First, install the [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/).
-1. Download this [config file for VcXsrv](https://drive.google.com/file/d/1CMJZ6xVXJ2cKZ0NmdYaxUw9RfPsIGLX9/view?usp=sharing) and save it to your desktop as `wsl_ros_config.xlaunch`.
+1. First, install the [VcXsrv Windows X Server](https://sourceforge.net/projects/vcxsrv/){target="_blank"}.
+1. Download this [config file for VcXsrv](https://drive.google.com/file/d/1CMJZ6xVXJ2cKZ0NmdYaxUw9RfPsIGLX9/view?usp=sharing){target="_blank"} and save it to your desktop as `wsl_ros_config.xlaunch`.
 
     <figure markdown>
       ![](../figures/wsl-ros-config.png)

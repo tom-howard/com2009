@@ -294,7 +294,7 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
 
 In this Exercise we launched an action server and then called it from the command-line using the `ros2 action send_goal` sub-command. Using the `-f` flag we were able to ask the server to provide us with *real-time feedback* on how it was getting on (in **TERMINAL 3**). In the same way as a ROS Service, the action also provided us with a **result** once the task had been completed. **Feedback** is one of the key features that differentiates a ROS Action from a ROS Service: An Action Server provides **feedback** messages at regular intervals whilst performing an action and working towards its **goal**. Another feature of ROS Actions is that they can be *cancelled* part-way through (which we'll play around with shortly).
 
-Ultimately, Actions use a combination of both Topic- *and* Service-based communication, to create a more advanced messaging protocol. Due to the provision of *feedback* and the ability to *cancel* a process part-way through, Actions are designed to be used for **longer running tasks**. You can read more about Actions in [the official ROS 2 documentation here](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html) (which also includes a nice animation to explain how they work).
+Ultimately, Actions use a combination of both Topic- *and* Service-based communication, to create a more advanced messaging protocol. Due to the provision of *feedback* and the ability to *cancel* a process part-way through, Actions are designed to be used for **longer running tasks**. You can read more about Actions in [the official ROS 2 documentation here](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html){target="_blank"} (which also includes a nice animation to explain how they work).
 
 ### The Format of Action Interfaces
 
@@ -1014,7 +1014,7 @@ You should now have developed a good understanding of the three communication me
 
 Through this course you've gained some practical experience using all three of these, but you may still be wondering how to select the appropriate one for a certain robot task... 
 
-[This ROS.org webpage](https://docs.ros.org/en/humble/How-To-Guides/Topics-Services-Actions.html) summarises all of this very nicely (and briefly), so you should have a read through this to make sure you know what's what. In summary though:
+[This ROS.org webpage](https://docs.ros.org/en/humble/How-To-Guides/Topics-Services-Actions.html){target="_blank"} summarises all of this very nicely (and briefly), so you should have a read through this to make sure you know what's what. In summary though:
 
 * **Topics**: Are most appropriate for broadcasting continuous data-streams such as sensor data and robot state information, and for publishing data that is likely to be required by a range of Nodes across a ROS network.
 * **Services**: Are most appropriate for very short procedures like *quick* calculations (inverse kinematics etc.) and performing short discrete actions that are unlikely to go wrong or will not need intervention (e.g. turning on a warning LED when a battery is low).

@@ -175,7 +175,7 @@ We need to interrogate this now, in order to work out how to play the game...
     
         <a name="grep"></a>
 
-    1. Still quite a lot there, right!? Let's filter this further with [Grep](https://en.wikipedia.org/wiki/Grep) to identify *only* interfaces that belong to the `tuos_interfaces` package:
+    1. Still quite a lot there, right!? Let's filter this further with [Grep](https://en.wikipedia.org/wiki/Grep){target="_blank"} to identify *only* interfaces that belong to the `tuos_interfaces` package:
 
         ```bash
         ros2 interface list -s | grep tuos_interfaces
@@ -672,8 +672,8 @@ ros2 run nav2_map_server map_saver_cli -f MAP_NAME
                  
                  `my/amazing/map` would result in a map file at `~/my/amazing/map.yaml` (assuming the directory structure already exists!)
 
-        1. For further guidance [see here for a usage example](https://github.com/ros-navigation/navigation2/blob/main/nav2_map_server/README.md#services).
-        1. The server will apply [its own defaults to certain parameters](https://docs.nav2.org/configuration/packages/configuring-map-server.html), if they aren't set in the **request**.
+        1. For further guidance [see here for a usage example](https://github.com/ros-navigation/navigation2/blob/main/nav2_map_server/README.md#services){target="_blank"}.
+        1. The server will apply [its own defaults to certain parameters](https://docs.nav2.org/configuration/packages/configuring-map-server.html){target="_blank"}, if they aren't set in the **request**.
     
 ### Summary of the Map Saver Service
 

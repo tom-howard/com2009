@@ -385,7 +385,7 @@ All the above information can then be used to calculate (and keep track of) the 
 
 Quaternions use **four values** to represent the orientation of something in 3 dimensional space[^quaternions], as we can observe from the structure of the `nav_msgs/msg/Odometry` ROS message:
 
-[^quaternions]: [Quaternions are explained very nicely here](https://automaticaddison.com/how-to-convert-a-quaternion-to-a-rotation-matrix/#What_is_a_Quaternion), if you'd like to learn more.
+[^quaternions]: [Quaternions are explained very nicely here](https://automaticaddison.com/how-to-convert-a-quaternion-to-a-rotation-matrix/#What_is_a_Quaternion){target="_blank"}, if you'd like to learn more.
 
 ``` { .txt .no-copy }
 Quaternion orientation
@@ -401,7 +401,7 @@ For us, it's easier to think about the orientation of our robot in a *"Euler Ang
 * $\theta_{y}$, aka: **"Pitch"**
 * $\theta_{z}$, aka: **"Yaw"**
 
-Fortunately, the maths involved in converting between these two orientation formats is fairly straight forward ([see here](https://automaticaddison.com/how-to-convert-a-quaternion-into-euler-angles-in-python/)).
+Fortunately, the maths involved in converting between these two orientation formats is fairly straight forward ([see here](https://automaticaddison.com/how-to-convert-a-quaternion-into-euler-angles-in-python/){target="_blank"}).
 
 Recall from above however, that our TurtleBot3 can only move in a 2D plane (unfortunately, it can't fly!) and so, actually, its pose can be fully represented by just 3 terms: 
 

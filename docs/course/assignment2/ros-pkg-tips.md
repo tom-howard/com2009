@@ -8,15 +8,15 @@ You'll need to transfer your ROS package to a robot laptop whenever you want to 
 
 ## Working with Git and GitHub
 
-You'll be working with Git and GitHub quite extensively throughout Assignment #2. Hopefully a lot of you will already be quite familiar with these tools, but if not, we would strongly recommend that you have a look at [This Course by the University of Sheffield's Research Software Engineering (RSE) Team](https://srse-git-github-zero2hero.netlify.app/).
+You'll be working with Git and GitHub quite extensively throughout Assignment #2. Hopefully a lot of you will already be quite familiar with these tools, but if not, we would strongly recommend that you have a look at [This Course by the University of Sheffield's Research Software Engineering (RSE) Team](https://srse-git-github-zero2hero.netlify.app/){target="_blank"}.
 
 ## Setting Up SSH Keys
 
-Using *SSH keys*, you can clone your team's ROS package to the robot laptops, make commits and push these back up to GitHub during the labs, without needing to provide your GitHub username and a personal access token every time. This makes life a lot easier! The following steps describe the process you should follow to achieve this (adapted from [GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)).
+Using *SSH keys*, you can clone your team's ROS package to the robot laptops, make commits and push these back up to GitHub during the labs, without needing to provide your GitHub username and a personal access token every time. This makes life a lot easier! The following steps describe the process you should follow to achieve this (adapted from [GitHub Docs](https://docs.github.com/en/authentication/connecting-to-github-with-ssh){target="_blank"}).
 
 ### Step 0: Check if you already have an SSH Key on the Laptop
 
-*These instructions are adapted from [this GitHub Docs page](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys?platform=linux).*
+*These instructions are adapted from [this GitHub Docs page](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/checking-for-existing-ssh-keys?platform=linux){target="_blank"}.*
 
 If you're generating an SSH key for the first time, then you can skip this step and go straight to the next section: "[Step 1: Generating an SSH key (on the Laptop)](#ssh-keygen)". If, however, you've already generated an SSH Key on the laptop previously then check it's still there before you go any further by following these steps...
 
@@ -80,7 +80,7 @@ If you're generating an SSH key for the first time, then you can skip this step 
 
 ### Step 2: Adding an SSH key to your GitHub account
 
-*These instructions are replicated from [this GitHub Docs page](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux)*.
+*These instructions are replicated from [this GitHub Docs page](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account?platform=linux){target="_blank"}*.
 
 1. On the laptop, copy the SSH public key that you created in the previous steps to your clipboard.
     

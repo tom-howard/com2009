@@ -15,15 +15,15 @@ As discussed on [the Assignment #2 Overview](./README.md), everything that your 
 
 The first step however is to create your team's ROS Package.
 
-Your team's package will need to be hosted on GitHub, so each team member will need a GitHub account. Head to [GitHub](https://github.com) and set up an account if you don't already have one[^github-pro].
+Your team's package will need to be hosted on GitHub, so each team member will need a GitHub account. Head to [GitHub](https://github.com){target="_blank"} and set up an account if you don't already have one[^github-pro].
 
-[^github-pro]: As a University of Sheffield student, you can apply for the [GitHub Student Developer Pack](https://education.github.com/pack), which gives you access to a range of developer tools including *GitHub Pro*. GitHub Pro allows you to have unlimited collaborators on your repositories, which might help you to collaborate on your ROS package with your team.
+[^github-pro]: As a University of Sheffield student, you can apply for the [GitHub Student Developer Pack](https://education.github.com/pack){target="_blank"}, which gives you access to a range of developer tools including *GitHub Pro*. GitHub Pro allows you to have unlimited collaborators on your repositories, which might help you to collaborate on your ROS package with your team.
 
 ### Creating Your Team's Package Repo (on GitHub)
 
 Nominate **only one member of your team** to do this bit.
 
-1. Ensure that you are signed in to your account on GitHub, then go to [the `ros2_pkg_template` Repo](https://github.com/tom-howard/ros2_pkg_template). 
+1. Ensure that you are signed in to your account on GitHub, then go to [the `ros2_pkg_template` Repo](https://github.com/tom-howard/ros2_pkg_template){target="_blank"}. 
 1. Click on the green `Use this template` button, and then select `Create a new repository` from the dropdown menu. 
 
     <figure markdown>
@@ -81,7 +81,7 @@ Having created your package, you'll need to tell us your GitHub username and the
 
 There is a form that **you must complete** (as a team), to register your ROS package with us for Assignment #2. 
 
-[Access the form here](https://forms.gle/p75DDXkLcnFDB2A59) (also available on Blackboard). You **must** be signed in to your university email account (`...@sheffield.ac.uk`) to access this. 
+[Access the form here](https://forms.gle/p75DDXkLcnFDB2A59){target="_blank"} (also available on Blackboard). You **must** be signed in to your university email account (`...@sheffield.ac.uk`) to access this. 
 
 The team member who created the Repo (in the step above) should fill in this form **now**.
 
@@ -117,7 +117,7 @@ You should do this from within your own ROS installation (or WSL-ROS2), rather t
     You'll then be asked to enter your GitHub username, followed by a password. **This password is not your GitHub account password**!  
 
     !!! warning
-        **Your GitHub account password won't work here!** You'll need to [generate a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic) and use this instead!
+        **Your GitHub account password won't work here!** You'll need to [generate a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic){target="_blank"} and use this instead!
 
 1. Navigate into the package directory using the `cd` command:
 

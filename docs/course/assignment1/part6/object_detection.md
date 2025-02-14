@@ -18,7 +18,7 @@ Copy **all** the code below into your `object_detection.py` file, and **make sur
 
 3. We need to subscribe to an image topic in order to obtain the data being published to it. You should've already identified the *type of interface* that is published to the `/camera/image_raw` topic, so we import that interface type here (from the `sensor_msgs` package) so that we can build a subscriber to the topic later.
 
-4. We're also importing the Python `Path` class from [the `pathlib` module](https://docs.python.org/3/library/pathlib.html). A very handy tool for doing file operations.
+4. We're also importing the Python `Path` class from [the `pathlib` module](https://docs.python.org/3/library/pathlib.html){target="_blank"}. A very handy tool for doing file operations.
 
 5. Initialising our `#!py ObjectDetection()` Class (should be very familiar to you by now):
     1. Giving our node a name.
@@ -34,7 +34,7 @@ Copy **all** the code below into your `object_detection.py` file, and **make sur
 
 9. We're using the CvBridge interface to take our ROS image data and convert it to a format that OpenCV will be able to understand.  In this case we are specifying conversion (or *"encoding"*) to an 8-bit BGR (Blue-Green-Red) image format: `"bgr8"`.
         
-    We contain this within a `#!py try`-`#!py except` block though, which is the [recommended procedure when doing this](http://wiki.ros.org/cv_bridge/Tutorials/ConvertingBetweenROSImagesAndOpenCVImagesPython).  Here we *try* to convert an image using the desired encoding, and if a `CvBridgeError` is raised then we print a **warning** message to the terminal.  Should this happen, this particular execution of the camera callback function will stop.
+    We contain this within a `#!py try`-`#!py except` block though, which is the [recommended procedure when doing this](http://wiki.ros.org/cv_bridge/Tutorials/ConvertingBetweenROSImagesAndOpenCVImagesPython){target="_blank"}.  Here we *try* to convert an image using the desired encoding, and if a `CvBridgeError` is raised then we print a **warning** message to the terminal.  Should this happen, this particular execution of the camera callback function will stop.
 
 10. Then we check the `waiting_for_image` flag to see if this is the first image that has been received by the node.  If so, then:
 

@@ -2,7 +2,7 @@
 title: "The TUoS ROS Course Repo"
 --- 
 
-A ROS Metapackage called `tuos_ros` has been put together to support these courses. [This package is available on GitHub here](https://github.com/tom-howard/tuos_ros/tree/humble). This repo contains the following ROS packages:
+A ROS Metapackage called `tuos_ros` has been put together to support these courses. [This package is available on GitHub here](https://github.com/tom-howard/tuos_ros/tree/humble){target="_blank"}. This repo contains the following ROS packages:
 
 | Package Name | Description |
 | :---: | :--- |

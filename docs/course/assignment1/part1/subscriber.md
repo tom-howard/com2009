@@ -37,7 +37,7 @@ Copy **all** the code below into your `subscriber.py` file and (again) *make sur
 
 6. Here we're defining what will happen each time our subscriber receives a new message. This callback function must have only one argument (other than `self`), which will contain the message data that has been received:
 
-    We're also using [a Python Type Annotation](https://docs.python.org/3/library/typing.html) here too, which informs the interpreter that the `topic_message` that is received by the `msg_callback` function will be of the `String` data type.
+    We're also using [a Python Type Annotation](https://docs.python.org/3/library/typing.html){target="_blank"} here too, which informs the interpreter that the `topic_message` that is received by the `msg_callback` function will be of the `String` data type.
     
     (All this really does is allow autocomplete functionality to work within our text editor, so that whenever we want to pull an attribute from the `toic_message` object it will tell us what attributes actually exist within the object.)
 

@@ -20,7 +20,7 @@ The main objective of this task is to create a ROS node (or multiple nodes) that
   <figcaption>The figure-of-eight path for Task 1.</figcaption>
 </figure>
 
-Whilst doing this, you will also need to print some robot odometry data to the terminal at regular intervals ([see below for the specifics](#details)). In order to get the terminal message formatting right, you might want to have a look at the documentation on [Python String Formatting](https://docs.python.org/3/tutorial/inputoutput.html), and refer to any of the code examples that involve printing messages to the terminal in Assignment #1.
+Whilst doing this, you will also need to print some robot odometry data to the terminal at regular intervals ([see below for the specifics](#details)). In order to get the terminal message formatting right, you might want to have a look at the documentation on [Python String Formatting](https://docs.python.org/3/tutorial/inputoutput.html){target="_blank"}, and refer to any of the code examples that involve printing messages to the terminal in Assignment #1.
 
 ## Details
 
@@ -75,7 +75,7 @@ It's easier to develop your node(s) in simulation before testing things out on a
 ros2 launch turtlebot3_gazebo empty_world.launch.py
 ```
 
-For the real task, there will be cylindrical objects placed at the centre of each of the figure-of-eight loops, so your robot will need to move around these as it completes the task. We have therefore also created a simulation environment that is representative of the real world environment during the assessment. This is available in a package called `com2009_simulations`, which is part of [the `tuos_ros` Course Repo](https://github.com/tom-howard/tuos_ros/tree/humble). The instructions for downloading and installing this within your own local ROS installation are [available here](../../extras/course-repo.md).
+For the real task, there will be cylindrical objects placed at the centre of each of the figure-of-eight loops, so your robot will need to move around these as it completes the task. We have therefore also created a simulation environment that is representative of the real world environment during the assessment. This is available in a package called `com2009_simulations`, which is part of [the `tuos_ros` Course Repo](https://github.com/tom-howard/tuos_ros/tree/humble){target="_blank"}. The instructions for downloading and installing this within your own local ROS installation are [available here](../../extras/course-repo.md).
 
 If you've already installed this (as part of Assignment #1 perhaps), then it's worth making sure that you have the most up-to-date version ([as discussed here](../../extras/course-repo.md#updating)).
 

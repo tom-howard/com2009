@@ -20,7 +20,7 @@ On this page are a series of exercises for you to work through **in your teams**
 
 #### :material-pen: Exercise 1: Robot-Laptop 'Bridging' {#exBridge}
 
-The robot and laptop both communicate over the University network via [a Zenoh Bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds). The bridge should already be running on the robot after having run the `tb3_bringup` command on the robot earlier. The next step is to establish a connection to this bridge from the laptop, so that all ROS nodes, topics etc. can communicate as necessary. 
+The robot and laptop both communicate over the University network via [a Zenoh Bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds){target="_blank"}. The bridge should already be running on the robot after having run the `tb3_bringup` command on the robot earlier. The next step is to establish a connection to this bridge from the laptop, so that all ROS nodes, topics etc. can communicate as necessary. 
 
 !!! warning
     **This is essential**: you always have to have the bridge running on the laptop in order to be able to communicate with your robot!
