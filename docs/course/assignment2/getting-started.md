@@ -15,7 +15,7 @@ As discussed on [the Assignment #2 Overview](./README.md), everything that your 
 
 The first step however is to create your team's ROS Package.
 
-Your team's package will need to be hosted on GitHub, so each team member will need a GitHub account. Head to [GitHub](https://github.com) and set up an account if you don't already have one. Use your Sheffield email address (ending in `@sheffield.ac.uk`) to register[^github-pro].
+Your team's package will need to be hosted on GitHub, so each team member will need a GitHub account. Head to [GitHub](https://github.com) and set up an account if you don't already have one[^github-pro].
 
 [^github-pro]: As a University of Sheffield student, you can apply for the [GitHub Student Developer Pack](https://education.github.com/pack), which gives you access to a range of developer tools including *GitHub Pro*. GitHub Pro allows you to have unlimited collaborators on your repositories, which might help you to collaborate on your ROS package with your team.
 
