@@ -630,7 +630,7 @@ ros2 run nav2_map_server map_saver_cli -f MAP_NAME
 1. Use a `ros2 service` sub-command to identify all the `/map_saver` services (like we did in [Exercise 1](#ex1)).
 
     !!! question
-        Do you see any in this list that could be related to saving a map?[^save-map]
+        Do you see any in this list that could be related to saving a map? (It has a `/map_saver` prefix[^save-map]!)
 
     [^save-map]: There should be one in the list called `/map_saver/save_map`
 
