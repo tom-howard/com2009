@@ -898,21 +898,31 @@ Don't forget that **you don't need to have developed a Python Client Node in ord
 
 1. In **TERMINAL 3** navigate to the `scripts` folder of your `part5_actions` package, create a Python script called `explore_client.py`, make it executable, and add this to your `CMakeLists.txt`.
 
-1. Run `colcon build` on it now, so you don't have to worry about it later:
+1. Run `colcon build` on it now, so you don't have to worry about it later (again, following the [**three stage** process as above](#colcon-build-steps))...
+
+    Here it is again, for good measure:
 
     ***
     **TERMINAL 3:**
-    ```bash
-    cd ~/ros2_ws
-    ```
+    
+    1. Step 1:
+    
+        ```bash
+        cd ~/ros2_ws
+        ```
 
-    ```bash
-    colcon build --packages-select part5_actions --symlink-install
-    ```
+    1. Step 2:
 
-    ```bash
-    source ~/.bashrc
-    ```
+        ```bash
+        colcon build --packages-select part5_actions --symlink-install
+        ```
+
+    1. Step 3:
+
+        ```bash
+        source ~/.bashrc
+        ```
+    
     ***
 
 1. Open up the `explore_client.py` file in VS Code.
