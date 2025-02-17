@@ -492,7 +492,7 @@ We'll be using Python throughout this course, but we'll actually take a slightly
 
 1. Using the VS Code File Explorer, locate the `publisher.py` file that you have just created (`ros2_ws/src/part1_pubsub/scripts/`) and click on the file to open it in the main editor. 
 
-1. Once opened, copy [the code provided here](./part1/publisher.md) into the empty file and save it. <a name="pub_ret"></a>
+1. Once opened, **[copy ^^the code provided here^^ into the empty file and save it](./part1/publisher.md)**. <a name="pub_ret"></a>
     
     !!! note
         It's important that you understand how this code works, so make sure that you **read the annotations**!

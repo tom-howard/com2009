@@ -360,10 +360,10 @@ In the previous exercise we *called* a pre-existing Action Server from the comma
     )
     ```
 
-1. Also modify the `package.xml` file (below the `#!xml <test_depend>ament_lint_common</test_depend>` line) to include following `msg` dependency:
+1. Also modify the `package.xml` file (below the `#!xml <exec_depend>rclpy</exec_depend>` line) to include following `msg` dependency:
 
     ```xml title="package.xml"
-    <depend>action_msgs</depend>
+    <exec_depend>action_msgs</exec_depend>
     ```
 
 1. At an *absolute minimum*, the Action Client can be constructed as follows:
@@ -773,15 +773,15 @@ In Exercise 2 we created the `part5_actions` package. Inside this package we wil
     <member_of_group>rosidl_interface_packages</member_of_group>
     ```
 
-    Also, add the following `msg` dependencies too (below the `#!xml <depend>action_msgs</depend>` line):
+    Also, add the following `msg` dependencies too (below the `#!xml <exec_depend>action_msgs</exec_depend>` line):
 
     ```xml title="package.xml"
-    <depend>geometry_msgs</depend>
-    <depend>nav_msgs</depend>
-    <depend>sensor_msgs</depend>
+    <exec_depend>geometry_msgs</exec_depend>
+    <exec_depend>nav_msgs</exec_depend>
+    <exec_depend>sensor_msgs</exec_depend>
     ```
 
-1. Now run `colcon` to generate the necessary source code for this new interface:
+1. Now run `colcon` to generate the necessary source code for this new interface: <a name="colcon-build-steps"></a>
 
     1. First, **always** make sure you're in the root of the Workspace:
         
@@ -881,28 +881,7 @@ ros2 launch turtlebot3_gazebo turtlebot3_dqn_stage4.launch.py
 
 ***
 
-Don't forget, that in order to launch the server, you'll need to have built everything with `colcon`:
-
-1. In **TERMINAL 2**, make sure you're in the root of the Workspace:
-    
-    ***
-    **TERMINAL 2:**
-    ```bash
-    cd ~/ros2_ws/
-    ```
-
-1. Run `colcon build`:
-
-    ```bash
-    colcon build --packages-select part5_actions --symlink-install 
-    ```
-
-1. And finally re-source the `.bashrc`:
-
-    ```bash
-    source ~/.bashrc
-    ```
-    ***
+Don't forget, that in order to launch the server, you'll need to have built everything with `colcon` by following [the usual **three stage** process](#colcon-build-steps).
 
 Once you've done this, you'll then be able to run it:
 
