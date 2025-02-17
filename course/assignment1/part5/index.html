@@ -2753,8 +2753,8 @@
 </code></pre></div>
 </li>
 <li>
-<p>Also modify the <code>package.xml</code> file (below the <code class="highlight"><span class="nt">&lt;test_depend&gt;</span>ament_lint_common<span class="nt">&lt;/test_depend&gt;</span></code> line) to include following <code>msg</code> dependency:</p>
-<div class="highlight"><span class="filename">package.xml</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nt">&lt;depend&gt;</span>action_msgs<span class="nt">&lt;/depend&gt;</span>
+<p>Also modify the <code>package.xml</code> file (below the <code class="highlight"><span class="nt">&lt;exec_depend&gt;</span>rclpy<span class="nt">&lt;/exec_depend&gt;</span></code> line) to include following <code>msg</code> dependency:</p>
+<div class="highlight"><span class="filename">package.xml</span><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nt">&lt;exec_depend&gt;</span>action_msgs<span class="nt">&lt;/exec_depend&gt;</span>
 </code></pre></div>
 </li>
 <li>
@@ -3165,14 +3165,14 @@
 <a id="__codelineno-52-2" name="__codelineno-52-2" href="#__codelineno-52-2"></a><span class="nt">&lt;exec_depend&gt;</span>rosidl_default_runtime<span class="nt">&lt;/exec_depend&gt;</span>
 <a id="__codelineno-52-3" name="__codelineno-52-3" href="#__codelineno-52-3"></a><span class="nt">&lt;member_of_group&gt;</span>rosidl_interface_packages<span class="nt">&lt;/member_of_group&gt;</span>
 </code></pre></div>
-<p>Also, add the following <code>msg</code> dependencies too (below the <code class="highlight"><span class="nt">&lt;depend&gt;</span>action_msgs<span class="nt">&lt;/depend&gt;</span></code> line):</p>
-<div class="highlight"><span class="filename">package.xml</span><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="nt">&lt;depend&gt;</span>geometry_msgs<span class="nt">&lt;/depend&gt;</span>
-<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="nt">&lt;depend&gt;</span>nav_msgs<span class="nt">&lt;/depend&gt;</span>
-<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="nt">&lt;depend&gt;</span>sensor_msgs<span class="nt">&lt;/depend&gt;</span>
+<p>Also, add the following <code>msg</code> dependencies too (below the <code class="highlight"><span class="nt">&lt;exec_depend&gt;</span>action_msgs<span class="nt">&lt;/exec_depend&gt;</span></code> line):</p>
+<div class="highlight"><span class="filename">package.xml</span><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="#__codelineno-53-1"></a><span class="nt">&lt;exec_depend&gt;</span>geometry_msgs<span class="nt">&lt;/exec_depend&gt;</span>
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="#__codelineno-53-2"></a><span class="nt">&lt;exec_depend&gt;</span>nav_msgs<span class="nt">&lt;/exec_depend&gt;</span>
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="#__codelineno-53-3"></a><span class="nt">&lt;exec_depend&gt;</span>sensor_msgs<span class="nt">&lt;/exec_depend&gt;</span>
 </code></pre></div>
 </li>
 <li>
-<p>Now run <code>colcon</code> to generate the necessary source code for this new interface:</p>
+<p>Now run <code>colcon</code> to generate the necessary source code for this new interface: <a name="colcon-build-steps"></a></p>
 <ol>
 <li>
 <p>First, <strong>always</strong> make sure you're in the root of the Workspace:</p>
@@ -3286,31 +3286,11 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/tb3_stage4_dqn.jpg" width="600px" /></a></p>
 </figure>
 <hr />
-<p>Don't forget, that in order to launch the server, you'll need to have built everything with <code>colcon</code>:</p>
-<ol>
-<li>
-<p>In <strong>TERMINAL 2</strong>, make sure you're in the root of the Workspace:</p>
-<hr />
-<p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/
-</code></pre></div></p>
-</li>
-<li>
-<p>Run <code>colcon build</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part5_actions<span class="w"> </span>--symlink-install<span class="w"> </span>
-</code></pre></div>
-</li>
-<li>
-<p>And finally re-source the <code>.bashrc</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
-</code></pre></div>
-<hr />
-</li>
-</ol>
+<p>Don't forget, that in order to launch the server, you'll need to have built everything with <code>colcon</code> by following <a href="#colcon-build-steps">the usual <strong>three stage</strong> process</a>.</p>
 <p>Once you've done this, you'll then be able to run it:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part5_actions<span class="w"> </span>explore_server.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part5_actions<span class="w"> </span>explore_server.py
 </code></pre></div></p>
 <hr />
 <p>Don't forget that <strong>you don't need to have developed a Python Client Node in order to test the server</strong>. Use the <code>ros2 action send_goal</code> CLI tool to make calls to the server (like we did in <a href="#send_goal_cli">Exercise 1</a>).</p>
@@ -3323,11 +3303,11 @@
 <p>Run <code>colcon build</code> on it now, so you don't have to worry about it later:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
+<div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part5_actions<span class="w"> </span>--symlink-install
+<div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part5_actions<span class="w"> </span>--symlink-install
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-66-1" name="__codelineno-66-1" href="#__codelineno-66-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
 <hr />
 </li>
@@ -3349,7 +3329,7 @@
 <p>Once you have everything in place, launch the action client with <code>ros2 run</code> as below:</p>
 <hr />
 <p><strong>TERMINAL 3:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-67-1" name="__codelineno-67-1" href="#__codelineno-67-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part5_actions<span class="w"> </span>explore_client.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-64-1" name="__codelineno-64-1" href="#__codelineno-64-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>part5_actions<span class="w"> </span>explore_client.py
 </code></pre></div></p>
 <hr />
 <p>If all is good, then this client node should call the action server, which will (in turn) make the robot move forwards until it reaches a certain distance from an obstacle up ahead, at which point the robot will stop, and your client node will stop too. Once this happens, reorient your robot (using the <code>teleop_keyboard</code> node) and launch the client node again to make sure that it is robustly stopping in front of obstacles repeatedly, and when approaching them from a range of different angles. </p>
@@ -3406,7 +3386,7 @@ In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./par
 </ul>
 <h3 id="backup">WSL-ROS Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
 <p>Remember, to save the work you have done in WSL-ROS during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS Terminal Instance now:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-68-1" name="__codelineno-68-1" href="#__codelineno-68-1"></a>wsl_ros<span class="w"> </span>backup
+<div class="highlight"><pre><span></span><code><a id="__codelineno-65-1" name="__codelineno-65-1" href="#__codelineno-65-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 <p>You'll then be able to restore it to a fresh WSL-ROS environment next time you fire one up (<code>wsl_ros restore</code>).  </p>
 <div class="footnote">
@@ -3439,7 +3419,7 @@ In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./par
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-17T13:52:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-17T17:44:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-17</span>
   </span>
 
     
