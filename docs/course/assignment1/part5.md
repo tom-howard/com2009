@@ -3,26 +3,6 @@ title: "Part 5: Actions"
 description: Learn about another ROS communication method which is similar to a ROS Service, but with a few key benefits and which has some alternative use-cases.
 ---
 
-<!-- 
-
-launching tmux with a config file (for a four pane window):
-
-tmux new-session -s SESSION "tmux source-file ~/tmux.conf"
-
-- change SESSION name accordingly
-- tmux.conf:
-
-new
-neww
-splitw -v
-splitw -h
-select-pane -t 0
-splitw -h
-select-pane -t 0
-set -g mouse
-
- -->
-
 ## Introduction
 
 :material-pen: **Exercises**: 6 (5 *core*, 1 *advanced*)  
