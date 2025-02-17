@@ -861,9 +861,9 @@ In Exercise 2 we created the `part5_actions` package. Inside this package we wil
         1. The *total* distance travelled (in meters) over the course of the action.
         1. The distance to the obstacle that made the robot stop (if the action server has done its job properly, then this should be very similar to the `stopping_distance` that was provided by the Action Client in the **goal**).
 
-1. You should refer to the `camera_sweep_action_server.py` code from the earlier exercises to help you construct this: a lot of the techniques used here will be similar (excluding all the camera related stuff).
+    <a name="explore_srv_ret"></a>
 
-<!-- 1. We've put together [some template code](./part5/search_server.md) to help you with this.  -->
+1. **[There's ^^some template code here^^ to help you with this](./part5/explore_server.md)**, but you might also want to take a look at the `camera_sweep_action_server.py` code from the earlier exercises to help you construct this: a lot of the techniques used here will be similar (excluding all the camera related stuff).  
 
 **Testing**
 
