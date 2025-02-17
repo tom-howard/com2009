@@ -678,7 +678,7 @@ ros2 run tuos_examples camera_sweep_action_server.py
     * Which *package* does the action server node belong to?
     * Where (in that package directory) is this node likely to be located?
 
-Once you've identified the name and the location of the source code, open it up in VS Code and have a look through it to see how it all works. Don't worry too much about all the content associated with obtaining and manipulating camera images in there, we'll learn more about this in the next Part of this course. Instead, focus on the general overall structure of the code and the way that the action server is implemented.
+Once you've identified the name and the location of the source code, open it up in VS Code and have a look through it to see how it all works. Don't worry too much about all the content associated with obtaining and manipulating camera images in there, we'll learn more about this in [the next part of this course](./part6.md). Instead, focus on the general overall structure of the code and the way that the action server is implemented.
 
 Some things to review:
 
@@ -704,10 +704,10 @@ Some things to review:
 
 1. Take a look at the various Action callbacks to see what's happening in each:
 
-    1. How are goal parameters checked, and subsequently accepted or rejected
-    1. How cancellations are implemented and how this is monitored in the main `server_execution_callback()`
-    1. How feedback is handled and published
-    1. How a **result** is handled and published too
+    1. How are goal parameters checked, and subsequently accepted or rejected?
+    1. How cancellations are implemented and how this is monitored in the main `server_execution_callback()`?
+    1. How is feedback handled and published?
+    1. How is a **result** handled and published too?
 
 1. Finally, consider the shutdown operations.
 
