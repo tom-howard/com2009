@@ -294,6 +294,10 @@ We'll play a little game here. We're going to launch our TurtleBot3 Waffle in a 
 
 In this Exercise we launched an action server and then called it from the command-line using the `ros2 action send_goal` sub-command. Using the `-f` flag we were able to ask the server to provide us with *real-time feedback* on how it was getting on (in **TERMINAL 3**). In the same way as a ROS Service, the action also provided us with a **result** once the task had been completed. **Feedback** is one of the key features that differentiates a ROS Action from a ROS Service: An Action Server provides **feedback** messages at regular intervals whilst performing an action and working towards its **goal**. Another feature of ROS Actions is that they can be *cancelled* part-way through (which we'll play around with shortly).
 
+<figure markdown>
+  ![](./part5/action_interface.png){width=400px}
+</figure>
+
 Ultimately, Actions use a combination of both Topic- *and* Service-based communication, to create a more advanced messaging protocol. Due to the provision of *feedback* and the ability to *cancel* a process part-way through, Actions are designed to be used for **longer running tasks**. You can read more about Actions in [the official ROS 2 documentation here](https://docs.ros.org/en/humble/Tutorials/Beginner-CLI-Tools/Understanding-ROS2-Actions/Understanding-ROS2-Actions.html){target="_blank"} (which also includes a nice animation to explain how they work).
 
 ### The Format of Action Interfaces
@@ -890,6 +894,11 @@ There's a good simulation environment that you can use as you're developing your
 ```bash
 ros2 launch turtlebot3_gazebo turtlebot3_dqn_stage4.launch.py
 ```
+
+<figure markdown>
+  ![](../../images/gz/tb3_stage4_dqn.jpg){width=600px}
+</figure>
+
 ***
 
 Don't forget, that in order to launch the server, you'll need to have built everything with `colcon`:
