@@ -235,7 +235,7 @@ We're now ready to make a call to the service, and we can do this using the `ros
 1. To start, let's send an initial guess of `0` and see what happens:
 
     ```bash
-    ros2 service call /guess_the_number tuos_interfaces/srv/NumberGame "guess: 0"
+    ros2 service call /guess_the_number tuos_interfaces/srv/NumberGame "{guess: 0}"
     ```
 
     The request will be echoed back to us, followed by a response, which will likely look something like this, and which shows us the value of the three response parameters that we identified above:
@@ -252,7 +252,7 @@ We're now ready to make a call to the service, and we can do this using the `ros
 1. Make another service call, this time changing the value of your `guess`, e.g.:
     
     ```bash
-    ros2 service call /guess_the_number tuos_interfaces/srv/NumberGame "guess: 10"
+    ros2 service call /guess_the_number tuos_interfaces/srv/NumberGame "{guess: 10}"
     ```
 
 1. Try making a guess of 500 next.
@@ -479,6 +479,13 @@ We're going to take a copy of the `tuos_examples/number_game.py` server node now
     ***
 
     You should then be able to make calls to this from **TERMINAL 2** using the `ros2 service call` sub-command, as we did in [Exercise 2](#ex2).
+    
+    !!! hint
+        There are **two** request parameters now, so when sending a request from the command-line **both** need to be supplied. Do this by including them both within the braces (`{}`) and separated with a comma, e.g.
+
+        ```bash
+        ros2 service call /guess_the_number part4_services/srv/MyNumberGame "{guess: X, cheat: Y}" 
+        ```
 
 #### :material-pen: Exercise 5: Creating a Python Service Client {#ex5}
 
@@ -620,7 +627,7 @@ ros2 run nav2_map_server map_saver_cli -f MAP_NAME
 
     This will add a number of `/map_saver` services to our ROS network.
 
-1. Use a `ros2 service` sub-command to identify all of these services (like we did in [Exercise 1](#ex1)).
+1. Use a `ros2 service` sub-command to identify all the `/map_saver` services (like we did in [Exercise 1](#ex1)).
 
     !!! question
         Do you see any in this list that could be related to saving a map?[^save-map]
