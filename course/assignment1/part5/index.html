@@ -3300,15 +3300,27 @@
 <p>In <strong>TERMINAL 3</strong> navigate to the <code>scripts</code> folder of your <code>part5_actions</code> package, create a Python script called <code>explore_client.py</code>, make it executable, and add this to your <code>CMakeLists.txt</code>.</p>
 </li>
 <li>
-<p>Run <code>colcon build</code> on it now, so you don't have to worry about it later:</p>
+<p>Run <code>colcon build</code> on it now, so you don't have to worry about it later (again, following the <a href="#colcon-build-steps"><strong>three stage</strong> process as above</a>)...</p>
+<p>Here it is again, for good measure:</p>
 <hr />
-<p><strong>TERMINAL 3:</strong>
+<p><strong>TERMINAL 3:</strong></p>
+<ol>
+<li>
+<p>Step 1:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws
-</code></pre></div></p>
+</code></pre></div>
+</li>
+<li>
+<p>Step 2:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>part5_actions<span class="w"> </span>--symlink-install
 </code></pre></div>
+</li>
+<li>
+<p>Step 3:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
+</li>
+</ol>
 <hr />
 </li>
 <li>
@@ -3419,7 +3431,7 @@ In Part 3 you used SLAM to construct a map of an environment ([Exercise 2](./par
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-17T17:44:45+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-17T17:56:54+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-17</span>
   </span>
 
     
