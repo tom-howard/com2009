@@ -709,9 +709,9 @@ Some things to review:
 1. Take a look at the various Action callbacks to see what's happening in each:
 
     1. How are goal parameters checked, and subsequently accepted or rejected?
-    1. How cancellations are implemented and how this is monitored in the main `server_execution_callback()`?
+    1. How are cancellations implemented, and how is this monitored in the main `server_execution_callback()`?
     1. How is feedback handled and published?
-    1. How is a **result** handled and published too?
+    1. How is the **result** handled and published too?
 
 1. Finally, consider the shutdown operations.
 
