@@ -2105,6 +2105,10 @@
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>x=0.00 [m], y=0.00 [m], yaw=0.0 [degrees].
 </code></pre></div>
 <p>These message should be printed to the terminal <strong>at a rate of 1Hz</strong>. It doesn't matter if the messages continue to be printed to the terminal after the robot has stopped (i.e. after the figure-of-eight has been completed).</p>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p>You should use <code class="highlight"><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">()</span></code> method calls within your node to print these terminal messages.</p>
+</div>
 </li>
 <li>
 <p>The ROS package that you submit must contain a launch file called <code>task1.launch.py</code>. When assessing your team's package, the teaching team will use the following command to execute all the necessary functionality from within your package: <a name="launch"></a></p>
@@ -2118,7 +2122,7 @@
 <p>When the robot is placed in the arena at the start of the task its odometry may not necessarily read zero, so you will need to compensate for this. You'll therefore need to grab the robot pose from the <code>/odom</code> topic before your robot starts moving, and then use that as the zero-reference to convert all the subsequent odometry readings that you obtain throughout the task.</p>
 <p>Odometry and keeping track of the robot's <em>pose</em> is discussed in detail in <a href="../../../assignment1/part2/">Assignment #1 Part 2</a>.</p>
 <h2 id="simulation-resources">Simulation Resources<a class="headerlink" href="#simulation-resources" title="Permanent link">&para;</a></h2>
-<p>It's easier to develop your node(s) in simulation before testing things out on a real robot. You can use the standard "Empty World" environment to do this, which can be launched in using the following command:</p>
+<p>You might find it helpful to develop your node(s) basic functionality in simulation before testing things out on a real robot. You can use the standard "Empty World" environment to do this, which can be launched in using the following command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>turtlebot3_gazebo<span class="w"> </span>empty_world.launch.py
 </code></pre></div>
 <p>For the real task, there will be cylindrical objects placed at the centre of each of the figure-of-eight loops, so your robot will need to move around these as it completes the task. We have therefore also created a simulation environment that is representative of the real world environment during the assessment. This is available in a package called <code>com2009_simulations</code>, which is part of <a href="https://github.com/tom-howard/tuos_ros/tree/humble" target="_blank">the <code>tuos_ros</code> Course Repo</a>. The instructions for downloading and installing this within your own local ROS installation are <a href="../../../extras/course-repo/">available here</a>.</p>
@@ -2220,7 +2224,7 @@
 </tr>
 <tr>
 <td style="text-align: left;"><strong>B2</strong>: Format</td>
-<td style="text-align: left;">The messages printed to the terminal should be formatted <strong>exactly</strong> <a href="#msg-format">as detailed above</a>.</td>
+<td style="text-align: left;">The messages printed to the terminal should be formatted <strong>exactly</strong> <a href="#msg-format">as detailed above</a>, and must be printed using <code class="highlight"><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">()</span></code> method calls.</td>
 <td style="text-align: left;">2</td>
 </tr>
 <tr>
@@ -2253,7 +2257,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-14T13:21:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-18T12:37:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-18</span>
   </span>
 
     
