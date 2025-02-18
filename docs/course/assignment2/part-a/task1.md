@@ -50,6 +50,9 @@ Whilst doing this, you will also need to print some robot odometry data to the t
     ```
 	
 	These message should be printed to the terminal **at a rate of 1Hz**. It doesn't matter if the messages continue to be printed to the terminal after the robot has stopped (i.e. after the figure-of-eight has been completed).
+
+    !!! warning "Important"
+        You should use `#!py get_logger().info()` method calls within your node to print these terminal messages.
 	
 1. The ROS package that you submit must contain a launch file called `task1.launch.py`. When assessing your team's package, the teaching team will use the following command to execute all the necessary functionality from within your package: <a name="launch"></a>
 	 
@@ -69,7 +72,7 @@ Odometry and keeping track of the robot's *pose* is discussed in detail in [Assi
 
 ## Simulation Resources
 
-It's easier to develop your node(s) in simulation before testing things out on a real robot. You can use the standard "Empty World" environment to do this, which can be launched in using the following command:
+You might find it helpful to develop your node(s) basic functionality in simulation before testing things out on a real robot. You can use the standard "Empty World" environment to do this, which can be launched in using the following command:
 
 ```bash
 ros2 launch turtlebot3_gazebo empty_world.launch.py
@@ -133,7 +136,7 @@ There are **20 marks** available for this task in total, summarised as follows:
 | Criteria | Details | Marks|
 | :--- | :--- | :--- |
 | **B1**: Rate | Messages should be printed to the terminal at **a rate of 1 Hz**. | 2 |
-| **B2**: Format | The messages printed to the terminal should be formatted **exactly** [as detailed above](#msg-format). | 2 |
+| **B2**: Format | The messages printed to the terminal should be formatted **exactly** [as detailed above](#msg-format), and must be printed using `#!py get_logger().info()` method calls. | 2 |
 | **B3**: Data | Each message value (`x`, `y` and `yaw`) should be plausible, that is: they represent the actual pose of the robot, based on all readings being set to zero at the start/finish point ([as illustrated above](#fig-eight)). In addition, each value must be quoted in the correct units (meters or degrees, as appropriate). | 6 |
 
 </center>
