@@ -237,7 +237,7 @@ You should currently have two terminal instances active: the first in which you 
       ![](../../images/rqt/node_graph.png){width=600}
     </figure>
 
-    Here, *nodes* are represented by rectangles and *topics* by ellipses (hover over a region of the graph to enable colour highlighting).
+    Here, *nodes* are represented by ellipses and *topics* by rectangles (hover over a region of the graph to enable colour highlighting).
 
     This tool shows us that (amongst other things) the `/teleop_keyboard` and `/turtlebot3_diff_drive` nodes are communicating with one another. The direction of the arrow tells us that `/teleop_keyboard` is a *Publisher* and `/turtlebot3_diff_drive` is a *Subscriber*. The two nodes communicate via a **ROS Topic** called `/cmd_vel`. 
 
