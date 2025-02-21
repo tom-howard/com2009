@@ -1,8 +1,6 @@
 ---  
-title: Launching ROS  
+title: Launching ROS (and Pairing the Laptop)
 ---  
-
-# Launching ROS
 
 The first step is to launch ROS on the Waffle.
 
@@ -97,6 +95,30 @@ Battery: 12.40V [100%]
     **The robot's battery won't last a full 2-hour lab session!!**
 
     When the capacity indicator reaches around 15% then it will start to beep, and when it reaches ~10% it will stop working all together.  Let a member of the teaching team know when the battery is running low and we'll replace it for you. (It's easier to do this when it reaches 15%, rather than waiting until it runs below 10%!)
+
+
+## Step 4: Robot-Laptop 'Bridging'
+
+The Waffle and laptop both communicate over the University network via [a Zenoh Bridge](https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds){target="_blank"}. The bridge should already be running on the robot after having run the `tb3_bringup` command in [Step 3 above](#step-3-launching-ros). 
+
+The next **crucial** step is to establish a connection to this bridge from the laptop, so that all ROS nodes, topics etc. can flow between the two devices as necessary. 
+
+!!! warning "This is Essential!"
+    You **always** need to have the bridge running on the laptop in order to be able to communicate with your robot!
+
+Open up **a new terminal instance** on the laptop (either by using the ++ctrl+alt+t++ keyboard shortcut, or by clicking the Terminal App icon) and enter the following command:
+
+```bash
+waffle X bridge
+```
+You should now have two terminals active: 
+
+1. The *robot* terminal where you ran `tb3_bringup` to launch ROS in [Step 3](#step-3-launching-ros)[^term_recover]
+1. The *laptop* terminal where you just ran the `bridge` command
+
+[^term_recover]: If you happen to have closed down the *robot* terminal, you can return to it by entering `waffle X term` from a new terminal instance on the laptop.
+
+Leave both of these terminals alone, but **keep them running in the background at all times** while working with your robot.
 
 ## Shutting Down (at the end of a Lab Session)
 
