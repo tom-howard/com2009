@@ -24,7 +24,7 @@
     
     
       
-        <title>Launching ROS - ROS2 Course Assignments for COM2009</title>
+        <title>Launching ROS (and Pairing the Laptop) - ROS2 Course Assignments for COM2009</title>
       
     
     
@@ -63,7 +63,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Launching ROS - ROS2 Course Assignments for COM2009" >
+        <meta  property="og:title"  content="Launching ROS (and Pairing the Laptop) - ROS2 Course Assignments for COM2009" >
       
         <meta  property="og:description"  content="Practical Robotics Course Assignments for COM2009/3009, with ROS2 and the TurtleBot3 Waffle." >
       
@@ -79,7 +79,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Launching ROS - ROS2 Course Assignments for COM2009" >
+        <meta  name="twitter:title"  content="Launching ROS (and Pairing the Laptop) - ROS2 Course Assignments for COM2009" >
       
         <meta  name="twitter:description"  content="Practical Robotics Course Assignments for COM2009/3009, with ROS2 and the TurtleBot3 Waffle." >
       
@@ -115,7 +115,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#launching-ros" class="md-skip">
+        <a href="#step-1-identify-your-waffle" class="md-skip">
           Skip to content
         </a>
       
@@ -148,7 +148,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Launching ROS
+              Launching ROS (and Pairing the Laptop)
             
           </span>
         </div>
@@ -1734,14 +1734,12 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Launching ROS
+    Launching ROS (and Pairing the Laptop)
     
   </span>
   
@@ -1753,7 +1751,7 @@
         
   
   <span class="md-ellipsis">
-    Launching ROS
+    Launching ROS (and Pairing the Laptop)
     
   </span>
   
@@ -1765,8 +1763,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1797,6 +1793,15 @@
   <a href="#step-3-launching-ros" class="md-nav__link">
     <span class="md-ellipsis">
       Step 3: Launching ROS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-robot-laptop-bridging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Robot-Laptop 'Bridging'
     </span>
   </a>
   
@@ -1910,8 +1915,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1941,6 +1944,15 @@
   <a href="#step-3-launching-ros" class="md-nav__link">
     <span class="md-ellipsis">
       Step 3: Launching ROS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-robot-laptop-bridging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4: Robot-Laptop 'Bridging'
     </span>
   </a>
   
@@ -1987,7 +1999,8 @@
   
 
 
-<h1 id="launching-ros">Launching ROS<a class="headerlink" href="#launching-ros" title="Permanent link">&para;</a></h1>
+  <h1>Launching ROS (and Pairing the Laptop)</h1>
+
 <p>The first step is to launch ROS on the Waffle.</p>
 <div class="admonition info">
 <p class="admonition-title">Important</p>
@@ -2063,8 +2076,32 @@ Replacing <code>X</code> with the number of the robot that you are working with.
 <p><strong>The robot's battery won't last a full 2-hour lab session!!</strong></p>
 <p>When the capacity indicator reaches around 15% then it will start to beep, and when it reaches ~10% it will stop working all together.  Let a member of the teaching team know when the battery is running low and we'll replace it for you. (It's easier to do this when it reaches 15%, rather than waiting until it runs below 10%!)</p>
 </div>
+<h2 id="step-4-robot-laptop-bridging">Step 4: Robot-Laptop 'Bridging'<a class="headerlink" href="#step-4-robot-laptop-bridging" title="Permanent link">&para;</a></h2>
+<p>The Waffle and laptop both communicate over the University network via <a href="https://github.com/eclipse-zenoh/zenoh-plugin-ros2dds" target="_blank">a Zenoh Bridge</a>. The bridge should already be running on the robot after having run the <code>tb3_bringup</code> command in <a href="#step-3-launching-ros">Step 3 above</a>. </p>
+<p>The next <strong>crucial</strong> step is to establish a connection to this bridge from the laptop, so that all ROS nodes, topics etc. can flow between the two devices as necessary. </p>
+<div class="admonition warning">
+<p class="admonition-title">This is Essential!</p>
+<p>You <strong>always</strong> need to have the bridge running on the laptop in order to be able to communicate with your robot!</p>
+</div>
+<p>Open up <strong>a new terminal instance</strong> on the laptop (either by using the <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-alt">Alt</kbd><span>+</span><kbd class="key-t">T</kbd></span> keyboard shortcut, or by clicking the Terminal App icon) and enter the following command:</p>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>waffle<span class="w"> </span>X<span class="w"> </span>bridge
+</code></pre></div>
+You should now have two terminals active: </p>
+<ol>
+<li>The <em>robot</em> terminal where you ran <code>tb3_bringup</code> to launch ROS in <a href="#step-3-launching-ros">Step 3</a><sup id="fnref:term_recover"><a class="footnote-ref" href="#fn:term_recover">1</a></sup></li>
+<li>The <em>laptop</em> terminal where you just ran the <code>bridge</code> command</li>
+</ol>
+<p>Leave both of these terminals alone, but <strong>keep them running in the background at all times</strong> while working with your robot.</p>
 <h2 id="shutting-down-at-the-end-of-a-lab-session">Shutting Down (at the end of a Lab Session)<a class="headerlink" href="#shutting-down-at-the-end-of-a-lab-session" title="Permanent link">&para;</a></h2>
 <p>When you've finished working with a robot it's really important to <strong>shut it down properly</strong> before turning off the power switch. Please refer to the <a href="../shutdown/">safe shutdown procedures</a> for more info.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:term_recover">
+<p>If you happen to have closed down the <em>robot</em> terminal, you can return to it by entering <code>waffle X term</code> from a new terminal instance on the laptop.&#160;<a class="footnote-backref" href="#fnref:term_recover" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -2087,7 +2124,7 @@ Replacing <code>X</code> with the number of the robot that you are working with.
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-26T16:39:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-21T11:51:42+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-21</span>
   </span>
 
     
