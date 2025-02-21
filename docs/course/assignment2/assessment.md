@@ -98,4 +98,4 @@ For the assessment of each Assignment #2 Task, your package will be built and de
 
 * We will have already [launched the *bringup* on the robot](../../waffles/launching-ros.md#step-3-launching-ros), so ROS will be up and running, and the robot will be ready to go in the arena.
 
-* [A bridge between the robot and laptop will have already been established](../../waffles/basics.md#exBridge), and communications will be tested, prior to us attempting to launch your work for each task.
+* [A bridge between the robot and laptop will have already been established](../../waffles/launching-ros.md#step-4-robot-laptop-bridging), and communications will be tested, prior to us attempting to launch your work for each task.
