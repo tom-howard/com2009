@@ -1963,6 +1963,7 @@
 
 <p>Develop ROS node(s) that enable a TurtleBot3 Waffle to search an environment, detect a coloured object and beacon towards it, stopping in proximity without crashing into it!</p>
 <p>This is an <strong>individual</strong> assignment, which will be assessed <strong>in simulation</strong> <ins>NOT</ins> on a real robot.</p>
+<p><strong>Deadline</strong>: Week 12, Friday 22:00. </p>
 <h2 id="summary">Summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>For this task your robot will be placed in a <em>"Search Arena"</em> containing a number of different coloured objects (<em>"beacons"</em>). Building on the exploration behaviours that you will have developed in your team for the Assignment #2 Tasks, the robot will need to search the arena for a beacon of a particular <em>"Target Colour"</em> (each beacon in the arena will have a unique colour). The arena will contain three <em>"Start Zones"</em> (also uniquely coloured) and your robot will be located in one of these three zones to begin with (selected at random). The colour of the Start Zone indicates the Target Colour for the search task (the colour of the beacon that the robot needs to find). Once the target object has been detected, the robot will need to move towards it (i.e. <em>"beaconing"</em>) and stop within a <em>"Stop Zone"</em> printed on the floor surrounding it. The robot must stop in the Stop Zone without touching the beacon!</p>
 <p>The first thing that your robot will need to do in this task is detect the colour of the zone that it starts in. You learnt about colour-based object detection in <a href="../assignment1/part6/#ex2">Part 6 of Assignment #1</a>, where we used OpenCV to analyse the images published to the <code>/camera/image_raw</code> topic. Use what you did here, as well as the further work that we did in <a href="../assignment1/part6/#ex3">Part 6 Exercise 3</a>, as a starting point for achieving the desired behaviour for this initial part of the task. Note that in the Part 6 exercises you developed algorithms to detect an object of a certain colour, but here you need to work the other way around and actually establish the colour of the object instead, so you will have to reverse the logic a bit. </p>
@@ -1970,7 +1971,7 @@
 <p>Having located the target object within the environment your robot will then need to move towards it and stop within the allocated stop zone. This technique is known as <em>Beaconing</em>, and some strategies for this are discussed in COM2009/3009 Lecture 8. Perhaps you could consider an implementation of Braitenberg's Vehicle 3a as a way to control your robot's trajectory and approach to the target object?</p>
 <p>The concept of <em>Visual Homing</em> (also discussed in COM2009/3009 Lecture 8) might also be worth considering as a method to control the position and trajectory of a robot based on images from its camera. Distance measurements from the LiDAR sensor might also be helpful for this.</p>
 <h2 id="creating-a-package">Creating a Package<a class="headerlink" href="#creating-a-package" title="Permanent link">&para;</a></h2>
-<p>You'll need to create your own individual ROS package for this assignment, follow the steps below to do so. This is <em>an individual assignment</em>, and is entirely separate from the Assignment #2 team project, so you must create your own individual ROS package repo for this. </p>
+<p>You'll need to create your own individual ROS package for this assignment. This is <em>an individual assignment</em>, and is entirely separate from the Assignment #2 team project, so you must create your own individual ROS package repo for this. Follow the steps below to do so:</p>
 <h3 id="creating-your-individual-package-repo-on-github">Creating Your Individual Package Repo (on GitHub)<a class="headerlink" href="#creating-your-individual-package-repo-on-github" title="Permanent link">&para;</a></h3>
 <ol>
 <li>Ensure that you are signed in to your GitHub account, then go to <a href="https://github.com/tom-howard/ros2_pkg_template" target="_blank">the <code>ros2_pkg_template</code> Repo</a>. </li>
@@ -2005,7 +2006,7 @@
 </li>
 </ol>
 <h3 id="register-your-ros-package">Register Your ROS Package<a class="headerlink" href="#register-your-ros-package" title="Permanent link">&para;</a></h3>
-<p>Having created your package, you'll need to tell us your GitHub username, and your repo's GitHub URL. There is a form that <strong>you must complete</strong> in order to do this. <a href="" target="_blank">Access the form here (TODO)</a>. You <strong>must</strong> be signed in to your university email account (<code>...@sheffield.ac.uk</code>) to access this. </p>
+<p>Having created your package, you'll need to tell us your GitHub username, and your repo's GitHub URL. There is a form that <strong>you must complete</strong> in order to do this. <a href="https://forms.gle/qPJjB6YhyDHW3na66" target="_blank">Access the form here</a>. You <strong>must</strong> be signed in to your university email account (<code>...@sheffield.ac.uk</code>) to access this. </p>
 <h3 id="initialising-your-package">Initialising Your Package<a class="headerlink" href="#initialising-your-package" title="Permanent link">&para;</a></h3>
 <p>You should do this from within your own ROS installation (or WSL-ROS2). <a href="../../ros/">See here for more details on how to access a ROS environment</a>.</p>
 <ol>
@@ -2024,10 +2025,10 @@
 <p>Clone your repo here using the remote HTTPS URL:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>REMOTE_HTTPS_URL
 </code></pre></div>
-<p>You'll then be asked to enter your GitHub username, followed by a password. You'll need to <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic" target="_blank">generate a personal access token</a> and use this here.</p>
+<p>You'll then be asked to enter your GitHub username, followed by a password. You'll need to <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token#creating-a-personal-access-token-classic" target="_blank">generate a personal access token</a> and use this here (or <a href="https://docs.github.com/en/authentication/connecting-to-github-with-ssh" target="_blank">use SSH keys</a> instead).</p>
 </li>
 <li>
-<p>Navigate into the package directory using the <code>cd</code> command:</p>
+<p>Navigate into your package directory using the <code>cd</code> command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>com3009_xxxxxx_2025
 </code></pre></div>
 <p>...replacing <code>xxxxxx</code> accordingly.</p>
@@ -2064,8 +2065,10 @@
 </li>
 </ol>
 <h2 id="details">Details<a class="headerlink" href="#details" title="Permanent link">&para;</a></h2>
-<p>The arena used for this task will be 5.0 m x 5.0 m again and the beacons that you'll be searching for will be coloured boxes or cylinders, all between 200 mm and 400 mm in height. The Stop Zone surrounding each beacon will be 500 mm greater than the beacon's dimensions in the <code>X</code> and <code>Y</code> axis.</p>
-<p>There are only <strong>six</strong> possible target colours that will be used in this task, so your ROS node(s) will only need to accommodate these. The colours are listed below, and there is also a simulation environment in the <code>tuos_simulations</code> package called <code>beacon_colours</code> to illustrate these too (TODO).</p>
+<p>The arena used for this task will be 5.0 m x 5.0 m and the beacons that you'll be searching for will be coloured boxes or cylinders, all between 200 mm and 400 mm in height. The <em>Stop Zone</em> surrounding each beacon will be 500 mm greater than the beacon's dimensions in the <code>X</code> and <code>Y</code> axis.</p>
+<p>There are only <strong>six</strong> possible target colours that will be used in this task, so your ROS application will only need to accommodate these six. The colours are listed below, and there is also a simulation environment in the <code>tuos_simulations</code> package called <code>beacon_colours</code> to illustrate these too<sup id="fnref:update-course-repo"><a class="footnote-ref" href="#fn:update-course-repo">1</a></sup>.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>beacon_colours.launch.py
+</code></pre></div>
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="beacon_colours_table.png" width="600px" /></a>
   </p>
@@ -2073,12 +2076,12 @@
 </figure>
 <p>As for the task itself:</p>
 <ol>
-<li>Your robot will first need to determine the "Target Colour" by analysing the Start Zone that it has been placed in within the simulated arena.</li>
+<li>Your robot will first need to determine the <em>"Target Colour"</em> by analysing the <em>"Start Zone"</em> that it has been placed in within the simulated arena (see below).</li>
 <li>The arena will contain three Start Zones, each of a different colour, and your robot could be launched into any of these (selected at random).</li>
 <li>
 <p>Once the colour of the start zone has been determined by the robot a ROS <em>log</em> message <strong>must</strong> be printed to the terminal to indicate which beacon colour will be targetted. This log message <strong>must</strong> be formatted <em>exactly</em> as follows:</p>
 <p><a name="target_beacon"></a></p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>SEARCH INITIATED: The target beacon colour is {}.
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>SEARCH INITIATED: The target beacon colour is {}.
 </code></pre></div>
 <p>Where <code>{}</code> is replaced by the <em>name</em> of the target colour as defined in the table inset in the figure above.</p>
 <div class="admonition note">
@@ -2092,7 +2095,7 @@
 <li>
 <p>Once the target beacon has been detected, a message <strong>must</strong> be printed to the terminal to indicate that this has happened. The terminal message needs to be clearly visible and readable, and <em>the robot must be facing the target beacon when it is printed</em>. This terminal message should be formatted as follows:</p>
 <p><a name="beacon_detected"></a></p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>TARGET DETECTED: Beaconing initiated.
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>TARGET DETECTED: Beaconing initiated.
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Remember</p>
@@ -2105,7 +2108,7 @@
 <li>
 <p>A further message must be printed to the terminal to indicate that the robot has successfully and <em>intentionally</em> stopped within the designated area. This terminal message should be formatted as follows:</p>
 <p><a name="beaconing_complete"></a></p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>BEACONING COMPLETE: The robot has now stopped.
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>BEACONING COMPLETE: The robot has now stopped.
 </code></pre></div>
 <div class="admonition note">
 <p class="admonition-title">Remember</p>
@@ -2118,33 +2121,35 @@
 </li>
 <li>
 <p>Your ROS package must contain a launch file called <code>assignment3.launch.py</code>, such that the functionality that you develop can be launched from your package via the command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com3009_studentX_2025<span class="w"> </span>assignment3.launch.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com3009_xxxxxx_2025<span class="w"> </span>assignment3.launch.py
 </code></pre></div>
-<p>Your robot will already have been launched into the simulated environment before we attempt to execute your launch file.</p>
+<p>The robot will already have been launched into the simulated environment before we attempt to execute your launch file.</p>
 </li>
 </ol>
 <h2 id="simulation-resources">Simulation Resources<a class="headerlink" href="#simulation-resources" title="Permanent link">&para;</a></h2>
-<p>Within the <code>tuos_simulations</code> package there is an environment called <code>beaconing</code>, which can be used to develop and test out your ROS node(s) for this task. </p>
-<p>The arena contains three start zones: A, B &amp; C; each of a different colour, as well as a number of uniquely coloured beacons.  There is one beacon in the arena to match each of the three start zones, plus a couple more to act as red herrings! </p>
+<p>Within the <code>tuos_simulations</code> package there is an environment called <code>beaconing</code>, which can be used to develop and test out your ROS node(s) for this task:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>beaconing.launch.py
+</code></pre></div>
+<p>The arena contains three start zones: <strong>A</strong>, <strong>B</strong> &amp; <strong>C</strong>; each of a different colour, as well as a number of uniquely coloured beacons.  There is one beacon in the arena to match each of the three start zones, plus a couple more to act as decoys! </p>
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="beaconing.jpg" width="600px" /></a>
   </p>
 <figcaption>The "beaconing" arena.</figcaption>
 </figure>
-<p>You can launch the robot in any of the three start zones by using <code>ros2 launch</code> as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_simulations<span class="w"> </span>beaconing.launch.py<span class="w"> </span>start_zone:<span class="o">={}</span>
+<p>You can launch the robot into any of the three start zones by supplying an optional <code>start_zone</code> argument to the <code>beaconing.launch.py</code> file, as illustrated below:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_simulations<span class="w"> </span>beaconing.launch.py<span class="w"> </span>start_zone:<span class="o">={}</span>
 </code></pre></div>
 <p>...where <code>{}</code> can be replaced with either <code>a</code>, <code>b</code> or <code>c</code> to select the start zone that you want the robot to be located in when the simulation launches. You can therefore develop and test out your beaconing algorithms in three unique scenarios.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <ol>
-<li>The same arena will be used to assess your submission for this task.</li>
+<li>The same arena will be used to assess your submission for this assignment.</li>
 <li>The colour of the start zones and beacons will change, but the shape, size and location of all the objects will stay the same.</li>
 <li>Once again, the start zone that your robot is launched in for the assessment will be selected at random.</li>
 </ol>
 </div>
 <h2 id="marking">Marking<a class="headerlink" href="#marking" title="Permanent link">&para;</a></h2>
-<p>There are <strong>15 marks</strong> available for this assignment in total, awarded according to the criteria below. No partial credit will be awarded unless specifically stated against any of the criteria.</p>
+<p>There are <strong>15 marks</strong> available for this assignment in total, awarded based on the criteria below. No partial credit will be awarded unless specifically stated against any of the criteria.</p>
 <p><centre></p>
 <table>
 <thead>
@@ -2178,6 +2183,14 @@
 </tbody>
 </table>
 <p></center></p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:update-course-repo">
+<p>Make sure you have <a href="../extras/course-repo/#updating">the most up-to-date version of the Course Repo</a>.&#160;<a class="footnote-backref" href="#fnref:update-course-repo" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
 
 
 
@@ -2200,7 +2213,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-27T12:37:29+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-27</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-28T13:30:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-28</span>
   </span>
 
     
