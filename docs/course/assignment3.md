@@ -140,7 +140,7 @@ ros2 launch tuos_simulations beacon_colours.launch.py
 ```
 
 <figure markdown>
-  ![](./com3009/beacon_colours_table.png){width=600px}
+  ![](./assignment3/beacon_colours_table.png){width=600px}
   <figcaption>The range of possible beacon colours that could be used in this assignment.</figcaption>
 </figure>
 
@@ -208,7 +208,7 @@ ros2 launch tuos_simulations beaconing.launch.py
 The arena contains three start zones: **A**, **B** & **C**; each of a different colour, as well as a number of uniquely coloured beacons.  There is one beacon in the arena to match each of the three start zones, plus a couple more to act as decoys! 
 
 <figure markdown>
-  ![](./com3009/beaconing.jpg){width=600px}
+  ![](./assignment3/beaconing.jpg){width=600px}
   <figcaption>The "beaconing" arena.</figcaption>
 </figure>
 
