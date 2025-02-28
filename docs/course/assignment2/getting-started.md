@@ -108,6 +108,8 @@ You should do this from within your own ROS installation (or WSL-ROS2), rather t
     cd ~/ros2_ws/src
     ```
 
+    <!-- Note for 2026: Use ssh instead?  -->
+
 1. Clone your repo here using the remote HTTPS URL:
 
     ```bash
