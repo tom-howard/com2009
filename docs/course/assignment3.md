@@ -1,5 +1,6 @@
 ---  
 title: "Assignment #3 (COM3009 only)"  
+description: "In Simulation, program a Waffle to search an environment, detect a coloured object and beacon towards it."
 ---  
 
 Develop ROS node(s) that enable a TurtleBot3 Waffle to search an environment, detect a coloured object and beacon towards it, stopping in proximity without crashing into it!
@@ -243,3 +244,5 @@ There are **15 marks** available for this assignment in total, awarded based on 
 ## Submission
 
 Your work will be pulled from GitHub on the deadline listed above, so it's important that you register your ROS package with us ([via the form above](#register-your-ros-package)) so that we can access this.
+
+Your work must be located on the `main` branch of your package repo.
