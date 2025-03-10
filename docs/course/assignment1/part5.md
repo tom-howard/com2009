@@ -31,10 +31,9 @@ By the end of this session you will be able to:
 * [Exercise 5: Building a Basic "ExploreForward" Client](#ex5)
 * [Exercise 6 (Advanced): Implementing an Exploration Strategy](#ex6)
 
-<!-- ### Additional Resources
+### Additional Resources
 
-* [The Action Client Code (for Exercise 2)](./part5/action_client.md)
-* [The Preemptive Action Client Code (for Exercise 3)](./part5/preemptive_action_client.md) -->
+* [The Explore Server Template (for Exercise 4)](./part5/explore_server.md)
 
 ## Getting Started
 
@@ -998,12 +997,12 @@ Through this course you've gained some practical experience using all three of t
 * **Services**: Are most appropriate for very short procedures like *quick* calculations (inverse kinematics etc.) and performing short discrete actions that are unlikely to go wrong or will not need intervention (e.g. turning on a warning LED when a battery is low).
 * **Actions**: Are most appropriate for longer running tasks (like moving a robot), or for operations where we *might* need to change our mind and do something different or cancel an invoked behaviour part way through.
     
-### WSL-ROS Managed Desktop Users: Save your work! {#backup}
+### WSL-ROS2 Managed Desktop Users: Save your work! {#backup}
 
-Remember, to save the work you have done in WSL-ROS during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS Terminal Instance now:
+Remember, to save the work you have done in WSL-ROS2 during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS2 Terminal Instance now:
 
 ```bash
 wsl_ros backup
 ```
 
-You'll then be able to restore it to a fresh WSL-ROS environment next time you fire one up (`wsl_ros restore`).  
+You'll then be able to restore it to a fresh WSL-ROS2 environment next time you fire one up (`wsl_ros restore`).  

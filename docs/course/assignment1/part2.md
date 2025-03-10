@@ -463,7 +463,7 @@ In Part 1 we learnt how to create a package and build simple Python nodes to pub
     cp ~/ros2_ws/src/part1_pubsub/scripts/subscriber.py ./odom_subscriber.py
     ```
 
-1. Next, follow [the steps for converting this into an Odometry subscriber](./part2/odom_subscriber.md). <a name="odom_sub_ret"></a>
+1. Next, follow **[the steps for converting this into an Odometry subscriber](./part2/odom_subscriber.md)**. <a name="odom_sub_ret"></a>
 
 1. You'll need to add a new dependency to your package's `package.xml` file now. Below the `#!xml <exec_depend>rclpy</exec_depend>` line, add an execution dependency for `nav_msgs`:
 
@@ -604,7 +604,7 @@ In Part 1 we built [a simple publisher node](./part1/publisher.md), and this one
 
 1. The task is to make the robot move in a **circle** with a path **radius** of approximately **0.5 meters**.
     
-    Follow [the steps here for building this](./part2/move_circle.md) (using the Part 1 Publisher Node as a starting point). <a name="move_circle_ret"></a>
+    Follow **[the steps here for building this](./part2/move_circle.md)** (using the Part 1 Publisher Node as a starting point). <a name="move_circle_ret"></a>
 
 1. Our `move_circle.py` node has a new dependency:
 
@@ -784,7 +784,7 @@ We can therefore build on the techniques that we used in the `move_circle.py` ex
 1. Define `move_square.py` as a package executable in your `CMakeLists.txt` file (you should know how to do this by now?!) 
 
 1. Use the VS Code File Explorer to navigate to this `move_square.py` file and open it up, ready for editing.
-1. [There's a template here to help you with this exercise](./part2/move_square.md). Copy and paste the template code into your new `move_square.py` file to get you started. <a name="move_square_ret"></a>
+1. **[There's ^^a template here^^ to help you with this exercise](./part2/move_square.md)**. Copy and paste the template code into your new `move_square.py` file to get you started. <a name="move_square_ret"></a>
 
 1. Re-build your `part2_navigation` package, to include your new `move_square.py` node:
 

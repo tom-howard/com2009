@@ -620,7 +620,7 @@ LaserScan data presents us with a new challenge: processing large datasets. In t
     ```
     ***
 
-1. With all of that out of the way, it's time to start building the `lidar_subscriber.py` Python Node! Open up the file in VS Code, then [follow the steps here](./part3/lidar_subscriber.md) to construct it. <a name="ex4_ret"></a>
+1. With all of that out of the way, it's time to start building the `lidar_subscriber.py` Python Node! Open up the file in VS Code, then **[follow ^^the steps here^^ to construct it](./part3/lidar_subscriber.md)**. <a name="ex4_ret"></a>
 
 1. Once you're happy with what's going on with this, run the node using `ros2 run`:
 

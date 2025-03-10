@@ -520,7 +520,7 @@ So far we've been making service calls from the command-line, but we can also ca
 
     <a name="ex_srv_cli_ret"></a>
 
-1. Now, open up the `number_game_client.py` file in VS Code. [Have a look at the code here](./part4/number_game_client.md), review it (including all the annotations), then copy and paste it and save the file.
+1. Now, open up the `number_game_client.py` file in VS Code. **[Have a look at ^^the code here^^, review it (including all the annotations), then copy and paste it and save the file](./part4/number_game_client.md)**.
 
 1. You should now be able to run the code with `ros2 run`. To begin with, run it without supplying any additional command-line arguments:
 

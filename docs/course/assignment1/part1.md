@@ -680,7 +680,7 @@ To illustrate how information can be passed from one node to another (via topics
 
 1. Use the same procedure as before to create a new empty Python file called `subscriber.py` and remember to make it executable! <a name="sub_ret"></a>
 
-1. Then, open the newly created `subscriber.py` file in VS Code, paste in [the code here](./part1/subscriber.md) and save it. 
+1. Then, open the newly created `subscriber.py` file in VS Code, **[paste in ^^the code here^^ and save it](./part1/subscriber.md)**. 
     
     Once again, it's important that you understand how this code works, so **make sure you read the code annotations**! 
 
