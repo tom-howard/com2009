@@ -1513,7 +1513,7 @@
           <li class="md-nav__item">
   <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      WSL-ROS Managed Desktop Users: Save your work!
+      WSL-ROS2 Managed Desktop Users: Save your work!
     </span>
   </a>
   
@@ -2456,7 +2456,7 @@
           <li class="md-nav__item">
   <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      WSL-ROS Managed Desktop Users: Save your work!
+      WSL-ROS2 Managed Desktop Users: Save your work!
     </span>
   </a>
   
@@ -2690,7 +2690,7 @@
 <p>Open up the <code>object_detection.py</code> Python file in VS Code.</p>
 </li>
 <li>
-<p>Copy <a href="object_detection/">the code here</a> into the empty <code>object_detection.py</code> file, save it, then read the annotations so that you understand how the node works and what should happen when you run it. <a name="ex2_ret"></a></p>
+<p><strong><a href="object_detection/">Copy <ins>the code here</ins> into the empty <code>object_detection.py</code> file</a></strong>, save it, then read the annotations so that you understand how the node works and what should happen when you run it. <a name="ex2_ret"></a></p>
 </li>
 <li>
 <p>Run the node using <code>ros2 run</code>.</p>
@@ -2861,7 +2861,7 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <figure>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od6_centroid.png" width="600px" /></a></p>
 </figure>
-<p>Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: <code>cv2.circle()</code>.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in <a href="object_detection_complete/">a complete worked example of the <code>object_detection.py</code> node</a> from the previous exercise. <a name="ex2b_ret"></a></p>
+<p>Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: <code>cv2.circle()</code>.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in <strong><a href="object_detection_complete/">a complete <ins>worked example of the <code>object_detection.py</code> node</ins> from the previous exercise</a></strong>. <a name="ex2b_ret"></a></p>
 <p>In our case, we can't actually change the position of our robot in the z axis, so the <code>cz</code> centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate <code>cy</code> to understand where a feature is located <em>horizontally</em> in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We can then use this as the basis for some real <strong>closed-loop</strong> control.</p>
 <h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 3: Using Image Moments for Robot Control<a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
 <p>Inside the <code>tuos_examples</code> package there is a node that has been developed to illustrate how all the OpenCV tools that you have explored so far could be used to search an environment and stop a robot when it is looking directly at an object of interest. All the tools that are used in this node should be familiar to you by now, and in this exercise you're going to make a copy of this node and modify it to enhance its functionality.</p>
@@ -2965,7 +2965,8 @@ u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{d}{dt}e(t)
 <p><a name="ex4a_ret"></a></p>
 </li>
 <li>
-<p>Start with <a href="line_follower/">the code template provided here</a>. This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in <a href="#ex2">Exercise 2</a>, so go back here if you need a reminder on how any of this works. </p>
+<p><strong><a href="line_follower/">Start with <ins>the code template</ins> provided here</a></strong>. </p>
+<p>This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in <a href="#ex2">Exercise 2</a>, so go back here if you need a reminder on how any of this works. </p>
 <p>Your aim here is to get the code to generate a cropped image, with the coloured line isolated and located within it, like this:</p>
 <p><figure markdown>
   <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/setup_complete.jpg" /></a>
@@ -3103,11 +3104,11 @@ u(t)=K_{P} e(t)
 </ol>
 <h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
 <p>In this session you have learnt how to use data from a robot's camera to extract further information about its environment.  The camera allows our robot to "see" and the information that we obtain from this device can allow us to develop more advanced robotic behaviours such as searching for objects, follow things or - conversely - moving away or avoiding them.  You have learnt how to do some basic tasks with OpenCV, but this is a huge and very capable library of computer vision tools, and we encourage you to explore this further yourselves to enhance some of the basic principles that we have shown you today.</p>
-<h3 id="backup">WSL-ROS Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
-<p>Remember, to save the work you have done in WSL-ROS during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS Terminal Instance now:</p>
+<h3 id="backup">WSL-ROS2 Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<p>Remember, to save the work you have done in WSL-ROS2 during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS2 Terminal Instance now:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
-<p>You'll then be able to restore it to a fresh WSL-ROS environment whenever you need it again (<code>wsl_ros restore</code>).  </p>
+<p>You'll then be able to restore it to a fresh WSL-ROS2 environment whenever you need it again (<code>wsl_ros restore</code>).  </p>
 <div class="footnote">
 <hr />
 <ol>
@@ -3138,7 +3139,7 @@ u(t)=K_{P} e(t)
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="February 14, 2025 13:21:41"><span class="timeago" datetime="2025-02-14T13:21:41+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="February 14, 2025 13:21:41">2025-02-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 10, 2025 23:43:14"><span class="timeago" datetime="2025-03-10T23:43:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 10, 2025 23:43:14">2025-03-10</span>
   </span>
 
     
