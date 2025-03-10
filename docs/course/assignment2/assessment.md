@@ -3,7 +3,7 @@ title: Key Assessment Info & Requirements
 ---
 
 !!! warning
-    Failure to follow all the requirements listed on this page could result in you receiving **zero marks** for a submission point and/or assignment task!
+    Failure to follow all the requirements listed on this page could result in **penalties** being applied to your mark, or **zero marks** being awarded for a submission point and/or assignment task!
 
 Your ROS package should be hosted on GitHub, it should be setup as a private repository, and you should have added `tom-howard` as a maintainer. 
 
@@ -24,8 +24,8 @@ Having completed all of this *successfully*, we'll be able to pull your package 
 
 | Part | Tasks | Marks<br />(/100) | Submission |
 | :---: | :---  | :---: | :---: |
-| **A** | **Tasks 1 & 2** | 40 | Week 6 |
-| **B** | **Tasks 3 & 4** | 60 | Week 11/12 |
+| **A** | **Tasks 1 & 2** | 40 | Friday of Week 6 at 10pm (GMT) |
+| **B** | **Tasks 3 & 4** | 60 | Friday of Week 12 at 10pm (BST) |
 
 </center>
 
@@ -57,11 +57,6 @@ In addition to registering your package correctly (as above), you **must** also 
     <maintainer email="member.2@sheffield.ac.uk">Member 2's Name</maintainer>
     ...
     ```
-
-!!! warning
-    Failure to follow **ALL** the Key Requirements will result in penalties being applied to your team's Part A and/or B mark. 
-
-### Ensuring Successful Deployment 
 
 For the assessment of each Assignment #2 Task, your package will be built and deployed on one of the Robotics Laptops that you'll have been working with extensively during the lab sessions. We will use the standard `student` user account, and your package will be downloaded to the `~/ros2_ws/src/` directory. 
 
