@@ -28,14 +28,19 @@ Waffle?
 
 The environment that your robot will need to explore for this will (again) be the Diamond Computer Room 5 Robot Arena, which is a square arena of 4x4m. For the task, the arena will contain a number of *"obstacles,"* i.e.: short wooden walls and coloured cylinders. Your robot will need to be able to detect these obstacles and navigate around them in order to fully explore the space.
 
-1. The robot will start in the centre of the arena.
+1. The robot will start in the centre of the arena, perpendicular to one of the four *outer* arena walls.
 1. It must explore the environment for 90 seconds without touching **any** of the arena walls or the obstacles within it.
 
     **Note**: *The 90-second timer will start as soon as the robot starts moving within the arena.*
 
-1. If the robot makes contact with **anything** before the time has elapsed then the attempt is over.
+1. If the robot makes contact with **anything** before the time has elapsed then the attempt is over, and this time will be recorded to determine the *"Run Time"* mark ([see below](#run-time)).
 1. The arena floor will be divided into 16 equal-sized zones and the robot must enter as many of the **outer 12 zones** as possible during the attempt.
 1. The robot must be moving for the entire duration of the task. Simply just turning on the spot for the whole time doesn't count!
+
+    * What we want to see here is that the robot is constantly making an effort to explore.
+    * It is however OK for the robot to stop moving and turn on the spot for a few seconds whenever required though.
+    * If the robot explores for a while and then stops and doesn't move again for the remainder of the 90-second run, then *Run Time* marks will be awarded up to the point at which the robot ceased to be active.
+    * Further details on the eligibility for *Run Time* marks are provided in [the Marking Section below](#marking).
 
     <a name="launch"></a>
 
@@ -73,7 +78,7 @@ ros2 launch com2009_simulations task2.launch.py
 </figure>
 
 !!! warning
-    The location, orientation and quantity of obstacles **will be different** to those in this simulation!
+    The location and orientation of obstacles **will be different** to those in this simulation!
 
 ## Marking
 
@@ -83,7 +88,7 @@ There are **20 marks** available for Task 2 in total, awarded as follows:
 
 | Criteria | Marks | Details |
 | :--- | :---: | :--- |
-| **A**: Run Time | 8/20 | You will be awarded marks for the amount of time that your robot spends exploring the environment before 90 seconds has elapsed, **or** the robot makes contact with anything in its environment ([as per the table below](#run-time)). **The robot must leave the central zone** (the red zone in the simulation) in order to be eligible for any of these marks. |
+| **A**: Run Time | 8/20 | You will be awarded marks for the amount of time that your robot spends exploring the environment before 90 seconds has elapsed, **or** the robot makes contact with anything in its environment ([as per the table below](#run-time)). **The robot must leave the central red zone** (a 1x1m area) in order to be eligible for any of these marks. If the robot does not explore beyond **the central orange zone** then a $0.5\times$ multiplication factor will be applied to the run time marks. |
 | **B**: Exploration | 12/20 | You will be awarded 1 mark for each of the outer 12 arena zones that the robot manages to enter (i.e. excluding the four zones in the middle). The robot only needs to enter each of the 12 zones once, but its full body must be inside the zone marking to be awarded the mark. |
 
 </center>
