@@ -304,13 +304,15 @@ We can find out more about the `/cmd_vel` topic by using the `ros2 topic` comman
     1. The topic also has 1 subscriber *reading* this data
     1. From RQT Node Graph we know that the `/teleop_keyboard` node is the publisher (i.e. the node writing data to the topic)
     1. The `/turtlebot3_diff_drive` node is receiving this data (and acting upon it). This node therefore monitors (i.e. *subscribes* to) the `/cmd_vel` topic and makes the robot move in the simulator whenever a velocity command is published.
-    1. Data is transmitted on the `/cmd_vel` topic using an [Interface](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html){target="_blank"}. This particular interface *type* is: `geometry_msgs/msg/Twist`. 
+    1. Data is transmitted on the `/cmd_vel` topic using an [Interface](https://docs.ros.org/en/humble/Concepts/Basic/About-Interfaces.html){target="_blank"}. This particular interface is defined as: `geometry_msgs/msg/Twist`. 
     
-        The *type* field has three parts to it:
+        The interface definition has three parts to it:
         
         1. `geometry_msgs`: the name of the ROS package that this interface belongs to.
-        1. `msg`: that this is a *topic message* rather than another type of interface (there are *three* types of interface, and we'll learn about the other two later in this course).
-        1. `Twist`: the actual message *type* (i.e., the way the data is structured)
+        1. `msg`: that this is a *topic message* rather than another type of interface (there are **three** types of interface, and we'll learn about the other two later in this course).
+        1. `Twist`: the actual interface name
+
+        Interfaces define the *structure of the data* that is broadcast on the ROS network, so that any node can deal with this data appropriately. 
 
         In summary then, we've established that if we want to make the robot move we need to publish `Twist` messages to the `/cmd_vel` topic.
 

@@ -132,11 +132,11 @@ In Part 1 we learnt about ROS Topics, and about how the `teleop_keyboard` node c
 
 !!! question "Questions"
     1. Which *topic* is used to control the velocity of the robot?
-    1. What *message type* does this topic use?
+    1. What *interface* does this topic use?
 
     [Return here if you need a reminder on how to find the answers to these questions](./part1.md#ex3).
 
-We also learnt how to find out more about this particular message type (using the `ros2 interface show` command): 
+We also learnt how to find out more about this particular interface (using the `ros2 interface show` command): 
 
 ``` { .txt .no-copy }
 Vector3  linear
@@ -318,13 +318,13 @@ ros2 topic info /odom
 ```
 ***
 
-This provides information about the *type* of message used by this topic:
+This provides information about the interface used by this topic:
 
 ``` { .txt .no-copy }
 Type: nav_msgs/msg/Odometry
 ```
 
-We can find out more about this message using the `ros2 interface show` command:
+We can find out more about this interface using the `ros2 interface show` command:
 
 ***
 **TERMINAL 2:**
@@ -333,7 +333,7 @@ ros2 interface show nav_msgs/msg/Odometry
 ```
 ***
 
-Look down the far left-hand side to identify the four *base fields* of the message (i.e. the fields that are not indented):
+Look down the far left-hand side to identify the four *base fields* of the interface (i.e. the fields that are not indented):
 
 <a name="odom-base-fields"></a>
 
@@ -383,7 +383,7 @@ All the above information can then be used to calculate (and keep track of) the 
 
 #### What are Quaternions?
 
-Quaternions use **four values** to represent the orientation of something in 3 dimensional space[^quaternions], as we can observe from the structure of the `nav_msgs/msg/Odometry` ROS message:
+Quaternions use **four values** to represent the orientation of something in 3 dimensional space[^quaternions], as we can observe from the structure of the `nav_msgs/msg/Odometry` ROS interface:
 
 [^quaternions]: [Quaternions are explained very nicely here](https://automaticaddison.com/how-to-convert-a-quaternion-to-a-rotation-matrix/#What_is_a_Quaternion){target="_blank"}, if you'd like to learn more.
 
@@ -410,7 +410,7 @@ Recall from above however, that our TurtleBot3 can only move in a 2D plane (unfo
 
 #### Twist
 
-The fourth *base field* within the `nav_msgs/msg/Odometry` message is **Twist**:
+The fourth *base field* within the `nav_msgs/msg/Odometry` interface is **Twist**:
 
 ``` { .txt .no-copy }
 # Estimated linear and angular velocity relative to child_frame_id.
