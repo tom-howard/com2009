@@ -2613,11 +2613,11 @@
 <p class="admonition-title">Questions</p>
 <ol>
 <li>Which <em>topic</em> is used to control the velocity of the robot?</li>
-<li>What <em>message type</em> does this topic use?</li>
+<li>What <em>interface</em> does this topic use?</li>
 </ol>
 <p><a href="../part1/#ex3">Return here if you need a reminder on how to find the answers to these questions</a>.</p>
 </div>
-<p>We also learnt how to find out more about this particular message type (using the <code>ros2 interface show</code> command): </p>
+<p>We also learnt how to find out more about this particular interface (using the <code>ros2 interface show</code> command): </p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Vector3  linear
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>        float64 x
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>        float64 y
@@ -2857,16 +2857,16 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>info<span class="w"> </span>/odom
 </code></pre></div></p>
 <hr />
-<p>This provides information about the <em>type</em> of message used by this topic:</p>
+<p>This provides information about the interface used by this topic:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>Type: nav_msgs/msg/Odometry
 </code></pre></div>
-<p>We can find out more about this message using the <code>ros2 interface show</code> command:</p>
+<p>We can find out more about this interface using the <code>ros2 interface show</code> command:</p>
 <hr />
 <p><strong>TERMINAL 2:</strong>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ros2<span class="w"> </span>interface<span class="w"> </span>show<span class="w"> </span>nav_msgs/msg/Odometry
 </code></pre></div></p>
 <hr />
-<p>Look down the far left-hand side to identify the four <em>base fields</em> of the message (i.e. the fields that are not indented):</p>
+<p>Look down the far left-hand side to identify the four <em>base fields</em> of the interface (i.e. the fields that are not indented):</p>
 <p><a name="odom-base-fields"></a></p>
 <p><center></p>
 <table>
@@ -2930,7 +2930,7 @@
 </ul>
 <p>All the above information can then be used to calculate (and keep track of) the distance travelled by the robot from its pre-defined reference point using a process called <em>"dead-reckoning."</em></p>
 <h4 id="what-are-quaternions">What are Quaternions?<a class="headerlink" href="#what-are-quaternions" title="Permanent link">&para;</a></h4>
-<p>Quaternions use <strong>four values</strong> to represent the orientation of something in 3 dimensional space<sup id="fnref:quaternions"><a class="footnote-ref" href="#fn:quaternions">1</a></sup>, as we can observe from the structure of the <code>nav_msgs/msg/Odometry</code> ROS message:</p>
+<p>Quaternions use <strong>four values</strong> to represent the orientation of something in 3 dimensional space<sup id="fnref:quaternions"><a class="footnote-ref" href="#fn:quaternions">1</a></sup>, as we can observe from the structure of the <code>nav_msgs/msg/Odometry</code> ROS interface:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>Quaternion orientation
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>        float64 x
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>        float64 y
@@ -2950,7 +2950,7 @@
 <li><span class="arithmatex">\(\theta_{z}\)</span>: the angle of the robot about the <code>z</code> (<em>yaw</em>) axis</li>
 </ul>
 <h4 id="twist">Twist<a class="headerlink" href="#twist" title="Permanent link">&para;</a></h4>
-<p>The fourth <em>base field</em> within the <code>nav_msgs/msg/Odometry</code> message is <strong>Twist</strong>:</p>
+<p>The fourth <em>base field</em> within the <code>nav_msgs/msg/Odometry</code> interface is <strong>Twist</strong>:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a># Estimated linear and angular velocity relative to child_frame_id.
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>geometry_msgs/TwistWithCovariance twist
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>        Twist twist
@@ -3385,7 +3385,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 10, 2025 23:43:14"><span class="timeago" datetime="2025-03-10T23:43:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 10, 2025 23:43:14">2025-03-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 11, 2025 16:41:37"><span class="timeago" datetime="2025-03-11T16:41:37+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 11, 2025 16:41:37">2025-03-11</span>
   </span>
 
     
