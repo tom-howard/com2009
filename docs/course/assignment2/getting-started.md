@@ -88,6 +88,8 @@ The team member who created the Repo (in the step above) should fill in this for
 !!! warning
     Failure to do this (and do it properly) could result in you receiving **0 marks** for the assignment tasks!
 
+At some point within the first few weeks of the course a `hello.md` file will be pushed to your repo (by Tom) to confirm that it has been registered correctly.
+
 ### Initialising Your Team's ROS Package (Locally)
 
 Nominate **only one member of your team** to do this bit too.
