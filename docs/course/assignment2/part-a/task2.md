@@ -42,20 +42,18 @@ The environment that your robot will need to explore for this will (again) be th
     * If the robot explores for a while and then stops and doesn't move again for the remainder of the 90-second run, then *Run Time* marks will be awarded up to the point at which the robot ceased to be active.
     * Further details on the eligibility for *Run Time* marks are provided in [the Marking Section below](#marking).
 
-    <a name="launch"></a>
+## Executing Your Code {#launch}
 
-1. The ROS package that you submit must contain a launch file called `task2.launch.py`, such that the functionality that you develop for Task 2 can be launched from your package via the command:
+The ROS package that you submit must contain a launch file called `task2.launch.py`, such that the functionality that you develop for Task 2 can be launched from your package via the command:
 
-    ```bash
-    ros2 launch com2009_teamXX_2025 task2.launch.py
-    ```
+```bash
+ros2 launch com2009_teamXX_2025 task2.launch.py
+```
 
-    **Test this out before submission to make sure that it works!**
-
-1. ROS will already be running on the robot before we attempt to execute your launch file on the laptop that the robot has been paired with. 
+... where `XX` will be replaced with *your team number*.
 
 !!! note
-    The location, orientation and quantity of obstacles in the arena will not be revealed beforehand, so the ROS package that you develop will need to be able to accommodate an unknown environment. 
+    ROS will already be running on the robot before we attempt to execute your launch file, and [a bridge between the robot and laptop will have already been established](../../../waffles/launching-ros.md#step-4-robot-laptop-bridging).
 
 ## Simulation Resources
 

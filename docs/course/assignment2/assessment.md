@@ -43,6 +43,11 @@ In addition to registering your package correctly (as above), you **must** also 
 
     ... where `XX` should be replaced with your team number.
 
+* [ ] Your package **must contain launch files** for each of the assignment tasks (`task1.launch.py`, `task2.launch.py`, etc...), so that we are able to execute your ROS applications properly for each of the tasks.
+
+    !!! warning 
+        You must have **a launch file per task**, and it must be named correctly (as explained in each of the task pages). We won't use any other method to launch your ROS nodes during the assessment. 
+
 * [ ] Your package must contain **no build files** (`build/`, `install/`, `logs/`) that would be generated as a result of running `colcon build` from inside your package.
 
     !!! warning "Remember"

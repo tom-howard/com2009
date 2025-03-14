@@ -53,22 +53,25 @@ Whilst doing this, you will also need to print some robot odometry data to the t
 
     !!! warning "Important"
         You should use `#!py get_logger().info()` method calls within your node to print these terminal messages.
-	
-1. The ROS package that you submit must contain a launch file called `task1.launch.py`. When assessing your team's package, the teaching team will use the following command to execute all the necessary functionality from within your package: <a name="launch"></a>
-	 
-	``` { .bash .no-copy }
-    ros2 launch com2009_teamXX_2025 task1.launch.py
-    ```
-	
-	... where `XX` will be replaced with *your team number*.
-	 
-	**Note**: *ROS will already be running on the robot before we attempt to execute your launch file.* 
-  
+
 ### A note on Odometry
 
 When the robot is placed in the arena at the start of the task its odometry may not necessarily read zero, so you will need to compensate for this. You'll therefore need to grab the robot pose from the `/odom` topic before your robot starts moving, and then use that as the zero-reference to convert all the subsequent odometry readings that you obtain throughout the task.
 
 Odometry and keeping track of the robot's *pose* is discussed in detail in [Assignment #1 Part 2](../../assignment1/part2.md).
+
+## Executing Your Code {#launch}
+
+Your ROS package must contain a launch file called `task1.launch.py`. When assessing your team's package, the teaching team will use the following command to execute all the necessary functionality from within your package:
+	 
+``` { .bash .no-copy }
+ros2 launch com2009_teamXX_2025 task1.launch.py
+```
+
+... where `XX` will be replaced with *your team number*.
+    
+!!! note
+    ROS will already be running on the robot before we attempt to execute your launch file, and [a bridge between the robot and laptop will have already been established](../../../waffles/launching-ros.md#step-4-robot-laptop-bridging).
 
 ## Simulation Resources
 
