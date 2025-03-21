@@ -6,7 +6,7 @@ title: University Managed Desktops
 
 * [Accessing WSL-ROS2 on a University Managed Desktop Computer](../wsl-ros/man-win.md)
 
-## Launching WSL-ROS
+## Launching WSL-ROS2
 
 1. Click the Windows Start Menu button: ![](../figures/win-logo.png)
     
