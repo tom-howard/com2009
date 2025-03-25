@@ -75,8 +75,7 @@ ros2 launch com2009_simulations task2.launch.py
   <figcaption>The Obstacle Avoidance development arena.</figcaption>
 </figure>
 
-!!! warning
-    The location and orientation of obstacles **will be different** to those in this simulation!
+This is an *example* of what the real-world environment *might* look like. **ALL** objects (i.e. the four coloured cylinders and the four inner wooden wall assemblies) could be in *different positions entirely*. The wooden walls *may not be touching the outer edges of the arena*! The only things that will remain the same are the arena size, the location of the outer arena walls and the floor layout (i.e. the location of the exploration zones).
 
 ## Marking
 
