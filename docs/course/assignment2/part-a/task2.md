@@ -9,7 +9,7 @@ Develop the ROS node(s) to allow a TurtleBot3 Waffle to autonomously explore an 
     You should aim to have completed the following *additional* parts of the COM2009 ROS Course to support your work on this task: 
 
     * **Assignment #1**: Up to and including [Part 5](../../assignment1/part5.md) (in full).
-    * **Real Waffle Essential Exercises**:
+    * **Real Waffle Essentials**:
         * [Exercise 1 (Publishing Velocity Commands)](../../../waffles/essentials.md#ex1),
         * [Exercise 2 (Out of Range LiDAR Data)](../../../waffles/essentials.md#ex2).
 
