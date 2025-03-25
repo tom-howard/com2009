@@ -1548,6 +1548,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       Key Requirements
@@ -1916,6 +1925,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#key-requirements" class="md-nav__link">
     <span class="md-ellipsis">
       Key Requirements
@@ -1971,7 +1989,7 @@
 <p class="admonition-title">Warning</p>
 <p>Failure to follow all the requirements listed on this page could result in <strong>penalties</strong> being applied to your mark, or <strong>zero marks</strong> being awarded for a submission point and/or assignment task!</p>
 </div>
-<p>Your ROS package should be hosted on GitHub, it should be setup as a private repository, and you should have added <code>tom-howard</code> as a maintainer. </p>
+<p>Your ROS package should be hosted on GitHub, it should be setup as a private repository, and you should have added <code>tom-howard</code> as a collaborator. </p>
 <p>In addition to this, you should have registered your package with the teaching team (via the Google Form), so that we know where to find it on the submission deadlines.</p>
 <p>All the above was covered in <a href="../getting-started/">the Getting Started section</a>, which you should have completed in the Week 1 Lab.</p>
 <p>Having completed all of this <em>successfully</em>, we'll be able to pull your package on each of the submission dates so that your team's Assignment #2 work can be assessed. If you <em>haven't</em> completed all this, then you could receive zero marks!</p>
@@ -2008,6 +2026,12 @@
 </table>
 <p></center></p>
 <p>See the task pages for full details on each of the four tasks.</p>
+<h2 id="dependencies">Dependencies<a class="headerlink" href="#dependencies" title="Permanent link">&para;</a></h2>
+<p>You may draw upon any pre-existing Python libraries or ROS 2 packages in your own work for Assignment #2 <strong>as long as they are pre-installed on the real robotics hardware</strong> (i.e. the Linux laptops in the lab). The WSL-ROS2 environment is equivalent to the software setup on the real robotics hardware, so any packages that exist in one will also exist in the other.</p>
+<div class="admonition danger">
+<p class="admonition-title">Note</p>
+<p>You will not be able to request for any <em>additional</em> libraries/packages to be installed.</p>
+</div>
 <h2 id="key-requirements">Key Requirements<a class="headerlink" href="#key-requirements" title="Permanent link">&para;</a></h2>
 <p>In addition to registering your package correctly (as above), you <strong>must</strong> also ensure that the following <em>Key Requirements</em> are met for each of the submission points (<strong>A</strong> and <strong>B</strong>): </p>
 <ul class="task-list">
@@ -2018,10 +2042,25 @@
 <p>... where <code>XX</code> should be replaced with your team number.</p>
 </li>
 <li class="task-list-item">
-<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Your package <strong>must contain launch files</strong> for each of the assignment tasks (<code>task1.launch.py</code>, <code>task2.launch.py</code>, etc...), so that we are able to execute your ROS applications properly for each of the tasks.</p>
+<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> It must be possible to build your package by running the following command from the root of the local ROS2 Workspace, and this must build without errors:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>com2009_teamXX_2025
+</code></pre></div>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> You must ensure that a launch file exists for each of the <em>programming</em> tasks (Tasks 1, 2 &amp; 3) and that these are <em>callable</em> (after having run the above <code>colcon build</code> command) so that we are able to launch your work using <code>ros2 launch</code> as follows<sup id="fnref:launch-files"><a class="footnote-ref" href="#fn:launch-files">1</a></sup>:</p>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_teamXX_2025<span class="w"> </span>taskY.launch.py
+</code></pre></div>
+<p>... where <code>XX</code> will be replaced by your team number, and <code>Y</code> will be replaced by the appropriate task number.</p>
 <div class="admonition warning">
-<p class="admonition-title">Warning</p>
+<p class="admonition-title">Important</p>
 <p>You must have <strong>a launch file per task</strong>, and it must be named correctly (as explained in each of the task pages). We won't use any other method to launch your ROS nodes during the assessment. </p>
+</div>
+</li>
+<li class="task-list-item">
+<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Any nodes within your package that are executed by the above launch files <strong>must</strong> have been correctly defined as package executables (i.e. in your <code>CMakeLists.txt</code>) and must <strong>also</strong> have been assigned the appropriate execute permission (i.e. with <code>chmod</code>).  </p>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p>It's up to <strong>you</strong> to ensure that your code launches as intended for a given task. If it doesn't, then you'll be awarded zero marks, so <strong>make sure you test it all out prior to submission</strong>!</p>
 </div>
 </li>
 <li class="task-list-item">
@@ -2036,33 +2075,14 @@
 </li>
 <li class="task-list-item">
 <p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Your package's <code>package.xml</code> file must contain a <code class="highlight"><span class="nt">&lt;maintainer&gt;</span></code> tag for each member of your team. Add these as necessary, e.g.:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;member.1@sheffield.ac.uk&quot;</span><span class="nt">&gt;</span>Member<span class="w"> </span>1&#39;s<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;member.2@sheffield.ac.uk&quot;</span><span class="nt">&gt;</span>Member<span class="w"> </span>2&#39;s<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>...
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;member.1@sheffield.ac.uk&quot;</span><span class="nt">&gt;</span>Member<span class="w"> </span>1&#39;s<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;member.2@sheffield.ac.uk&quot;</span><span class="nt">&gt;</span>Member<span class="w"> </span>2&#39;s<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>...
 </code></pre></div>
+(providing each team member's <strong>Sheffield</strong> email address.)</p>
 </li>
 </ul>
 <p>For the assessment of each Assignment #2 Task, your package will be built and deployed on one of the Robotics Laptops that you'll have been working with extensively during the lab sessions. We will use the standard <code>student</code> user account, and your package will be downloaded to the <code>~/ros2_ws/src/</code> directory. </p>
-<ul class="task-list">
-<li class="task-list-item">
-<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> It must be possible to build your package by running the following command from the root of the local ROS2 Workspace, and this must build without errors:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>colcon<span class="w"> </span>build<span class="w"> </span>--packages-select<span class="w"> </span>com2009_teamXX_2025
-</code></pre></div>
-</li>
-<li class="task-list-item">
-<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> You must ensure that a launch file exists for each of the <em>programming</em> tasks (Tasks 1, 2 &amp; 3) and that these are executable (after having run the above <code>colcon build</code> command) so that we are able to launch your work as follows<sup id="fnref:launch-files"><a class="footnote-ref" href="#fn:launch-files">1</a></sup>:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_teamXX_2025<span class="w"> </span>taskY.launch.py
-</code></pre></div>
-<p>... where <code>XX</code> will be replaced by your team number, and <code>Y</code> will be replaced by the appropriate task number.</p>
-</li>
-<li class="task-list-item">
-<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Any nodes within your package that are executed by the above launch files <strong>must</strong> have been correctly defined as package executables (i.e. in your <code>CMakeLists.txt</code>) and must <strong>also</strong> have been assigned the appropriate execute permission (i.e. with <code>chmod</code>).  </p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>It's up to <strong>you</strong> to ensure that your code launches as intended for a given task. If it doesn't, then you'll be awarded zero marks, so <strong>make sure you test it all out prior to submission</strong>!</p>
-</div>
-</li>
-</ul>
 <h2 id="other-important-information">Other Important Information<a class="headerlink" href="#other-important-information" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
@@ -2114,7 +2134,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 14, 2025 10:14:28"><span class="timeago" datetime="2025-03-14T10:14:28+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 14, 2025 10:14:28">2025-03-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 25, 2025 14:34:44"><span class="timeago" datetime="2025-03-25T14:34:44+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 25, 2025 14:34:44">2025-03-25</span>
   </span>
 
     
