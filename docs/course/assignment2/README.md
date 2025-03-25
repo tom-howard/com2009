@@ -58,7 +58,7 @@ In order to launch the necessary functionality within your package for a given t
 For more information on how to create `.launch.py` files, refer to the following resources:
 
 1. [Assignment #1 Part 3](../assignment1/part3.md)
-2. The [**Launch Files** *Extras*](../extras/launch-files.md) page 
+2. [Launch File Arguments](../extras/launch-file-args.md) (Additional Resources) 
 
 ### Preparing for the Deadlines
 

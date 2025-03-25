@@ -71,7 +71,7 @@ Having developed the core functionality for the task, you'll then need to think 
 
 ### Advanced Feature 1: A photo of a beacon
 
-As with the previous 2 tasks, we will launch the ROS node(s) from within your package for this task using `ros2 launch` ([as discussed below](#launch). For this one however, we will *also* attempt to supply an additional argument when we make the command-line call:
+As with the previous 2 tasks, we will launch the ROS node(s) from within your package for this task using `ros2 launch` ([as discussed below](#launch)). For this one however, we will *also* attempt to supply an additional argument when we make the command-line call:
 
 ``` { .bash .no-copy }
 ros2 launch com2009_teamXX_2025 task3.launch.py target_colour:={colour}
@@ -86,20 +86,20 @@ ros2 launch com2009_teamXX_2025 task3.launch.py target_colour:={colour}
 
 At the root of your package there must be a directory called `snaps`, and the image must be saved into this directory with the file name: `target_beacon.jpg`. 
 
-You will therefore need to define your launch file to accommodate the `target_colour` command-line argument. In addition to this, inside your launch file you'll *also* need to pass the *value* of this to a ROS node within your package, so that the node knows which beacon to actually look for (i.e. your node needs to know whether to look for a yellow, red, green or blue beacon). This kind of launch file functionality wasn't covered in Assignment #1, so there are some additional resources available in the [Launch Files](../../extras/launch-files.md) section of this course site, which should help you with this.
+You will therefore need to define your launch file to accommodate the `target_colour` command-line argument. In addition to this, inside your launch file you'll *also* need to pass the *value* of this to a ROS node within your package, so that the node knows which beacon to actually look for (i.e. your node needs to know whether to look for a yellow, red, green or blue beacon). This kind of launch file functionality wasn't covered in Assignment #1, so **[there are some ^^additional resources^^ available here](../../extras/launch-file-args.md)**, to help you with this.
 
 <a name="args_test"></a>
 
 We will test whether your launch file has been correctly built to accept the `target_colour` command-line argument using the `-s` option with `ros2 launch`, which provides a list of all arguments that may be given to the launch file: 
 
 ``` { .bash .no-copy }
-ros2 launch -s com2009_teamXX_2025 task3.launch.py
+ros2 launch com2009_teamXX_2025 task3.launch.py -s
 ```
 
 Having built your `task3.launch.py` file correctly, the `target_colour` argument should be listed in the output of the above command, e.g.:
 
 ``` { .txt .no-copy }
-$ ros2 launch -s com2009_teamXX_2025 task3.launch.py
+$ ros2 launch com2009_teamXX_2025 task3.launch.py -s
 Arguments (pass arguments as '<name>:=<value>'):
 
     'target_colour':
