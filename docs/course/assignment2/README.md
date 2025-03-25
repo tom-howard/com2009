@@ -30,6 +30,10 @@ Tasks **1**, **2** & **3** are *programming tasks*, requiring you to develop ROS
 
 This assignment is **worth 30%** of the overall mark for COM2009. As a team you will be assessed on a ROS package that you develop to satisfy the above tasks.
 
+Your ROS package will be assessed by the teaching team *off-line* in the weeks following the submission deadlines (as above). You will receive your marks, plus video recordings of the assessment within 3 weeks of submission[^holiday].
+
+[^holiday]: If this falls over a holiday period (i.e. Easter), then the deadline for marking and the return of marks extends to 5 weeks (as per standard University policy).
+
 ### Tasks 1, 2 & 3
 
 Each submission will be assessed by deploying your ROS package on one of the *robotics laptops* used extensively throughout the lab sessions. Nodes within your package will then be executed on the laptop to control a real robot in the Diamond Computer Room 5 Robot Arena.
@@ -40,7 +44,7 @@ Your package must contain a `README.md` file in the root of the package director
 
 ### Submissions
 
-Before you get started on any of the tasks, **as a team** you'll need to create a single ROS package and host this on GitHub (which you'll do in [the Week 1 Lab Session](./getting-started.md)). You can then add all the necessary functionality for each task as you go along. On each of the submission deadlines (as summarised above and detailed on Blackboard) we will pull your team's work from your GitHub repo. 
+Before you get started on any of the tasks, **as a team** you'll need to create a single ROS package and host this on GitHub (which you'll do in [the Week 1 Lab Session](./getting-started.md)). You can then add all the necessary functionality for each task as you go along. On each of the submission deadlines (as summarised above and detailed on Blackboard) we will pull your team's work from your GitHub repo. [See here for further details](./assessment.md).
 
 !!! note
     You should work on each task **as a team**, and create only **one** ROS package/GitHub repo **per team** for this assignment.
