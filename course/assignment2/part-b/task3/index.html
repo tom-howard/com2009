@@ -2234,14 +2234,13 @@
 <p>Having developed the core functionality for the task, you'll then need to think about a couple of more <strong>advanced features</strong>...</p>
 <h3 id="advanced-feature-1-a-photo-of-a-beacon">Advanced Feature 1: A photo of a beacon<a class="headerlink" href="#advanced-feature-1-a-photo-of-a-beacon" title="Permanent link">&para;</a></h3>
 <p>As with the previous 2 tasks, we will launch the ROS node(s) from within your package for this task using <code>ros2 launch</code> (<a href="#launch">as discussed below</a>). For this one however, we will <em>also</em> attempt to supply an additional argument when we make the command-line call:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_teamXX_2025<span class="w"> </span>task3.launch.py<span class="w"> </span>target_colour:<span class="o">={</span>colour<span class="o">}</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_teamXX_2025<span class="w"> </span>task3.launch.py<span class="w"> </span>target_colour:<span class="o">=</span>COLOUR
 </code></pre></div>
-<p>...where <code>{colour}</code> will be replaced with either <code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code> (the target colour will be selected randomly). Based on this input, your robot will need to capture an image of the beacon in the arena of the same colour!</p>
+<p>...where <code>COLOUR</code> will be replaced with either <code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code> (the target colour will be selected randomly). Based on this input, your robot will need to capture an image of the beacon in the arena of the same colour!</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <ul>
 <li>You should know from <a href="../../../../waffles/essentials/#ex3">Essential Exercise 3</a> that the camera image topic name is different on the real robot!</li>
-<li>The <strong>interface</strong> is different too!</li>
 <li>You should also consider the fact that <a href="../../../../waffles/essentials/#ex4">images are captured at a different resolution</a>: consider how this might impact any image processing that you do. </li>
 </ul>
 </div>
@@ -2261,9 +2260,9 @@
 <p><a name="arg_parsing"></a></p>
 <p>To illustrate that the value of the <code>target_colour</code> command-line argument has been correctly passed to a ROS Node within your package, you should configure your Node (or any one of your nodes, if you have multiple) to print a message to the terminal as soon as your launch file is called. </p>
 <p>The message should be formatted <em>exactly</em> as follows:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>TARGET BEACON: Searching for {colour}.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>TARGET BEACON: Searching for COLOUR.
 </code></pre></div>
-<p>...where <code>{colour}</code> (including the curly brackets!) is replaced with the actual colour that was passed to your <code>task3.launch.py</code> file (<code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code>). </p>
+<p>...where <code>COLOUR</code> must be replaced with the actual colour that was passed to your <code>task3.launch.py</code> file (either <code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code>). </p>
 <h3 id="advanced-feature-2-mapping-with-slam">Advanced Feature 2: Mapping with SLAM<a class="headerlink" href="#advanced-feature-2-mapping-with-slam" title="Permanent link">&para;</a></h3>
 <p>Marks are also available if, whilst your robot is completing this task, you can use SLAM to generate a map of the environment in the background.</p>
 <p>In <a href="../../../assignment1/part3/#ex5">Part 3 of Assignment #1</a> we launched SLAM using the following <code>ros2 launch</code> command:</p>
@@ -2277,9 +2276,9 @@
 <p>The root of your package directory must contain a directory called <code>maps</code>, and the map file that you obtain must be saved into this directory with the name: <code>arena_map.png</code>.</p>
 <h2 id="launch">Executing Your Code<a class="headerlink" href="#launch" title="Permanent link">&para;</a></h2>
 <p>Your team's ROS package must contain a launch file named <code>task3.launch.py</code>, such that (for the assessment) we are able to launch all the nodes that you have developed for this task via the following command:</p>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_teamXX_2025<span class="w"> </span>task3.launch.py
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_teamXX_2025<span class="w"> </span>task3.launch.py<span class="w"> </span>target_colour:<span class="o">=</span>COLOUR
 </code></pre></div>
-... where <code>XX</code> will be replaced with <em>your team number</em>.</p>
+... where <code>XX</code> will be replaced with your team number and <code>COLOUR</code> will be replaced with either <code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>ROS will already be running on the robot before we attempt to execute your launch file, and <a href="../../../../waffles/launching-ros/#step-4-robot-laptop-bridging">a bridge between the robot and laptop will have already been established</a>.</p>
@@ -2457,7 +2456,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 25, 2025 23:46:28"><span class="timeago" datetime="2025-03-25T23:46:28+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 25, 2025 23:46:28">2025-03-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 26, 2025 09:31:50"><span class="timeago" datetime="2025-03-26T09:31:50+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 26, 2025 09:31:50">2025-03-26</span>
   </span>
 
     
