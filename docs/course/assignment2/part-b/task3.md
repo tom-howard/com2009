@@ -74,14 +74,13 @@ Having developed the core functionality for the task, you'll then need to think 
 As with the previous 2 tasks, we will launch the ROS node(s) from within your package for this task using `ros2 launch` ([as discussed below](#launch)). For this one however, we will *also* attempt to supply an additional argument when we make the command-line call:
 
 ``` { .bash .no-copy }
-ros2 launch com2009_teamXX_2025 task3.launch.py target_colour:={colour}
+ros2 launch com2009_teamXX_2025 task3.launch.py target_colour:=COLOUR
 ```
 
-...where `{colour}` will be replaced with either `yellow`, `red`, `green` or `blue` (the target colour will be selected randomly). Based on this input, your robot will need to capture an image of the beacon in the arena of the same colour!
+...where `COLOUR` will be replaced with either `yellow`, `red`, `green` or `blue` (the target colour will be selected randomly). Based on this input, your robot will need to capture an image of the beacon in the arena of the same colour!
 
 !!! warning 
     * You should know from [Essential Exercise 3](../../../waffles/essentials.md#ex3) that the camera image topic name is different on the real robot!
-    * The **interface** is different too!
     * You should also consider the fact that [images are captured at a different resolution](../../../waffles/essentials.md#ex4): consider how this might impact any image processing that you do. 
 
 At the root of your package there must be a directory called `snaps`, and the image must be saved into this directory with the file name: `target_beacon.jpg`. 
@@ -114,10 +113,10 @@ To illustrate that the value of the `target_colour` command-line argument has be
 The message should be formatted *exactly* as follows:
 
 ```txt
-TARGET BEACON: Searching for {colour}.
+TARGET BEACON: Searching for COLOUR.
 ```
 
-...where `{colour}` (including the curly brackets!) is replaced with the actual colour that was passed to your `task3.launch.py` file (`yellow`, `red`, `green` or `blue`). 
+...where `COLOUR` must be replaced with the actual colour that was passed to your `task3.launch.py` file (either `yellow`, `red`, `green` or `blue`). 
 
 ### Advanced Feature 2: Mapping with SLAM
 
@@ -146,9 +145,9 @@ The root of your package directory must contain a directory called `maps`, and t
 Your team's ROS package must contain a launch file named `task3.launch.py`, such that (for the assessment) we are able to launch all the nodes that you have developed for this task via the following command:
   
 ```bash
-ros2 launch com2009_teamXX_2025 task3.launch.py
+ros2 launch com2009_teamXX_2025 task3.launch.py target_colour:=COLOUR
 ```
-... where `XX` will be replaced with *your team number*.
+... where `XX` will be replaced with your team number and `COLOUR` will be replaced with either `yellow`, `red`, `green` or `blue`.
 
 !!! note
     ROS will already be running on the robot before we attempt to execute your launch file, and [a bridge between the robot and laptop will have already been established](../../../waffles/launching-ros.md#step-4-robot-laptop-bridging).
