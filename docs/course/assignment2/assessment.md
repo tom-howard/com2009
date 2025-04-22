@@ -73,6 +73,8 @@ In addition to registering your package correctly (as above), you **must** also 
 
     !!! warning "Important"
         It's up to **you** to ensure that your code launches as intended for a given task. If it doesn't, then you'll be awarded zero marks, so **make sure you test it all out prior to submission**!
+    
+    <a name="build-files"></a>
 
 * [ ] Your package must contain **no build files** (`build/`, `install/`, `logs/`) that would be generated as a result of running `colcon build` from inside your package.
 
