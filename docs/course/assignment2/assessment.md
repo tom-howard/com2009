@@ -76,10 +76,10 @@ In addition to registering your package correctly (as above), you **must** also 
     
     <a name="build-files"></a>
 
-* [ ] Your package must contain **no build files** (`build/`, `install/`, `logs/`) that would be generated as a result of running `colcon build` from inside your package.
+* [ ] Your package must contain **no build files** (`build/`, `install/`, `log/`) that would be generated as a result of running `colcon build` from inside your package.
 
     !!! warning "Remember"
-        **Always** run `colcon build` from the **root** of the ROS workspace (e.g. `~/ros2_ws/`), to ensure that all build files are generated in the right location in the filesystem (`~/ros2_ws/build/`, `~/ros2_ws/install/`, `~/ros2_ws/logs/`).
+        **Always** run `colcon build` from the **root** of the ROS workspace (e.g. `~/ros2_ws/`), to ensure that all build files are generated in the right location in the filesystem (`~/ros2_ws/build/`, `~/ros2_ws/install/`, `~/ros2_ws/log/`).
 
 * [ ] On each of the deadlines, we will pull your work from the `main` branch of your package repository. We will **ONLY** assess work on your `main` branch!
 
