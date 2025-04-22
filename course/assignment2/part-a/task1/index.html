@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/tuos_logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.2afb09e1.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2269,99 +2269,40 @@
 <h2 id="marking">Marking<a class="headerlink" href="#marking" title="Permanent link">&para;</a></h2>
 <p>This task will be assessed by the teaching team as part of Part A (i.e. along with <a href="../task2/">Task 2</a>). This will be assessed during the Easter Holiday period, with feedback returned to you before the semester resumes.</p>
 <p>There are <strong>20 marks</strong> available for this task in total, summarised as follows:</p>
-<p><center></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Criteria</th>
-<th style="text-align: center;">Marks</th>
-<th style="text-align: left;">Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>A</strong>: The Motion Path</td>
-<td style="text-align: center;">10/20</td>
-<td style="text-align: left;">How closely the real robot follows <em>a true figure-of-eight</em> path in the robot arena, based on <a href="#criterion-a-the-motion-path">the criteria table below</a>.</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>B</strong>: Terminal Messages</td>
-<td style="text-align: center;">10/20</td>
-<td style="text-align: left;">The correct formatting of your odometry messages, and the validity of the data that is presented in the terminal as the robot performs the task, based on <a href="#criterion-b-terminal-messages">the criteria table below</a>.</td>
-</tr>
-</tbody>
-</table>
-<p></center></p>
+<center>
+
+| Criteria | Marks | Details |
+| :--- | :---: | :--- |
+| **A**: The Motion Path | 10/20 | How closely the real robot follows *a true figure-of-eight* path in the robot arena, based on [the criteria table below](#criterion-a-the-motion-path). |
+| **B**: Terminal Messages | 10/20 | The correct formatting of your odometry messages, and the validity of the data that is presented in the terminal as the robot performs the task, based on [the criteria table below](#criterion-b-terminal-messages). |
+
+</center>
+
 <h3 id="criterion-a-the-motion-path">Criterion A: The Motion Path<a class="headerlink" href="#criterion-a-the-motion-path" title="Permanent link">&para;</a></h3>
 <p><strong>Marks:</strong> 10/20</p>
-<p><center></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Criteria</th>
-<th style="text-align: left;">Details</th>
-<th style="text-align: left;">Marks</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>A1</strong>: Direction of travel</td>
-<td style="text-align: left;">The robot must move anticlockwise for the first loop ("Loop 1") and then clockwise for the second ("Loop 2").</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>A2</strong>: Loop 1</td>
-<td style="text-align: left;">The loop must be ~1 m in diameter, centred about the red beacon.</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>A3</strong>: Loop 2</td>
-<td style="text-align: left;">The loop must be ~1 m in diameter, centred about the blue beacon.</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>A4</strong>: Stopping</td>
-<td style="text-align: left;">Once the robot completes its figure of eight, it must stop with both wheels <strong>within 10 cm</strong> of the start line.</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>A5</strong>: Timing</td>
-<td style="text-align: left;">The robot must complete the full figure of eight and stop in 55-65 seconds.</td>
-<td style="text-align: left;">2</td>
-</tr>
-</tbody>
-</table>
-<p></center></p>
+<center>
+
+| Criteria | Details | Marks|
+| :--- | :--- | :--- |
+| **A1**: Direction of travel | The robot must move anticlockwise for the first loop ("Loop 1") and then clockwise for the second ("Loop 2"). | 2 |
+| **A2**: Loop 1 | The loop must be ~1 m in diameter, centred about the red beacon. | 2 |
+| **A3**: Loop 2 | The loop must be ~1 m in diameter, centred about the blue beacon. | 2 |
+| **A4**: Stopping | Once the robot completes its figure of eight, it must stop with both wheels **within 10 cm** of the start line. | 2 |
+| **A5**: Timing | The robot must complete the full figure of eight and stop in 55-65 seconds. | 2 |
+
+</center>
+
 <h3 id="criterion-b-terminal-messages">Criterion B: Terminal Messages<a class="headerlink" href="#criterion-b-terminal-messages" title="Permanent link">&para;</a></h3>
 <p><strong>Marks:</strong> 10/20</p>
-<p><center></p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">Criteria</th>
-<th style="text-align: left;">Details</th>
-<th style="text-align: left;">Marks</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>B1</strong>: Rate</td>
-<td style="text-align: left;">Messages should be printed to the terminal at <strong>a rate of 1 Hz</strong>.</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>B2</strong>: Format</td>
-<td style="text-align: left;">The messages printed to the terminal should be formatted <strong>exactly</strong> <a href="#msg-format">as detailed above</a>, and must be printed using <code class="highlight"><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">()</span></code> method calls.</td>
-<td style="text-align: left;">2</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>B3</strong>: Data</td>
-<td style="text-align: left;">Each message value (<code>x</code>, <code>y</code> and <code>yaw</code>) should be plausible, that is: they represent the actual pose of the robot, based on all readings being set to zero at the start/finish point (<a href="#fig-eight">as illustrated above</a>). In addition, each value must be quoted in the correct units (meters or degrees, as appropriate).</td>
-<td style="text-align: left;">6</td>
-</tr>
-</tbody>
-</table>
-<p></center></p>
+<center>
+
+| Criteria | Details | Marks|
+| :--- | :--- | :--- |
+| **B1**: Rate | Messages should be printed to the terminal at **a rate of 1 Hz**. | 2 |
+| **B2**: Format | The messages printed to the terminal should be formatted **exactly** [as detailed above](#msg-format), and must be printed using `#!py get_logger().info()` method calls. | 2 |
+| **B3**: Data | Each message value (`x`, `y` and `yaw`) should be plausible, that is: they represent the actual pose of the robot, based on all readings being set to zero at the start/finish point ([as illustrated above](#fig-eight)). In addition, each value must be quoted in the correct units (meters or degrees, as appropriate). | 6 |
+
+</center>
 
 
 
