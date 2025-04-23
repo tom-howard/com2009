@@ -20,5 +20,6 @@ jobs:
                 mkdocs-awesome-pages-plugin \
                 mkdocs-git-revision-date-localized-plugin \
                 mkdocs-glightbox \
-                "mkdocs-material[imaging]"
+                "mkdocs-material[imaging]" \
+                markdown==3.7
       - run: mkdocs gh-deploy --force
