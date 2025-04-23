@@ -2682,26 +2682,61 @@
 </code></pre></div>
 <h3 id="velocity-commands">Velocity Commands<a class="headerlink" href="#velocity-commands" title="Permanent link">&para;</a></h3>
 <p>When defining velocity commands for a ROS robot, there are <strong>six</strong> <em>"fields"</em> that we can assign values to: <strong>two</strong> velocity <em>types</em>, each with <strong>three</strong> velocity <em>components</em>: </p>
-<center>
-
-| Velocity Type | Component 1 | Component 2 | Component 3 |
-| :--- | :---: | :---: | :---: |
-| `linear` | `x` | `y` | `z` |
-| `angular` | `x` | `y` | `z` |
-
-</center>
-
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Velocity Type</th>
+<th style="text-align: center;">Component 1</th>
+<th style="text-align: center;">Component 2</th>
+<th style="text-align: center;">Component 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>linear</code></td>
+<td style="text-align: center;"><code>x</code></td>
+<td style="text-align: center;"><code>y</code></td>
+<td style="text-align: center;"><code>z</code></td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>angular</code></td>
+<td style="text-align: center;"><code>x</code></td>
+<td style="text-align: center;"><code>y</code></td>
+<td style="text-align: center;"><code>z</code></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
 <p>These relate to a robot's <strong>six degrees of freedom</strong>, and the topic messages are therefore formatted to give a ROS Programmer the ability to <em>ask</em> a robot to move in any one of its six DOFs. </p>
-<center>
-
-| Component (Axis) | Linear Velocity | Angular Velocity | 
-| :---: | :---: | :---: |
-| **X** | "Forwards/Backwards" | "Roll" |
-| **Y** | "Left/Right" | "Pitch" |
-| **Z** | "Up/Down" | "Yaw" |
-
-</center>
-
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Component (Axis)</th>
+<th style="text-align: center;">Linear Velocity</th>
+<th style="text-align: center;">Angular Velocity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>X</strong></td>
+<td style="text-align: center;">"Forwards/Backwards"</td>
+<td style="text-align: center;">"Roll"</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Y</strong></td>
+<td style="text-align: center;">"Left/Right"</td>
+<td style="text-align: center;">"Pitch"</td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Z</strong></td>
+<td style="text-align: center;">"Up/Down"</td>
+<td style="text-align: center;">"Yaw"</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
 <h3 id="the-degrees-of-freedom-of-a-waffle">The Degrees of Freedom of a Waffle<a class="headerlink" href="#the-degrees-of-freedom-of-a-waffle" title="Permanent link">&para;</a></h3>
 <p>The three "axes" in the table above are termed the <em>"Principal Axes."</em> In the context of our TurtleBot3 Waffle, these axes and the motion about them are defined as follows:</p>
 <p><a name="principal-axes"></a></p>
@@ -2714,21 +2749,39 @@
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/waffle/velocities.svg" width="800" /></a></p>
 </figure>
 <p>When issuing Velocity Commands therefore, only two (of the six) velocity command fields are applicable: <strong>linear</strong> velocity in the <strong>x</strong>-axis (<em>Forwards/Backwards</em>) and <strong>angular</strong> velocity about the <strong>z</strong>-axis (<em>Yaw</em>).</p>
-<center>
-
-| Principal Axis | Linear Velocity | Angular Velocity | 
-| :---: | :---: | :---: |
-| **X** | **"Forwards/Backwards"** | ~~"Roll"~~ |
-| **Y** | ~~"Left/Right"~~ | ~~"Pitch"~~ |
-| **Z** | ~~"Up/Down"~~ | **"Yaw"** |
-
-</center>
-
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">Principal Axis</th>
+<th style="text-align: center;">Linear Velocity</th>
+<th style="text-align: center;">Angular Velocity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><strong>X</strong></td>
+<td style="text-align: center;"><strong>"Forwards/Backwards"</strong></td>
+<td style="text-align: center;"><del>"Roll"</del></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Y</strong></td>
+<td style="text-align: center;"><del>"Left/Right"</del></td>
+<td style="text-align: center;"><del>"Pitch"</del></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>Z</strong></td>
+<td style="text-align: center;"><del>"Up/Down"</del></td>
+<td style="text-align: center;"><strong>"Yaw"</strong></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
 <p><a name="velocity_limits"></a></p>
 <div class="admonition note">
 <p class="admonition-title">Maximum Velocity Limits</p>
 <p>Keep in mind (while we're on the subject of velocity) that our TurtleBot3 Waffles have <strong>maximum velocity limits</strong>:</p>
-<center>
+<p><center></p>
 <table>
 <thead>
 <tr>
@@ -2750,7 +2803,7 @@
 </tr>
 </tbody>
 </table>
-</center>
+<p></center></p>
 </div>
 <h2 id="odometry">Odometry (Position)<a class="headerlink" href="#odometry" title="Permanent link">&para;</a></h2>
 <h3 id="odometry-in-action">Odometry In Action<a class="headerlink" href="#odometry-in-action" title="Permanent link">&para;</a></h3>
@@ -2868,17 +2921,39 @@
 <hr />
 <p>Look down the far left-hand side to identify the four <em>base fields</em> of the interface (i.e. the fields that are not indented):</p>
 <p><a name="odom-base-fields"></a></p>
-<center>
-
-| # | Field *Name* | Field *Type* |
-| :---: | :---: | :---: |
-| 1 | `header` | `std_msgs/Header` |
-| 2 | `child_frame_id` | `string` |
-| **3** | **`pose`** | **`geometry_msgs/PoseWithCovariance`** |
-| **4** | **`twist`** | **`geometry_msgs/TwistWithCovariance`** |
-
-</center>
-
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">#</th>
+<th style="text-align: center;">Field <em>Name</em></th>
+<th style="text-align: center;">Field <em>Type</em></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><code>header</code></td>
+<td style="text-align: center;"><code>std_msgs/Header</code></td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><code>child_frame_id</code></td>
+<td style="text-align: center;"><code>string</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><strong><code>pose</code></strong></td>
+<td style="text-align: center;"><strong><code>geometry_msgs/PoseWithCovariance</code></strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;"><strong><code>twist</code></strong></td>
+<td style="text-align: center;"><strong><code>geometry_msgs/TwistWithCovariance</code></strong></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
 <p>We saw all these in <code>rqt</code> earlier. As before, its items 3 and 4 that are of most interest to us...</p>
 <h4 id="pose">Pose<a class="headerlink" href="#pose" title="Permanent link">&para;</a></h4>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a># Estimated pose that is typically relative to a fixed world frame.
@@ -3448,7 +3523,7 @@
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br />  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2025.
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../assets/external/i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br />  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2025.
 
     </div>
   
