@@ -40,7 +40,7 @@ Each submission will be assessed by deploying your ROS package on one of the *ro
 
 ### Task 4 
 
-Your package must contain a `README.md` file in the root of the package directory. Further details on the structure of this, and the marking criteria will be made available in due course... 
+Your package must contain a `README.md` file in the root of your package directory. This README file must document the application that you have developed for Task 3. [Further details can be found on the Task 4 page](./part-b/task4.md). 
 
 ### Submissions
 
