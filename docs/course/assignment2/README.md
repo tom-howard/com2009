@@ -18,7 +18,7 @@ Assignment #2 is split into two parts: **Part A** and **Part B**. You will compl
 | Part | Tasks | Marks<br />(/100) | Submission |
 | :---: | :---  | :---: | :---: |
 | **A** | **Task 1**: [Velocity Control](./part-a/task1.md)<br />**Task 2**: [Avoiding Obstacles](./part-a/task2.md) | 20<br />20 | Friday of Week 6 at 10pm (GMT) |
-| **B** | **Tasks 3**: [Exploration & Search](./part-b/task3.md)<br />**Task 4**: [Documentation](./part-b/task4.md) | 40<br />20 | Friday of Week 12 at 10pm (BST) |
+| **B** | **Task 3**: [Exploration & Search](./part-b/task3.md)<br />**Task 4**: [Documentation](./part-b/task4.md) | 40<br />20 | Friday of Week 12 at 10pm (BST) |
 
 </center>
 
