@@ -53,7 +53,7 @@ Once again, this is just an *example* of what the real-world environment *could*
 * Like the simulation, "rooms" will be constructed of wooden walls 180 mm tall, 10 mm thick and either 440 mm or 880 mm in length
 * Each room will contain a cylindrical beacon of 200 mm diameter and 250 mm height
 * Rooms will be different shapes and sizes and in different locations (but there will always be four of them)
-* The robot might not necessarily be located at the same starting point as in the simulation
+* The robot might not necessarily be located at the same starting point as in the simulation, it could start *anywhere* in the arena
 * Beacons will be the same shape, size and colour as those in the simulation (yellow, red, green and blue). 
     
     **But**: detecting colours is a lot harder in the real-world than it is in simulation, so you'll need to do a lot of testing on a real robot if you want to get this working robustly (you will have access to all the beacons during the lab sessions).
@@ -83,7 +83,7 @@ ros2 launch com2009_teamXX_2025 task3.launch.py target_colour:=COLOUR
     * You should know from [Essential Exercise 3](../../../waffles/essentials.md#ex3) that the camera image topic name is different on the real robot!
     * You should also consider the fact that [images are captured at a different resolution](../../../waffles/essentials.md#ex4): consider how this might impact any image processing that you do. 
 
-At the root of your package there must be a directory called `snaps`, and the image must be saved into this directory with the file name: `target_beacon.jpg`. 
+At the root of your package there must be a directory called `snaps`, and the image must be saved into this directory with the file name: `target_beacon.jpg`. The image *that is saved* must be the *raw image* from the robot's camera, and should not include any filtering that you may have applied in post-processing.  
 
 You will therefore need to define your launch file to accommodate the `target_colour` command-line argument. In addition to this, inside your launch file you'll *also* need to pass the *value* of this to a ROS node within your package, so that the node knows which beacon to actually look for (i.e. your node needs to know whether to look for a yellow, red, green or blue beacon). This kind of launch file functionality wasn't covered in Assignment #1, so **[there are some ^^additional resources^^ available here](../../extras/launch-file-args.md)**, to help you with this.
 
@@ -116,7 +116,7 @@ The message should be formatted *exactly* as follows:
 TARGET BEACON: Searching for COLOUR.
 ```
 
-...where `COLOUR` must be replaced with the actual colour that was passed to your `task3.launch.py` file (either `yellow`, `red`, `green` or `blue`). 
+...where `COLOUR` must be replaced with the actual colour that was passed to your `task3.launch.py` file (either `yellow`, `red`, `green` or `blue`). You should use a `#!py get_logger().info()` method call to print this terminal message.
 
 ### Advanced Feature 2: Mapping with SLAM
 
@@ -201,7 +201,7 @@ The marks available per room explored will be awarded as follows:
 
 | Criteria | Details | Marks|
 | :--- | :--- | :--- |
-| **D1.a** | Your `task3.launch.py` file has been built to accept `target_colour` argument (assessed by [running `ros2 launch -s` on your launch file](#args_test)) **and** a message is printed to the terminal to indicate that the **correct** target colour has been passed to a node in your package (this must occur straight away on executing your launch file and [the message format must be exactly as specified here](#arg_parsing)). | 2 |
+| **D1.a** | Your `task3.launch.py` file has been built to accept `target_colour` argument (assessed by [running `ros2 launch -s` on your launch file](#args_test)) **and** a message is printed to the terminal (using a `#!py get_logger().info()` method call) to indicate that the **correct** target colour has been passed to a node in your package (this must occur straight away on executing your launch file and [the message format must be exactly as specified here](#arg_parsing)). | 2 |
 | **D1.b** | At the end of the assessment a **single** image file, called `target_beacon.jpg`, has been obtained from the robot's camera (during the course of the assessment), and this is located in a folder called `snaps` at the root of your package directory i.e.: `com2009_teamXX_2025/snaps/target_beacon.jpg`. | 2 | 
 | **D1.c** | Your `com2009_teamXX_2025/snaps/target_beacon.jpg` image file contains **any part** of the **correct** beacon. | 3 |
 | **D1.d** | Your `com2009_teamXX_2025/snaps/target_beacon.jpg` image file has captured the **full width** of the correct beacon. | 3 |
