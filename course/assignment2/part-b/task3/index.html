@@ -2269,7 +2269,7 @@
 <li>Like the simulation, "rooms" will be constructed of wooden walls 180 mm tall, 10 mm thick and either 440 mm or 880 mm in length</li>
 <li>Each room will contain a cylindrical beacon of 200 mm diameter and 250 mm height</li>
 <li>Rooms will be different shapes and sizes and in different locations (but there will always be four of them)</li>
-<li>The robot might not necessarily be located at the same starting point as in the simulation</li>
+<li>The robot might not necessarily be located at the same starting point as in the simulation, it could start <em>anywhere</em> in the arena</li>
 <li>
 <p>Beacons will be the same shape, size and colour as those in the simulation (yellow, red, green and blue). </p>
 <p><strong>But</strong>: detecting colours is a lot harder in the real-world than it is in simulation, so you'll need to do a lot of testing on a real robot if you want to get this working robustly (you will have access to all the beacons during the lab sessions).</p>
@@ -2298,7 +2298,7 @@
 <li>You should also consider the fact that <a href="../../../../waffles/essentials/#ex4">images are captured at a different resolution</a>: consider how this might impact any image processing that you do. </li>
 </ul>
 </div>
-<p>At the root of your package there must be a directory called <code>snaps</code>, and the image must be saved into this directory with the file name: <code>target_beacon.jpg</code>. </p>
+<p>At the root of your package there must be a directory called <code>snaps</code>, and the image must be saved into this directory with the file name: <code>target_beacon.jpg</code>. The image <em>that is saved</em> must be the <em>raw image</em> from the robot's camera, and should not include any filtering that you may have applied in post-processing.  </p>
 <p>You will therefore need to define your launch file to accommodate the <code>target_colour</code> command-line argument. In addition to this, inside your launch file you'll <em>also</em> need to pass the <em>value</em> of this to a ROS node within your package, so that the node knows which beacon to actually look for (i.e. your node needs to know whether to look for a yellow, red, green or blue beacon). This kind of launch file functionality wasn't covered in Assignment #1, so <strong><a href="../../../extras/launch-file-args/">there are some <ins>additional resources</ins> available here</a></strong>, to help you with this.</p>
 <p><a name="args_test"></a></p>
 <p>We will test whether your launch file has been correctly built to accept the <code>target_colour</code> command-line argument using the <code>-s</code> option with <code>ros2 launch</code>, which provides a list of all arguments that may be given to the launch file: </p>
@@ -2316,7 +2316,7 @@
 <p>The message should be formatted <em>exactly</em> as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>TARGET BEACON: Searching for COLOUR.
 </code></pre></div>
-<p>...where <code>COLOUR</code> must be replaced with the actual colour that was passed to your <code>task3.launch.py</code> file (either <code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code>). </p>
+<p>...where <code>COLOUR</code> must be replaced with the actual colour that was passed to your <code>task3.launch.py</code> file (either <code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code>). You should use a <code class="highlight"><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">()</span></code> method call to print this terminal message.</p>
 <h3 id="advanced-feature-2-mapping-with-slam">Advanced Feature 2: Mapping with SLAM<a class="headerlink" href="#advanced-feature-2-mapping-with-slam" title="Permanent link">&para;</a></h3>
 <p>Marks are also available if, whilst your robot is completing this task, you can use SLAM to generate a map of the environment in the background.</p>
 <p>In <a href="../../../assignment1/part3/#ex5">Part 3 of Assignment #1</a> we launched SLAM using the following <code>ros2 launch</code> command:</p>
@@ -2450,7 +2450,7 @@
 <tbody>
 <tr>
 <td style="text-align: left;"><strong>D1.a</strong></td>
-<td style="text-align: left;">Your <code>task3.launch.py</code> file has been built to accept <code>target_colour</code> argument (assessed by <a href="#args_test">running <code>ros2 launch -s</code> on your launch file</a>) <strong>and</strong> a message is printed to the terminal to indicate that the <strong>correct</strong> target colour has been passed to a node in your package (this must occur straight away on executing your launch file and <a href="#arg_parsing">the message format must be exactly as specified here</a>).</td>
+<td style="text-align: left;">Your <code>task3.launch.py</code> file has been built to accept <code>target_colour</code> argument (assessed by <a href="#args_test">running <code>ros2 launch -s</code> on your launch file</a>) <strong>and</strong> a message is printed to the terminal (using a <code class="highlight"><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">()</span></code> method call) to indicate that the <strong>correct</strong> target colour has been passed to a node in your package (this must occur straight away on executing your launch file and <a href="#arg_parsing">the message format must be exactly as specified here</a>).</td>
 <td style="text-align: left;">2</td>
 </tr>
 <tr>
@@ -2517,7 +2517,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 1, 2025 13:11:59"><span class="timeago" datetime="2025-04-01T13:11:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 1, 2025 13:11:59">2025-04-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 2, 2025 09:11:59"><span class="timeago" datetime="2025-05-02T09:11:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 2, 2025 09:11:59">2025-05-02</span>
   </span>
 
     
