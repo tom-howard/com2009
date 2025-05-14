@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/tuos_logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -2160,7 +2160,7 @@
 <p>... where <code>XX</code> will be replaced by your team number, and <code>Y</code> will be replaced by the appropriate task number.</p>
 <div class="admonition warning">
 <p class="admonition-title">Important</p>
-<p>You must have <strong>a launch file per task</strong>, and it must be named correctly (as explained in each of the task pages). We won't use any other method to launch your ROS nodes during the assessment. </p>
+<p>You must ensure that <strong>your launch files are named correctly</strong> (as detailed in each of the task pages). We won't use any other method to launch your ROS nodes during the assessment of each programming task. </p>
 </div>
 </li>
 <li class="task-list-item">
@@ -2172,8 +2172,8 @@
 <p><a name="build-files"></a></p>
 </li>
 <li class="task-list-item">
-<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Your package must contain <strong>no build files</strong> (<code>build/</code>, <code>install/</code>, <code>log/</code>) that would be generated as a result of running <code>colcon build</code> from inside your package.</p>
-<div class="admonition warning">
+<p><label class="task-list-control"><input type="checkbox"/><span class="task-list-indicator"></span></label> Your package must contain <strong>no build files</strong> (<code>build/</code>, <code>install/</code>, <code>log/</code>) that would be generated as a result of (incorrectly) running <code>colcon build</code> from inside your package.</p>
+<div class="admonition tip">
 <p class="admonition-title">Remember</p>
 <p><strong>Always</strong> run <code>colcon build</code> from the <strong>root</strong> of the ROS workspace (e.g. <code>~/ros2_ws/</code>), to ensure that all build files are generated in the right location in the filesystem (<code>~/ros2_ws/build/</code>, <code>~/ros2_ws/install/</code>, <code>~/ros2_ws/log/</code>).</p>
 </div>
@@ -2187,7 +2187,7 @@
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nt">&lt;maintainer</span><span class="w"> </span><span class="na">email=</span><span class="s">&quot;member.2@sheffield.ac.uk&quot;</span><span class="nt">&gt;</span>Member<span class="w"> </span>2&#39;s<span class="w"> </span>Name<span class="nt">&lt;/maintainer&gt;</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>...
 </code></pre></div>
-(providing each team member's <strong>Sheffield</strong> email address.)</p>
+(providing each team member's full name and <strong>Sheffield</strong> email address.)</p>
 </li>
 </ul>
 <p>For the assessment of each Assignment #2 Task, your package will be built and deployed on one of the Robotics Laptops that you'll have been working with extensively during the lab sessions. We will use the standard <code>student</code> user account, and your package will be downloaded to the <code>~/ros2_ws/src/</code> directory. </p>
@@ -2242,7 +2242,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 22, 2025 14:38:06"><span class="timeago" datetime="2025-04-22T14:38:06+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 22, 2025 14:38:06">2025-04-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 14, 2025 11:02:18"><span class="timeago" datetime="2025-05-14T11:02:18+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 14, 2025 11:02:18">2025-05-14</span>
   </span>
 
     
@@ -2351,10 +2351,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
