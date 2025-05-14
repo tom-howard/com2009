@@ -67,7 +67,7 @@ In addition to registering your package correctly (as above), you **must** also 
     ... where `XX` will be replaced by your team number, and `Y` will be replaced by the appropriate task number.
 
     !!! warning "Important"
-        You must have **a launch file per task**, and it must be named correctly (as explained in each of the task pages). We won't use any other method to launch your ROS nodes during the assessment. 
+        You must ensure that **your launch files are named correctly** (as detailed in each of the task pages). We won't use any other method to launch your ROS nodes during the assessment of each programming task. 
 
 * [ ] Any nodes within your package that are executed by the above launch files **must** have been correctly defined as package executables (i.e. in your `CMakeLists.txt`) and must **also** have been assigned the appropriate execute permission (i.e. with `chmod`).  
 
@@ -76,9 +76,9 @@ In addition to registering your package correctly (as above), you **must** also 
     
     <a name="build-files"></a>
 
-* [ ] Your package must contain **no build files** (`build/`, `install/`, `log/`) that would be generated as a result of running `colcon build` from inside your package.
+* [ ] Your package must contain **no build files** (`build/`, `install/`, `log/`) that would be generated as a result of (incorrectly) running `colcon build` from inside your package.
 
-    !!! warning "Remember"
+    !!! tip "Remember"
         **Always** run `colcon build` from the **root** of the ROS workspace (e.g. `~/ros2_ws/`), to ensure that all build files are generated in the right location in the filesystem (`~/ros2_ws/build/`, `~/ros2_ws/install/`, `~/ros2_ws/log/`).
 
 * [ ] On each of the deadlines, we will pull your work from the `main` branch of your package repository. We will **ONLY** assess work on your `main` branch!
@@ -90,7 +90,7 @@ In addition to registering your package correctly (as above), you **must** also 
     <maintainer email="member.2@sheffield.ac.uk">Member 2's Name</maintainer>
     ...
     ```
-    (providing each team member's **Sheffield** email address.)
+    (providing each team member's full name and **Sheffield** email address.)
 
 For the assessment of each Assignment #2 Task, your package will be built and deployed on one of the Robotics Laptops that you'll have been working with extensively during the lab sessions. We will use the standard `student` user account, and your package will be downloaded to the `~/ros2_ws/src/` directory. 
 
