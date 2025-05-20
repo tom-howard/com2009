@@ -27,13 +27,18 @@ A brief explanation of what your application does (no more than 100 words).
 
 Explain (to someone who may not already be familiar) how to install and execute your package on one of the Robotics Laptops in the lab.
 
-In your documentation you can assume that [Steps 1-4 of the Robot/Laptop Setup process](../../../waffles/launching-ros.md) have already been carried out, so **you don't need to discuss any of this**.
+#### Exceptions
 
-This section should also provide details on all the external packages that your application depends upon in order to function (i.e. any libraries that you are using that exist outside your own package). 
+1. In your documentation you can assume that [Steps 1-4 of the Robot/Laptop Setup process](../../../waffles/launching-ros.md) have already been carried out, so **you don't need to discuss any of this**.
+1. You can also assume (for the purposes of this documentation) that your package is *public*, so there's no need to include any information about creating ssh keys etc (assume anyone could download your package through a simple `git clone ...`).
+
+#### Dependencies
+
+This section should also provide details on all the external packages that your application depends upon in order to function (i.e. any Python/ROS 2 libraries that you are using that exist outside your own package). 
 
 ### Functional Description
 
-Explain how your application works. This will form the bulk of the documentation, and should include a *Functional Block Diagram (FBD)* to aid the explanation and illustrate the control logic. The FBD should be more than simply a ROS node/topic graph. 
+Explain how your application works. This will form the bulk of the documentation, and should include a *Functional Block Diagram (FBD)* (or multiple FBDs if you wish) to aid the explanation and illustrate the control logic. This should be more than simply a ROS node/topic graph. 
 
 [See here for information on how to include images in your README.md](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#images){target="_blank"} to ensure that they are rendered correctly (see the information on using *relative links* to images that exist within your repository).
 
