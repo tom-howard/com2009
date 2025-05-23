@@ -2,7 +2,7 @@
 title: "Task 3: Exploration & Search"  
 ---  
 
-Develop the ROS node(s) to allow a TurtleBot3 Waffle to autonomously explore the full Computer Room 5 robot arena, navigating through a series of rooms as quickly as possible whilst documenting its exploration with a photo of a beacon and a map of the environment as it goes! 
+Develop the ROS node(s) to allow a TurtleBot3 Waffle to autonomously explore ^^a simulated environment equivalent to^^ the Computer Room 5 robot arena, navigating through a series of rooms as quickly as possible whilst documenting its exploration with a photo of a beacon and a map of the environment as it goes! 
 
 !!! success "Course Checkpoints"
     
@@ -19,10 +19,10 @@ For this task the robot arena will contain a series of "rooms" each with a colou
 
 As with Tasks 1 & 2, there's a simulation to help you develop your code for this task outside the lab sessions. This also helps to illustrate the nature of the task.
 
-!!! warning "Remember"
+<!-- !!! warning "Remember"
     Just because it works in simulation **^^DOESN'T^^** mean it will work in the real world!
 
-    ... Make sure you **test things out thoroughly** during the lab sessions!
+    ... Make sure you **test things out thoroughly** during the lab sessions! -->
 
 You can launch the simulation from the `com2009_simulations` package with the following `ros2 launch` command:
 
@@ -48,15 +48,15 @@ You can launch the simulation from the `com2009_simulations` package with the fo
 
 Make sure you [check for updates to the course repo](../../extras/course-repo.md#updating) to ensure that you have the most up-to-date version of this.
 
-Once again, this is just an *example* of what the real-world environment *could* look like:
+Once again, this is just an *example* of what the ~~real-world~~ ^^simulation^^ environment *could* look like:
 
-* Like the simulation, "rooms" will be constructed of wooden walls 180 mm tall, 10 mm thick and either 440 mm or 880 mm in length
+* "Rooms" will be constructed of 'wooden' walls 180 mm tall, 10 mm thick and either 440 mm or 880 mm in length
 * Each room will contain a cylindrical beacon of 200 mm diameter and 250 mm height
 * Rooms will be different shapes and sizes and in different locations (but there will always be four of them)
-* The robot might not necessarily be located at the same starting point as in the simulation, it could start *anywhere* in the arena
-* Beacons will be the same shape, size and colour as those in the simulation (yellow, red, green and blue). 
+* The robot might not necessarily be located at the same starting point as in the ^^example^^ simulation ^^above^^, it could start *anywhere*
+* Beacons will be the same shape, size and colour as those in the ^^example^^ simulation (yellow, red, green and blue). 
     
-    **But**: detecting colours is a lot harder in the real-world than it is in simulation, so you'll need to do a lot of testing on a real robot if you want to get this working robustly (you will have access to all the beacons during the lab sessions).
+    ~~**But**: detecting colours is a lot harder in the real-world than it is in simulation, so you'll need to do a lot of testing on a real robot if you want to get this working robustly (you will have access to all the beacons during the lab sessions).~~
 
 ## Details
 
@@ -79,9 +79,9 @@ ros2 launch com2009_teamXX_2025 task3.launch.py target_colour:=COLOUR
 
 ...where `COLOUR` will be replaced with either `yellow`, `red`, `green` or `blue` (the target colour will be selected randomly). Based on this input, your robot will need to capture an image of the beacon in the arena of the same colour!
 
-!!! warning 
+<!-- !!! warning 
     * You should know from [Essential Exercise 3](../../../waffles/essentials.md#ex3) that the camera image topic name is different on the real robot!
-    * You should also consider the fact that [images are captured at a different resolution](../../../waffles/essentials.md#ex4): consider how this might impact any image processing that you do. 
+    * You should also consider the fact that [images are captured at a different resolution](../../../waffles/essentials.md#ex4): consider how this might impact any image processing that you do.  -->
 
 At the root of your package there must be a directory called `snaps`, and the image must be saved into this directory with the file name: `target_beacon.jpg`. The image *that is saved* must be the *raw image* from the robot's camera, and should not include any filtering that you may have applied in post-processing.  
 
@@ -128,14 +128,14 @@ In [Part 3 of Assignment #1](../../assignment1/part3.md#ex5) we launched SLAM us
 ros2 launch tuos_simulations cartographer.launch.py
 ```
 
-!!! danger "Note"
+<!-- !!! danger "Note"
     When using Cartographer with the *real* robots, you'll need to set `use_sim_time` to `false`:
 
     ```txt
     ros2 launch tuos_simulations cartographer.launch.py use_sim_time:=false
     ``` 
 
-    [See here for how to do this within a launch file](../../extras/launch-file-args.md#passing-launch-arguments).
+    [See here for how to do this within a launch file](../../extras/launch-file-args.md#passing-launch-arguments). -->
 
 [Also in Part 3](../../assignment1/part3.md#ex2) we discussed how to use launch files to launch *other* launch files! Consider how you could take a similar approach to run SLAM from your `task3.launch.py` file.
 
@@ -159,7 +159,9 @@ ros2 launch com2009_teamXX_2025 task3.launch.py target_colour:=COLOUR
 ... where `XX` will be replaced with your team number and `COLOUR` will be replaced with either `yellow`, `red`, `green` or `blue`.
 
 !!! note
-    ROS will already be running on the robot before we attempt to execute your launch file, and [a bridge between the robot and laptop will have already been established](../../../waffles/launching-ros.md#step-4-robot-laptop-bridging).
+    ~~ROS will already be running on the robot before we attempt to execute your launch file, and [a bridge between the robot and laptop will have already been established](../../../waffles/launching-ros.md#step-4-robot-laptop-bridging).~~
+
+    ^^The simulation environment will already be running before we attempt to execute your launch file.^^
 
 ## Marking
 
