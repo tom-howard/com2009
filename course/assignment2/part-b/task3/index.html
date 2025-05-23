@@ -2226,7 +2226,7 @@
 
   <h1>Task 3: Exploration & Search</h1>
 
-<p>Develop the ROS node(s) to allow a TurtleBot3 Waffle to autonomously explore the full Computer Room 5 robot arena, navigating through a series of rooms as quickly as possible whilst documenting its exploration with a photo of a beacon and a map of the environment as it goes! </p>
+<p>Develop the ROS node(s) to allow a TurtleBot3 Waffle to autonomously explore <ins>a simulated environment equivalent to</ins> the Computer Room 5 robot arena, navigating through a series of rooms as quickly as possible whilst documenting its exploration with a photo of a beacon and a map of the environment as it goes! </p>
 <div class="admonition success">
 <p class="admonition-title">Course Checkpoints</p>
 <p>You should aim to have completed the following <em>additional</em> parts of the COM2009 ROS Course to support your work on this task: </p>
@@ -2239,11 +2239,11 @@
 <p>For this task the robot arena will contain a series of "rooms" each with a coloured, cylindrical beacon in it. The main aim is to <em>safely</em> explore each of the rooms in the shortest time possible (emphasis on <em>"safely"</em> here, meaning you need to also try not to crash into anything in the process!) At the same time, you'll need to search for a beacon of a particular colour as well as documenting your exploration by building a map of the environment (with SLAM).</p>
 <h2 id="simulation-resources">Simulation Resources<a class="headerlink" href="#simulation-resources" title="Permanent link">&para;</a></h2>
 <p>As with Tasks 1 &amp; 2, there's a simulation to help you develop your code for this task outside the lab sessions. This also helps to illustrate the nature of the task.</p>
-<div class="admonition warning">
-<p class="admonition-title">Remember</p>
-<p>Just because it works in simulation <strong><ins>DOESN'T</ins></strong> mean it will work in the real world!</p>
-<p>... Make sure you <strong>test things out thoroughly</strong> during the lab sessions!</p>
-</div>
+<!-- !!! warning "Remember"
+    Just because it works in simulation **^^DOESN'T^^** mean it will work in the real world!
+
+    ... Make sure you **test things out thoroughly** during the lab sessions! -->
+
 <p>You can launch the simulation from the <code>com2009_simulations</code> package with the following <code>ros2 launch</code> command:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">With Robot</label><label for="__tabbed_1_2">Without Robot</label></div>
 <div class="tabbed-content">
@@ -2264,15 +2264,15 @@
 </div>
 </div>
 <p>Make sure you <a href="../../../extras/course-repo/#updating">check for updates to the course repo</a> to ensure that you have the most up-to-date version of this.</p>
-<p>Once again, this is just an <em>example</em> of what the real-world environment <em>could</em> look like:</p>
+<p>Once again, this is just an <em>example</em> of what the <del>real-world</del> <ins>simulation</ins> environment <em>could</em> look like:</p>
 <ul>
-<li>Like the simulation, "rooms" will be constructed of wooden walls 180 mm tall, 10 mm thick and either 440 mm or 880 mm in length</li>
+<li>"Rooms" will be constructed of 'wooden' walls 180 mm tall, 10 mm thick and either 440 mm or 880 mm in length</li>
 <li>Each room will contain a cylindrical beacon of 200 mm diameter and 250 mm height</li>
 <li>Rooms will be different shapes and sizes and in different locations (but there will always be four of them)</li>
-<li>The robot might not necessarily be located at the same starting point as in the simulation, it could start <em>anywhere</em> in the arena</li>
+<li>The robot might not necessarily be located at the same starting point as in the <ins>example</ins> simulation <ins>above</ins>, it could start <em>anywhere</em></li>
 <li>
-<p>Beacons will be the same shape, size and colour as those in the simulation (yellow, red, green and blue). </p>
-<p><strong>But</strong>: detecting colours is a lot harder in the real-world than it is in simulation, so you'll need to do a lot of testing on a real robot if you want to get this working robustly (you will have access to all the beacons during the lab sessions).</p>
+<p>Beacons will be the same shape, size and colour as those in the <ins>example</ins> simulation (yellow, red, green and blue). </p>
+<p><del><strong>But</strong>: detecting colours is a lot harder in the real-world than it is in simulation, so you'll need to do a lot of testing on a real robot if you want to get this working robustly (you will have access to all the beacons during the lab sessions).</del></p>
 </li>
 </ul>
 <h2 id="details">Details<a class="headerlink" href="#details" title="Permanent link">&para;</a></h2>
@@ -2291,13 +2291,10 @@
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>com2009_teamXX_2025<span class="w"> </span>task3.launch.py<span class="w"> </span>target_colour:<span class="o">=</span>COLOUR
 </code></pre></div>
 <p>...where <code>COLOUR</code> will be replaced with either <code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code> (the target colour will be selected randomly). Based on this input, your robot will need to capture an image of the beacon in the arena of the same colour!</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<ul>
-<li>You should know from <a href="../../../../waffles/essentials/#ex3">Essential Exercise 3</a> that the camera image topic name is different on the real robot!</li>
-<li>You should also consider the fact that <a href="../../../../waffles/essentials/#ex4">images are captured at a different resolution</a>: consider how this might impact any image processing that you do. </li>
-</ul>
-</div>
+<!-- !!! warning 
+    * You should know from [Essential Exercise 3](../../../waffles/essentials.md#ex3) that the camera image topic name is different on the real robot!
+    * You should also consider the fact that [images are captured at a different resolution](../../../waffles/essentials.md#ex4): consider how this might impact any image processing that you do.  -->
+
 <p>At the root of your package there must be a directory called <code>snaps</code>, and the image must be saved into this directory with the file name: <code>target_beacon.jpg</code>. The image <em>that is saved</em> must be the <em>raw image</em> from the robot's camera, and should not include any filtering that you may have applied in post-processing.  </p>
 <p>You will therefore need to define your launch file to accommodate the <code>target_colour</code> command-line argument. In addition to this, inside your launch file you'll <em>also</em> need to pass the <em>value</em> of this to a ROS node within your package, so that the node knows which beacon to actually look for (i.e. your node needs to know whether to look for a yellow, red, green or blue beacon). This kind of launch file functionality wasn't covered in Assignment #1, so <strong><a href="../../../extras/launch-file-args/">there are some <ins>additional resources</ins> available here</a></strong>, to help you with this.</p>
 <p><a name="args_test"></a></p>
@@ -2322,13 +2319,14 @@
 <p>In <a href="../../../assignment1/part3/#ex5">Part 3 of Assignment #1</a> we launched SLAM using the following <code>ros2 launch</code> command:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>cartographer.launch.py
 </code></pre></div>
-<div class="admonition danger">
-<p class="admonition-title">Note</p>
-<p>When using Cartographer with the <em>real</em> robots, you'll need to set <code>use_sim_time</code> to <code>false</code>:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2 launch tuos_simulations cartographer.launch.py use_sim_time:=false
+<!-- !!! danger "Note"
+    When using Cartographer with the *real* robots, you'll need to set `use_sim_time` to `false`:
+
+    <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ros2 launch tuos_simulations cartographer.launch.py use_sim_time:=false
 </code></pre></div>
-<p><a href="../../../extras/launch-file-args/#passing-launch-arguments">See here for how to do this within a launch file</a>.</p>
-</div>
+
+    [See here for how to do this within a launch file](../../extras/launch-file-args.md#passing-launch-arguments). -->
+
 <p><a href="../../../assignment1/part3/#ex2">Also in Part 3</a> we discussed how to use launch files to launch <em>other</em> launch files! Consider how you could take a similar approach to run SLAM from your <code>task3.launch.py</code> file.</p>
 <p>When it comes to saving the map that has been generated by SLAM, recall how we did this from the command-line in Part 3 Exercise 5, using the following command: </p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>nav2_map_server<span class="w"> </span>map_saver_cli<span class="w"> </span>-f<span class="w"> </span>MAP_NAME
@@ -2342,7 +2340,8 @@
 ... where <code>XX</code> will be replaced with your team number and <code>COLOUR</code> will be replaced with either <code>yellow</code>, <code>red</code>, <code>green</code> or <code>blue</code>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>ROS will already be running on the robot before we attempt to execute your launch file, and <a href="../../../../waffles/launching-ros/#step-4-robot-laptop-bridging">a bridge between the robot and laptop will have already been established</a>.</p>
+<p><del>ROS will already be running on the robot before we attempt to execute your launch file, and <a href="../../../../waffles/launching-ros/#step-4-robot-laptop-bridging">a bridge between the robot and laptop will have already been established</a>.</del></p>
+<p><ins>The simulation environment will already be running before we attempt to execute your launch file.</ins></p>
 </div>
 <h2 id="marking">Marking<a class="headerlink" href="#marking" title="Permanent link">&para;</a></h2>
 <p>There are <strong>40 marks</strong> available for this task in total, awarded based on the criteria outlined below.</p>
@@ -2517,7 +2516,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 2, 2025 09:11:59"><span class="timeago" datetime="2025-05-02T09:11:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 2, 2025 09:11:59">2025-05-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 23, 2025 11:46:59"><span class="timeago" datetime="2025-05-23T11:46:59+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 23, 2025 11:46:59">2025-05-23</span>
   </span>
 
     
