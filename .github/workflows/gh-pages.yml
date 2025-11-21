@@ -19,6 +19,7 @@ jobs:
                 mkdocs-material \
                 mkdocs-awesome-pages-plugin \
                 mkdocs-git-revision-date-localized-plugin \
+                mkdocs-redirects \
                 mkdocs-glightbox \
                 "mkdocs-material[imaging]" \
                 markdown==3.7

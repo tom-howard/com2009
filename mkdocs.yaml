@@ -51,6 +51,9 @@ plugins:
       cards_layout_options:
         font_family: Noto Sans
   - glightbox
+  - redirects:
+      redirect_maps:
+        "ros/wsl-ros/install.md": "https://tom-howard.github.io/ros2/software/installing-wsl-ros2/"
 
 markdown_extensions:
   - admonition
