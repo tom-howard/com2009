@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="en" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -19,19 +16,22 @@
         <link rel="next" href="../../assignment2/">
       
       
+        
+      
+      
       <link rel="icon" href="../../../assets/tuos_logo.svg">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>Part 6: Cameras, Machine Vision & OpenCV - ROS2 Course Assignments for COM2009</title>
+        <title>Part 6: Cameras, Machine Vision &amp; OpenCV - ROS2 Course Assignments for COM2009</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -60,43 +60,30 @@
 
     
     
-      
-        <meta  property="og:type"  content="website" >
-      
-        <meta  property="og:title"  content="Part 6: Cameras, Machine Vision & OpenCV - ROS2 Course Assignments for COM2009" >
-      
-        <meta  property="og:description"  content="Learn how to work with images from an on-board camera. Learn techniques to detect features within these images, and use this to inform robot decision-making." >
-      
-        <meta  property="og:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part6.png" >
-      
-        <meta  property="og:image:type"  content="image/png" >
-      
-        <meta  property="og:image:width"  content="1200" >
-      
-        <meta  property="og:image:height"  content="630" >
-      
-        <meta  property="og:url"  content="https://tom-howard.github.io/com2009/course/assignment1/part6/" >
-      
-        <meta  name="twitter:card"  content="summary_large_image" >
-      
-        <meta  name="twitter:title"  content="Part 6: Cameras, Machine Vision & OpenCV - ROS2 Course Assignments for COM2009" >
-      
-        <meta  name="twitter:description"  content="Learn how to work with images from an on-board camera. Learn techniques to detect features within these images, and use this to inform robot decision-making." >
-      
-        <meta  name="twitter:image"  content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part6.png" >
-      
-    
-    
-   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-    html.glightbox-open { overflow: initial; height: 100%; }
-    .gslide-title { margin-top: 0px; user-select: text; }
-    .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }
-    .gscrollbar-fixer { padding-right: 15px; }
-    .gdesc-inner { font-size: 0.75rem; }
-    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+<meta property="og:type" content="website">
+<meta property="og:title" content="Part 6: Cameras, Machine Vision &amp; OpenCV - ROS2 Course Assignments for COM2009">
+<meta property="og:description" content="Learn how to work with images from an on-board camera. Learn techniques to detect features within these images, and use this to inform robot decision-making.">
+<meta property="og:image" content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part6.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://tom-howard.github.io/com2009/course/assignment1/part6/">
+<meta property="twitter:card" content="summary_large_image">
+<meta property="twitter:title" content="Part 6: Cameras, Machine Vision &amp; OpenCV - ROS2 Course Assignments for COM2009">
+<meta property="twitter:description" content="Learn how to work with images from an on-board camera. Learn techniques to detect features within these images, and use this to inform robot decision-making.">
+<meta property="twitter:image" content="https://tom-howard.github.io/com2009/assets/images/social/course/assignment1/part6.png">
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -106,7 +93,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom">
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -122,6 +109,17 @@
     </div>
     <div data-md-component="announce">
       
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+  This site is out of date. For the latest version, visit
+  <a href="https://tom-howard.github.io/ros2/">tom-howard.github.io/ros2</a>.
+
+          </div>
+          
+        </aside>
+      
     </div>
     
     
@@ -136,7 +134,7 @@
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
@@ -148,7 +146,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Part 6: Cameras, Machine Vision & OpenCV
+              Part 6: Cameras, Machine Vision &amp; OpenCV
             
           </span>
         </div>
@@ -161,21 +159,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
-    
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
-    
-  
-    
-    
-    
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
-    
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
-      </label>
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-purple" data-md-color-accent="cyan" aria-hidden="true" type="radio" name="__palette" id="__palette_0">
     
   
 </form>
@@ -190,7 +174,7 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -199,15 +183,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="Search">
         
         <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -231,7 +215,7 @@
         <a href="https://github.com/tom-howard/com2009" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     tom-howard/com2009
@@ -354,7 +338,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -377,7 +361,7 @@
       <a href="https://github.com/tom-howard/com2009" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
   </div>
   <div class="md-source__repository">
     tom-howard/com2009
@@ -417,7 +401,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1">
         
           
           <div class="md-nav__link md-nav__container">
@@ -426,9 +410,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     About
+  
+
     
   </span>
+  
   
 
             </a>
@@ -443,7 +432,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_1">
             <span class="md-nav__icon md-icon"></span>
-            About
+            
+  
+    About
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -461,9 +454,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Introducing the Robots
+  
+
     
   </span>
+  
   
 
       </a>
@@ -484,9 +482,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Version History
+  
+
     
   </span>
+  
   
 
       </a>
@@ -507,9 +510,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     License
+  
+
     
   </span>
+  
   
 
       </a>
@@ -555,7 +563,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -564,9 +572,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     ROS
+  
+
     
   </span>
+  
   
 
             </a>
@@ -581,7 +594,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
-            ROS
+            
+  
+    ROS
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -615,7 +632,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -624,9 +641,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     WSL-ROS2
+  
+
     
   </span>
+  
   
 
             </a>
@@ -641,7 +663,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
-            WSL-ROS2
+            
+  
+    WSL-ROS2
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -659,9 +685,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Installing WSL-ROS2 on your Own (Windows) Machine
+  
+
     
   </span>
+  
   
 
       </a>
@@ -682,9 +713,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Accessing WSL-ROS2 from A University Managed Desktop Computer on Campus
+  
+
     
   </span>
+  
   
 
       </a>
@@ -729,7 +765,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -738,9 +774,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Other Installation Options
+  
+
     
   </span>
+  
   
 
             </a>
@@ -755,7 +796,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_3">
             <span class="md-nav__icon md-icon"></span>
-            Other Installation Options
+            
+  
+    Other Installation Options
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -773,9 +818,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Installing "docker-ros2" for Linux, Mac (and Windows)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -796,9 +846,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Installing with UTM (on a Mac)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -845,7 +900,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -854,9 +909,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Using WSL-ROS2
+  
+
     
   </span>
+  
   
 
             </a>
@@ -871,7 +931,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
-            Using WSL-ROS2
+            
+  
+    Using WSL-ROS2
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -889,9 +953,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     University Managed Desktops
+  
+
     
   </span>
+  
   
 
       </a>
@@ -912,9 +981,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     A Quick Introduction to the Linux Terminal
+  
+
     
   </span>
+  
   
 
       </a>
@@ -935,9 +1009,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     VS Code and WSL
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1005,9 +1084,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Assignments
+  
+
     
   </span>
+  
   
 
             </a>
@@ -1022,7 +1106,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            Assignments
+            
+  
+    Assignments
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1075,9 +1163,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Assignment #1: An Introduction to ROS
+  
+
     
   </span>
+  
   
 
             </a>
@@ -1092,7 +1185,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
-            Assignment #1: An Introduction to ROS
+            
+  
+    Assignment #1: An Introduction to ROS
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1110,9 +1207,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Part 1: Getting Started with ROS 2
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1133,9 +1235,14 @@
   
   
   <span class="md-ellipsis">
-    Part 2: Odometry & Navigation
+    
+  
+    Part 2: Odometry &amp; Navigation
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1156,9 +1263,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Part 3: Beyond the Basics
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1179,9 +1291,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Part 4: Services
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1202,9 +1319,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Part 5: Actions
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1232,9 +1354,14 @@
   
   
   <span class="md-ellipsis">
-    Part 6: Cameras, Machine Vision & OpenCV
+    
+  
+    Part 6: Cameras, Machine Vision &amp; OpenCV
+  
+
     
   </span>
+  
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -1245,9 +1372,14 @@
   
   
   <span class="md-ellipsis">
-    Part 6: Cameras, Machine Vision & OpenCV
+    
+  
+    Part 6: Cameras, Machine Vision &amp; OpenCV
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1268,7 +1400,9 @@
         <li class="md-nav__item">
   <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      
+        Introduction
+      
     </span>
   </a>
   
@@ -1278,7 +1412,9 @@
           <li class="md-nav__item">
   <a href="#aims" class="md-nav__link">
     <span class="md-ellipsis">
-      Aims
+      
+        Aims
+      
     </span>
   </a>
   
@@ -1287,7 +1423,9 @@
           <li class="md-nav__item">
   <a href="#intended-learning-outcomes" class="md-nav__link">
     <span class="md-ellipsis">
-      Intended Learning Outcomes
+      
+        Intended Learning Outcomes
+      
     </span>
   </a>
   
@@ -1296,7 +1434,9 @@
           <li class="md-nav__item">
   <a href="#quick-links" class="md-nav__link">
     <span class="md-ellipsis">
-      Quick Links
+      
+        Quick Links
+      
     </span>
   </a>
   
@@ -1305,7 +1445,9 @@
           <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Additional Resources
+      
+        Additional Resources
+      
     </span>
   </a>
   
@@ -1319,7 +1461,9 @@
         <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
-      Getting Started
+      
+        Getting Started
+      
     </span>
   </a>
   
@@ -1328,7 +1472,9 @@
         <li class="md-nav__item">
   <a href="#working-with-cameras-and-images-in-ros" class="md-nav__link">
     <span class="md-ellipsis">
-      Working with Cameras and Images in ROS
+      
+        Working with Cameras and Images in ROS
+      
     </span>
   </a>
   
@@ -1338,7 +1484,9 @@
           <li class="md-nav__item">
   <a href="#camera-topics-and-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Camera Topics and Data
+      
+        Camera Topics and Data
+      
     </span>
   </a>
   
@@ -1347,7 +1495,9 @@
           <li class="md-nav__item">
   <a href="#viz" class="md-nav__link">
     <span class="md-ellipsis">
-      Visualising Camera Streams
+      
+        Visualising Camera Streams
+      
     </span>
   </a>
   
@@ -1357,7 +1507,9 @@
           <li class="md-nav__item">
   <a href="#ex1" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 1: Using RQT whilst changing the robot's viewpoint
+      
+        Exercise 1: Using RQT whilst changing the robot's viewpoint
+      
     </span>
   </a>
   
@@ -1376,7 +1528,9 @@
         <li class="md-nav__item">
   <a href="#opencv" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenCV and ROS
+      
+        OpenCV and ROS
+      
     </span>
   </a>
   
@@ -1386,7 +1540,9 @@
           <li class="md-nav__item">
   <a href="#object-detection" class="md-nav__link">
     <span class="md-ellipsis">
-      Object Detection
+      
+        Object Detection
+      
     </span>
   </a>
   
@@ -1396,7 +1552,9 @@
           <li class="md-nav__item">
   <a href="#ex2" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 2: Object Detection
+      
+        Exercise 2: Object Detection
+      
     </span>
   </a>
   
@@ -1406,7 +1564,9 @@
           <li class="md-nav__item">
   <a href="#step-1-getting-started" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Getting Started
+      
+        Step 1: Getting Started
+      
     </span>
   </a>
   
@@ -1415,7 +1575,9 @@
           <li class="md-nav__item">
   <a href="#step-2-cropping" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Cropping
+      
+        Step 2: Cropping
+      
     </span>
   </a>
   
@@ -1424,7 +1586,9 @@
           <li class="md-nav__item">
   <a href="#step-3-masking" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3: Masking
+      
+        Step 3: Masking
+      
     </span>
   </a>
   
@@ -1433,7 +1597,9 @@
           <li class="md-nav__item">
   <a href="#bitwise_and" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4: Filtering
+      
+        Step 4: Filtering
+      
     </span>
   </a>
   
@@ -1452,7 +1618,9 @@
           <li class="md-nav__item">
   <a href="#image-moments" class="md-nav__link">
     <span class="md-ellipsis">
-      Image Moments
+      
+        Image Moments
+      
     </span>
   </a>
   
@@ -1462,7 +1630,9 @@
           <li class="md-nav__item">
   <a href="#ex3" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 3: Using Image Moments for Robot Control
+      
+        Exercise 3: Using Image Moments for Robot Control
+      
     </span>
   </a>
   
@@ -1476,7 +1646,9 @@
           <li class="md-nav__item">
   <a href="#pid" class="md-nav__link">
     <span class="md-ellipsis">
-      PID Control and Line Following
+      
+        PID Control and Line Following
+      
     </span>
   </a>
   
@@ -1486,7 +1658,9 @@
           <li class="md-nav__item">
   <a href="#ex4" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 4: Line Following
+      
+        Exercise 4: Line Following
+      
     </span>
   </a>
   
@@ -1496,7 +1670,9 @@
           <li class="md-nav__item">
   <a href="#ex4a" class="md-nav__link">
     <span class="md-ellipsis">
-      Part A: Setup
+      
+        Part A: Setup
+      
     </span>
   </a>
   
@@ -1505,7 +1681,9 @@
           <li class="md-nav__item">
   <a href="#ex4b" class="md-nav__link">
     <span class="md-ellipsis">
-      Part B: Implementing and Tuning a Proportional Controller
+      
+        Part B: Implementing and Tuning a Proportional Controller
+      
     </span>
   </a>
   
@@ -1514,7 +1692,9 @@
           <li class="md-nav__item">
   <a href="#ex4c" class="md-nav__link">
     <span class="md-ellipsis">
-      Part C: Advanced Line Following
+      
+        Part C: Advanced Line Following
+      
     </span>
   </a>
   
@@ -1538,7 +1718,9 @@
         <li class="md-nav__item">
   <a href="#wrapping-up" class="md-nav__link">
     <span class="md-ellipsis">
-      Wrapping Up
+      
+        Wrapping Up
+      
     </span>
   </a>
   
@@ -1548,7 +1730,9 @@
           <li class="md-nav__item">
   <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      WSL-ROS2 Managed Desktop Users: Save your work!
+      
+        WSL-ROS2 Managed Desktop Users: Save your work!
+      
     </span>
   </a>
   
@@ -1610,7 +1794,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1619,9 +1803,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Assignment #2: Team Robotics Project
+  
+
     
   </span>
+  
   
 
             </a>
@@ -1636,7 +1825,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3">
             <span class="md-nav__icon md-icon"></span>
-            Assignment #2: Team Robotics Project
+            
+  
+    Assignment #2: Team Robotics Project
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1654,9 +1847,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Week 1: Getting Started
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1693,7 +1891,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1702,9 +1900,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Part A (Weeks 1-6)
+  
+
     
   </span>
+  
   
 
             </a>
@@ -1719,7 +1922,11 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3_3">
             <span class="md-nav__icon md-icon"></span>
-            Part A (Weeks 1-6)
+            
+  
+    Part A (Weeks 1-6)
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1737,9 +1944,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Task 1: Velocity Control
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1760,9 +1972,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Task 2: Avoiding Obstacles
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1807,7 +2024,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1816,9 +2033,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Part B (Weeks 7-12)
+  
+
     
   </span>
+  
   
 
             </a>
@@ -1833,7 +2055,11 @@
         <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_3_4">
             <span class="md-nav__icon md-icon"></span>
-            Part B (Weeks 7-12)
+            
+  
+    Part B (Weeks 7-12)
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1851,9 +2077,14 @@
   
   
   <span class="md-ellipsis">
-    Task 3: Exploration & Search
+    
+  
+    Task 3: Exploration &amp; Search
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1874,9 +2105,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Task 4: Documentation
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1905,9 +2141,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Working with your ROS Package (in the Lab)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1928,9 +2169,14 @@
   
   
   <span class="md-ellipsis">
-    Key Assessment Info & Requirements
+    
+  
+    Key Assessment Info &amp; Requirements
+  
+
     
   </span>
+  
   
 
       </a>
@@ -1975,7 +2221,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -1984,9 +2230,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Additional Resources
+  
+
     
   </span>
+  
   
 
             </a>
@@ -2001,7 +2252,11 @@
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
-            Additional Resources
+            
+  
+    Additional Resources
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2019,9 +2274,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Launch File Arguments
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2042,9 +2302,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     The TUoS ROS Course Repo
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2102,7 +2367,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -2111,9 +2376,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     The Waffles
+  
+
     
   </span>
+  
   
 
             </a>
@@ -2128,7 +2398,11 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
-            The Waffles
+            
+  
+    The Waffles
+  
+
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -2146,9 +2420,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Introduction
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2169,9 +2448,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Launching ROS (and Pairing the Laptop)
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2192,9 +2476,14 @@
   
   
   <span class="md-ellipsis">
-    Waffle (& ROS) Basics
+    
+  
+    Waffle (&amp; ROS) Basics
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2215,9 +2504,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Further (Essential) Exercises
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2238,9 +2532,14 @@
   
   
   <span class="md-ellipsis">
+    
+  
     Shutdown Procedures
+  
+
     
   </span>
+  
   
 
       </a>
@@ -2264,7 +2563,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -2283,7 +2582,9 @@
         <li class="md-nav__item">
   <a href="#introduction" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction
+      
+        Introduction
+      
     </span>
   </a>
   
@@ -2293,7 +2594,9 @@
           <li class="md-nav__item">
   <a href="#aims" class="md-nav__link">
     <span class="md-ellipsis">
-      Aims
+      
+        Aims
+      
     </span>
   </a>
   
@@ -2302,7 +2605,9 @@
           <li class="md-nav__item">
   <a href="#intended-learning-outcomes" class="md-nav__link">
     <span class="md-ellipsis">
-      Intended Learning Outcomes
+      
+        Intended Learning Outcomes
+      
     </span>
   </a>
   
@@ -2311,7 +2616,9 @@
           <li class="md-nav__item">
   <a href="#quick-links" class="md-nav__link">
     <span class="md-ellipsis">
-      Quick Links
+      
+        Quick Links
+      
     </span>
   </a>
   
@@ -2320,7 +2627,9 @@
           <li class="md-nav__item">
   <a href="#additional-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Additional Resources
+      
+        Additional Resources
+      
     </span>
   </a>
   
@@ -2334,7 +2643,9 @@
         <li class="md-nav__item">
   <a href="#getting-started" class="md-nav__link">
     <span class="md-ellipsis">
-      Getting Started
+      
+        Getting Started
+      
     </span>
   </a>
   
@@ -2343,7 +2654,9 @@
         <li class="md-nav__item">
   <a href="#working-with-cameras-and-images-in-ros" class="md-nav__link">
     <span class="md-ellipsis">
-      Working with Cameras and Images in ROS
+      
+        Working with Cameras and Images in ROS
+      
     </span>
   </a>
   
@@ -2353,7 +2666,9 @@
           <li class="md-nav__item">
   <a href="#camera-topics-and-data" class="md-nav__link">
     <span class="md-ellipsis">
-      Camera Topics and Data
+      
+        Camera Topics and Data
+      
     </span>
   </a>
   
@@ -2362,7 +2677,9 @@
           <li class="md-nav__item">
   <a href="#viz" class="md-nav__link">
     <span class="md-ellipsis">
-      Visualising Camera Streams
+      
+        Visualising Camera Streams
+      
     </span>
   </a>
   
@@ -2372,7 +2689,9 @@
           <li class="md-nav__item">
   <a href="#ex1" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 1: Using RQT whilst changing the robot's viewpoint
+      
+        Exercise 1: Using RQT whilst changing the robot's viewpoint
+      
     </span>
   </a>
   
@@ -2391,7 +2710,9 @@
         <li class="md-nav__item">
   <a href="#opencv" class="md-nav__link">
     <span class="md-ellipsis">
-      OpenCV and ROS
+      
+        OpenCV and ROS
+      
     </span>
   </a>
   
@@ -2401,7 +2722,9 @@
           <li class="md-nav__item">
   <a href="#object-detection" class="md-nav__link">
     <span class="md-ellipsis">
-      Object Detection
+      
+        Object Detection
+      
     </span>
   </a>
   
@@ -2411,7 +2734,9 @@
           <li class="md-nav__item">
   <a href="#ex2" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 2: Object Detection
+      
+        Exercise 2: Object Detection
+      
     </span>
   </a>
   
@@ -2421,7 +2746,9 @@
           <li class="md-nav__item">
   <a href="#step-1-getting-started" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 1: Getting Started
+      
+        Step 1: Getting Started
+      
     </span>
   </a>
   
@@ -2430,7 +2757,9 @@
           <li class="md-nav__item">
   <a href="#step-2-cropping" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 2: Cropping
+      
+        Step 2: Cropping
+      
     </span>
   </a>
   
@@ -2439,7 +2768,9 @@
           <li class="md-nav__item">
   <a href="#step-3-masking" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 3: Masking
+      
+        Step 3: Masking
+      
     </span>
   </a>
   
@@ -2448,7 +2779,9 @@
           <li class="md-nav__item">
   <a href="#bitwise_and" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 4: Filtering
+      
+        Step 4: Filtering
+      
     </span>
   </a>
   
@@ -2467,7 +2800,9 @@
           <li class="md-nav__item">
   <a href="#image-moments" class="md-nav__link">
     <span class="md-ellipsis">
-      Image Moments
+      
+        Image Moments
+      
     </span>
   </a>
   
@@ -2477,7 +2812,9 @@
           <li class="md-nav__item">
   <a href="#ex3" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 3: Using Image Moments for Robot Control
+      
+        Exercise 3: Using Image Moments for Robot Control
+      
     </span>
   </a>
   
@@ -2491,7 +2828,9 @@
           <li class="md-nav__item">
   <a href="#pid" class="md-nav__link">
     <span class="md-ellipsis">
-      PID Control and Line Following
+      
+        PID Control and Line Following
+      
     </span>
   </a>
   
@@ -2501,7 +2840,9 @@
           <li class="md-nav__item">
   <a href="#ex4" class="md-nav__link">
     <span class="md-ellipsis">
-      Exercise 4: Line Following
+      
+        Exercise 4: Line Following
+      
     </span>
   </a>
   
@@ -2511,7 +2852,9 @@
           <li class="md-nav__item">
   <a href="#ex4a" class="md-nav__link">
     <span class="md-ellipsis">
-      Part A: Setup
+      
+        Part A: Setup
+      
     </span>
   </a>
   
@@ -2520,7 +2863,9 @@
           <li class="md-nav__item">
   <a href="#ex4b" class="md-nav__link">
     <span class="md-ellipsis">
-      Part B: Implementing and Tuning a Proportional Controller
+      
+        Part B: Implementing and Tuning a Proportional Controller
+      
     </span>
   </a>
   
@@ -2529,7 +2874,9 @@
           <li class="md-nav__item">
   <a href="#ex4c" class="md-nav__link">
     <span class="md-ellipsis">
-      Part C: Advanced Line Following
+      
+        Part C: Advanced Line Following
+      
     </span>
   </a>
   
@@ -2553,7 +2900,9 @@
         <li class="md-nav__item">
   <a href="#wrapping-up" class="md-nav__link">
     <span class="md-ellipsis">
-      Wrapping Up
+      
+        Wrapping Up
+      
     </span>
   </a>
   
@@ -2563,7 +2912,9 @@
           <li class="md-nav__item">
   <a href="#backup" class="md-nav__link">
     <span class="md-ellipsis">
-      WSL-ROS2 Managed Desktop Users: Save your work!
+      
+        WSL-ROS2 Managed Desktop Users: Save your work!
+      
     </span>
   </a>
   
@@ -2584,15 +2935,16 @@
           
           
             <div class="md-content" data-md-component="content">
+              
               <article class="md-content__inner md-typeset">
                 
                   
 
 
   
-    <a href="https://github.com/tom-howard/com2009/edit/main/docs/course/assignment1/part6.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/tom-howard/com2009/edit/main/docs/course/assignment1/part6.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"></path></svg>
     </a>
   
   
@@ -2601,20 +2953,20 @@
     
     <a href="https://github.com/tom-howard/com2009/raw/main/docs/course/assignment1/part6.md" title="View source of this page" class="md-content__button md-icon">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.2 8.2 0 0 1-1.23-2"></path></svg>
     </a>
   
 
 
-  <h1>Part 6: Cameras, Machine Vision & OpenCV</h1>
+  <h1>Part 6: Cameras, Machine Vision &amp; OpenCV</h1>
 
-<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> <strong>Exercises</strong>: 4<br />
-<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19.03 7.39 1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0 0 18c5 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61M13 14h-2V7h2zm2-13H9v2h6z"/></svg></span> <strong>Estimated Completion Time</strong>: 2 hours<br />
-<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m-2 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m4 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m3.09 2.94c-.13 0-.25.03-.39.06l-3.2 1.32-.27.11c-.56-.43-1.32-.55-1.98-.28a1.99 1.99 0 0 0-1.1 2.6 1.99 1.99 0 0 0 2.6 1.1c.66-.26 1.13-.85 1.25-1.57l.23-.1 3.22-1.3.02-.01c.53-.21.76-.79.56-1.31a1 1 0 0 0-.94-.62M7 9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"/></svg></span> <strong>Difficulty Level</strong>: Advanced </p>
-<h3 id="aims">Aims<a class="headerlink" href="#aims" title="Permanent link">&para;</a></h3>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">¶</a></h2>
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"></path></svg></span> <strong>Exercises</strong>: 4<br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m19.03 7.39 1.42-1.42c-.45-.51-.9-.97-1.41-1.41L17.62 6c-1.55-1.26-3.5-2-5.62-2a9 9 0 0 0 0 18c5 0 9-4.03 9-9 0-2.12-.74-4.07-1.97-5.61M13 14h-2V7h2zm2-13H9v2h6z"></path></svg></span> <strong>Estimated Completion Time</strong>: 2 hours<br>
+<span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10A10 10 0 0 0 12 2m0 2a8 8 0 0 1 8 8c0 2.4-1 4.5-2.7 6-1.4-1.3-3.3-2-5.3-2s-3.8.7-5.3 2C5 16.5 4 14.4 4 12a8 8 0 0 1 8-8m-2 2a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m4 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1m3.09 2.94c-.13 0-.25.03-.39.06l-3.2 1.32-.27.11c-.56-.43-1.32-.55-1.98-.28a1.99 1.99 0 0 0-1.1 2.6 1.99 1.99 0 0 0 2.6 1.1c.66-.26 1.13-.85 1.25-1.57l.23-.1 3.22-1.3.02-.01c.53-.21.76-.79.56-1.31a1 1 0 0 0-.94-.62M7 9a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1"></path></svg></span> <strong>Difficulty Level</strong>: Advanced </p>
+<h3 id="aims">Aims<a class="headerlink" href="#aims" title="Permanent link">¶</a></h3>
 <p>In this part of the course we'll make use of the Waffle's camera, and look at how to work with images in ROS. Here we'll look at how to build ROS nodes that capture images and process them. We'll explore some ways in which this data can be used to inform decision-making in robotic applications.  </p>
-<h3 id="intended-learning-outcomes">Intended Learning Outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permanent link">&para;</a></h3>
+<h3 id="intended-learning-outcomes">Intended Learning Outcomes<a class="headerlink" href="#intended-learning-outcomes" title="Permanent link">¶</a></h3>
 <p>By the end of this session you will be able to:</p>
 <ol>
 <li>Use a range of ROS tools to interrogate camera image topics on a ROS Network and view the images being streamed to them.</li>
@@ -2623,20 +2975,20 @@
 <li>Develop object detection nodes and harness the information generated by these processes to control a robot's position.</li>
 <li>Use camera data as a feedback signal to implement a line following behaviour using proportional control.</li>
 </ol>
-<h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">&para;</a></h3>
+<h3 id="quick-links">Quick Links<a class="headerlink" href="#quick-links" title="Permanent link">¶</a></h3>
 <ul>
 <li><a href="#ex1">Exercise 1: Using the <code>rqt_image_view</code> node whilst changing the robot's viewpoint</a></li>
 <li><a href="#ex2">Exercise 2: Object Detection</a></li>
 <li><a href="#ex3">Exercise 3: Using Image Moments for Robot Control</a></li>
 <li><a href="#ex4">Exercise 4: Line following</a></li>
 </ul>
-<h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h3>
+<h3 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">¶</a></h3>
 <ul>
 <li><a href="object_detection/">The Initial Object Detection Code (for Exercise 2)</a></li>
 <li><a href="object_detection_complete/">A Complete Worked Example of the <code>object_detection.py</code> Node</a></li>
 <li><a href="line_follower/">The <code>line_follower</code> Template (for Exercise 4)</a></li>
 </ul>
-<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">¶</a></h2>
 <p><strong>Step 1: Launch your ROS Environment</strong></p>
 <p>Launch your ROS environment now so that you have access to a Linux terminal instance (aka <strong>TERMINAL 1</strong>).</p>
 <p><strong>Step 2: Restore your work (WSL-ROS2 Managed Desktop Users ONLY)</strong></p>
@@ -2647,22 +2999,22 @@
 <p>Check that the Course Repo is up-to-date before you start on these exercises. <a href="../../extras/course-repo/#updating">See here for how to update</a>. </p>
 <p><strong>Step 5: Launch the Robot Simulation</strong></p>
 <p>In this session we'll start by working with the same <em>mystery world</em> environment from Part 5. In <strong>TERMINAL 1</strong>, use the following command to load it:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>coloured_pillars.launch.py
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>coloured_pillars.launch.py
 </code></pre></div>
-...and then wait for the Gazebo window to open:</p>
+...and then wait for the Gazebo window to open:<p></p>
 <figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/colloured_pillars.png" width="700px" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/gz/colloured_pillars.png" width="700px"></a></p>
 </figure>
-<h2 id="working-with-cameras-and-images-in-ros">Working with Cameras and Images in ROS<a class="headerlink" href="#working-with-cameras-and-images-in-ros" title="Permanent link">&para;</a></h2>
-<h3 id="camera-topics-and-data">Camera Topics and Data<a class="headerlink" href="#camera-topics-and-data" title="Permanent link">&para;</a></h3>
+<h2 id="working-with-cameras-and-images-in-ros">Working with Cameras and Images in ROS<a class="headerlink" href="#working-with-cameras-and-images-in-ros" title="Permanent link">¶</a></h2>
+<h3 id="camera-topics-and-data">Camera Topics and Data<a class="headerlink" href="#camera-topics-and-data" title="Permanent link">¶</a></h3>
 <p>There are a number of tools that we can use to view the live images that are being captured by a robot's camera in ROS. As with all robot data, these streams are published to <em>topics</em>, so we firstly need to identify those topics.</p>
 <p>In a new terminal instance (<strong>TERMINAL 2</strong>), run <code>ros2 topic list</code> to see the full list of topics that are currently active on our system. Conveniently, all the topics related to our robot's <em>camera</em> are prefixed with <code>/camera</code>! Filter the <code>ros2 topic list</code> output using <code>grep</code> (a Linux command), to only show topics with this prefix:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>/camera
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>ros2<span class="w"> </span>topic<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>/camera
+</code></pre></div><p></p>
 <p>This should provide the following filtered list:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/camera/camera_info
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>/camera/image_raw
@@ -2670,7 +3022,7 @@
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>/camera/image_raw/compressedDepth
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>/camera/image_raw/theora
 </code></pre></div>
-<hr />
+<hr>
 <p>The main item that we're interested in here is the <em>raw image data</em>, and the key topic that we'll therefore be using here is:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>/camera/image_raw
 </code></pre></div>
@@ -2704,39 +3056,39 @@
 <li>Finally, considering the list above again, which part of the message do you think contains the <em>actual image data</em>?</li>
 </ol>
 </div>
-<h3 id="viz">Visualising Camera Streams<a class="headerlink" href="#viz" title="Permanent link">&para;</a></h3>
+<h3 id="viz">Visualising Camera Streams<a class="headerlink" href="#viz" title="Permanent link">¶</a></h3>
 <p>We can <em>view</em> the images being streamed to the above camera topic (in real-time) in a variety of different ways, and we'll explore a couple of these now.</p>
 <p>One way is to use <em>RViz</em>, which can be launched using the following <code>ros2 launch</code> command:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>rviz.launch.py
-</code></pre></div></p>
-<hr />
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>rviz.launch.py
+</code></pre></div><p></p>
+<hr>
 <p>Once RViz launches, you should see a camera panel in the bottom-left corner with a live stream of the images being obtained from the robot's camera.</p>
 <figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rviz/waffle_antd.png" width="800px" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rviz/waffle_antd.png" width="800px"></a></p>
 </figure>
 <p>Close down RViz by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 2</strong>.  </p>
-<h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 1: Using RQT whilst changing the robot's viewpoint<a class="headerlink" href="#ex1" title="Permanent link">&para;</a></h4>
+<h4 id="ex1"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"></path></svg></span> Exercise 1: Using RQT whilst changing the robot's viewpoint<a class="headerlink" href="#ex1" title="Permanent link">¶</a></h4>
 <p>Another tool we can use to view camera data-streams is the RQT.</p>
 <ol>
 <li>
 <p>Enter the following command to launch it:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rqt
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>rqt
 </code></pre></div>
 <figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/main.png" width="600" /></a>
-</figure></p>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/main.png" width="600"></a>
+</figure><p></p>
 </li>
 <li>
 <p>From the top menu select <code>Plugins</code> &gt; <code>Vizualisation</code> &gt; <code>Image View</code>.</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/image_view_antd.png" width="600" /></a>
-</figure></p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../images/rqt/image_view_antd.png" width="600"></a>
+</figure><p></p>
 <p>This allows us to easily view images that are being published to any camera topic on the ROS network. Another useful feature is the ability to save these images (as <code>.jpg</code> files) to the filesystem: See the "Save as image" button highlighted in the figure above. This might be useful later on...</p>
-<hr />
+<hr>
 </li>
 <li>
 <p>Click the drop-down box in the top left of the window to select an image topic to display.  Select <code>/camera/image_raw</code> (if it's not already selected).</p>
@@ -2748,13 +3100,13 @@
 <p>Launch the <code>teleop_keyboard</code> node. Rotate the robot on the spot, keeping an eye on the RQT Image View window as you do this. Stop the robot once one of the coloured pillars in the arena is roughly in the centre of the robot's field of vision, then close the <code>teleop_keyboard</code> node and RQT Image View by entering <span class="keys"><kbd class="key-control">Ctrl</kbd><span>+</span><kbd class="key-c">C</kbd></span> in <strong>TERMINAL 3</strong> and <strong>TERMINAL 2</strong> respectively.</p>
 </li>
 </ol>
-<h2 id="opencv">OpenCV and ROS<a class="headerlink" href="#opencv" title="Permanent link">&para;</a></h2>
-<p><a href="https://opencv.org/" target="_blank">OpenCV</a> is a mature and powerful computer vision library designed for performing real-time image analysis, and it is therefore extremely useful for robotic applications.  The library is cross-platform and there is a Python API (<code>cv2</code>), which we'll be using to do some computer vision tasks of our own during this lab session. While we can work with OpenCV using Python straight away (via the API), the library can't directly interpret the native image format used by the ROS, so there is an <em>interface</em> that we need to use.  The interface is called <a href="http://wiki.ros.org/cv_bridge" target="_blank">CvBridge</a>, which is a <em>ROS package</em> that handles the conversion between ROS and OpenCV image formats.  We'll therefore need to use these two libraries (OpenCV and CvBridge) hand-in-hand when developing ROS nodes to perform computer vision related tasks.</p>
-<h3 id="object-detection">Object Detection<a class="headerlink" href="#object-detection" title="Permanent link">&para;</a></h3>
+<h2 id="opencv">OpenCV and ROS<a class="headerlink" href="#opencv" title="Permanent link">¶</a></h2>
+<p><a href="https://opencv.org/" target="_blank" rel="noopener">OpenCV</a> is a mature and powerful computer vision library designed for performing real-time image analysis, and it is therefore extremely useful for robotic applications.  The library is cross-platform and there is a Python API (<code>cv2</code>), which we'll be using to do some computer vision tasks of our own during this lab session. While we can work with OpenCV using Python straight away (via the API), the library can't directly interpret the native image format used by the ROS, so there is an <em>interface</em> that we need to use.  The interface is called <a href="http://wiki.ros.org/cv_bridge" target="_blank" rel="noopener">CvBridge</a>, which is a <em>ROS package</em> that handles the conversion between ROS and OpenCV image formats.  We'll therefore need to use these two libraries (OpenCV and CvBridge) hand-in-hand when developing ROS nodes to perform computer vision related tasks.</p>
+<h3 id="object-detection">Object Detection<a class="headerlink" href="#object-detection" title="Permanent link">¶</a></h3>
 <p>One common job that we often want a robot to perform is <em>object detection</em>, and we will illustrate how this can be achieved using OpenCV tools for <em>colour filtering</em>, to detect the coloured pillar that your robot should now be looking at.  </p>
-<h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 2: Object Detection<a class="headerlink" href="#ex2" title="Permanent link">&para;</a></h4>
+<h4 id="ex2"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"></path></svg></span> Exercise 2: Object Detection<a class="headerlink" href="#ex2" title="Permanent link">¶</a></h4>
 <p>In this exercise you will learn how to use OpenCV to capture images, filter them and perform other analysis to confirm the presence and location of features that we might be interested in.</p>
-<h5 id="step-1-getting-started">Step 1: Getting Started<a class="headerlink" href="#step-1-getting-started" title="Permanent link">&para;</a></h5>
+<h5 id="step-1-getting-started">Step 1: Getting Started<a class="headerlink" href="#step-1-getting-started" title="Permanent link">¶</a></h5>
 <ol>
 <li>
 <p>First create a new package called <code>part6_vision</code> using the <code>create_pkg.sh</code> helper script (from the <code>tuos_ros</code> course repo). </p>
@@ -2775,10 +3127,10 @@
 <ol>
 <li>
 <p>In <strong>TERMINAL 2</strong>, make sure you're in the root of the Workspace:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/
+</code></pre></div><p></p>
 </li>
 <li>
 <p>Run <code>colcon build</code>:</p>
@@ -2789,7 +3141,7 @@
 <p>And finally re-source the <code>.bashrc</code>:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">source</span><span class="w"> </span>~/.bashrc
 </code></pre></div>
-<hr />
+<hr>
 </li>
 </ol>
 </li>
@@ -2816,7 +3168,7 @@
 </li>
 </ol>
 <p>Processing an image of this size is therefore hard work for a robot: any analysis we do will be slow and any raw images that we capture will occupy a considerable amount of storage space. The next step then is to reduce this down by cropping the image to a more manageable size.</p>
-<h5 id="step-2-cropping">Step 2: Cropping<a class="headerlink" href="#step-2-cropping" title="Permanent link">&para;</a></h5>
+<h5 id="step-2-cropping">Step 2: Cropping<a class="headerlink" href="#step-2-cropping" title="Permanent link">¶</a></h5>
 <p>We're going to modify the <code>object_detection.py</code> node now to:</p>
 <ul>
 <li>Capture a new image in its native size</li>
@@ -2827,7 +3179,7 @@
 <ol>
 <li>
 <p>In your <code>object_detection.py</code> node locate the line:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">cv_img</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">&quot;step1_original&quot;</span><span class="p">)</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">cv_img</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">"step1_original"</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
@@ -2838,7 +3190,7 @@
 <a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="n">crop_z0</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="n">crop_height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="n">cropped_img</span> <span class="o">=</span> <span class="n">cv_img</span><span class="p">[</span><span class="n">crop_z0</span><span class="p">:</span><span class="n">crop_z0</span><span class="o">+</span><span class="n">crop_height</span><span class="p">,</span> <span class="n">crop_y0</span><span class="p">:</span><span class="n">crop_y0</span><span class="o">+</span><span class="n">crop_width</span><span class="p">]</span>
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">cropped_img</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">&quot;step2_cropping&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">cropped_img</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">"step2_cropping"</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
@@ -2848,57 +3200,57 @@
 <p>Make sure you close all of these pop-up windows down after viewing them to ensure that <strong>all</strong> your images are saved to the filesystem and the node completes all of its tasks successfully.</p>
 </div>
 <p>The code that you have just added here has created a new image object called <code>cropped_img</code>, from a subset of the original by specifying a desired <code>crop_height</code> and <code>crop_width</code> relative to the original image dimensions.  Additionally, we have also specified <em>where</em> in the original image (in terms of pixel coordinates) we want this subset to start, using <code>crop_y0</code> and <code>crop_z0</code>. This process is illustrated in the figure below:</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od1_cropping.png" /></a>
-</figure></p>
-<p><a name="img_cropping" ></a>The original image (<code>cv_img</code>) is cropped using a process called <em>"slicing"</em>:</p>
-<p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">cropped_img</span> <span class="o">=</span> <span class="n">cv_img</span><span class="p">[</span>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od1_cropping.png"></a>
+</figure><p></p>
+<p><a name="img_cropping"></a>The original image (<code>cv_img</code>) is cropped using a process called <em>"slicing"</em>:</p>
+<p></p><div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="n">cropped_img</span> <span class="o">=</span> <span class="n">cv_img</span><span class="p">[</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>    <span class="n">crop_z0</span><span class="p">:</span><span class="n">crop_z0</span><span class="o">+</span><span class="n">crop_height</span><span class="p">,</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>    <span class="n">crop_y0</span><span class="p">:</span><span class="n">crop_y0</span><span class="o">+</span><span class="n">crop_width</span>
 <a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="p">]</span>
 </code></pre></div>
-This may seem quite confusing, but hopefully the figure below illustrates what's going on here:</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/img_slicing.png" /></a>
-</figure></p>
+This may seem quite confusing, but hopefully the figure below illustrates what's going on here:<p></p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/img_slicing.png"></a>
+</figure><p></p>
 </li>
 </ol>
-<h5 id="step-3-masking">Step 3: Masking<a class="headerlink" href="#step-3-masking" title="Permanent link">&para;</a></h5>
+<h5 id="step-3-masking">Step 3: Masking<a class="headerlink" href="#step-3-masking" title="Permanent link">¶</a></h5>
 <p>As discussed above, an image is essentially a series of pixels each with a blue, green and red value associated with it to represent the actual image colours. From the original image that we have just obtained and cropped, we <em>then</em> want to get rid of any colours other than those associated with the pillar that we want the robot to detect.  We therefore need to apply a <em>filter</em> to the pixels, which we will ultimately use to discard any pixel data that isn't related to the coloured pillar, whilst retaining data that is.  </p>
-<p>This process is called <em>masking</em> and, to achieve this, we need to set some colour thresholds. This can be difficult to do in a standard Blue-Green-Red (BGR) or Red-Green-Blue (RGB) colour space, and you can see a good example of this in <a href="https://realpython.com/python-opencv-color-spaces/" target="_blank">this article from RealPython.com</a>.  We will apply some steps discussed in this article to convert our cropped image into a <a href="https://en.wikipedia.org/wiki/HSL_and_HSV" target="_blank">Hue-Saturation-Value (HSV)</a> colour space instead, which makes the process of colour masking a bit easier.</p>
+<p>This process is called <em>masking</em> and, to achieve this, we need to set some colour thresholds. This can be difficult to do in a standard Blue-Green-Red (BGR) or Red-Green-Blue (RGB) colour space, and you can see a good example of this in <a href="https://realpython.com/python-opencv-color-spaces/" target="_blank" rel="noopener">this article from RealPython.com</a>.  We will apply some steps discussed in this article to convert our cropped image into a <a href="https://en.wikipedia.org/wiki/HSL_and_HSV" target="_blank" rel="noopener">Hue-Saturation-Value (HSV)</a> colour space instead, which makes the process of colour masking a bit easier.</p>
 <ol>
 <li>
 <p>First, analyse the <em>Hue</em> and <em>Saturation</em> values of the cropped image. To do this, first navigate to the <code>~/myrosdata/object_detection</code> directory, where the raw image has been saved:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>~/myrosdata/object_detection
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nb">cd</span><span class="w"> </span>~/myrosdata/object_detection
+</code></pre></div><p></p>
 <p>Then, run the following ROS Node (from the <code>tuos_examples</code> package), supplying the name of the cropped image as an additional argument:<a name="img_cols_node"></a></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>ros2<span class="w"> </span>run<span class="w"> </span>tuos_examples<span class="w"> </span>image_colours.py<span class="w"> </span>step2_cropping.jpg
 </code></pre></div>
-<hr />
+<hr>
 </li>
 <li>
 <p>The node should produce a scatter plot, illustrating the Hue and Saturation values of each of the pixels in the image. Each data point in the plot represents a single image pixel and each is coloured to match its RGB value:</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od2_hs_scatter.png" width="600px" /></a>
-</figure></p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od2_hs_scatter.png" width="600px"></a>
+</figure><p></p>
 </li>
 <li>
 <p>You should see from the image that all the pixels related to the coloured pillar that we want to detect are clustered together.  We can use this information to specify a range of Hue and Saturation values that can be used to mask our image: filtering out any colours that sit outside this range and thus allowing us to isolate the pillar itself. The pixels also have a <em>Value</em> (or <em>"Brightness"</em>), which isn't shown in this plot. As a rule of thumb, a range of brightness values between 100 and 255 generally works quite well.</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od3_hs_thresholds.png" width="600px" /></a>
-</figure></p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od3_hs_thresholds.png" width="600px"></a>
+</figure><p></p>
 <p>In this case then, we select upper and lower HSV thresholds as follows:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">lower_threshold</span> <span class="o">=</span> <span class="p">(</span><span class="mi">115</span><span class="p">,</span> <span class="mi">225</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="n">upper_threshold</span> <span class="o">=</span> <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
 </code></pre></div>
 <p>Use the plot that you have generated yourself to determine <em>your own</em> upper and lower thresholds. <a name="bw_and"></a></p>
-<p>OpenCV contains a built-in function to detect which pixels of an image fall within a specified HSV range: <code>cv2.inRange()</code>.  This outputs a matrix, the same size and shape as the number of pixels in the image, but containing only <code>True</code> (<code>1</code>) or <code>False</code> (<code>0</code>) values, illustrating which pixels <em>do</em> have a value within the specified range and which don't.  This is known as a <em>Boolean Mask</em> (essentially, a series of ones or zeroes).  We can then apply this mask to the image, using a <a href="https://en.wikipedia.org/wiki/Bitwise_operation#AND" target="_blank">Bitwise AND</a> operation, to get rid of any image pixels whose mask value is <code>False</code> and keep any flagged as <code>True</code> (or <em>in range</em>).</p>
+<p>OpenCV contains a built-in function to detect which pixels of an image fall within a specified HSV range: <code>cv2.inRange()</code>.  This outputs a matrix, the same size and shape as the number of pixels in the image, but containing only <code>True</code> (<code>1</code>) or <code>False</code> (<code>0</code>) values, illustrating which pixels <em>do</em> have a value within the specified range and which don't.  This is known as a <em>Boolean Mask</em> (essentially, a series of ones or zeroes).  We can then apply this mask to the image, using a <a href="https://en.wikipedia.org/wiki/Bitwise_operation#AND" target="_blank" rel="noopener">Bitwise AND</a> operation, to get rid of any image pixels whose mask value is <code>False</code> and keep any flagged as <code>True</code> (or <em>in range</em>).</p>
 </li>
 <li>
 <p>To do this, first locate the following line in your <code>object_detection.py</code> node:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">cropped_img</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">&quot;step2_cropping&quot;</span><span class="p">)</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">cropped_img</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">"step2_cropping"</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
@@ -2908,43 +3260,43 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="n">upper_threshold</span> <span class="o">=</span> <span class="p">(</span><span class="mi">130</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
 <a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="n">img_mask</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">inRange</span><span class="p">(</span><span class="n">hsv_img</span><span class="p">,</span> <span class="n">lower_threshold</span><span class="p">,</span> <span class="n">upper_threshold</span><span class="p">)</span>
 <a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">img_mask</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">&quot;step3_image_mask&quot;</span><span class="p">)</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">img_mask</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">"step3_image_mask"</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
 <p>Now, run the node again. A <em>third</em> image should also be generated now. </p>
 <p>As shown in the figure below, the third image should simply be a black and white representation of the cropped image, where the white regions should indicate the areas of the image where pixel values fall within the HSV range specified earlier. </p>
 <p>Notice (from the text printed to the terminal) that the cropped image and the image mask have the same dimensions, but the image mask file has a significantly smaller file size.  While the mask contains the same <em>number</em> of pixels, these pixels only have a value of <code>1</code> or <code>0</code>, whereas - in the cropped image of the same pixel size - each pixel has a Red, Green and Blue value: each ranging between <code>0</code> and <code>255</code>, which represents significantly more data.</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od4_masking.png" width="600px" /></a>
-</figure></p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od4_masking.png" width="600px"></a>
+</figure><p></p>
 </li>
 </ol>
-<h5 id="bitwise_and">Step 4: Filtering<a class="headerlink" href="#bitwise_and" title="Permanent link">&para;</a></h5>
+<h5 id="bitwise_and">Step 4: Filtering<a class="headerlink" href="#bitwise_and" title="Permanent link">¶</a></h5>
 <p>Finally, we can apply this mask to the cropped image, generating a final version of it where only pixels marked as <code>True</code> in the mask retain their RGB values, and the rest are simply removed.  <a href="#bw_and">As discussed earlier</a>, we use a <em>Bitwise AND</em> operation to do this and, once again, OpenCV has a built-in function to do this: <code>cv2.bitwise_and()</code>.</p>
 <ol>
 <li>
 <p>Locate the following line in your <code>object_detection.py</code> node:</p>
-<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">img_mask</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">&quot;step3_image_mask&quot;</span><span class="p">)</span>
+<div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">img_mask</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">"step3_image_mask"</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
 <p>And, underneath this, add the following:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">filtered_img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">bitwise_and</span><span class="p">(</span><span class="n">cropped_img</span><span class="p">,</span> <span class="n">cropped_img</span><span class="p">,</span> <span class="n">mask</span> <span class="o">=</span> <span class="n">img_mask</span><span class="p">)</span>
 <a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">filtered_img</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">&quot;step4_filtered_image&quot;</span><span class="p">)</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="bp">self</span><span class="o">.</span><span class="n">show_image</span><span class="p">(</span><span class="n">img</span><span class="o">=</span><span class="n">filtered_img</span><span class="p">,</span> <span class="n">img_name</span><span class="o">=</span><span class="s2">"step4_filtered_image"</span><span class="p">)</span>
 </code></pre></div>
 </li>
 <li>
 <p>Run this node again, and a fourth image should also be generated now, this time showing the cropped image taken from the robot's camera, but only containing data related to coloured pillar, with all other background image data removed (and rendered black):</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od5_filtering.png" width="600px" /></a>
-</figure></p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od5_filtering.png" width="600px"></a>
+</figure><p></p>
 </li>
 </ol>
-<h3 id="image-moments">Image Moments<a class="headerlink" href="#image-moments" title="Permanent link">&para;</a></h3>
+<h3 id="image-moments">Image Moments<a class="headerlink" href="#image-moments" title="Permanent link">¶</a></h3>
 <p>You have now successfully isolated an object of interest within your robot's field of vision, but perhaps we want to make our robot move towards it, or - conversely - make our robot navigate around it and avoid crashing into it!  We therefore also need to know the <em>position</em> of the object in relation to the robot's viewpoint, and we can do this using <strong>image moments</strong>.</p>
-<p>The work we have just done above led to us obtaining what is referred to as a <em>colour blob</em>.  OpenCV also has built-in tools to allow us to calculate the <em>centroid</em> of a colour blob like this, allowing us to determine where exactly within an image the object of interest is located (in terms of pixels).  This is done using the principle of <em>image moments</em>: essentially statistical parameters related to an image, telling us how a collection of pixels (i.e. the blob of colour that we have just isolated) are distributed within it.  <a href="https://theailearner.com/tag/image-moments-opencv-python/" target="_blank">You can read more about Image Moments here</a>, which tells us that the central coordinates of a colour blob can be obtained by considering some key moments of the <em>image mask</em> that we obtained from thresholding earlier:</p>
+<p>The work we have just done above led to us obtaining what is referred to as a <em>colour blob</em>.  OpenCV also has built-in tools to allow us to calculate the <em>centroid</em> of a colour blob like this, allowing us to determine where exactly within an image the object of interest is located (in terms of pixels).  This is done using the principle of <em>image moments</em>: essentially statistical parameters related to an image, telling us how a collection of pixels (i.e. the blob of colour that we have just isolated) are distributed within it.  <a href="https://theailearner.com/tag/image-moments-opencv-python/" target="_blank" rel="noopener">You can read more about Image Moments here</a>, which tells us that the central coordinates of a colour blob can be obtained by considering some key moments of the <em>image mask</em> that we obtained from thresholding earlier:</p>
 <ul>
 <li><span class="arithmatex">\(M_{00}\)</span>: the sum of all non-zero pixels in the image mask (i.e. the size of the colour blob, in pixels)</li>
 <li><span class="arithmatex">\(M_{10}\)</span>: the sum of all the non-zero pixels in the horizontal (y) axis, weighted by <em>row</em> number</li>
@@ -2958,36 +3310,36 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">m</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">moments</span><span class="p">(</span><span class="n">img_mask</span><span class="p">)</span>
 </code></pre></div>
 <p>So, using this we can obtain the <code>y</code> and <code>z</code> coordinates of the blob centroid quite simply:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">cy</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;m10&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;m00&#39;</span><span class="p">]</span><span class="o">+</span><span class="mf">1e-5</span><span class="p">)</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">cz</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">&#39;m01&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">&#39;m00&#39;</span><span class="p">]</span><span class="o">+</span><span class="mf">1e-5</span><span class="p">)</span> 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">cy</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">'m10'</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">'m00'</span><span class="p">]</span><span class="o">+</span><span class="mf">1e-5</span><span class="p">)</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">cz</span> <span class="o">=</span> <span class="n">m</span><span class="p">[</span><span class="s1">'m01'</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">m</span><span class="p">[</span><span class="s1">'m00'</span><span class="p">]</span><span class="o">+</span><span class="mf">1e-5</span><span class="p">)</span> 
 </code></pre></div>
 <div class="admonition question">
 <p class="admonition-title">Question</p>
 <p>We're adding a very small number to the <span class="arithmatex">\(M_{00}\)</span> moment here to make sure that the divisor in the above equations is never zero and thus ensuring that we never get caught out by any "divide-by-zero" errors. Why might this be necessary?</p>
 </div>
 <figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od6_centroid.png" width="600px" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="ex2/od6_centroid.png" width="600px"></a></p>
 </figure>
 <p>Once again, there is a built-in OpenCV tool that we can use to add a circle onto an image to illustrate the centroid location within the robot's viewpoint: <code>cv2.circle()</code>.  This is how we produced the red circle that you can see in the figure above.  You can see how this is implemented in <strong><a href="object_detection_complete/">a complete <ins>worked example of the <code>object_detection.py</code> node</ins> from the previous exercise</a></strong>. <a name="ex2b_ret"></a></p>
 <p>In our case, we can't actually change the position of our robot in the z axis, so the <code>cz</code> centroid component here might not be that important to us for navigation purposes.  We may however want to use the centroid coordinate <code>cy</code> to understand where a feature is located <em>horizontally</em> in our robot's field of vision, and use this information to turn towards it (or away from it, depending on what we are trying to achieve).  We can then use this as the basis for some real <strong>closed-loop</strong> control.</p>
-<h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 3: Using Image Moments for Robot Control<a class="headerlink" href="#ex3" title="Permanent link">&para;</a></h4>
+<h4 id="ex3"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"></path></svg></span> Exercise 3: Using Image Moments for Robot Control<a class="headerlink" href="#ex3" title="Permanent link">¶</a></h4>
 <p>Inside the <code>tuos_examples</code> package there is a node that has been developed to illustrate how all the OpenCV tools that you have explored so far could be used to search an environment and stop a robot when it is looking directly at an object of interest. All the tools that are used in this node should be familiar to you by now, and in this exercise you're going to make a copy of this node and modify it to enhance its functionality.</p>
 <ol>
 <li>
 <p>The node is called <code>colour_search.py</code>, and it is located in the <code>scripts</code> folder of the <code>tuos_examples</code> package. Copy this into the <code>scripts</code> folder of your own <code>part6_vision</code> package by first ensuring that you are located in the desired destination folder:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part6_vision/scripts
-</code></pre></div></p>
-<hr />
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part6_vision/scripts
+</code></pre></div><p></p>
+<hr>
 </li>
 <li>
 <p>Then, copy the <code>colour_search.py</code> node using <code>cp</code> as follows:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cp<span class="w"> </span>~/ros2_ws/src/tuos_ros/tuos_examples/scripts/colour_search.py<span class="w"> </span>./
-</code></pre></div></p>
-<hr />
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>cp<span class="w"> </span>~/ros2_ws/src/tuos_ros/tuos_examples/scripts/colour_search.py<span class="w"> </span>./
+</code></pre></div><p></p>
+<hr>
 </li>
 <li>
 <p>Open up the <code>colour_search.py</code> file in VS Code to view the content.  Have a look through it and see if you can make sense of how it works.  The overall structure should be fairly familiar to you by now: we have a Python class structure, a Subscriber with a callback function, a timer with a callback containing all the robot control code, and a lot of the OpenCV tools that you have explored so far in this part of the course.  Essentially this node functions as follows:</p>
@@ -3014,17 +3366,17 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 </ol>
 </li>
 </ol>
-<h3 id="pid">PID Control and Line Following<a class="headerlink" href="#pid" title="Permanent link">&para;</a></h3>
+<h3 id="pid">PID Control and Line Following<a class="headerlink" href="#pid" title="Permanent link">¶</a></h3>
 <p>Line following is a handy skill for a robot to have! We can achieve this on our TurtleBot3 using its camera system and the image processing techniques that have been covered so far in this session.</p>
 <p>COM2009 Lecture 6 introduces a well established algorithm for closed-loop control known as <strong>PID Control</strong>, and this can be used to achieve such line following behaviour.</p>
 <p>At the heart of this is the principle of <em>Negative-Feedback</em> control, which considers a <strong>Reference Input</strong>, a <strong>Feedback Signal</strong> and the <strong>Error</strong> between these.</p>
 <p><a name="neg_fdbck_ctrl"></a></p>
 <figure>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="pid/negative_feedback_control.png" width="500" /></a>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="pid/negative_feedback_control.png" width="500"></a>
   </p>
 <figcaption>
-    Negative-Feedback Control<br />
-    Adapted from <a href="https://commons.wikimedia.org/wiki/File:PID_en.svg">Arturo Urquizo</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons</a>
+    Negative-Feedback Control<br>
+    Adapted from <a href="https://commons.wikimedia.org/wiki/File:PID_en.svg">Arturo Urquizo</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>, via Wikimedia Commons
   </figcaption>
 </figure>
 <p>The <strong>Reference Input</strong> represents a desired state that we would like our system to maintain. If we want our TurtleBot3 to successfully follow a coloured line on the floor, we will need it to keep the colour blob that represents that coloured line in the centre of its view point at all times. The <em>desired state</em> would therefore be to maintain the <code>cy</code> centroid of the colour blob in the centre of its vision.</p>
@@ -3032,7 +3384,7 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 <p>The difference between these two things is the <strong>Error</strong>, and the PID control algorithm provides us with a means to control this error and minimise it, so that our robot's <em>actual</em> state matches the <em>desired</em> state. i.e.: the coloured line is always in the centre of its viewpoint.</p>
 <p><a name="pid_terms"></a></p>
 <figure>
-<p><img alt="" src="pid/terms.png" width="700px" /></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="pid/terms.png" width="700px"></a></p>
 </figure>
 <p><a name="pid_eqn"></a></p>
 <p>The PID algorithm is as follows:</p>
@@ -3040,29 +3392,29 @@ This may seem quite confusing, but hopefully the figure below illustrates what's
 u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{d}{dt}e(t)
 \]</div>
 <p>Where <span class="arithmatex">\(u(t)\)</span> is the <strong>Controlled Output</strong>, <span class="arithmatex">\(e(t)\)</span> is the <strong>Error</strong> (as illustrated in the figure above) and <span class="arithmatex">\(K_{P}\)</span>, <span class="arithmatex">\(K_{I}\)</span> and <span class="arithmatex">\(K_{D}\)</span> are Proportional, Integral and Differential <strong>Gains</strong> respectively. These three gains are constants that must be established for any given system through a process called <em>tuning</em>. This tuning process is discussed in COM2009 Lecture 6, but you will also explore this in the practical exercise that follows.</p>
-<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"/></svg></span> Exercise 4: Line Following<a class="headerlink" href="#ex4" title="Permanent link">&para;</a></h4>
-<h5 id="ex4a">Part A: Setup<a class="headerlink" href="#ex4a" title="Permanent link">&para;</a></h5>
+<h4 id="ex4"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c-.34.34-.67.67-.68 1-.03.32.31.65.63.96.48.5.95.95.93 1.44s-.53 1-1.04 1.5l-4.13 4.14L15 14.66l4.25-4.24-.96-.96-1.42 1.41-3.75-3.75 3.84-3.83c.39-.39 1.04-.39 1.41 0l2.34 2.34c.39.37.39 1.02 0 1.41M3 17.25l9.56-9.57 3.75 3.75L6.75 21H3z"></path></svg></span> Exercise 4: Line Following<a class="headerlink" href="#ex4" title="Permanent link">¶</a></h4>
+<h5 id="ex4a">Part A: Setup<a class="headerlink" href="#ex4a" title="Permanent link">¶</a></h5>
 <ol>
 <li>Make sure that all ROS processes from the previous exercise are shut down now, including the <code>colour_search.py</code> node, and the Gazebo simulation in <strong>TERMINAL 1</strong>.</li>
 <li>
 <p>In <strong>TERMINAL 1</strong> launch a new simulation from the <code>tuos_simulations</code> package:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following_setup.launch.py
-</code></pre></div></p>
-<hr />
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following_setup.launch.py
+</code></pre></div><p></p>
+<hr>
 <p>Your robot should be launched onto a long thin track with a straight pink line painted down the middle of the floor:</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/setup.jpg" width="800px" /></a>
-</figure></p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/setup.jpg" width="800px"></a>
+</figure><p></p>
 </li>
 <li>
 <p>In <strong>TERMINAL 2</strong> you should still be located in your <code>part6_vision/scripts</code> directory, but if not then go there now:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 2:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part6_vision/scripts
-</code></pre></div></p>
-<hr />
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nb">cd</span><span class="w"> </span>~/ros2_ws/src/part6_vision/scripts
+</code></pre></div><p></p>
+<hr>
 </li>
 <li>
 <p>Perform the necessary steps to create a new empty Python file called <code>line_follower.py</code> and prepare it for execution as a node within your package.</p>
@@ -3075,12 +3427,12 @@ u(t)=K_{P} e(t) + K_{I}\int e(t)dt + K_{D}\dfrac{d}{dt}e(t)
 <p><strong><a href="line_follower/">Start with <ins>the code template</ins> provided here</a></strong>. </p>
 <p>This template contains three "TODOs" that you need to complete, all of which are explained in detail in the code annotations, so read these carefully. Ultimately, you did all of this in <a href="#ex2">Exercise 2</a>, so go back here if you need a reminder on how any of this works. </p>
 <p>Your aim here is to get the code to generate a cropped image, with the coloured line isolated and located within it, like this:</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/setup_complete.jpg" /></a>
-</figure> </p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/setup_complete.jpg"></a>
+</figure> <p></p>
 </li>
 </ol>
-<h5 id="ex4b">Part B: Implementing and Tuning a Proportional Controller<a class="headerlink" href="#ex4b" title="Permanent link">&para;</a></h5>
+<h5 id="ex4b">Part B: Implementing and Tuning a Proportional Controller<a class="headerlink" href="#ex4b" title="Permanent link">¶</a></h5>
 <p>Referring back to <a href="#pid_eqn">the equation for the PID algorithm as discussed above</a>, the Proportional, Integral and Differential components all have different effects on a system in terms of its ability to maintain the desired state (the reference input). The gain terms associated with each of these components (<span class="arithmatex">\(K_{P}\)</span>, <span class="arithmatex">\(K_{I}\)</span> and <span class="arithmatex">\(K_{D}\)</span>) must be <em>tuned</em> appropriately for any given system in order to achieve stability of control.</p>
 <p>A PID Controller can actually take three different forms:</p>
 <ol>
@@ -3106,7 +3458,7 @@ u(t)=K_{P} e(t)
 <a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a>
 <a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="n">ang_vel</span> <span class="o">=</span> <span class="n">kp</span> <span class="o">*</span> <span class="n">error</span>
 <a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="sa">f</span><span class="s2">&quot;Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s&quot;</span>
+<a id="__codelineno-28-8" name="__codelineno-28-8" href="#__codelineno-28-8"></a>    <span class="sa">f</span><span class="s2">"Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s"</span>
 <a id="__codelineno-28-9" name="__codelineno-28-9" href="#__codelineno-28-9"></a><span class="p">)</span>
 </code></pre></div>
 <p><a name="blank-1"></a></p>
@@ -3132,24 +3484,24 @@ u(t)=K_{P} e(t)
 </li>
 <li>
 <p>Next, let's address the second of the above questions (<strong>b</strong>)...</p>
-<p>The maximum angular velocity that can be applied to our robot is &plusmn;1.82 rad/s. If our proportional controller is calculating a value for the <strong>Control Signal</strong> that is greater than 1.82, or less than -1.82 then this needs to be limited. <strong>In between</strong> the following two lines of code:</p>
+<p>The maximum angular velocity that can be applied to our robot is ±1.82 rad/s. If our proportional controller is calculating a value for the <strong>Control Signal</strong> that is greater than 1.82, or less than -1.82 then this needs to be limited. <strong>In between</strong> the following two lines of code:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="n">ang_vel</span> <span class="o">=</span> <span class="n">kp</span> <span class="o">*</span> <span class="n">error</span>
 <a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="sa">f</span><span class="s2">&quot;Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s&quot;</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a>    <span class="sa">f</span><span class="s2">"Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s"</span>
 <a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="p">)</span>
 </code></pre></div>
 <p>Insert the following:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">if</span> <span class="n">ang_vel</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1.82</span><span class="p">:</span>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="k">if</span> <span class="n">ang_vel</span> <span class="o">&lt;</span> <span class="o">-</span><span class="mf">1.82</span><span class="p">:</span>
 <a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>    <span class="n">ang_vel</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.82</span>
 <a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="k">elif</span> <span class="n">ang_vel</span> <span class="o">&gt;</span> <span class="mf">1.82</span><span class="p">:</span>
 <a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a>    <span class="n">ang_vel</span> <span class="o">=</span> <span class="mf">1.82</span>
-</code></pre></div></p>
+</code></pre></div><p></p>
 </li>
 <li>
 <p>Finally, we need to think about the actual proportional gain that is being applied. This is where we need to actually <em>tune</em> our system by finding a proportional gain value that controls our system appropriately.</p>
 <p>Return to your <code>line_follower.py</code> file. Underneath the line that reads:</p>
 <div class="no-copy highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="bp">self</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="sa">f</span><span class="s2">&quot;Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s&quot;</span>
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>    <span class="sa">f</span><span class="s2">"Error = </span><span class="si">{</span><span class="n">error</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> pixels | Control Signal = </span><span class="si">{</span><span class="n">ang_vel</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> rad/s"</span>
 <a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="p">)</span>
 </code></pre></div>
 <p>Paste the following:</p>
@@ -3159,13 +3511,13 @@ u(t)=K_{P} e(t)
 </code></pre></div>
 <p>The code <em>should</em> now make the robot move with a constant linear velocity of 0.1 m/s at all times, while its angular velocity will be determined by our proportional controller, based on the controller error and the proportional gain parameter <code>kp</code>.</p>
 <p>The figure below illustrates the effects different values of proportional gain can have on a system.</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="pid/kp.png" width="600" /></a>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="pid/kp.png" width="600"></a>
   <figcaption>
-    Courtesy of <a href="https://www.sheffield.ac.uk/dcs/people/academic/roger-k-moore">Prof. Roger Moore</a><br />
+    Courtesy of <a href="https://www.sheffield.ac.uk/dcs/people/academic/roger-k-moore">Prof. Roger Moore</a><br>
     Taken from COM2009 Lecture 6: PID Control
   </figcaption>
-</figure></p>
+</figure><p></p>
 <p>Run the code and see what happens. You should find that the robot behaves quite erratically, indicating that <code>kp</code> (at an absolute value of 0.01) is probably too large.</p>
 </li>
 <li>
@@ -3180,18 +3532,18 @@ u(t)=K_{P} e(t)
 <p>Could <code>kp</code> be modified any more to improve the control further? Play around a bit more and see what happens. We'll but this to the test on a more challenging track in the next part of this exercise.</p>
 </li>
 </ol>
-<h5 id="ex4c">Part C: Advanced Line Following<a class="headerlink" href="#ex4c" title="Permanent link">&para;</a></h5>
+<h5 id="ex4c">Part C: Advanced Line Following<a class="headerlink" href="#ex4c" title="Permanent link">¶</a></h5>
 <ol>
 <li>
 <p>Now, in <strong>TERMINAL 1</strong> run a new simulation:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following.launch.py
-</code></pre></div></p>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following.launch.py
+</code></pre></div><p></p>
 <p>Your robot should be launched into an environment with a more interesting line to follow:</p>
-<p><figure markdown>
-  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/advanced.jpg" width="800px" /></a>
-</figure></p>
+<p></p><figure markdown>
+  <a class="glightbox" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="line_following/advanced.jpg" width="800px"></a>
+</figure><p></p>
 </li>
 <li>
 <p>In <strong>TERMINAL 2</strong>, run your <code>line_follower.py</code> node and see how it performs. Does your proportional gain need to be adjusted further to optimise the performance?</p>
@@ -3199,28 +3551,28 @@ u(t)=K_{P} e(t)
 <li>
 <p>Next, think about conditions where the line can't initially be seen...</p>
 <p>As you know, the angular velocity is determined by considering the <code>cy</code> component of a colour blob representing the line. What happens in situations where the blob of colour isn't there though?  What influence would this have on the Control Signals that are calculated by the proportional controller? To consider this further, try launching the robot in the same arena but in a different location instead, and think about how you might approach this situation:</p>
-<hr />
+<hr>
 <p><strong>TERMINAL 1:</strong>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following.launch.py<span class="w"> </span>x_pos:<span class="o">=</span><span class="m">3</span><span class="w"> </span>y_pos:<span class="o">=</span>-3<span class="w"> </span>yaw:<span class="o">=</span><span class="m">0</span>
-</code></pre></div></p>
-<hr />
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>ros2<span class="w"> </span>launch<span class="w"> </span>tuos_simulations<span class="w"> </span>line_following.launch.py<span class="w"> </span>x_pos:<span class="o">=</span><span class="m">3</span><span class="w"> </span>y_pos:<span class="o">=</span>-3<span class="w"> </span>yaw:<span class="o">=</span><span class="m">0</span>
+</code></pre></div><p></p>
+<hr>
 </li>
 <li>
 <p>Finally, what happens when the robot reaches the finish line? How could you add additional functionality to ensure that the robot stops when it reaches this point? What features of the arena could you use to trigger this?</p>
 </li>
 </ol>
-<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">&para;</a></h2>
+<h2 id="wrapping-up">Wrapping Up<a class="headerlink" href="#wrapping-up" title="Permanent link">¶</a></h2>
 <p>In this session you have learnt how to use data from a robot's camera to extract further information about its environment.  The camera allows our robot to "see" and the information that we obtain from this device can allow us to develop more advanced robotic behaviours such as searching for objects, follow things or - conversely - moving away or avoiding them.  You have learnt how to do some basic tasks with OpenCV, but this is a huge and very capable library of computer vision tools, and we encourage you to explore this further yourselves to enhance some of the basic principles that we have shown you today.</p>
-<h3 id="backup">WSL-ROS2 Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">&para;</a></h3>
+<h3 id="backup">WSL-ROS2 Managed Desktop Users: Save your work!<a class="headerlink" href="#backup" title="Permanent link">¶</a></h3>
 <p>Remember, to save the work you have done in WSL-ROS2 during this session so that you can restore it on a different machine at a later date. Run the following script in any idle WSL-ROS2 Terminal Instance now:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>wsl_ros<span class="w"> </span>backup
 </code></pre></div>
 <p>You'll then be able to restore it to a fresh WSL-ROS2 environment whenever you need it again (<code>wsl_ros restore</code>).  </p>
 <div class="footnote">
-<hr />
+<hr>
 <ol>
 <li id="fn:1">
-<p>Remember: you can also use the <code>wsl_ros restore</code> command at any time.&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<p>Remember: you can also use the <code>wsl_ros restore</code> command at any time.&nbsp;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">↩</a></p>
 </li>
 </ol>
 </div>
@@ -3244,9 +3596,9 @@ u(t)=K_{P} e(t)
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Last update">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 10, 2025 23:43:14"><span class="timeago" datetime="2025-03-10T23:43:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 10, 2025 23:43:14">2025-03-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 10, 2025 23:43:14 UTC"><span class="timeago" datetime="2025-03-10T23:43:14+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 10, 2025 23:43:14 UTC">2025-03-10</span>
   </span>
 
     
@@ -3254,9 +3606,9 @@ u(t)=K_{P} e(t)
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="Created">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 26, 2025 16:39:01"><span class="timeago" datetime="2025-01-26T16:39:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 26, 2025 16:39:01">2025-01-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 26, 2025 16:39:01 UTC"><span class="timeago" datetime="2025-01-26T16:39:01+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 26, 2025 16:39:01 UTC">2025-01-26</span>
   </span>
 
     
@@ -3278,7 +3630,7 @@ u(t)=K_{P} e(t)
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
 </button>
         
@@ -3288,13 +3640,13 @@ u(t)=K_{P} e(t)
   
     
       
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
           <a href="../part5/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Part 5: Actions">
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
             </div>
             <div class="md-footer__title">
               <span class="md-footer__direction">
@@ -3319,7 +3671,7 @@ u(t)=K_{P} e(t)
             </div>
             <div class="md-footer__button md-icon">
               
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
             </div>
           </a>
         
@@ -3331,7 +3683,7 @@ u(t)=K_{P} e(t)
       <div class="md-copyright">
   
     <div class="md-copyright__highlight">
-      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../assets/external/i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br />  &copy; <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2025.
+      <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="../../../assets/external/i.creativecommons.org/l/by-sa/4.0/88x31.png"></a><br>  © <a href="https://www.sheffield.ac.uk/engineering/diamond-engineering/our-staff/tom-howard">Tom Howard</a>, The University of Sheffield, 2025.
 
     </div>
   
@@ -3355,10 +3707,11 @@ u(t)=K_{P} e(t)
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tracking", "navigation.tabs", "navigation.top", "navigation.footer", "navigation.indexes", "toc.follow", "content.code.copy", "content.code.annotate", "content.action.edit", "content.action.view"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
@@ -3371,7 +3724,8 @@ u(t)=K_{P} e(t)
         <script src="../../../assets/external/cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  <script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
+  
+<script id="init-glightbox">document.querySelectorAll('.glightbox').forEach(function(element) {
     try {
         var img = element.querySelector('img');
         if (img && img.src) {
@@ -3384,6 +3738,5 @@ u(t)=K_{P} e(t)
     }
 });
 const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(() => { lightbox.reload() });
-</script></body>
-</html>
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
