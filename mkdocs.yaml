@@ -8,10 +8,6 @@ theme:
   font: 
     text: Source Sans Pro
     code: Source Code Pro
-  palette:
-    - scheme: slate
-      primary: deep purple
-      accent: cyan
   custom_dir: overrides
 
   logo: assets/tuos.png
@@ -83,8 +79,8 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
-extra_css:
-  - stylesheets/extra.css
+# extra_css:
+#   - stylesheets/extra.css
 
 extra_javascript:
   - javascripts/mathjax.js
